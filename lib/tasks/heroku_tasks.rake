@@ -33,10 +33,7 @@ if Rails.env.development?
       targets.each do |target|
         heroku_app = "#{app}-#{target}"
         execute("heroku create #{heroku_app} --stack #{stack}", :continue_on_failure => true)
-        ['custom_domains',
-         'logging:expanded',
-         'releases:basic',
-         'pgbackups:auto-month'].each { |addon| add_addon(addon, heroku_app)}
+        ['pgbackups:auto-month'].each { |addon| add_addon(addon, heroku_app)}
         execute("heroku addons:add deployhooks:email --app #{heroku_app} recipient=#{app}@trikro.com subject='[Heroku] {{app}} deployed to #{target}' body='{{user}} deployed {{head}} to {{url}} with {{git_log}}'", :continue_on_failure => true)
         execute("heroku domains:add #{target}.#{app}.#{tld} --app #{heroku_app}", :continue_on_failure => true)
         if target == 'production'
