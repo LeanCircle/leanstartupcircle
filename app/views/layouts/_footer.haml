@@ -2,13 +2,14 @@
   %footer_inner
 
     %span#copyright
-      &copy;2011
+      &copy;
+      = Time.now.year
       = link_to "LeanStartupCircle", root_path, :style => "text-decoration: none;"
 
     %span#footermenu
       -#= link_to "About", :about
-      &#8226;
-      = link_to "Blog", "http://GrasshopperHerder.com", :target => "_blank"
+      -#&#8226;
+      = link_to "Blog", "http://blog.LeanStartupCircle.com", :target => "_blank"
       -#&#8226;
       -#= link_to "Contact", :contact
       -#&#8226;
