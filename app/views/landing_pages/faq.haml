@@ -70,11 +70,28 @@
       blog!
   %tr
     %td
+      There is a
+      %b lean startup event
+      going on that will be
+      %b available online...
+    %td
+      %b
+        Reminder,
+      Come to
+      %b
+        my
+      event.
+  %tr
+    %td
       I have a question about
       %b lean startup...
     %td
       I have a legal question about
       %b random stuff...
+
+
+%p
+  Still not clear? Ok... here are some specific rules.
 
 %ul
   %h2 Do…
@@ -84,9 +101,9 @@
   %li be respectful.
   %h2
     Do
-    %span{ :style => "color: red;" }
-      NOT
-    …
+    = succeed '…' do
+      %span{ :style => "color: red;" }
+        NOT
   %li promote your blog or product.
   %li
     post jobs. This will result in an
