@@ -3,4 +3,5 @@ Leanstartupcircle::Application.routes.draw do
   match "faq.html" => "static_pages#guidelines"
   match "faq" => "static_pages#guidelines"
   match "guidelines" => "static_pages#guidelines"
+  match "team" => "static_pages#team"
 end
