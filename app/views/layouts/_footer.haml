@@ -19,3 +19,17 @@
 
 -#= link_to :contact do
 -#  #feedback
+
+%span#links
+  = link_to 'http://twitter.com/leancircle', :target => "_blank", :title => "Lean Startup Circle on Twitter" do
+    %span.pics
+      = image_tag 'link_twitter.png'
+  = link_to 'http://facebook.com/leanstartupcircle', :target => "_blank", :title => "Lean Startup Circle on Facebook" do
+    %span.pics
+      = image_tag 'link_facebook.png'
+  = link_to 'http://linkedin.com/groups?home=&gid=2789385', :target => "_blank", :title => "Lean Startup Circle on LinkedIn" do
+    %span.pics
+      = image_tag 'link_linkedin.png'
+  = link_to 'http://blog.leanstartupcircle.com', :target => "_blank", :title => "Lean Startup Circle's blog'" do
+    %span.pics
+      = image_tag 'link_blog.png'
