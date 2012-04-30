@@ -45,14 +45,17 @@ p
   margin: 20px
   line-height: 1.7em
 
-ul
+ol, ul
+  margin-left: 20px
   li
-    list-style-type: square
     font-size: 1.5em
     line-height: 1.5em
     margin: 10px 0 0 40px
   p
     margin-left: 60px
+ul
+  li
+    list-style-type: square
 
 table
   font-size: 1.6em
@@ -69,12 +72,13 @@ table
       border: 1px solid #999
 
 a
-  color: $text-color
+  color: $link-color
   text-decoration: none
   border-bottom: 1px dotted $link-color
   &:hover
     color: $link-color
     text-decoration: none
+    border-bottom: 1px solid $link-color
 
 .clear
   clear: both
