@@ -1,0 +1,51 @@
+= title "- Contact"
+
+#white_background
+  #contact_new
+    #white_box.centered_box
+      %h1
+        Contact
+
+      %p
+        I welcome love letters and hate mail.
+      %p
+        Anything else, please leave in the trash.
+
+      = form_for(@contact_message, :html => { :class => "event_form_contact" } ) do |f|
+        - if @contact_message.errors.any?
+          #error_explanation
+            %h4
+              = pluralize(@contact_message.errors.count, "error")
+              prohibited this message from being sent:
+            %ul
+              - @contact_message.errors.full_messages.each do |msg|
+                %li= msg
+        %table.blank
+          %tr
+            %td
+              = f.label "Name"
+            %td
+              = f.text_field :sender_name, :size => "40"
+
+          %tr
+            %td
+              = f.label "Email"
+            %td
+              = f.text_field :sender_email, :size => "40"
+
+          %tr
+            %td
+              = f.label "Message"
+            %td
+              = f.text_area :content, :size => "35x10"
+
+          %tr
+            %td
+            %td
+              = recaptcha_tags
+
+          %tr
+            %td
+            %td
+              .actions
+                = f.submit("Send Message")
