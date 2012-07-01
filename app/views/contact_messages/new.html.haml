@@ -4,12 +4,10 @@
   #contact_new
     #white_box.centered_box
       %h1
-        Contact
+        Contact Us
 
       %p
-        I welcome love letters and hate mail.
-      %p
-        Anything else, please leave in the trash.
+        We've love to hear from you!
 
       = form_for(@contact_message, :html => { :class => "event_form_contact" } ) do |f|
         - if @contact_message.errors.any?
