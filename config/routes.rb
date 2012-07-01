@@ -5,7 +5,7 @@ Leanstartupcircle::Application.routes.draw do
   [ :guidelines,
     :team,
     :moderation_guidelines].each do |static_page|
-    match "/#{static_page}" => "static##{static_page}", :as => static_page
+    match "/#{static_page}" => "static_pages##{static_page}", :as => static_page
   end
   match "faq.html" => "static_pages#guidelines"
   match "faq" => "static_pages#guidelines"
