@@ -1,5 +1,6 @@
 Leanstartupcircle::Application.routes.draw do
-  root :to => redirect("https://groups.google.com/forum/?fromgroups#!forum/lean-startup-circle")
+  #root :to => redirect("https://groups.google.com/forum/?fromgroups#!forum/lean-startup-circle")
+  root :to => "landing_pages#home"
 
   # Static page routes
   [ :guidelines,

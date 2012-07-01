@@ -1,11 +1,6 @@
 .home
-  %div{ :style => "float: left;" }
-    %h1
-      Lean Startup Circle
-    %p
-      Building Lean Leaders
-  %div{ :style => "float: right; margin: 80px" }
-    = link_to "http://www.surveymonkey.com/s/VBV2CJF", :onClick => "_gaq.push(['_trackPageview', '/clicked-apply-button']); goog_report_conversion('tel:415-555-1234');" do
-      .red_button
-        Find a meetup
-  .clear
+  %iframe#forum_embed{:frameborder => "0", :height => "1000", :scrolling => "no", :src => "javascript:void(0)", :width => "950"}
+
+  :javascript
+    document.getElementById("forum_embed").src = "https://groups.google.com/forum/embed/?place=forum/lean-startup-circle"
+    + "&showsearch=true&showpopout=false&hideforumtitle=true&showtabs=true&hidesubject=false&parenturl=" + encodeURIComponent(window.location.href);
