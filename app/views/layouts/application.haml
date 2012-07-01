@@ -4,6 +4,7 @@
 
   %body
     %content
+      = render '/layouts/header'
       %content_inner
         = render :partial => '/layouts/flash', :locals => { :flash => flash }
         = yield
