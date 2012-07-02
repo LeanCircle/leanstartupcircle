@@ -84,6 +84,22 @@
 
   .person
     .profile_pic
+      = image_tag 'spike_morelli.jpg'
+    .name_bio
+      .name
+        Spike Morelli
+      .bio
+        Engineer and bootstrapper. Seeking to help people from good to great and freedom through product development.
+      .links
+        = link_to "https://www.spikelab.org/", :target => "_blank" do
+          = image_tag "link_home_black.png"
+        = link_to "http://twitter.com/spikelab", :target => "_blank" do
+          = image_tag "link_twitter.png"
+        = link_to "http://www.linkedin.com/in/spikemorelli", :target => "_blank" do
+          = image_tag "link_linkedin.png"
+
+  .person
+    .profile_pic
       = image_tag 'keith_ratner.jpg'
     .name_bio
       .name
