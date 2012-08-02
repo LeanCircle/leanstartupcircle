@@ -1,5 +1,6 @@
 Leanstartupcircle::Application.routes.draw do
   #root :to => redirect("https://groups.google.com/forum/?fromgroups#!forum/lean-startup-circle")
+  match "/" => "landing_pages#jobs", :constraints => { :subdomain => "jobs" }
   root :to => "landing_pages#home"
 
   # Static page routes
