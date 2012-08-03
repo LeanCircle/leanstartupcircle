@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 gem 'recaptcha',           :require => 'recaptcha/rails'
+gem 'json', '1.7.3'
 
 group :assets do
   gem 'sass-rails'
