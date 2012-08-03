@@ -1,7 +1,9 @@
 Leanstartupcircle::Application.routes.draw do
   #root :to => redirect("https://groups.google.com/forum/?fromgroups#!forum/lean-startup-circle")
+
+  # Jobs routes
   match "/" => "landing_pages#jobs", :constraints => { :subdomain => "jobs" }
-  root :to => "landing_pages#home"
+  match "/jobs" => "landing_pages#jobs"
 
   # Static page routes
   [ :guidelines,
@@ -16,5 +18,7 @@ Leanstartupcircle::Application.routes.draw do
   resources :contact_messages, :only => [:new, :create]
   match "/contact" => "contact_messages#new", :as => :contact
   match "/thanks_for_your_message" => "contact_messages#thanks", :as => :contact_thanks
+
+  root :to => "landing_pages#home"
 
 end
