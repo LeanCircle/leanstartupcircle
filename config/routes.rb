@@ -3,6 +3,8 @@ Leanstartupcircle::Application.routes.draw do
 
   # Jobs routes
   match "/" => "landing_pages#jobs", :constraints => { :subdomain => "jobs" }
+  match "/thanks_for_signing_up" => "landing_pages#thanks_for_signing_up", :constraints => { :subdomain => "jobs" }
+  match "/thanks_for_applying" => "landing_pages#thanks_for_applying", :constraints => { :subdomain => "jobs" }
   match "/jobs" => "landing_pages#jobs"
 
   # Static page routes
