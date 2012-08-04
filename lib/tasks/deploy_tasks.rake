@@ -29,7 +29,7 @@ if Rails.env.development?
       push_to_remote( target, ref )
       execute( "heroku pgbackups:capture --expire                        --app #{app}-#{target}" )
       execute( "heroku pgbackups:capture --expire                        --app #{app}-production" )
-      execute( "heroku pg:reset SHARED_DATABASE                          --app #{app}-#{target} --confirm #{app}-#{target}" )
+      execute( "heroku pg:reset DATABASE                                 --app #{app}-#{target} --confirm #{app}-#{target}" )
       execute( "heroku pgbackups:restore DATABASE `heroku pgbackups:url  --app #{app}-production` --app #{app}-#{target} --confirm #{app}-#{target}" )
       execute( "heroku run rake --trace db:migrate                           --app #{app}-#{target}" )
       execute( "heroku restart                                           --app #{app}-#{target}" )
