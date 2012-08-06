@@ -7,7 +7,6 @@ tmp/
 .idea/*
 .idea
 .DS_Store
-config/database.yml
 public/stylesheets/
 public/stylesheets/*
 public/stylesheets/**/*
