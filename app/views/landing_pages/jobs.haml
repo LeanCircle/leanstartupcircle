@@ -28,7 +28,7 @@
           lean job posts
           %span.red *
         %li Join a lean team
-      = image_tag "connect_linkedin.png"
+      = link_to image_tag("connect_linkedin.png"), user_omniauth_authorize_path(:linkedin)
 
   %p.caveat.clear
     %span.red *
