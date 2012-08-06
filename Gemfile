@@ -4,6 +4,8 @@ gem 'rails', '3.2.2'
 gem 'recaptcha',           :require => 'recaptcha/rails'
 gem 'json', '1.7.3'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-linkedin'
 
 group :assets do
   gem 'sass-rails'
