@@ -3,8 +3,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
 
       ## OmniAuth
-      t.string :provider
       t.string :uid
+      t.string :provider
 
       ## Database authenticatable
       #t.string :email,              :null => false, :default => ""
