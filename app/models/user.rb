@@ -12,14 +12,14 @@ class User < ActiveRecord::Base
   #attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :provider, :uid
 
-  def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
+  def self.find_for_linkedin_oauth(auth)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      user = User.create(provider:auth.provider,
-                         uid:auth.uid
-                         )
-    end
-    user
+  end
+
+  def self.create_from_linkedin_oauth(auth)
+    user = User.create(provider:auth.provider,
+                       uid:auth.uid
+                       )
   end
 
 end
