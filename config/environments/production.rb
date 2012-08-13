@@ -48,9 +48,6 @@ Leanstartupcircle::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
-  # Using devise on Heroku with Ruby on Rails 3.1 requires:
-  config.assets.initialize_on_precompile = false
-
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
