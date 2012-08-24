@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
   end
 
-  def self.new_from_linkedin_oauth(auth)
-    user = User.new(
+  def self.create_from_linkedin_oauth(auth)
+    user = User.create(
       uid:auth.uid,
       provider:auth.provider,
       first_name:auth.info.first_name,
