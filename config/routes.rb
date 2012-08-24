@@ -1,13 +1,18 @@
 Leanstartupcircle::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_scope :user do
+    get 'sign_in', :to => 'landing_pages#jobs', :as => :new_user_session
+  end
 
   #root :to => redirect("https://groups.google.com/forum/?fromgroups#!forum/lean-startup-circle")
 
   # Jobs routes
   constraints(Subdomain) do
-      match "/" => "landing_pages#jobs"
-      match "/thanks_for_signing_up" => "landing_pages#thanks_for_signing_up"
-      match "/thanks_for_applying" => "landing_pages#thanks_for_applying"
+    match "/" => "landing_pages#jobs"
+    match "/thanks_for_signing_up" => "landing_pages#thanks_for_signing_up"
+    match "/thanks_for_applying" => "landing_pages#thanks_for_applying"
+    match "/users/sign_up" => "users#sign_up"
+    match "/users/register" => "users#register"
   end
   match "/jobs" => "landing_pages#jobs"
 

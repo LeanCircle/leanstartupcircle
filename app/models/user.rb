@@ -9,20 +9,19 @@ class User < ActiveRecord::Base
   devise :omniauthable, :rememberable, :trackable
 
   # Setup accessible (or protected) attributes for your model
-  #attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :first_name, :last_name, :public_profile_url, :uid, :provider
+  attr_accessible :uid, :provider, :first_name, :last_name, :public_profile_url, :email, :zipcode
 
   def self.find_for_linkedin_oauth(auth)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
   end
 
-  def self.create_from_linkedin_oauth(auth)
-    user = User.create(
+  def self.new_from_linkedin_oauth(auth)
+    user = User.new(
+      uid:auth.uid,
+      provider:auth.provider,
       first_name:auth.info.first_name,
       last_name:auth.info.last_name,
-      public_profile_url:auth.info.urls.public_profile,
-      provider:auth.provider,
-      uid:auth.uid
+      public_profile_url:auth.info.urls.public_profile
       )
   end
 
