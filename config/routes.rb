@@ -1,5 +1,9 @@
 Leanstartupcircle::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_scope :user do
+    match '/jobseeker_sign_in', :to => 'users/omniauth_callbacks#jobseeker_sign_in'
+    match '/employer_sign_in', :to => 'users/omniauth_callbacks#employer_sign_in'
+  end
 
   #root :to => redirect("https://groups.google.com/forum/?fromgroups#!forum/lean-startup-circle")
 
