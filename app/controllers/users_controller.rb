@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
-  def sign_up
+  def jobseeker_sign_up
     @user = current_user
-    if session[:user_type] == :employer
-      render 'employer_sign_up'
-    else
-      render 'jobseeker_sign_up'
-    end
+  end
+
+  def employer_sign_up
+    @user = current_user
   end
 
   def register

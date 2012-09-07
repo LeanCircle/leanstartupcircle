@@ -10,13 +10,15 @@ Leanstartupcircle::Application.routes.draw do
   # Jobs routes
   constraints(Subdomain) do
     match "/" => "landing_pages#jobs"
-    match "/users/sign_up" => "users#sign_up"
+    match "/users/employer_sign_up" => "users#employer_sign_up"
+    match "/users/jobseeker_sign_up" => "users#jobseeker_sign_up"
     match "/users/register" => "users#register"
     match "/thanks_for_signing_up" => "landing_pages#thanks_for_signing_up"
     match "/thanks_for_applying" => "landing_pages#thanks_for_applying"
   end
   match "/jobs" => "landing_pages#jobs"
-  match "/users/sign_up" => "users#sign_up"
+  match "/users/employer_sign_up" => "users#employer_sign_up"
+  match "/users/jobseeker_sign_up" => "users#jobseeker_sign_up"
   match "/users/register" => "users#register"
   match "/thanks_for_signing_up" => "landing_pages#thanks_for_signing_up"
   match "/thanks_for_applying" => "landing_pages#thanks_for_applying"
