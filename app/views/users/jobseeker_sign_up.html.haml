@@ -9,9 +9,11 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
+  %br          
   = f.label :email
   = f.email_field :email
   
+  %br          
   = f.label :zipcode
   = f.text_field :zipcode
 

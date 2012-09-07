@@ -1,0 +1,30 @@
+%h2 Apply
+= form_for @user, :url => { :action => "register" } do |f|
+  / <%= devise_error_messages! %>
+  -if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  %br          
+  = f.label :email, 'Contact Email'
+  = f.email_field :email
+  
+  %br          
+  = f.label :company_name
+  = f.text_field :company_name
+  
+  %br          
+  = f.label :phone
+  = f.text_field :phone
+
+  %br          
+  = f.label :zipcode
+  = f.text_field :zipcode
+
+  .actions
+    = f.submit 'Apply'
+
+

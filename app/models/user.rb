@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :uid, :provider, :first_name, :last_name, :public_profile_url,
-    :email, :zipcode, :user_type
+    :email, :zipcode, :user_type, :company_name, :phone
 
   def self.find_for_linkedin_oauth(auth)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first

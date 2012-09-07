@@ -3,6 +3,11 @@ class UsersController < ApplicationController
 
   def sign_up
     @user = current_user
+    if session[:user_type] == :employer
+      render 'employer_sign_up'
+    else
+      render 'jobseeker_sign_up'
+    end
   end
 
   def register
