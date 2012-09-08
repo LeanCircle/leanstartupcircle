@@ -1,12 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  def jobseeker_sign_in
-    session[:user_type] = :jobseeker
-    redirect_to user_omniauth_authorize_path(:linkedin)
-  end
-
-  def employer_sign_in
-    session[:user_type] = :employer
+  def user_sign_in
+    session[:user_type] = params[:user_type]
     redirect_to user_omniauth_authorize_path(:linkedin)
   end
 
@@ -18,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     sign_in @user, :event => :authentication
 
-    if session[:user_type] == :employer
+    if session[:user_type] == 'employer'
       redirect_to users_employer_sign_up_path
     else
       redirect_to users_jobseeker_sign_up_path
