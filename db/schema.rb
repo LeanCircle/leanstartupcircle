@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20121113044610) do
     t.string   "highres_photo_url"
     t.string   "photo_url"
     t.string   "thumbnail_url"
-    t.datetime "founded"
     t.string   "join_mode"
     t.string   "visibility"
     t.datetime "created_at",        :null => false

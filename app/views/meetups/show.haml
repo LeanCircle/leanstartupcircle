@@ -1,34 +1,13 @@
 - title " | Lean Startup Circle"
 
 #show_meetups
-  %h1
-    = @meetup.name
-  %p
-    = @meetup.description.html_safe unless @meetup.description.blank?
+  %h1= @meetup.name
+  = image_tag @meetup.thumbnail_url
+  %p #{ @meetup.city}, #{ @meetup.state + ", " if !@meetup.state.blank? } #{ @meetup.country } (#{ @meetup.lat }, #{ @meetup.lon })
+  %p= @meetup.description.html_safe unless @meetup.description.blank?
+  %p= link_to @meetup.link
 
-  %p
-    Founded
-    - a = 1246038900000
-    = Time.at(a)
-    = DateTime.now
-    = DateTime.now.strftime("%Y-%m-%dT%H:%M:%S.%3N-%Z")
-    in #{ @meetup.city}, #{ @meetup.state + ", " if !@meetup.state.blank? } #{ @meetup.country }
-    (#{ @meetup.lat }, #{ @meetup.lon })
-
-  %p
-    = @meetup.meetup_id
-    = @meetup.organizer_id
-    = link_to @meetup.link
-
-    -#t.string :highres_photo_url
-    -#t.string :photo_url
-    -#t.string :thumbnail_url
-    -#
-    -#t.string :join_mode
-    -#t.string :visibility
-
-
-  = link_to 'Edit', edit_meetup_path(@meetup)
+  = link_to 'Update', edit_meetup_path(@meetup)
   \|
   = link_to 'Destroy', meetup_path(@meetup), :confirm => 'Are you sure?', :method => :delete
   \|

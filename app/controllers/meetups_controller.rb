@@ -17,24 +17,8 @@ class MeetupsController < ApplicationController
   end
 
   def create
-    RMeetup::Client.api_key = "4404a5c4f33d2771b2d67175c2772 "
-    result = RMeetup::Client.fetch( :groups,{ :group_id => params[:meetup][:meetup_id] }).first
-    @meetup = Meetup.new( :name => result.name,
-                          :description => result.description,
-                          :meetup_id => result.id,
-                          :organizer_id => result.organizer[:member_id],
-                          :link => result.link,
-                          :city => result.city,
-                          :country => result.country,
-                          :state => result.state,
-                          :lat => result.lat,
-                          :lon => result.lon,
-                          :highres_photo_url => result.group_photo[:highres_link],
-                          :photo_url => result.group_photo[:photo_link],
-                          :thumbnail_url => result.group_photo[:thumb_link],
-                          :join_mode => result.join_mode,
-                          :visibility => result.visibility)
-
+    @meetup = Meetup.new
+    fetch_from_meetup(params[:meetup][:meetup_id])
     if @meetup.save
       flash[:success] = 'Awesome! You\'ve added a new meetup for everyone.'
       redirect_to meetups_path
@@ -45,6 +29,7 @@ class MeetupsController < ApplicationController
 
   def update
     @meetup = Meetup.find(params[:id])
+    fetch_from_meetup(@meetup.meetup_id)
     if @meetup.update_attributes(params[:meetup])
       flash[:success] = 'Cool... You\'ve updated the meetup.'
       redirect_to meetup_path(@meetup)
@@ -59,4 +44,27 @@ class MeetupsController < ApplicationController
     flash[:alert] = 'The meetup was destroyed! Yeargh!!! Don\'t you feel mighty?'
     redirect_to :action => 'index'
   end
+
+  private
+
+  def fetch_from_meetup(meetup_id)
+    RMeetup::Client.api_key = AppConfig['meetup_api_key']
+    result = RMeetup::Client.fetch( :groups,{ :group_id => meetup_id }).first
+    @meetup.name = result.name
+    @meetup.description = result.description
+    @meetup.meetup_id = result.id
+    @meetup.organizer_id = result.organizer["member_id"]
+    @meetup.link = result.link
+    @meetup.city = result.city
+    @meetup.country = result.country
+    @meetup.state = result.state
+    @meetup.lat = result.lat
+    @meetup.lon = result.lon
+    @meetup.highres_photo_url = result.group_photo["highres_link"]
+    @meetup.photo_url = result.group_photo["photo_link"]
+    @meetup.thumbnail_url = result.group_photo["thumb_link"]
+    @meetup.join_mode = result.join_mode
+    @meetup.visibility = result.visibility
+  end
+
 end
