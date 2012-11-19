@@ -1,0 +1,14 @@
+= form_for [:admin, @meetup] do |f|
+  -if @meetup.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@meetup.errors.count, "error")} prohibited this meetup from being saved:"
+      %ul
+        - @meetup.errors.full_messages.each do |msg|
+          %li= msg
+
+  %br
+  = f.label :meetup_id, 'Group ID'
+  = f.text_field :meetup_id
+
+  .actions
+    = f.submit 'Add'

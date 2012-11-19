@@ -10,9 +10,6 @@
       %th City
       %th State
       %th Country
-      %th
-      %th
-      %th
 
     - @meetups.each do |meetup|
       %tr.meetup
@@ -20,6 +17,3 @@
         %td= meetup.city
         %td= meetup.state
         %td= meetup.country
-        %td= link_to 'Show', meetup_path(meetup)
-        %td= link_to 'Edit', edit_meetup_path(meetup)
-        %td= link_to 'Destroy', meetup_path(meetup), :confirm => 'Are you sure?', :method => :delete

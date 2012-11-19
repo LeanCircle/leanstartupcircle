@@ -1,0 +1,25 @@
+- title "Meetups Index | Lean Startup Circle"
+
+#index_admin_meetups
+  %h1 Listing Meetups
+  = link_to 'New meetup', new_admin_meetup_path
+
+  %table.meetups
+    %tr
+      %th Name
+      %th City
+      %th State
+      %th Country
+      %th
+      %th
+      %th
+
+    - @meetups.each do |meetup|
+      %tr.meetup
+        %td= link_to meetup.name, admin_meetup_path(meetup)
+        %td= meetup.city
+        %td= meetup.state
+        %td= meetup.country
+        %td= link_to 'Show', admin_meetup_path(meetup)
+        %td= link_to 'Edit', edit_admin_meetup_path(meetup)
+        %td= link_to 'Destroy', admin_meetup_path(meetup), :confirm => 'Are you sure?', :method => :delete

@@ -23,7 +23,7 @@ Leanstartupcircle::Application.routes.draw do
   match "/thanks_for_applying" => "landing_pages#thanks_for_applying"
 
   # Meetup routes
-  resources :meetups
+  resources :meetups, :except => [:edit, :update, :destroy]
 
   # Static page routes
   [ :guidelines,
@@ -38,6 +38,11 @@ Leanstartupcircle::Application.routes.draw do
   resources :contact_messages, :only => [:new, :create]
   match "/contact" => "contact_messages#new", :as => :contact
   match "/thanks_for_your_message" => "contact_messages#thanks", :as => :contact_thanks
+
+  namespace :admin do
+    match "/" => "Base#dashboard", :as => :admin_dashboard
+    resources :meetups
+  end
 
   root :to => "landing_pages#home"
 
