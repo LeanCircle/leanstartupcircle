@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/pbajaria/rmeetup.git
+  revision: 334c18dfdf68cc00abf5866f4d3ff82bfccdd868
+  specs:
+    rmeetup (1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -167,6 +173,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.2)
   recaptcha
+  rmeetup!
   sass-rails
   sqlite3
   taps

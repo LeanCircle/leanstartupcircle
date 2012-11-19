@@ -11,7 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120906224043) do
+ActiveRecord::Schema.define(:version => 20121113044610) do
+
+  create_table "meetups", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "meetup_id"
+    t.integer  "organizer_id"
+    t.string   "link"
+    t.string   "city"
+    t.string   "country"
+    t.string   "state"
+    t.float    "lat"
+    t.float    "lon"
+    t.string   "highres_photo_url"
+    t.string   "photo_url"
+    t.string   "thumbnail_url"
+    t.datetime "founded"
+    t.string   "join_mode"
+    t.string   "visibility"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "uid"

@@ -6,6 +6,7 @@ gem 'json', '1.7.3'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-linkedin'
+gem 'rmeetup', :git => 'git://github.com/pbajaria/rmeetup.git'
 
 group :assets do
   gem 'sass-rails'

@@ -1,0 +1,10 @@
+- title @meetup.title + " | LUXr Admin"
+
+#edit_admin_meetups
+  %h1 Editing Meetup
+
+  = render 'form'
+
+  = link_to 'Show', admin_meetup_path(@meetup)
+  \|
+  = link_to 'Index', admin_meetups_path

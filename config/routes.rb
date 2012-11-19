@@ -22,6 +22,9 @@ Leanstartupcircle::Application.routes.draw do
   match "/thanks_for_signing_up" => "landing_pages#thanks_for_signing_up"
   match "/thanks_for_applying" => "landing_pages#thanks_for_applying"
 
+  # Meetup routes
+  resources :meetups
+
   # Static page routes
   [ :guidelines,
     :team,
