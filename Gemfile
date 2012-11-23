@@ -8,6 +8,7 @@ gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'rmeetup', :git => 'git://github.com/pbajaria/rmeetup.git'
 gem 'geocoder'
+gem 'gmaps4rails'
 gem 'redis'
 
 group :assets do

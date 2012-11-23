@@ -2,6 +2,7 @@
 
 #index_admin_meetups
   %h1 Listing Meetups
+  = gmaps4rails(@meetups_map)
   = link_to 'New meetup', new_meetup_path
 
   %table.meetups

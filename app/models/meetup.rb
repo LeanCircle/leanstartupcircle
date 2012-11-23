@@ -1,5 +1,16 @@
 class Meetup < ActiveRecord::Base
+  geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
+  acts_as_gmappable
+
+  def address
+    [street, city, state, country].compact.join(', ')
+  end
+
+  def gmaps4rails_address
+  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    "#{self.street}, #{self.city}, #{self.country}"
+  end
 
   def self.fetch_from_meetup(meetup, meetup_id)
     RMeetup::Client.api_key = AppConfig['meetup_api_key']

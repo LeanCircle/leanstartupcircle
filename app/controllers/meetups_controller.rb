@@ -2,6 +2,7 @@ class MeetupsController < ApplicationController
 
   def index
     @meetups = Meetup.all
+    @meetups_map = Meetup.all.to_gmaps4rails
   end
 
   def show

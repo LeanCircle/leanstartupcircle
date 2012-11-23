@@ -16,6 +16,7 @@
       -#= link_to "Privacy Policy", :privacy_policy
       -#&#8226;
       -#= link_to "Terms of Service", :terms_of_service
+    = yield :scripts
 
 %span#links
   = link_to 'http://twitter.com/leancircle', :target => "_blank", :title => "Lean Startup Circle on Twitter" do
