@@ -1,5 +1,5 @@
 class AddApprovedColumnToMeetups < ActiveRecord::Migration
   def change
-    add_column :meetups, :approve, :boolean, :default => 0
+    add_column :meetups, :approval, :boolean, :default => 0
   end
 end

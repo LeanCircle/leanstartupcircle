@@ -7,8 +7,55 @@
           %li= msg
 
   %br
-  = f.label :meetup_id, 'Group ID'
-  = f.text_field :meetup_id
+  .field
+    = f.label :name, 'Name'
+    = f.text_field :name
+  .field
+    = f.label :meetup_id, 'Group ID'
+    = f.number_field :meetup_id
+  .field
+    = f.label :description, 'Description'
+    = f.text_area :description
+  .field
+    = f.label :organizer_id, 'Organizer ID'
+    = f.number_field :organizer_id
+  .field
+    = f.label :link, 'Link'
+    = f.url_field :link
+  .field
+    = f.label :city, 'City'
+    = f.text_field :city
+  .field
+    = f.label :state, 'State'
+    = f.text_field :state
+  .field
+    = f.label :country, 'Country'
+    = f.text_field :country
+  .field
+    = f.label :latitude, 'Latitude'
+    = f.text_field :latitude
+  .field
+    = f.label :longitude, 'Longitude'
+    = f.text_field :longitude
+  .field
+    = f.label :highres_photo_url, 'Highres photo URL'
+    = f.url_field :highres_photo_url
+  .field
+    = f.label :photo_url, 'Photo URL'
+    = f.url_field :photo_url
+  .field
+    = f.label :thumbnail_url, 'Thumbnail URL'
+    = f.url_field :thumbnail_url
+  .field
+    = f.label :join_mode, 'Join Mode'
+    = f.text_field :join_mode
+  .field
+    = f.label :visibility, 'Visibility'
+    = f.text_field :visibility
+  .field
+    = f.label :approval, 'Approval'
+    = f.radio_button :approval, true
+    = f.radio_button :approval, false
 
   .actions
-    = f.submit 'Add'
+    = f.submit 'Submit'

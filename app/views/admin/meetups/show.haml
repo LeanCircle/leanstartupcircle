@@ -7,10 +7,10 @@
   %p= @meetup.description.html_safe unless @meetup.description.blank?
   %p= link_to @meetup.link
   %p
-    Approved:
-    = @meetup.approve
+    Approval:
+    = @meetup.approval
 
-  = link_to 'Update', edit_admin_meetup_path(@meetup)
+  = link_to 'Edit', edit_admin_meetup_path(@meetup)
   \|
   = link_to 'Destroy', admin_meetup_path(@meetup), :confirm => 'Are you sure?', :method => :delete
   \|

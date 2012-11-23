@@ -27,8 +27,7 @@ class Admin::MeetupsController < Admin::BaseController
   end
 
   def update
-    @meetup = Meetup.fetch_from_meetup(Meetup.find(params[:id]), params[:meetup][:meetup_id])
-    fetch_from_meetup(@meetup.meetup_id)
+    @meetup = Meetup.find(params[:id])
     if @meetup.update_attributes(params[:meetup])
       flash[:success] = 'Cool... You\'ve updated the meetup.'
       redirect_to admin_meetup_path(@meetup)
