@@ -10,6 +10,7 @@
       %th City
       %th State
       %th Country
+      %th Approved
       %th
       %th
       %th
@@ -20,6 +21,7 @@
         %td= meetup.city
         %td= meetup.state
         %td= meetup.country
+        %td= meetup.approve
         %td= link_to 'Show', admin_meetup_path(meetup)
         %td= link_to 'Edit', edit_admin_meetup_path(meetup)
         %td= link_to 'Destroy', admin_meetup_path(meetup), :confirm => 'Are you sure?', :method => :delete

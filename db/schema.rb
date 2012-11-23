@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123165043) do
+ActiveRecord::Schema.define(:version => 20121123180127) do
 
   create_table "meetups", :force => true do |t|
     t.string   "name"
@@ -29,9 +29,12 @@ ActiveRecord::Schema.define(:version => 20121123165043) do
     t.string   "thumbnail_url"
     t.string   "join_mode"
     t.string   "visibility"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.boolean  "gmaps"
+    t.boolean  "approved",          :default => false
+    t.boolean  "approval",          :default => false
+    t.boolean  "approve",           :default => false
   end
 
   create_table "users", :force => true do |t|

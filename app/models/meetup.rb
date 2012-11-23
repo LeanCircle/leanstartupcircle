@@ -3,6 +3,8 @@ class Meetup < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
   acts_as_gmappable :address => "address"
 
+  scope :approved, where(:approve => true)
+
   def address
     [city, state, country].compact.join(', ')
   end
