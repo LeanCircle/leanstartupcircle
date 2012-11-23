@@ -7,6 +7,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'rmeetup', :git => 'git://github.com/pbajaria/rmeetup.git'
+gem 'geocoder'
 
 group :assets do
   gem 'sass-rails'

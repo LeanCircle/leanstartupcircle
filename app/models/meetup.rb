@@ -1,4 +1,5 @@
 class Meetup < ActiveRecord::Base
+  reverse_geocoded_by :latitude, :longitude
 
   def self.fetch_from_meetup(meetup, meetup_id)
     RMeetup::Client.api_key = AppConfig['meetup_api_key']
@@ -11,8 +12,8 @@ class Meetup < ActiveRecord::Base
     meetup.city = result.city
     meetup.country = result.country
     meetup.state = result.state
-    meetup.lat = result.lat
-    meetup.lon = result.lon
+    meetup.latitude = result.lat
+    meetup.longitude = result.lon
     meetup.highres_photo_url = result.group_photo["highres_link"]
     meetup.photo_url = result.group_photo["photo_link"]
     meetup.thumbnail_url = result.group_photo["thumb_link"]

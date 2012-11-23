@@ -10,8 +10,8 @@ class CreateMeetups < ActiveRecord::Migration
       t.string :city
       t.string :country
       t.string :state
-      t.float :lat
-      t.float :lon
+      t.float :latitude
+      t.float :longitude
 
       t.string :highres_photo_url
       t.string :photo_url
