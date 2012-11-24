@@ -20,8 +20,20 @@
     = f.label :organizer_id, 'Organizer ID'
     = f.number_field :organizer_id
   .field
-    = f.label :link, 'Link'
-    = f.url_field :link
+    = f.label :meetup_link, 'Meetup Link'
+    = f.url_field :meetup_link
+  .field
+    = f.label :facebook_link, 'Facebook Link'
+    = f.url_field :facebook_link
+  .field
+    = f.label :twitter_link, 'Twitter Link'
+    = f.url_field :twitter_link
+  .field
+    = f.label :linkedin_link, 'LinkedIn Link'
+    = f.url_field :linkedin_link
+  .field
+    = f.label :home_link, 'Home Link'
+    = f.url_field :home_link
   .field
     = f.label :city, 'City'
     = f.text_field :city
@@ -52,6 +64,12 @@
   .field
     = f.label :visibility, 'Visibility'
     = f.text_field :visibility
+  .field
+    = f.label :approval, 'Approval'
+    = f.label :approval, 'False'
+    = f.radio_button :approval, false
+    = f.label :approval, 'True'
+    = f.radio_button :approval, true
 
   .actions
     = f.submit 'Submit'

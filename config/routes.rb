@@ -38,7 +38,6 @@ Leanstartupcircle::Application.routes.draw do
   namespace :admin do
     match "/" => "Base#dashboard", :as => :admin_dashboard
     resources :meetups
-    resources :groups
   end
 
   root :to => "landing_pages#home"

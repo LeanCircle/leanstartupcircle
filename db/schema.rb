@@ -11,32 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123234857) do
-
-  create_table "groups", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "user_id"
-    t.string   "facebook_link"
-    t.string   "twitter_link"
-    t.string   "home_link"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "city"
-    t.string   "state"
-    t.string   "country"
-    t.boolean  "approval"
-    t.boolean  "gmaps"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
+ActiveRecord::Schema.define(:version => 20121124142456) do
 
   create_table "meetups", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "meetup_id"
     t.integer  "organizer_id"
-    t.string   "link"
+    t.string   "meetup_link"
     t.string   "city"
     t.string   "country"
     t.string   "state"
@@ -47,9 +29,14 @@ ActiveRecord::Schema.define(:version => 20121123234857) do
     t.string   "thumbnail_url"
     t.string   "join_mode"
     t.string   "visibility"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.boolean  "gmaps"
+    t.string   "facebook_link"
+    t.string   "twitter_link"
+    t.string   "linkedin_link"
+    t.string   "home_link"
+    t.boolean  "approval",          :default => false
   end
 
   create_table "users", :force => true do |t|

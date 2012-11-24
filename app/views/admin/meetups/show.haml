@@ -5,7 +5,14 @@
   = image_tag @meetup.thumbnail_url
   %p #{ @meetup.city}, #{ @meetup.state + ", " if !@meetup.state.blank? } #{ @meetup.country } (#{ @meetup.latitude }, #{ @meetup.longitude })
   %p= @meetup.description.html_safe unless @meetup.description.blank?
-  %p= link_to @meetup.link
+  %p= link_to_if !@meetup.meetup_link.blank?, @meetup.meetup_link
+  %p= link_to_if !@meetup.facebook_link.blank?, @meetup.facebook_link
+  %p= link_to_if !@meetup.twitter_link.blank?, @meetup.twitter_link
+  %p= link_to_if !@meetup.linkedin_link.blank?, @meetup.linkedin_link
+  %p= link_to_if !@meetup.home_link.blank?, @meetup.home_link
+  %p
+    Approval:
+    = @meetup.approval
 
   = link_to 'Edit', edit_admin_meetup_path(@meetup)
   \|

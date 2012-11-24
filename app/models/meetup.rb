@@ -1,10 +1,10 @@
 class Meetup < ActiveRecord::Base
 
-  belongs_to :group
-
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
   acts_as_gmappable :address => "address"
+
+  scope :approved, where(:approval => true)
 
   def address
     [city, state, country].compact.join(', ')
@@ -32,7 +32,7 @@ class Meetup < ActiveRecord::Base
       meetup.description = result.description
       meetup.meetup_id = result.id
       meetup.organizer_id = result.organizer["member_id"]
-      meetup.link = result.link
+      meetup.meetup_link = result.link
       meetup.city = result.city
       meetup.country = result.country
       meetup.state = result.state
