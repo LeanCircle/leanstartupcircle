@@ -4,7 +4,7 @@
   %h1= @meetup.name
   %p #{ @meetup.city}, #{ @meetup.state + ", " if !@meetup.state.blank? } #{ @meetup.country }
   %p= @meetup.description.html_safe unless @meetup.description.blank?
-  %p= link_to @meetup.link
+  %p= link_to @meetup.meetup_link
 
   = link_to 'Index', meetups_path
   \|
