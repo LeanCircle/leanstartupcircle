@@ -1,0 +1,10 @@
+- title @group.title + " | Lean Startup Circle Admin"
+
+#edit_admin_groups
+  %h1 Editing Group
+
+  = render 'form'
+
+  = link_to 'Show', admin_group_path(@group)
+  \|
+  = link_to 'Index', admin_groups_path

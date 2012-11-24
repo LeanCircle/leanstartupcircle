@@ -6,9 +6,6 @@
   %p #{ @meetup.city}, #{ @meetup.state + ", " if !@meetup.state.blank? } #{ @meetup.country } (#{ @meetup.latitude }, #{ @meetup.longitude })
   %p= @meetup.description.html_safe unless @meetup.description.blank?
   %p= link_to @meetup.link
-  %p
-    Approval:
-    = @meetup.approval
 
   = link_to 'Edit', edit_admin_meetup_path(@meetup)
   \|

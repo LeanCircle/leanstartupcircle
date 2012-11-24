@@ -1,0 +1,25 @@
+- title "Groups Index | Lean Startup Circle Admin"
+
+#index_admin_groups
+  %h1 Listing Groups
+  = link_to 'New group', new_admin_group_path
+
+  %table.groups
+    %tr
+      %th Name
+      %th City
+      %th State
+      %th Country
+      %th Approval
+      %th
+      %th
+
+    - @groups.each do |group|
+      %tr.group
+        %td= link_to group.name, admin_group_path(group)
+        %td= group.city
+        %td= group.state
+        %td= group.country
+        %td= link_to 'Show', admin_group_path(group)
+        %td= link_to 'Edit', edit_admin_group_path(group)
+        %td= link_to 'Destroy', admin_group_path(group), :confirm => 'Are you sure?', :method => :delete
