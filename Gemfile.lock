@@ -57,6 +57,7 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    dynamic_sitemaps (1.0.8)
     erubis (2.7.0)
     excon (0.16.10)
     execjs (1.4.0)
@@ -169,6 +170,7 @@ DEPENDENCIES
   coffee-rails
   compass-rails
   devise
+  dynamic_sitemaps
   friendly_id
   geocoder
   gmaps4rails

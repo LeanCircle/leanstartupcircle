@@ -1,5 +1,8 @@
 Leanstartupcircle::Application.routes.draw do
 
+  # Sitemaps
+  match 'sitemap.xml' => 'sitemaps#sitemap'
+
   # Devise routes
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do
@@ -8,7 +11,7 @@ Leanstartupcircle::Application.routes.draw do
 
   # Jobs routes
   constraints :subdomain => "jobs" do
-    match "/" => "landing_pages#jobs"
+    match "/" => "landing_pages#jobs", :as => :jobs
     match "/users/employer_sign_up" => "users#employer_sign_up"
     match "/users/jobseeker_sign_up" => "users#jobseeker_sign_up"
     match "/users/register" => "users#register"
