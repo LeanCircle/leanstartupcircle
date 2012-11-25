@@ -1,12 +1,42 @@
 !!!
-%html
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
   = render '/layouts/head'
 
   %body
-    %content
-      = render '/layouts/header'
-      %content_inner
-        = render :partial => '/layouts/flash', :locals => { :flash => flash }
-        = yield
+    /[if lt IE 7]
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 
-      = render '/layouts/footer'
+    #wrap
+      %content.container
+        = render '/layouts/header'
+        .container.main
+          .row
+            .span16
+              = render :partial => '/layouts/flash', :locals => { :flash => flash }
+          .row
+            .span14.offset1
+              = yield
+      #push
+    = render '/layouts/footer'
+
+    %span#links
+      = link_to 'http://twitter.com/leancircle', :target => "_blank", :title => "Lean Startup Circle on Twitter" do
+        %span.pics
+          = image_tag 'link_twitter.png'
+      = link_to 'http://facebook.com/leanstartupcircle', :target => "_blank", :title => "Lean Startup Circle on Facebook" do
+        %span.pics
+          = image_tag 'link_facebook.png'
+      = link_to 'http://linkedin.com/groups?home=&gid=2789385', :target => "_blank", :title => "Lean Startup Circle on LinkedIn" do
+        %span.pics
+          = image_tag 'link_linkedin.png'
+      = link_to 'http://blog.leanstartupcircle.com', :target => "_blank", :title => "Lean Startup Circle's blog" do
+        %span.pics
+          = image_tag 'link_blog.png'
+      = link_to 'http://wiki.leanstartupcircle.com', :target => "_blank", :title => "The Lean Startup Wiki'" do
+        %span.pics
+          = image_tag 'link_wiki.png'

@@ -1,8 +1,94 @@
 //= require_self
 
-@import 'html5reset-1.6.1'
-@import 'variables', 'basics'
-@import 'layouts/buttons', 'layouts/flash', 'layouts/footer', 'layouts/header'
+@import 'vendor/normalize', 'vendor/main', 'vendor/bootstrap', 'compass'
+@import 'variables', 'helper'
+@import 'layouts/buttons', 'layouts/flash'
 @import 'static_pages/team'
 @import 'landing_pages/jobs'
 @import 'gmaps4rails.css'
+
+// Basics
+
+h1
+  font-size: 3em
+  margin: 20px 0 0 0
+  font-family: courier
+
+h2
+  font-size: 2em
+  font-family: courier
+  margin: 20px 0 0 0
+
+p
+  font-size: 1.2em
+  margin: 20px
+  line-height: 1.7em
+
+ol, ul
+  margin-left: 20px
+  li
+    font-size: 1.2em
+    line-height: 1.2em
+    margin: 10px 0 0 40px
+  p
+    margin-left: 60px
+ul
+  li
+    list-style-type: square
+
+table
+  font-size: 1.2em
+  margin: 20px
+  line-height: 1.2em
+  tr
+    text-align: left
+    th
+      font-family: courier
+      font-size: 1.2em
+      padding: 10px 10px
+    td
+      padding: 10px
+      border: 1px solid #999
+  &.blank tr td
+    border: none
+
+a
+  color: $link-color
+  text-decoration: none
+  border-bottom: 1px dotted $link-color
+  &:hover
+    color: $link-color
+    text-decoration: none
+    border-bottom: 1px solid $link-color
+
+// Layout
+
+html, body
+  height: 100%
+
+#wrap
+  min-height: 100%
+  height: auto !important
+  height: 100%
+  margin: 0 auto -50px /* Negative indent footer by it's height */
+
+#push, footer
+  height: 50px
+
+footer
+  @include box-shadow(0, -2px, 2px, 0, #666)
+
+// Sidebar links
+#links
+  position: fixed
+  right: 20px
+  top: 100px
+  width: 20px
+  .pics
+    height: 32px
+    width: 32px
+    margin: 0 5px 3px 0
+  a
+    border-bottom: none
+    &:link, &:visited, &:hover
+      border: none

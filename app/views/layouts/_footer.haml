@@ -1,36 +1,18 @@
 %footer
-  %footer_inner
+  .container
+    .row
+      .span16
 
-    %span#copyright
-      &copy;
-      = Time.now.year
-      = link_to "LeanStartupCircle", root_path, :style => "text-decoration: none;"
+        %span#copyright
+          &copy;
+          = Time.now.year
+          = link_to "LeanStartupCircle", root_path, :style => "text-decoration: none;"
 
-    %span#footermenu
-      = link_to "Team", :team
-      &#8226;
-      = link_to "Blog", "http://blog.LeanStartupCircle.com", :target => "_blank"
-      &#8226;
-      = link_to "Contact", :contact
-      -#&#8226;
-      -#= link_to "Privacy Policy", :privacy_policy
-      -#&#8226;
-      -#= link_to "Terms of Service", :terms_of_service
-    = yield :scripts
+        %span#footermenu
+          = link_to "Team", :team
+          &#8226;
+          = link_to "Blog", "http://blog.LeanStartupCircle.com", :target => "_blank"
+          &#8226;
+          = link_to "Contact", :contact
+        = yield :scripts
 
-%span#links
-  = link_to 'http://twitter.com/leancircle', :target => "_blank", :title => "Lean Startup Circle on Twitter" do
-    %span.pics
-      = image_tag 'link_twitter.png'
-  = link_to 'http://facebook.com/leanstartupcircle', :target => "_blank", :title => "Lean Startup Circle on Facebook" do
-    %span.pics
-      = image_tag 'link_facebook.png'
-  = link_to 'http://linkedin.com/groups?home=&gid=2789385', :target => "_blank", :title => "Lean Startup Circle on LinkedIn" do
-    %span.pics
-      = image_tag 'link_linkedin.png'
-  = link_to 'http://blog.leanstartupcircle.com', :target => "_blank", :title => "Lean Startup Circle's blog" do
-    %span.pics
-      = image_tag 'link_blog.png'
-  = link_to 'http://wiki.leanstartupcircle.com', :target => "_blank", :title => "The Lean Startup Wiki'" do
-    %span.pics
-      = image_tag 'link_wiki.png'
