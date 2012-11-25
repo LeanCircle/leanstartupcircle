@@ -6,27 +6,29 @@
       %li.dropdown
         = link_to 'Meetups', meetups_url(:subdomain => 'meetups')
         %ul.dropdown-menu
-          %li= link_to 'All Meetups', meetups_url(:subdomain => 'meetups')
+          %li= link_to 'Find a Meetup', meetups_url(:subdomain => 'meetups')
           %li= link_to 'Start your own', "http://leanstartup.pbworks.com/w/page/55605569/Organizer's%20Guide"
       %li.divider-vertical
-      %li= link_to 'Wiki', 'http://wiki.leanstartupcircle.com'
-      %li.divider-vertical
-      %li= link_to 'Blog', 'http://blog.leanstartupcircle.com'
+      %li= link_to 'Wiki', 'http://wiki.leanstartupcircle.com', :target => '_blank'
       %li.divider-vertical
       %li.dropdown
         = link_to 'About', team_url(:subdomain => false)
         %ul.dropdown-menu
           %li= link_to 'Team', team_url(:subdomain => false)
+          %li= link_to 'Blog', 'http://blog.leanstartupcircle.com'
           %li= link_to 'Contact', contact_url(:subdomain => false)
 
     .follow_us
-      Follow us
-      = link_to 'http://twitter.com/leancircle', :target => "_blank", :title => "Lean Startup Circle on Twitter" do
+      Follow us!
+      = link_to 'http://twitter.com/leancircle', :target => "_blank", :title => "Lean Startup Circle on Twitter", :class => "nodec" do
         %span.pics
           = image_tag 'link_twitter.png'
-      = link_to 'http://facebook.com/leanstartupcircle', :target => "_blank", :title => "Lean Startup Circle on Facebook" do
+      = link_to 'http://facebook.com/leanstartupcircle', :target => "_blank", :title => "Lean Startup Circle on Facebook", :class => "nodec" do
         %span.pics
           = image_tag 'link_facebook.png'
-      = link_to 'http://linkedin.com/groups?home=&gid=2789385', :target => "_blank", :title => "Lean Startup Circle on LinkedIn" do
+      = link_to 'http://linkedin.com/groups?home=&gid=2789385', :target => "_blank", :title => "Lean Startup Circle on LinkedIn", :class => "nodec" do
         %span.pics
           = image_tag 'link_linkedin.png'
+      = link_to 'http://blog.leanstartupcircle.com', :target => "_blank", :title => "Lean Startup Circle's blog", :class => "nodec" do
+        %span.pics
+          = image_tag 'link_blog.png'
