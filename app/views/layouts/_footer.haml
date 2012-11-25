@@ -1,18 +1,18 @@
 %footer
   .container
     .row
-      .span16
+      .span13
 
         %span#copyright
           &copy;
           = Time.now.year
-          = link_to "LeanStartupCircle", root_path, :style => "text-decoration: none;"
+          = link_to "LeanStartupCircle", "http://leanstartupcircle.com", :style => "text-decoration: none;"
 
+      .span3
         %span#footermenu
           = link_to "Team", :team
           &#8226;
           = link_to "Blog", "http://blog.LeanStartupCircle.com", :target => "_blank"
           &#8226;
           = link_to "Contact", :contact
-        = yield :scripts
 
