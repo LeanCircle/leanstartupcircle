@@ -18,3 +18,8 @@
         %td= meetup.city
         %td= meetup.state
         %td= meetup.country
+        %td= link_to_if(!meetup.meetup_link.blank?, "#{image_tag 'link_meetup.png'}".html_safe, meetup.meetup_link){}
+        %td= link_to_if(!meetup.facebook_link.blank?, "#{image_tag 'link_facebook.png'}".html_safe, meetup.facebook_link){}
+        %td= link_to_if(!meetup.linkedin_link.blank?, "#{image_tag 'link_linkedin.png'}".html_safe, meetup.linkedin_link){}
+        %td= link_to_if(!meetup.twitter_link.blank?, "#{image_tag 'link_twitter.png'}".html_safe, meetup.twitter_link){}
+        %td= link_to_if(!meetup.googleplus_link.blank?, "#{image_tag 'link_googleplus.png'}".html_safe, meetup.googleplus_link){}

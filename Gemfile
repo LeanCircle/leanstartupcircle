@@ -17,7 +17,10 @@ gem 'recaptcha', :require => 'recaptcha/rails'
 
 gem 'rmeetup', :git => 'git://github.com/pbajaria/rmeetup.git'
 gem 'geocoder'
-gem 'gmaps4rails'
+gem 'gmaps4rails'   \
+
+#gem 'friendly_id'
+#gem 'dynamic_sitemaps'
 
 group :assets do
   gem 'sass-rails'

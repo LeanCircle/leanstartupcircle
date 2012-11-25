@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124142456) do
+ActiveRecord::Schema.define(:version => 20121125174505) do
 
   create_table "meetups", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20121124142456) do
     t.string   "linkedin_link"
     t.string   "home_link"
     t.boolean  "approval",          :default => false
+    t.string   "googleplus_link"
   end
 
   create_table "users", :force => true do |t|
