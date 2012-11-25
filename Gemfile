@@ -27,8 +27,8 @@ group :assets do
 end
 
 group :development do
+  gem 'heroku_san' # Awesome rake tasks for heroku, see: https://github.com/fastestforward/heroku_san
   gem 'awesome_print' # Use 'ap' in the console to make output comprehensible
-  gem 'heroku' # Allows heroku commands
   gem 'taps' # Allows pushing and pulling from heroku db.
   gem 'sqlite3'
 end

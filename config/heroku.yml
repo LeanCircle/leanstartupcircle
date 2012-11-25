@@ -1,0 +1,46 @@
+#
+# Format:
+#
+# <stage name>:
+#   app: <Heroku app name>
+#   stack: <Heroku stack, optional>
+#   tag: <git tag pattern, optional>
+#   repo: <git repository, optional>
+#   config:
+#     - <Heroku config:var name>: <Heroku config:var value>
+#
+#
+
+production:
+  app: leanstartupcircle-production
+  stack: cedar
+  repo: git@github.com:TriKro/leanstartupcircle.git
+  config:
+    BUNDLE_WITHOUT: 'development:test'
+    RACK_ENV: 'production'
+    RAILS_ENV: 'production'
+    DEPLOYHOOKS_EMAIL_RECIPIENT: 'developers@leanstartupcircle.com'
+    DEPLOYHOOKS_EMAIL_SUBJECT: '[Heroku] {{app}} deployed to production'
+    DEPLOYHOOKS_EMAIL_BODY: '{{user}} deployed {{head}} to {{url}} with {{git_log}}'
+  addons:
+    - deployhooks:email
+    - pgbackups:auto-month
+    - scheduler:standard
+    - redistogo:nano
+
+staging:
+  app: leanstartupcircle-staging
+  stack: cedar
+  repo: git@github.com:TriKro/leanstartupcircle.git
+  config:
+    BUNDLE_WITHOUT: 'development:test'
+    RACK_ENV: 'staging'
+    RAILS_ENV: 'staging'
+    DEPLOYHOOKS_EMAIL_RECIPIENT: 'developers@leanstartupcircle.com'
+    DEPLOYHOOKS_EMAIL_SUBJECT: '[Heroku] {{app}} deployed to staging'
+    DEPLOYHOOKS_EMAIL_BODY: '{{user}} deployed {{head}} to {{url}} with {{git_log}}'
+  addons:
+    - deployhooks:email
+    - pgbackups:auto-month
+    - scheduler:standard
+    - redistogo:nano
