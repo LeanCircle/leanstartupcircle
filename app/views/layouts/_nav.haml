@@ -1,0 +1,24 @@
+%nav.navbar
+  .navbar-inner
+    %ul.nav
+      %li= link_to 'Forum', root_url(:subdomain => false), :class => 'active'
+      %li.divider-vertical
+      %li= link_to 'Meetups', meetups_url(:subdomain => 'meetups')
+      %li.divider-vertical
+      %li= link_to 'Wiki', 'http://wiki.leanstartupcircle.com'
+      %li.divider-vertical
+      %li= link_to 'Blog', 'http://blog.leanstartupcircle.com'
+      %li.divider-vertical
+      %li= link_to 'Contact', contact_url(:subdomain => false)
+
+    .follow_us
+      Follow us
+      = link_to 'http://twitter.com/leancircle', :target => "_blank", :title => "Lean Startup Circle on Twitter" do
+        %span.pics
+          = image_tag 'link_twitter.png'
+      = link_to 'http://facebook.com/leanstartupcircle', :target => "_blank", :title => "Lean Startup Circle on Facebook" do
+        %span.pics
+          = image_tag 'link_facebook.png'
+      = link_to 'http://linkedin.com/groups?home=&gid=2789385', :target => "_blank", :title => "Lean Startup Circle on LinkedIn" do
+        %span.pics
+          = image_tag 'link_linkedin.png'

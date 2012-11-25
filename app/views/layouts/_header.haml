@@ -2,5 +2,8 @@
   .container
     .row
       .span16
-        = link_to "http://leanstartupcircle.com", :id => 'logo', :class => 'nodec' do
+        = link_to root_url(:subdomain => false), :id => 'logo', :class => 'nodec' do
           = image_tag "leanstartupcircle_logo.png"
+    .row
+      .span16
+        = render '/layouts/nav'

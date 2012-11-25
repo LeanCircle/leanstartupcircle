@@ -6,13 +6,13 @@
         %span#copyright
           &copy;
           = Time.now.year
-          = link_to "LeanStartupCircle", "http://leanstartupcircle.com", :style => "text-decoration: none;"
+          = link_to "LeanStartupCircle", root_url(:subdomain => false), :style => "text-decoration: none;"
 
       .span3
         %span#footermenu
           = link_to "Team", :team
           &#8226;
-          = link_to "Blog", "http://blog.LeanStartupCircle.com", :target => "_blank"
+          = link_to "Blog", root_url(:subdomain => "blog"), :target => "_blank"
           &#8226;
-          = link_to "Contact", :contact
+          = link_to 'Contact', contact_url(:subdomain => false)
 
