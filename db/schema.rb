@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125174505) do
+ActiveRecord::Schema.define(:version => 20121125175257) do
 
   create_table "meetups", :force => true do |t|
     t.string   "name"
@@ -38,7 +38,10 @@ ActiveRecord::Schema.define(:version => 20121125174505) do
     t.string   "home_link"
     t.boolean  "approval",          :default => false
     t.string   "googleplus_link"
+    t.string   "slug"
   end
+
+  add_index "meetups", ["slug"], :name => "index_meetups_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "uid"

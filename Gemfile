@@ -19,7 +19,7 @@ gem 'rmeetup', :git => 'git://github.com/pbajaria/rmeetup.git'
 gem 'geocoder'
 gem 'gmaps4rails'   \
 
-#gem 'friendly_id'
+gem 'friendly_id'
 #gem 'dynamic_sitemaps'
 
 group :assets do

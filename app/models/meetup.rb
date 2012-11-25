@@ -3,6 +3,8 @@ class Meetup < ActiveRecord::Base
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
   acts_as_gmappable :address => "address"
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   scope :approved, where(:approval => true)
 
