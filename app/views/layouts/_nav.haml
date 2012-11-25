@@ -1,7 +1,13 @@
 %nav.navbar
   .navbar-inner
     %ul.nav
-      %li= link_to 'Forum', root_url(:subdomain => false)
+      %li.dropdown
+        = link_to 'Forum', root_url(:subdomain => false)
+        %ul.dropdown-menu
+          %li= link_to 'Forum', root_url(:subdomain => false)
+          %li= link_to 'Posting Guide', guidelines_url(:subdomain => false)
+          %li= link_to 'Moderation Guide', moderation_guidelines_url(:subdomain => false)
+
       %li.divider-vertical
       %li.dropdown
         = link_to 'Meetups', meetups_url(:subdomain => 'meetups')
