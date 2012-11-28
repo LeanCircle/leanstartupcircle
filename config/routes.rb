@@ -1,13 +1,18 @@
 Leanstartupcircle::Application.routes.draw do
 
+  resources :authentications
+
   # Sitemaps
   match 'sitemap.xml' => 'sitemaps#sitemap'
 
   # Devise routes
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  devise_scope :user do
-    match '/sign_in/:user_type', :to => 'users/omniauth_callbacks#user_sign_in', :as => :sign_in
-  end
+  #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  #devise_scope :user do
+  #  match '/sign_in/:user_type', :to => 'users/omniauth_callbacks#user_sign_in', :as => :sign_in
+  #end
+
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+
 
   # Jobs routes
   constraints :subdomain => "jobs" do

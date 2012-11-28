@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
 
+  has_many :authentications
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -16,22 +18,40 @@ class User < ActiveRecord::Base
     :email, :zipcode, :user_type, :company_name, :phone
 
   def name
-    self.first_name + " " + self.last_name
+    #self.first_name + " " + self.last_name
   end
 
-  def self.find_for_linkedin_oauth(auth)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+  # Omniauth + Devise methods
+
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      #user.name = auth.info.nickname
+    end
   end
 
-  def self.create_from_linkedin_oauth(auth, user_type)
-    user = User.create(
-      uid:auth.uid,
-      provider:auth.provider,
-      first_name:auth.info.first_name,
-      last_name:auth.info.last_name,
-      public_profile_url:auth.info.urls.public_profile,
-      user_type:user_type
-      )
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |user|
+        user.attributes = params
+        user.valid?
+      end
+    else
+      super
+    end
+  end
+
+  def password_required?
+    super && provider.blank?
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
   end
 
 end
