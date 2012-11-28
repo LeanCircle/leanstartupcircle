@@ -1,0 +1,30 @@
+- title " | Lean Startup Circle"
+
+#show_users
+  %h1= @user.name
+  %p
+    Public Profile URL
+    = @user.public_profile_url
+  %p
+    Email
+    = @user.email
+  %p
+    Zipcode
+    = @user.zipcode
+  %p
+    User type
+    = @user.user_type
+  %p
+    Company Name
+    = @user.company_name
+  %p
+    Phone
+    = @user.phone
+
+  = link_to 'Edit', edit_admin_user_path(@user)
+  \|
+  = link_to 'Destroy', admin_user_path(@user), :confirm => 'Are you sure?', :method => :delete
+  \|
+  = link_to 'Index', admin_users_path
+  \|
+  = link_to 'New user', new_admin_user_path

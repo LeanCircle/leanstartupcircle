@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   attr_accessible :uid, :provider, :first_name, :last_name, :public_profile_url,
     :email, :zipcode, :user_type, :company_name, :phone
 
+  def name
+    self.first_name + " " + self.last_name
+  end
+
   def self.find_for_linkedin_oauth(auth)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
   end

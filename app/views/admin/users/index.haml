@@ -1,0 +1,24 @@
+- title "Users Index | Lean Startup Circle"
+
+#index_admin_users
+  %h1 Listing Users
+  = link_to 'New user', new_admin_user_path
+
+  %table.users
+    %tr
+      %th Name
+      %th Email
+      %th Company Name
+      %th Zip
+      %th
+      %th
+
+    - @users.each do |user|
+      %tr.user
+        %td= link_to user.name, admin_user_path(user)
+        %td= user.email
+        %td= user.company_name
+        %td= user.zipcode
+        %td= link_to 'Show', admin_user_path(user)
+        %td= link_to 'Edit', edit_admin_user_path(user)
+        %td= link_to 'Destroy', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete

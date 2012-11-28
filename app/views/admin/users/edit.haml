@@ -1,0 +1,10 @@
+- title " | Lean Startup Circle Admin"
+
+#edit_admin_users
+  %h1 Editing User
+
+  = render 'form'
+
+  = link_to 'Show', admin_user_path(@user)
+  \|
+  = link_to 'Index', admin_users_path
