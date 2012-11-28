@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   devise :omniauthable, :rememberable, :trackable
 
   # Setup accessible (or protected) attributes for your model
