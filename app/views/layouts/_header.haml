@@ -1,10 +1,16 @@
 %header.page_header
   .container
     .row
-      .span24
+      .span20
         = link_to root_url(:subdomain => false), :id => 'logo', :class => 'nodec' do
           = image_tag "leanstartupcircle_logo.png"
-        = link_to "sign in with linkedin", user_omniauth_authorize_path(:linkedin)
+      .span4
+        .pull-right
+          - if user_signed_in?
+            = current_user.uid
+            = link_to "Sign out", :sign_out, :method => :delete
+          - else
+            = link_to "Sign in", :sign_in
     .row
       .span24
         = render '/layouts/nav'

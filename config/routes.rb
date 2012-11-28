@@ -6,7 +6,11 @@ Leanstartupcircle::Application.routes.draw do
   match 'sitemap.xml' => 'sitemaps#sitemap'
 
   # Devise routes
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_scope :user do
+    get "sign_in", :to => "devise/sessions#new", :as => :sign_in
+    delete "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
+  end
 
 
   # Jobs routes
