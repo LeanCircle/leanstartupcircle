@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128000740) do
+ActiveRecord::Schema.define(:version => 20121128034251) do
 
   create_table "meetups", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20121128000740) do
     t.string   "company_name"
     t.string   "phone"
     t.string   "slug"
+    t.string   "role"
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
