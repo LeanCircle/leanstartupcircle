@@ -16,10 +16,10 @@
         = render '/layouts/header'
         .container.main
           .row
-            .span16
+            .span24
               = render :partial => '/layouts/flash', :locals => { :flash => flash }
           .row
-            .span14.offset1
+            .span22.offset2
               = yield
       #push
     = render '/layouts/footer'

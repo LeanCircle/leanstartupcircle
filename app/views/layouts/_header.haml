@@ -1,10 +1,10 @@
 %header.page_header
   .container
     .row
-      .span16
+      .span24
         = link_to root_url(:subdomain => false), :id => 'logo', :class => 'nodec' do
           = image_tag "leanstartupcircle_logo.png"
         = link_to "sign in with linkedin", user_omniauth_authorize_path(:linkedin)
     .row
-      .span16
+      .span24
         = render '/layouts/nav'

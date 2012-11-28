@@ -1,26 +1,22 @@
 //= require_self
 
-@import 'vendor/normalize', 'vendor/main', 'vendor/bootstrap', 'compass'
+@import 'vendor/normalize', 'vendor/main', 'vendor/bootstrap', 'vendor/gmaps4rails', 'compass'
 @import 'variables', 'helper'
 @import 'layouts/buttons', 'layouts/flash'
 @import 'static_pages/team'
 @import 'landing_pages/jobs'
-@import 'gmaps4rails.css'
 
 // Basics
 
 .main, footer
-
   h1
     font-size: 3em
     margin: 20px 0 0 0
     font-family: courier
-
   h2
     font-size: 2em
     font-family: courier
     margin: 20px 0 0 0
-
   p
     font-size: 1.2em
     margin: 20px
@@ -37,6 +33,7 @@
   ul
     li
       list-style-type: square
+
   a
     color: $link-color
     text-decoration: none
@@ -61,7 +58,6 @@
         border: 1px solid #999
     &.blank tr td
       border: none
-
 
 // Layout
 

@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v2.1.1
+ * Bootstrap v2.2.1
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -86,7 +86,7 @@ img
   border: 0
   -ms-interpolation-mode: bicubic
 
-#map_canvas img
+#map_canvas img, .google-maps img
   max-width: none
 
 button, input, select, textarea
@@ -102,14 +102,14 @@ button::-moz-focus-inner, input::-moz-focus-inner
   padding: 0
   border: 0
 
-button
-  cursor: pointer
+button, html input[type="button"]
   -webkit-appearance: button
+  cursor: pointer
 
 input
-  &[type="button"], &[type="reset"], &[type="submit"]
-    cursor: pointer
+  &[type="reset"], &[type="submit"]
     -webkit-appearance: button
+    cursor: pointer
   &[type="search"]
     -webkit-box-sizing: content-box
     -moz-box-sizing: content-box
@@ -174,101 +174,149 @@ a
   min-height: 1px
   margin-left: 20px
 
-.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .span16
-  width: 940px
-
-.span15
-  width: 880px
-
-.span14
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .span24
   width: 820px
 
+.span23
+  width: 785px
+
+.span22
+  width: 750px
+
+.span21
+  width: 715px
+
+.span20
+  width: 680px
+
+.span19
+  width: 645px
+
+.span18
+  width: 610px
+
+.span17
+  width: 575px
+
+.span16
+  width: 540px
+
+.span15
+  width: 505px
+
+.span14
+  width: 470px
+
 .span13
-  width: 760px
+  width: 435px
 
 .span12
-  width: 700px
-
-.span11
-  width: 640px
-
-.span10
-  width: 580px
-
-.span9
-  width: 520px
-
-.span8
-  width: 460px
-
-.span7
   width: 400px
 
+.span11
+  width: 365px
+
+.span10
+  width: 330px
+
+.span9
+  width: 295px
+
+.span8
+  width: 260px
+
+.span7
+  width: 225px
+
 .span6
-  width: 340px
+  width: 190px
 
 .span5
-  width: 280px
+  width: 155px
 
 .span4
-  width: 220px
+  width: 120px
 
 .span3
-  width: 160px
+  width: 85px
 
 .span2
-  width: 100px
+  width: 50px
 
 .span1
-  width: 40px
+  width: 15px
 
-.offset16
-  margin-left: 980px
-
-.offset15
-  margin-left: 920px
-
-.offset14
+.offset24
   margin-left: 860px
 
+.offset23
+  margin-left: 825px
+
+.offset22
+  margin-left: 790px
+
+.offset21
+  margin-left: 755px
+
+.offset20
+  margin-left: 720px
+
+.offset19
+  margin-left: 685px
+
+.offset18
+  margin-left: 650px
+
+.offset17
+  margin-left: 615px
+
+.offset16
+  margin-left: 580px
+
+.offset15
+  margin-left: 545px
+
+.offset14
+  margin-left: 510px
+
 .offset13
-  margin-left: 800px
+  margin-left: 475px
 
 .offset12
-  margin-left: 740px
-
-.offset11
-  margin-left: 680px
-
-.offset10
-  margin-left: 620px
-
-.offset9
-  margin-left: 560px
-
-.offset8
-  margin-left: 500px
-
-.offset7
   margin-left: 440px
 
+.offset11
+  margin-left: 405px
+
+.offset10
+  margin-left: 370px
+
+.offset9
+  margin-left: 335px
+
+.offset8
+  margin-left: 300px
+
+.offset7
+  margin-left: 265px
+
 .offset6
-  margin-left: 380px
+  margin-left: 230px
 
 .offset5
-  margin-left: 320px
+  margin-left: 195px
 
 .offset4
-  margin-left: 260px
+  margin-left: 160px
 
 .offset3
-  margin-left: 200px
+  margin-left: 125px
 
 .offset2
-  margin-left: 140px
+  margin-left: 90px
 
 .offset1
-  margin-left: 80px
+  margin-left: 55px
 
 .row-fluid
   width: 100%
@@ -290,154 +338,228 @@ a
     -moz-box-sizing: border-box
     box-sizing: border-box
     float: left
-    margin-left: 2.127659574468085%
-    *margin-left: 2.074468085106383%
+    margin-left: 2.4390243902439024%
+    *margin-left: 2.3780487804878048%
     &:first-child
       margin-left: 0
-  .span16
+  .controls-row [class*="span"] + [class*="span"]
+    margin-left: 2.4390243902439024%
+  .span24
     width: 100%
-    *width: 99.94680851063829%
+    *width: 99.9390243902439%
+  .span23
+    width: 95.73170731707316%
+    *width: 95.67073170731706%
+  .span22
+    width: 91.46341463414635%
+    *width: 91.40243902439025%
+  .span21
+    width: 87.1951219512195%
+    *width: 87.1341463414634%
+  .span20
+    width: 82.92682926829268%
+    *width: 82.86585365853658%
+  .span19
+    width: 78.65853658536585%
+    *width: 78.59756097560975%
+  .span18
+    width: 74.39024390243901%
+    *width: 74.32926829268291%
+  .span17
+    width: 70.1219512195122%
+    *width: 70.0609756097561%
+  .span16
+    width: 65.85365853658536%
+    *width: 65.79268292682926%
   .span15
-    width: 93.61702127659575%
-    *width: 93.56382978723404%
+    width: 61.58536585365854%
+    *width: 61.52439024390244%
   .span14
-    width: 87.23404255319149%
-    *width: 87.18085106382978%
+    width: 57.3170731707317%
+    *width: 57.256097560975604%
   .span13
-    width: 80.85106382978722%
-    *width: 80.79787234042551%
+    width: 53.048780487804876%
+    *width: 52.98780487804878%
   .span12
-    width: 74.46808510638297%
-    *width: 74.41489361702126%
+    width: 48.78048780487805%
+    *width: 48.71951219512195%
   .span11
-    width: 68.08510638297872%
-    *width: 68.03191489361701%
+    width: 44.51219512195122%
+    *width: 44.451219512195124%
   .span10
-    width: 61.702127659574465%
-    *width: 61.648936170212764%
+    width: 40.24390243902438%
+    *width: 40.18292682926828%
   .span9
-    width: 55.31914893617021%
-    *width: 55.26595744680851%
+    width: 35.975609756097555%
+    *width: 35.914634146341456%
   .span8
-    width: 48.93617021276596%
-    *width: 48.88297872340426%
+    width: 31.70731707317073%
+    *width: 31.646341463414632%
   .span7
-    width: 42.5531914893617%
-    *width: 42.5%
+    width: 27.4390243902439%
+    *width: 27.378048780487802%
   .span6
-    width: 36.170212765957444%
-    *width: 36.11702127659574%
+    width: 23.170731707317074%
+    *width: 23.109756097560975%
   .span5
-    width: 29.78723404255319%
-    *width: 29.73404255319149%
+    width: 18.90243902439024%
+    *width: 18.84146341463414%
   .span4
-    width: 23.404255319148938%
-    *width: 23.351063829787236%
+    width: 14.634146341463413%
+    *width: 14.573170731707316%
   .span3
-    width: 17.02127659574468%
-    *width: 16.96808510638298%
+    width: 10.365853658536585%
+    *width: 10.304878048780488%
   .span2
-    width: 10.638297872340425%
-    *width: 10.585106382978724%
+    width: 6.097560975609756%
+    *width: 6.036585365853659%
   .span1
-    width: 4.25531914893617%
-    *width: 4.202127659574468%
+    width: 1.8292682926829267%
+    *width: 1.768292682926829%
+  .offset24
+    margin-left: 104.8780487804878%
+    *margin-left: 104.7560975609756%
+    &:first-child
+      margin-left: 102.4390243902439%
+      *margin-left: 102.3170731707317%
+  .offset23
+    margin-left: 100.60975609756096%
+    *margin-left: 100.48780487804876%
+    &:first-child
+      margin-left: 98.17073170731706%
+      *margin-left: 98.04878048780486%
+  .offset22
+    margin-left: 96.34146341463415%
+    *margin-left: 96.21951219512195%
+    &:first-child
+      margin-left: 93.90243902439025%
+      *margin-left: 93.78048780487805%
+  .offset21
+    margin-left: 92.07317073170731%
+    *margin-left: 91.95121951219511%
+    &:first-child
+      margin-left: 89.6341463414634%
+      *margin-left: 89.51219512195121%
+  .offset20
+    margin-left: 87.80487804878048%
+    *margin-left: 87.68292682926828%
+    &:first-child
+      margin-left: 85.36585365853658%
+      *margin-left: 85.24390243902438%
+  .offset19
+    margin-left: 83.53658536585365%
+    *margin-left: 83.41463414634146%
+    &:first-child
+      margin-left: 81.09756097560975%
+      *margin-left: 80.97560975609755%
+  .offset18
+    margin-left: 79.26829268292681%
+    *margin-left: 79.14634146341461%
+    &:first-child
+      margin-left: 76.82926829268291%
+      *margin-left: 76.70731707317071%
+  .offset17
+    margin-left: 75%
+    *margin-left: 74.8780487804878%
+    &:first-child
+      margin-left: 72.5609756097561%
+      *margin-left: 72.4390243902439%
   .offset16
-    margin-left: 104.25531914893617%
-    *margin-left: 104.14893617021275%
+    margin-left: 70.73170731707316%
+    *margin-left: 70.60975609756096%
     &:first-child
-      margin-left: 102.12765957446808%
-      *margin-left: 102.02127659574467%
+      margin-left: 68.29268292682926%
+      *margin-left: 68.17073170731706%
   .offset15
-    margin-left: 97.87234042553192%
-    *margin-left: 97.7659574468085%
+    margin-left: 66.46341463414635%
+    *margin-left: 66.34146341463415%
     &:first-child
-      margin-left: 95.74468085106383%
-      *margin-left: 95.63829787234042%
+      margin-left: 64.02439024390245%
+      *margin-left: 63.90243902439024%
   .offset14
-    margin-left: 91.48936170212765%
-    *margin-left: 91.38297872340424%
+    margin-left: 62.195121951219505%
+    *margin-left: 62.07317073170731%
     &:first-child
-      margin-left: 89.36170212765957%
-      *margin-left: 89.25531914893615%
+      margin-left: 59.756097560975604%
+      *margin-left: 59.634146341463406%
   .offset13
-    margin-left: 85.10638297872339%
-    *margin-left: 84.99999999999997%
+    margin-left: 57.92682926829268%
+    *margin-left: 57.80487804878048%
     &:first-child
-      margin-left: 82.9787234042553%
-      *margin-left: 82.87234042553189%
+      margin-left: 55.48780487804878%
+      *margin-left: 55.36585365853658%
   .offset12
-    margin-left: 78.72340425531914%
-    *margin-left: 78.61702127659572%
+    margin-left: 53.65853658536585%
+    *margin-left: 53.536585365853654%
     &:first-child
-      margin-left: 76.59574468085106%
-      *margin-left: 76.48936170212764%
+      margin-left: 51.21951219512195%
+      *margin-left: 51.09756097560975%
   .offset11
-    margin-left: 72.34042553191489%
-    *margin-left: 72.23404255319147%
+    margin-left: 49.390243902439025%
+    *margin-left: 49.26829268292683%
     &:first-child
-      margin-left: 70.2127659574468%
-      *margin-left: 70.10638297872339%
+      margin-left: 46.951219512195124%
+      *margin-left: 46.829268292682926%
   .offset10
-    margin-left: 65.95744680851064%
-    *margin-left: 65.85106382978722%
+    margin-left: 45.121951219512184%
+    *margin-left: 44.999999999999986%
     &:first-child
-      margin-left: 63.82978723404255%
-      *margin-left: 63.723404255319146%
+      margin-left: 42.68292682926828%
+      *margin-left: 42.560975609756085%
   .offset9
-    margin-left: 59.574468085106375%
-    *margin-left: 59.46808510638298%
+    margin-left: 40.85365853658536%
+    *margin-left: 40.73170731707316%
     &:first-child
-      margin-left: 57.44680851063829%
-      *margin-left: 57.34042553191489%
+      margin-left: 38.414634146341456%
+      *margin-left: 38.29268292682926%
   .offset8
-    margin-left: 53.191489361702125%
-    *margin-left: 53.08510638297873%
+    margin-left: 36.58536585365854%
+    *margin-left: 36.46341463414634%
     &:first-child
-      margin-left: 51.06382978723404%
-      *margin-left: 50.95744680851064%
+      margin-left: 34.146341463414636%
+      *margin-left: 34.02439024390244%
   .offset7
-    margin-left: 46.808510638297875%
-    *margin-left: 46.702127659574465%
+    margin-left: 32.3170731707317%
+    *margin-left: 32.195121951219505%
     &:first-child
-      margin-left: 44.680851063829785%
-      *margin-left: 44.57446808510638%
+      margin-left: 29.878048780487802%
+      *margin-left: 29.756097560975604%
   .offset6
-    margin-left: 40.42553191489361%
-    *margin-left: 40.319148936170215%
+    margin-left: 28.04878048780488%
+    *margin-left: 27.926829268292682%
     &:first-child
-      margin-left: 38.29787234042553%
-      *margin-left: 38.191489361702125%
+      margin-left: 25.609756097560975%
+      *margin-left: 25.487804878048777%
   .offset5
-    margin-left: 34.04255319148936%
-    *margin-left: 33.93617021276596%
+    margin-left: 23.780487804878046%
+    *margin-left: 23.658536585365848%
     &:first-child
-      margin-left: 31.914893617021278%
-      *margin-left: 31.808510638297875%
+      margin-left: 21.34146341463414%
+      *margin-left: 21.219512195121943%
   .offset4
-    margin-left: 27.659574468085108%
-    *margin-left: 27.553191489361705%
+    margin-left: 19.51219512195122%
+    *margin-left: 19.39024390243902%
     &:first-child
-      margin-left: 25.53191489361702%
-      *margin-left: 25.425531914893618%
+      margin-left: 17.073170731707314%
+      *margin-left: 16.95121951219512%
   .offset3
-    margin-left: 21.27659574468085%
-    *margin-left: 21.170212765957448%
+    margin-left: 15.243902439024389%
+    *margin-left: 15.121951219512196%
     &:first-child
-      margin-left: 19.148936170212764%
-      *margin-left: 19.04255319148936%
+      margin-left: 12.804878048780488%
+      *margin-left: 12.682926829268293%
   .offset2
-    margin-left: 14.893617021276595%
-    *margin-left: 14.787234042553193%
+    margin-left: 10.975609756097562%
+    *margin-left: 10.853658536585366%
     &:first-child
-      margin-left: 12.76595744680851%
-      *margin-left: 12.659574468085108%
+      margin-left: 8.536585365853659%
+      *margin-left: 8.414634146341465%
   .offset1
-    margin-left: 8.51063829787234%
-    *margin-left: 8.404255319148938%
+    margin-left: 6.7073170731707314%
+    *margin-left: 6.585365853658537%
     &:first-child
-      margin-left: 6.382978723404255%
-      *margin-left: 6.276595744680851%
+      margin-left: 4.268292682926829%
+      *margin-left: 4.146341463414634%
 
 [class*="span"].hide, .row-fluid [class*="span"].hide
   display: none
@@ -500,20 +622,32 @@ cite
 .text-warning
   color: #c09853
 
+a.text-warning:hover
+  color: #a47e3c
+
 .text-error
   color: #b94a48
+
+a.text-error:hover
+  color: #953b39
 
 .text-info
   color: #3a87ad
 
+a.text-info:hover
+  color: #2d6987
+
 .text-success
   color: #468847
+
+a.text-success:hover
+  color: #356635
 
 h1, h2, h3, h4, h5, h6
   margin: 10px 0
   font-family: inherit
   font-weight: bold
-  line-height: 1
+  line-height: 20px
   color: inherit
   text-rendering: optimizelegibility
 
@@ -522,35 +656,32 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small
   line-height: 1
   color: #999999
 
-h1
-  font-size: 36px
+h1, h2, h3
   line-height: 40px
+
+h1
+  font-size: 38.5px
 
 h2
-  font-size: 30px
-  line-height: 40px
+  font-size: 31.5px
 
 h3
-  font-size: 24px
-  line-height: 40px
+  font-size: 24.5px
 
 h4
-  font-size: 18px
-  line-height: 20px
+  font-size: 17.5px
 
 h5
   font-size: 14px
-  line-height: 20px
 
 h6
-  font-size: 12px
-  line-height: 20px
+  font-size: 11.9px
 
 h1 small
-  font-size: 24px
+  font-size: 24.5px
 
 h2 small
-  font-size: 18px
+  font-size: 17.5px
 
 h3 small, h4 small
   font-size: 14px
@@ -620,7 +751,7 @@ hr
   border-bottom: 1px solid #ffffff
 
 abbr
-  &[title]
+  &[title], &[data-original-title]
     cursor: help
     border-bottom: 1px dotted #999999
   &.initialism
@@ -715,6 +846,8 @@ pre
   overflow-y: scroll
 
 .label, .badge
+  display: inline-block
+  padding: 2px 4px
   font-size: 11.844px
   font-weight: bold
   line-height: 14px
@@ -725,13 +858,13 @@ pre
   background-color: #999999
 
 .label
-  padding: 1px 4px 2px
   -webkit-border-radius: 3px
   -moz-border-radius: 3px
   border-radius: 3px
 
 .badge
-  padding: 1px 9px 2px
+  padding-left: 9px
+  padding-right: 9px
   -webkit-border-radius: 9px
   -moz-border-radius: 9px
   border-radius: 9px
@@ -800,16 +933,16 @@ table
     font-weight: bold
   thead th
     vertical-align: bottom
-  caption tr:first-child
+  caption + thead tr:first-child
     th, td
       border-top: 0
-  colgroup tr:first-child
+  colgroup + thead tr:first-child
     th, td
       border-top: 0
   thead:first-child tr:first-child
     th, td
       border-top: 0
-  tbody tbody
+  tbody + tbody
     border-top: 2px solid #dddddd
 
 .table-condensed
@@ -827,171 +960,130 @@ table
   th, td
     border-left: 1px solid #dddddd
   caption +
-    thead th
+    thead tr:first-child th
       border-top: 0
     tbody tr:first-child
       th, td
         border-top: 0
   colgroup +
-    thead th
+    thead tr:first-child th
       border-top: 0
     tbody tr:first-child
       th, td
         border-top: 0
-  thead:first-child th
+  thead:first-child tr:first-child th
     border-top: 0
   tbody:first-child tr:first-child
     th, td
       border-top: 0
-  thead:first-child th:first-child, tbody:first-child td:first-child
+  thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child
     -webkit-border-top-left-radius: 4px
     border-top-left-radius: 4px
     -moz-border-radius-topleft: 4px
-  thead:first-child th:last-child, tbody:first-child td:last-child
+  thead:first-child tr:first-child th:last-child, tbody:first-child tr:first-child td:last-child
     -webkit-border-top-right-radius: 4px
     border-top-right-radius: 4px
     -moz-border-radius-topright: 4px
-  thead:last-child th:first-child, tbody:last-child td:first-child, tfoot:last-child td:first-child
+  thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child, tfoot:last-child tr:last-child td:first-child
     -webkit-border-radius: 0 0 0 4px
     -moz-border-radius: 0 0 0 4px
     border-radius: 0 0 0 4px
     -webkit-border-bottom-left-radius: 4px
     border-bottom-left-radius: 4px
     -moz-border-radius-bottomleft: 4px
-  thead:last-child th:last-child, tbody:last-child td:last-child, tfoot:last-child td:last-child
+  thead:last-child tr:last-child th:last-child, tbody:last-child tr:last-child td:last-child, tfoot:last-child tr:last-child td:last-child
     -webkit-border-bottom-right-radius: 4px
     border-bottom-right-radius: 4px
     -moz-border-radius-bottomright: 4px
   caption +
-    thead th:first-child, tbody td:first-child
+    thead tr:first-child th:first-child, tbody tr:first-child td:first-child
       -webkit-border-top-left-radius: 4px
       border-top-left-radius: 4px
       -moz-border-radius-topleft: 4px
   colgroup +
-    thead th:first-child, tbody td:first-child
+    thead tr:first-child th:first-child, tbody tr:first-child td:first-child
       -webkit-border-top-left-radius: 4px
       border-top-left-radius: 4px
       -moz-border-radius-topleft: 4px
   caption +
-    thead th:last-child, tbody td:last-child
+    thead tr:first-child th:last-child, tbody tr:first-child td:last-child
       -webkit-border-top-right-radius: 4px
       border-top-right-radius: 4px
-      -moz-border-radius-topleft: 4px
+      -moz-border-radius-topright: 4px
   colgroup +
-    thead th:last-child, tbody td:last-child
+    thead tr:first-child th:last-child, tbody tr:first-child td:last-child
       -webkit-border-top-right-radius: 4px
       border-top-right-radius: 4px
-      -moz-border-radius-topleft: 4px
+      -moz-border-radius-topright: 4px
 
-.table-striped tr:nth-child(odd)
+.table-striped tbody tr:nth-child(odd)
   td, th
     background-color: #f9f9f9
 
-.table-hover tr:hover
+.table-hover tbody tr:hover
   td, th
     background-color: #f5f5f5
 
-table [class*=span], .row-fluid [class*=span]
-  display: table-cell
-  float: none
-  margin-left: 0
+table
+  td[class*="span"], th[class*="span"]
+    display: table-cell
+    float: none
+    margin-left: 0
+
+.row-fluid table
+  td[class*="span"], th[class*="span"]
+    display: table-cell
+    float: none
+    margin-left: 0
 
 .table
-  .span1
+  td.span1, th.span1
     float: none
-    width: 24px
+    width: -1px
     margin-left: 0
-  .span2
+  td.span2, th.span2
     float: none
-    width: 84px
+    width: 34px
     margin-left: 0
-  .span3
+  td.span3, th.span3
     float: none
-    width: 144px
+    width: 69px
     margin-left: 0
-  .span4
+  td.span4, th.span4
     float: none
-    width: 204px
+    width: 104px
     margin-left: 0
-  .span5
+  td.span5, th.span5
     float: none
-    width: 264px
+    width: 139px
     margin-left: 0
-  .span6
+  td.span6, th.span6
     float: none
-    width: 324px
+    width: 174px
     margin-left: 0
-  .span7
+  td.span7, th.span7
+    float: none
+    width: 209px
+    margin-left: 0
+  td.span8, th.span8
+    float: none
+    width: 244px
+    margin-left: 0
+  td.span9, th.span9
+    float: none
+    width: 279px
+    margin-left: 0
+  td.span10, th.span10
+    float: none
+    width: 314px
+    margin-left: 0
+  td.span11, th.span11
+    float: none
+    width: 349px
+    margin-left: 0
+  td.span12, th.span12
     float: none
     width: 384px
-    margin-left: 0
-  .span8
-    float: none
-    width: 444px
-    margin-left: 0
-  .span9
-    float: none
-    width: 504px
-    margin-left: 0
-  .span10
-    float: none
-    width: 564px
-    margin-left: 0
-  .span11
-    float: none
-    width: 624px
-    margin-left: 0
-  .span12
-    float: none
-    width: 684px
-    margin-left: 0
-  .span13
-    float: none
-    width: 744px
-    margin-left: 0
-  .span14
-    float: none
-    width: 804px
-    margin-left: 0
-  .span15
-    float: none
-    width: 864px
-    margin-left: 0
-  .span16
-    float: none
-    width: 924px
-    margin-left: 0
-  .span17
-    float: none
-    width: 984px
-    margin-left: 0
-  .span18
-    float: none
-    width: 1044px
-    margin-left: 0
-  .span19
-    float: none
-    width: 1104px
-    margin-left: 0
-  .span20
-    float: none
-    width: 1164px
-    margin-left: 0
-  .span21
-    float: none
-    width: 1224px
-    margin-left: 0
-  .span22
-    float: none
-    width: 1284px
-    margin-left: 0
-  .span23
-    float: none
-    width: 1344px
-    margin-left: 0
-  .span24
-    float: none
-    width: 1404px
     margin-left: 0
   tbody tr
     &.success td
@@ -1003,7 +1095,7 @@ table [class*=span], .row-fluid [class*=span]
     &.info td
       background-color: #d9edf7
 
-.table-hover tr
+.table-hover tbody tr
   &.success:hover td
     background-color: #d0e9c6
   &.error:hover td
@@ -1051,38 +1143,41 @@ select, textarea
   display: inline-block
   height: 20px
   padding: 4px 6px
-  margin-bottom: 9px
+  margin-bottom: 10px
   font-size: 14px
   line-height: 20px
   color: #555555
-  -webkit-border-radius: 3px
-  -moz-border-radius: 3px
-  border-radius: 3px
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  vertical-align: middle
 
 input
   &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
     display: inline-block
     height: 20px
     padding: 4px 6px
-    margin-bottom: 9px
+    margin-bottom: 10px
     font-size: 14px
     line-height: 20px
     color: #555555
-    -webkit-border-radius: 3px
-    -moz-border-radius: 3px
-    border-radius: 3px
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+    vertical-align: middle
 
 .uneditable-input
   display: inline-block
   height: 20px
   padding: 4px 6px
-  margin-bottom: 9px
+  margin-bottom: 10px
   font-size: 14px
   line-height: 20px
   color: #555555
-  -webkit-border-radius: 3px
-  -moz-border-radius: 3px
-  border-radius: 3px
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  vertical-align: middle
 
 input, textarea, .uneditable-input
   width: 206px
@@ -1207,12 +1302,12 @@ input:-moz-placeholder, textarea:-moz-placeholder, input:-ms-input-placeholder, 
   color: #999999
 
 .radio, .checkbox
-  min-height: 18px
-  padding-left: 18px
+  min-height: 20px
+  padding-left: 20px
 
 .radio input[type="radio"], .checkbox input[type="checkbox"]
   float: left
-  margin-left: -18px
+  margin-left: -20px
 
 .controls >
   .radio:first-child, .checkbox:first-child
@@ -1224,7 +1319,7 @@ input:-moz-placeholder, textarea:-moz-placeholder, input:-ms-input-placeholder, 
   margin-bottom: 0
   vertical-align: middle
 
-.radio.inline .radio.inline, .checkbox.inline .checkbox.inline
+.radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline
   margin-left: 10px
 
 .input-mini
@@ -1269,56 +1364,80 @@ input[class*="span"], select[class*="span"], textarea[class*="span"], .uneditabl
 input, textarea, .uneditable-input
   margin-left: 0
 
-.controls-row [class*="span"]
+.controls-row [class*="span"] + [class*="span"]
   margin-left: 20px
 
-input.span16, textarea.span16, .uneditable-input.span16
-  width: 926px
-
-input.span15, textarea.span15, .uneditable-input.span15
-  width: 866px
-
-input.span14, textarea.span14, .uneditable-input.span14
+input.span24, textarea.span24, .uneditable-input.span24
   width: 806px
 
+input.span23, textarea.span23, .uneditable-input.span23
+  width: 771px
+
+input.span22, textarea.span22, .uneditable-input.span22
+  width: 736px
+
+input.span21, textarea.span21, .uneditable-input.span21
+  width: 701px
+
+input.span20, textarea.span20, .uneditable-input.span20
+  width: 666px
+
+input.span19, textarea.span19, .uneditable-input.span19
+  width: 631px
+
+input.span18, textarea.span18, .uneditable-input.span18
+  width: 596px
+
+input.span17, textarea.span17, .uneditable-input.span17
+  width: 561px
+
+input.span16, textarea.span16, .uneditable-input.span16
+  width: 526px
+
+input.span15, textarea.span15, .uneditable-input.span15
+  width: 491px
+
+input.span14, textarea.span14, .uneditable-input.span14
+  width: 456px
+
 input.span13, textarea.span13, .uneditable-input.span13
-  width: 746px
+  width: 421px
 
 input.span12, textarea.span12, .uneditable-input.span12
-  width: 686px
-
-input.span11, textarea.span11, .uneditable-input.span11
-  width: 626px
-
-input.span10, textarea.span10, .uneditable-input.span10
-  width: 566px
-
-input.span9, textarea.span9, .uneditable-input.span9
-  width: 506px
-
-input.span8, textarea.span8, .uneditable-input.span8
-  width: 446px
-
-input.span7, textarea.span7, .uneditable-input.span7
   width: 386px
 
+input.span11, textarea.span11, .uneditable-input.span11
+  width: 351px
+
+input.span10, textarea.span10, .uneditable-input.span10
+  width: 316px
+
+input.span9, textarea.span9, .uneditable-input.span9
+  width: 281px
+
+input.span8, textarea.span8, .uneditable-input.span8
+  width: 246px
+
+input.span7, textarea.span7, .uneditable-input.span7
+  width: 211px
+
 input.span6, textarea.span6, .uneditable-input.span6
-  width: 326px
+  width: 176px
 
 input.span5, textarea.span5, .uneditable-input.span5
-  width: 266px
+  width: 141px
 
 input.span4, textarea.span4, .uneditable-input.span4
-  width: 206px
+  width: 106px
 
 input.span3, textarea.span3, .uneditable-input.span3
-  width: 146px
+  width: 71px
 
 input.span2, textarea.span2, .uneditable-input.span2
-  width: 86px
+  width: 36px
 
 input.span1, textarea.span1, .uneditable-input.span1
-  width: 26px
+  width: 1px
 
 .controls-row
   *zoom: 1
@@ -1333,6 +1452,13 @@ input.span1, textarea.span1, .uneditable-input.span1
     clear: both
   [class*="span"]
     float: left
+
+.row-fluid .controls-row [class*="span"]
+  float: left
+
+.controls-row
+  .checkbox[class*="span"], .radio[class*="span"]
+    padding-top: 5px
 
 input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly]
   cursor: not-allowed
@@ -1459,15 +1585,17 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   font-size: 0
   white-space: nowrap
 
+.input-append input, .input-prepend input, .input-append select, .input-prepend select, .input-append .uneditable-input, .input-prepend .uneditable-input, .input-append .dropdown-menu, .input-prepend .dropdown-menu
+  font-size: 14px
+
 .input-append input, .input-prepend input, .input-append select, .input-prepend select, .input-append .uneditable-input, .input-prepend .uneditable-input
   position: relative
   margin-bottom: 0
   *margin-left: 0
-  font-size: 14px
   vertical-align: top
-  -webkit-border-radius: 0 3px 3px 0
-  -moz-border-radius: 0 3px 3px 0
-  border-radius: 0 3px 3px 0
+  -webkit-border-radius: 0 4px 4px 0
+  -moz-border-radius: 0 4px 4px 0
+  border-radius: 0 4px 4px 0
 
 .input-append input:focus, .input-prepend input:focus, .input-append select:focus, .input-prepend select:focus, .input-append .uneditable-input:focus, .input-prepend .uneditable-input:focus
   z-index: 2
@@ -1503,37 +1631,47 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   .add-on, .btn
     margin-right: -1px
   .add-on:first-child, .btn:first-child
-    -webkit-border-radius: 3px 0 0 3px
-    -moz-border-radius: 3px 0 0 3px
-    border-radius: 3px 0 0 3px
+    -webkit-border-radius: 4px 0 0 4px
+    -moz-border-radius: 4px 0 0 4px
+    border-radius: 4px 0 0 4px
 
 .input-append
   input, select, .uneditable-input
-    -webkit-border-radius: 3px 0 0 3px
-    -moz-border-radius: 3px 0 0 3px
-    border-radius: 3px 0 0 3px
-  .add-on, .btn
+    -webkit-border-radius: 4px 0 0 4px
+    -moz-border-radius: 4px 0 0 4px
+    border-radius: 4px 0 0 4px
+  input + .btn-group .btn, select + .btn-group .btn, .uneditable-input + .btn-group .btn
+    -webkit-border-radius: 0 4px 4px 0
+    -moz-border-radius: 0 4px 4px 0
+    border-radius: 0 4px 4px 0
+  .add-on, .btn, .btn-group
     margin-left: -1px
   .add-on:last-child, .btn:last-child
-    -webkit-border-radius: 0 3px 3px 0
-    -moz-border-radius: 0 3px 3px 0
-    border-radius: 0 3px 3px 0
+    -webkit-border-radius: 0 4px 4px 0
+    -moz-border-radius: 0 4px 4px 0
+    border-radius: 0 4px 4px 0
 
 .input-prepend.input-append
   input, select, .uneditable-input
     -webkit-border-radius: 0
     -moz-border-radius: 0
     border-radius: 0
+  input + .btn-group .btn, select + .btn-group .btn, .uneditable-input + .btn-group .btn
+    -webkit-border-radius: 0 4px 4px 0
+    -moz-border-radius: 0 4px 4px 0
+    border-radius: 0 4px 4px 0
   .add-on:first-child, .btn:first-child
     margin-right: -1px
-    -webkit-border-radius: 3px 0 0 3px
-    -moz-border-radius: 3px 0 0 3px
-    border-radius: 3px 0 0 3px
+    -webkit-border-radius: 4px 0 0 4px
+    -moz-border-radius: 4px 0 0 4px
+    border-radius: 4px 0 0 4px
   .add-on:last-child, .btn:last-child
     margin-left: -1px
-    -webkit-border-radius: 0 3px 3px 0
-    -moz-border-radius: 0 3px 3px 0
-    border-radius: 0 3px 3px 0
+    -webkit-border-radius: 0 4px 4px 0
+    -moz-border-radius: 0 4px 4px 0
+    border-radius: 0 4px 4px 0
+  .btn-group:first-child
+    margin-left: 0
 
 input.search-query
   padding-right: 14px
@@ -1623,7 +1761,7 @@ input.search-query
 .control-group
   margin-bottom: 10px
 
-legend .control-group
+legend + .control-group
   margin-top: 20px
   -webkit-margin-top-collapse: separate
 
@@ -1654,7 +1792,7 @@ legend .control-group
       *padding-left: 180px
   .help-block
     margin-bottom: 0
-  input .help-block, select .help-block, textarea .help-block
+  input + .help-block, select + .help-block, textarea + .help-block
     margin-top: 10px
   .form-actions
     padding-left: 180px
@@ -1664,7 +1802,7 @@ legend .control-group
   *display: inline
   /* IE7 inline-block hack
   *zoom: 1
-  padding: 4px 14px
+  padding: 4px 12px
   margin-bottom: 0
   font-size: 14px
   line-height: 20px
@@ -1739,26 +1877,29 @@ legend .control-group
     box-shadow: none
 
 .btn-large
-  padding: 9px 14px
-  font-size: 16px
-  line-height: normal
-  -webkit-border-radius: 5px
-  -moz-border-radius: 5px
-  border-radius: 5px
-  [class^="icon-"]
+  padding: 11px 19px
+  font-size: 17.5px
+  -webkit-border-radius: 6px
+  -moz-border-radius: 6px
+  border-radius: 6px
+  [class^="icon-"], [class*=" icon-"]
     margin-top: 2px
 
 .btn-small
-  padding: 3px 9px
-  font-size: 12px
-  line-height: 18px
-  [class^="icon-"]
+  padding: 2px 10px
+  font-size: 11.9px
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  border-radius: 3px
+  [class^="icon-"], [class*=" icon-"]
     margin-top: 0
 
 .btn-mini
-  padding: 2px 6px
-  font-size: 11px
-  line-height: 17px
+  padding: 1px 6px
+  font-size: 10.5px
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  border-radius: 3px
 
 .btn-block
   display: block
@@ -1983,29 +2124,29 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 .icon-white
   background-image: url("../img/glyphicons-halflings-white.png")
 
-.nav-tabs >
+.nav-pills > .active > a >
   [class^="icon-"], [class*=" icon-"]
     background-image: url("../img/glyphicons-halflings-white.png")
 
-.nav-pills >
+.nav-list > .active > a >
   [class^="icon-"], [class*=" icon-"]
     background-image: url("../img/glyphicons-halflings-white.png")
 
-.nav-list >
-  [class^="icon-"], [class*=" icon-"]
-    background-image: url("../img/glyphicons-halflings-white.png")
-
-.navbar-inverse >
+.navbar-inverse .nav > .active > a >
   [class^="icon-"], [class*=" icon-"]
     background-image: url("../img/glyphicons-halflings-white.png")
 
 .dropdown-menu >
-  li >
+  li > a:hover >
     [class^="icon-"], [class*=" icon-"]
       background-image: url("../img/glyphicons-halflings-white.png")
-  .active >
+  .active > a >
     [class^="icon-"], [class*=" icon-"]
       background-image: url("../img/glyphicons-halflings-white.png")
+
+.dropdown-submenu:hover > a >
+  [class^="icon-"], [class*=" icon-"]
+    background-image: url("../img/glyphicons-halflings-white.png")
 
 .icon-glass
   background-position: 0      0
@@ -2431,6 +2572,10 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 
 .btn-group
   position: relative
+  display: inline-block
+  *display: inline
+  /* IE7 inline-block hack
+  *zoom: 1
   font-size: 0
   vertical-align: middle
   white-space: nowrap
@@ -2444,12 +2589,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
   font-size: 0
   margin-top: 10px
   margin-bottom: 10px
-  .btn-group
-    display: inline-block
-    *display: inline
-    /* IE7 inline-block hack
-    *zoom: 1
-  .btn .btn, .btn-group .btn, .btn .btn-group
+  .btn + .btn, .btn-group + .btn, .btn + .btn-group
     margin-left: 5px
 
 .btn-group
@@ -2543,7 +2683,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
     .btn-inverse.dropdown-toggle
       background-color: #222222
   >
-    .btn .dropdown-toggle
+    .btn + .dropdown-toggle
       padding-left: 8px
       padding-right: 8px
       -webkit-box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)
@@ -2551,15 +2691,15 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
       box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)
       *padding-top: 5px
       *padding-bottom: 5px
-    .btn-mini .dropdown-toggle
+    .btn-mini + .dropdown-toggle
       padding-left: 5px
       padding-right: 5px
       *padding-top: 2px
       *padding-bottom: 2px
-    .btn-small .dropdown-toggle
+    .btn-small + .dropdown-toggle
       *padding-top: 5px
       *padding-bottom: 4px
-    .btn-large .dropdown-toggle
+    .btn-large + .dropdown-toggle
       padding-left: 12px
       padding-right: 12px
       *padding-top: 7px
@@ -2578,9 +2718,8 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
   border-right-width: 5px
   border-top-width: 5px
 
-.dropup .caret
-  border-bottom: 5px solid #000000
-  border-top: 0
+.dropup .btn-large .caret
+  border-bottom-width: 5px
 
 .btn-primary .caret, .btn-warning .caret, .btn-danger .caret, .btn-info .caret, .btn-success .caret, .btn-inverse .caret
   border-top-color: #ffffff
@@ -2624,7 +2763,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
   margin-bottom: 20px
   list-style: none
   >
-    li a
+    li > a
       display: block
       &:hover
         text-decoration: none
@@ -2642,21 +2781,21 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
   text-transform: uppercase
 
-.nav .nav-header
+.nav li + .nav-header
   margin-top: 9px
 
 .nav-list
   padding-left: 15px
   padding-right: 15px
   margin-bottom: 0
-  > a, .nav-header
+  > li > a, .nav-header
     margin-left: -15px
     margin-right: -15px
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
   >
-    li a
+    li > a
       padding: 3px 15px
-    .active a
+    .active > a
       color: #ffffff
       text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2)
       background-color: #0088cc
@@ -2664,7 +2803,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
         color: #ffffff
         text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2)
         background-color: #0088cc
-  [class^="icon-"]
+  [class^="icon-"], [class*=" icon-"]
     margin-right: 2px
   .divider
     *width: 100%
@@ -2686,10 +2825,10 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 .nav-tabs:after, .nav-pills:after
   clear: both
 
-.nav-tabs li, .nav-pills li
+.nav-tabs > li, .nav-pills > li
   float: left
 
-.nav-tabs a, .nav-pills a
+.nav-tabs > li > a, .nav-pills > li > a
   padding-right: 12px
   padding-left: 12px
   margin-right: 2px
@@ -2710,7 +2849,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
         border-radius: 4px 4px 0 0
         &:hover
           border-color: #eeeeee #eeeeee #dddddd
-    .active a
+    .active > a
       color: #555555
       background-color: #ffffff
       border: 1px solid #ddd
@@ -2724,7 +2863,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
         cursor: default
 
 .nav-pills >
-  li a
+  li > a
     padding-top: 8px
     padding-bottom: 8px
     margin-top: 2px
@@ -2732,14 +2871,14 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
     -webkit-border-radius: 5px
     -moz-border-radius: 5px
     border-radius: 5px
-  .active a
+  .active > a
     color: #ffffff
     background-color: #0088cc
     &:hover
       color: #ffffff
       background-color: #0088cc
 
-.nav-stacked li
+.nav-stacked > li
   float: none
   > a
     margin-right: 0
@@ -2752,14 +2891,14 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
       -webkit-border-radius: 0
       -moz-border-radius: 0
       border-radius: 0
-    &:first-child a
+    &:first-child > a
       -webkit-border-top-right-radius: 4px
       -moz-border-radius-topright: 4px
       border-top-right-radius: 4px
       -webkit-border-top-left-radius: 4px
       -moz-border-radius-topleft: 4px
       border-top-left-radius: 4px
-    &:last-child a
+    &:last-child > a
       -webkit-border-bottom-right-radius: 4px
       -moz-border-radius-bottomright: 4px
       border-bottom-right-radius: 4px
@@ -2770,10 +2909,10 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
       border-color: #ddd
       z-index: 2
 
-.nav-pills.nav-stacked li
+.nav-pills.nav-stacked > li
   > a
     margin-bottom: 3px
-  &:last-child a
+  &:last-child > a
     margin-bottom: 1px
 
 .nav-tabs .dropdown-menu
@@ -2797,27 +2936,27 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 
 /* move down carets for tabs
 
-.nav-tabs .caret
+.nav-tabs .dropdown-toggle .caret
   margin-top: 8px
 
-.nav .caret
+.nav .active .dropdown-toggle .caret
   border-top-color: #fff
   border-bottom-color: #fff
 
-.nav-tabs .caret
+.nav-tabs .active .dropdown-toggle .caret
   border-top-color: #555555
   border-bottom-color: #555555
 
-.nav a:hover
+.nav > .dropdown.active > a:hover
   cursor: pointer
 
-.nav-tabs .dropdown-toggle, .nav-pills .dropdown-toggle
+.nav-tabs .open .dropdown-toggle, .nav-pills .open .dropdown-toggle
   color: #ffffff
   background-color: #999999
   border-color: #999999
 
 .nav
-  > a:hover
+  > li.dropdown.open.active > a:hover
     color: #ffffff
     background-color: #999999
     border-color: #999999
@@ -2828,7 +2967,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
       opacity: 1
       filter: alpha(opacity = 100)
 
-.tabs-stacked a:hover
+.tabs-stacked .open > a:hover
   border-color: #999999
 
 .tabbable
@@ -2846,16 +2985,16 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 .tab-content
   overflow: auto
 
-.tabs-below .nav-tabs, .tabs-right .nav-tabs, .tabs-left .nav-tabs
+.tabs-below > .nav-tabs, .tabs-right > .nav-tabs, .tabs-left > .nav-tabs
   border-bottom: 0
 
-.tab-content .tab-pane, .pill-content .pill-pane
+.tab-content > .tab-pane, .pill-content > .pill-pane
   display: none
 
-.tab-content .active, .pill-content .active
+.tab-content > .active, .pill-content > .active
   display: block
 
-.tabs-below .nav-tabs
+.tabs-below > .nav-tabs
   border-top: 1px solid #ddd
   >
     li
@@ -2868,56 +3007,56 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
         &:hover
           border-bottom-color: transparent
           border-top-color: #ddd
-    .active a
+    .active > a
       border-color: transparent #ddd #ddd #ddd
       &:hover
         border-color: transparent #ddd #ddd #ddd
 
-.tabs-left li, .tabs-right li
+.tabs-left > .nav-tabs > li, .tabs-right > .nav-tabs > li
   float: none
 
-.tabs-left a, .tabs-right a
+.tabs-left > .nav-tabs > li > a, .tabs-right > .nav-tabs > li > a
   min-width: 74px
   margin-right: 0
   margin-bottom: 3px
 
-.tabs-left .nav-tabs
+.tabs-left > .nav-tabs
   float: left
   margin-right: 19px
   border-right: 1px solid #ddd
-  > a
+  > li > a
     margin-right: -1px
     -webkit-border-radius: 4px 0 0 4px
     -moz-border-radius: 4px 0 0 4px
     border-radius: 4px 0 0 4px
     &:hover
       border-color: #eeeeee #dddddd #eeeeee #eeeeee
-  .active a
+  .active > a
     border-color: #ddd transparent #ddd #ddd
     *border-right-color: #ffffff
     &:hover
       border-color: #ddd transparent #ddd #ddd
       *border-right-color: #ffffff
 
-.tabs-right .nav-tabs
+.tabs-right > .nav-tabs
   float: right
   margin-left: 19px
   border-left: 1px solid #ddd
-  > a
+  > li > a
     margin-left: -1px
     -webkit-border-radius: 0 4px 4px 0
     -moz-border-radius: 0 4px 4px 0
     border-radius: 0 4px 4px 0
     &:hover
       border-color: #eeeeee #eeeeee #eeeeee #dddddd
-  .active a
+  .active > a
     border-color: #ddd #ddd #ddd transparent
     *border-left-color: #ffffff
     &:hover
       border-color: #ddd #ddd #ddd transparent
       *border-left-color: #ffffff
 
-.nav a
+.nav > .disabled > a
   color: #999999
   &:hover
     text-decoration: none
@@ -2966,6 +3105,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 
 .nav-collapse.collapse
   height: auto
+  overflow: visible
 
 .navbar .brand
   float: left
@@ -3047,7 +3187,6 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 
 .navbar-static-top
   position: static
-  width: 100%
   margin-bottom: 0
   .navbar-inner
     -webkit-border-radius: 0
@@ -3075,26 +3214,26 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
   border-radius: 0
 
 .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container
-  width: 940px
+  width: 820px
 
 .navbar-fixed-top
   top: 0
   .navbar-inner
-    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1)
-    -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1)
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1)
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
+    -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
 
 .navbar-static-top .navbar-inner
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1)
-  -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1)
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1)
+  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
+  -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
 
 .navbar-fixed-bottom
   bottom: 0
   .navbar-inner
-    -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1), 0 -1px 10px rgba(0, 0, 0, 0.1)
-    -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1), 0 -1px 10px rgba(0, 0, 0, 0.1)
-    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1), 0 -1px 10px rgba(0, 0, 0, 0.1)
+    -webkit-box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1)
+    -moz-box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1)
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1)
 
 .navbar
   .nav
@@ -3117,12 +3256,12 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
     .dropdown-toggle .caret
       margin-top: 8px
     >
-      li a
+      li > a
         &:focus, &:hover
           background-color: transparent
           color: #333333
           text-decoration: none
-      .active a
+      .active > a
         color: #555555
         text-decoration: none
         background-color: #e5e5e5
@@ -3178,10 +3317,10 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
       -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25)
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25)
 
-.btn-navbar .icon-bar
+.btn-navbar .icon-bar + .icon-bar
   margin-top: 3px
 
-.navbar .dropdown-menu
+.navbar .nav > li > .dropdown-menu
   &:before
     content: ''
     display: inline-block
@@ -3202,7 +3341,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
     top: -6px
     left: 10px
 
-.navbar-fixed-bottom .dropdown-menu
+.navbar-fixed-bottom .nav > li > .dropdown-menu
   &:before
     border-top: 7px solid #ccc
     border-top-color: rgba(0, 0, 0, 0.2)
@@ -3217,32 +3356,32 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 
 .navbar
   .nav li.dropdown
-    &.open .dropdown-toggle, &.active .dropdown-toggle
+    &.open > .dropdown-toggle, &.active > .dropdown-toggle
       background-color: #e5e5e5
       color: #555555
     &.open
-      &.active .dropdown-toggle
+      &.active > .dropdown-toggle
         background-color: #e5e5e5
         color: #555555
-      > .caret
+      > .dropdown-toggle .caret
         border-top-color: #555555
         border-bottom-color: #555555
-    > .caret
+    > .dropdown-toggle .caret
       border-top-color: #777777
       border-bottom-color: #777777
-    &.active .caret, &.open.active .caret
+    &.active > .dropdown-toggle .caret, &.open.active > .dropdown-toggle .caret
       border-top-color: #555555
       border-bottom-color: #555555
-  .pull-right .dropdown-menu, .nav .dropdown-menu.pull-right
+  .pull-right > li > .dropdown-menu, .nav > li > .dropdown-menu.pull-right
     left: auto
     right: 0
-  .pull-right .dropdown-menu:before, .nav .dropdown-menu.pull-right:before
+  .pull-right > li > .dropdown-menu:before, .nav > li > .dropdown-menu.pull-right:before
     left: auto
     right: 12px
-  .pull-right .dropdown-menu:after, .nav .dropdown-menu.pull-right:after
+  .pull-right > li > .dropdown-menu:after, .nav > li > .dropdown-menu.pull-right:after
     left: auto
     right: 13px
-  .pull-right .dropdown-menu, .nav .dropdown-menu
+  .pull-right > li > .dropdown-menu .dropdown-menu, .nav > li > .dropdown-menu.pull-right .dropdown-menu
     left: auto
     right: 100%
     margin-left: 0
@@ -3263,19 +3402,19 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
     background-repeat: repeat-x
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0)
     border-color: #252525
-  .brand, .nav a
+  .brand, .nav > li > a
     color: #999999
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
   .brand:hover
     color: #ffffff
   .nav
-    > a
+    > li > a
       &:hover
         color: #ffffff
       &:focus, &:hover
         background-color: transparent
         color: #ffffff
-    .active a
+    .active > a
       color: #ffffff
       background-color: #111111
       &:hover, &:focus
@@ -3289,20 +3428,20 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
     border-left-color: #111111
     border-right-color: #222222
   .nav li.dropdown
-    &.open .dropdown-toggle, &.active .dropdown-toggle
+    &.open > .dropdown-toggle, &.active > .dropdown-toggle
       background-color: #111111
       color: #ffffff
     &.open
-      &.active .dropdown-toggle
+      &.active > .dropdown-toggle
         background-color: #111111
         color: #ffffff
-      > .caret
+      > .dropdown-toggle .caret
         border-top-color: #ffffff
         border-bottom-color: #ffffff
-    > .caret
+    > .dropdown-toggle .caret
       border-top-color: #999999
       border-bottom-color: #999999
-    &.active .caret, &.open.active .caret
+    &.active > .dropdown-toggle .caret, &.open.active > .dropdown-toggle .caret
       border-top-color: #ffffff
       border-bottom-color: #ffffff
   .navbar-search .search-query
@@ -3372,7 +3511,6 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
     color: #999999
 
 .pagination
-  height: 40px
   margin: 20px 0
   ul
     display: inline-block
@@ -3381,9 +3519,9 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
     *zoom: 1
     margin-left: 0
     margin-bottom: 0
-    -webkit-border-radius: 3px
-    -moz-border-radius: 3px
-    border-radius: 3px
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
@@ -3393,8 +3531,8 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
         >
           a, span
             float: left
-            padding: 0 14px
-            line-height: 38px
+            padding: 4px 12px
+            line-height: 20px
             text-decoration: none
             background-color: #ffffff
             border: 1px solid #dddddd
@@ -3424,20 +3562,82 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
         &:first-child >
           a, span
             border-left-width: 1px
-            -webkit-border-radius: 3px 0 0 3px
-            -moz-border-radius: 3px 0 0 3px
-            border-radius: 3px 0 0 3px
+            -webkit-border-top-left-radius: 4px
+            -moz-border-radius-topleft: 4px
+            border-top-left-radius: 4px
+            -webkit-border-bottom-left-radius: 4px
+            -moz-border-radius-bottomleft: 4px
+            border-bottom-left-radius: 4px
         &:last-child >
           a, span
-            -webkit-border-radius: 0 3px 3px 0
-            -moz-border-radius: 0 3px 3px 0
-            border-radius: 0 3px 3px 0
+            -webkit-border-top-right-radius: 4px
+            -moz-border-radius-topright: 4px
+            border-top-right-radius: 4px
+            -webkit-border-bottom-right-radius: 4px
+            -moz-border-radius-bottomright: 4px
+            border-bottom-right-radius: 4px
 
 .pagination-centered
   text-align: center
 
 .pagination-right
   text-align: right
+
+.pagination-large ul > li
+  >
+    a, span
+      padding: 11px 19px
+      font-size: 17.5px
+  &:first-child >
+    a, span
+      -webkit-border-top-left-radius: 6px
+      -moz-border-radius-topleft: 6px
+      border-top-left-radius: 6px
+      -webkit-border-bottom-left-radius: 6px
+      -moz-border-radius-bottomleft: 6px
+      border-bottom-left-radius: 6px
+  &:last-child >
+    a, span
+      -webkit-border-top-right-radius: 6px
+      -moz-border-radius-topright: 6px
+      border-top-right-radius: 6px
+      -webkit-border-bottom-right-radius: 6px
+      -moz-border-radius-bottomright: 6px
+      border-bottom-right-radius: 6px
+
+.pagination-mini ul > li:first-child > a, .pagination-small ul > li:first-child > a, .pagination-mini ul > li:first-child > span, .pagination-small ul > li:first-child > span
+  -webkit-border-top-left-radius: 3px
+  -moz-border-radius-topleft: 3px
+  border-top-left-radius: 3px
+  -webkit-border-bottom-left-radius: 3px
+  -moz-border-radius-bottomleft: 3px
+  border-bottom-left-radius: 3px
+
+.pagination-mini ul > li:last-child > a, .pagination-small ul > li:last-child > a, .pagination-mini ul > li:last-child > span
+  -webkit-border-top-right-radius: 3px
+  -moz-border-radius-topright: 3px
+  border-top-right-radius: 3px
+  -webkit-border-bottom-right-radius: 3px
+  -moz-border-radius-bottomright: 3px
+  border-bottom-right-radius: 3px
+
+.pagination-small ul > li
+  &:last-child > span
+    -webkit-border-top-right-radius: 3px
+    -moz-border-radius-topright: 3px
+    border-top-right-radius: 3px
+    -webkit-border-bottom-right-radius: 3px
+    -moz-border-radius-bottomright: 3px
+    border-bottom-right-radius: 3px
+  >
+    a, span
+      padding: 2px 10px
+      font-size: 11.9px
+
+.pagination-mini ul > li >
+  a, span
+    padding: 1px 6px
+    font-size: 10.5px
 
 .pager
   margin: 20px 0
@@ -3455,23 +3655,25 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
     clear: both
   li
     display: inline
-  a, span
-    display: inline-block
-    padding: 5px 14px
-    background-color: #fff
-    border: 1px solid #ddd
-    -webkit-border-radius: 15px
-    -moz-border-radius: 15px
-    border-radius: 15px
-  a:hover
-    text-decoration: none
-    background-color: #f5f5f5
-  .next
+    >
+      a, span
+        display: inline-block
+        padding: 5px 14px
+        background-color: #fff
+        border: 1px solid #ddd
+        -webkit-border-radius: 15px
+        -moz-border-radius: 15px
+        border-radius: 15px
+      a:hover
+        text-decoration: none
+        background-color: #f5f5f5
+  .next >
     a, span
       float: right
-  .previous a
-    float: left
-  .disabled
+  .previous >
+    a, span
+      float: left
+  .disabled >
     a
       color: #999999
       background-color: #fff
@@ -3502,7 +3704,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini
 .row-fluid .thumbnails
   margin-left: 0
 
-.thumbnails li
+.thumbnails > li
   float: left
   margin-bottom: 20px
   margin-left: 20px
@@ -3578,7 +3780,7 @@ a.thumbnail:hover
   >
     p, ul
       margin-bottom: 0
-  p p
+  p + p
     margin-top: 5px
 
 @-webkit-keyframes progress-bar-stripes
@@ -3621,11 +3823,11 @@ a.thumbnail:hover
   height: 20px
   margin-bottom: 20px
   background-color: #f7f7f7
-  background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9)
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9))
-  background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9)
-  background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9)
-  background-image: linear-gradient(to bottom, #f5f5f5, #f9f9f9)
+  background-image: -moz-linear-gradient(top, #f5f5f5 , #f9f9f9)
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5 ), to(#f9f9f9))
+  background-image: -webkit-linear-gradient(top, #f5f5f5 , #f9f9f9)
+  background-image: -o-linear-gradient(top, #f5f5f5 , #f9f9f9)
+  background-image: linear-gradient(to bottom, #f5f5f5 , #f9f9f9)
   background-repeat: repeat-x
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0)
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1)
@@ -3759,6 +3961,10 @@ a.thumbnail:hover
 .hero-unit
   padding: 60px
   margin-bottom: 30px
+  font-size: 18px
+  font-weight: 200
+  line-height: 30px
+  color: inherit
   background-color: #eeeeee
   -webkit-border-radius: 6px
   -moz-border-radius: 6px
@@ -3769,11 +3975,36 @@ a.thumbnail:hover
     line-height: 1
     color: inherit
     letter-spacing: -1px
-  p
-    font-size: 18px
-    font-weight: 200
+  li
     line-height: 30px
-    color: inherit
+
+.media, .media-body
+  overflow: hidden
+  *overflow: visible
+  zoom: 1
+
+.media
+  margin-top: 15px
+  .media
+    margin-top: 15px
+  &:first-child
+    margin-top: 0
+
+.media-object
+  display: block
+
+.media-heading
+  margin: 0 0 5px
+
+.media
+  .pull-left
+    margin-right: 10px
+  .pull-right
+    margin-left: 10px
+
+.media-list
+  margin-left: 0
+  list-style: none
 
 .tooltip
   position: absolute
@@ -3861,13 +4092,13 @@ a.thumbnail:hover
   -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)
   &.top
-    margin-bottom: 10px
+    margin-top: -10px
   &.right
     margin-left: 10px
   &.bottom
     margin-top: 10px
   &.left
-    margin-right: 10px
+    margin-left: -10px
 
 .popover-title
   margin: 0
@@ -3948,16 +4179,6 @@ a.thumbnail:hover
       bottom: -11px
       right: -1px
 
-.modal-open .modal
-  .dropdown-menu
-    z-index: 2050
-  .dropdown.open
-    *z-index: 2050
-  .popover
-    z-index: 2060
-  .tooltip
-    z-index: 2080
-
 .modal-backdrop
   position: fixed
   top: 0
@@ -3979,7 +4200,6 @@ a.thumbnail:hover
   top: 50%
   left: 50%
   z-index: 1050
-  overflow: auto
   width: 560px
   margin: -250px 0 0 -280px
   background-color: #ffffff
@@ -3996,6 +4216,7 @@ a.thumbnail:hover
   -webkit-background-clip: padding-box
   -moz-background-clip: padding-box
   background-clip: padding-box
+  outline: none
   &.fade
     -webkit-transition: opacity .3s linear, top .3s ease-out
     -moz-transition: opacity .3s linear, top .3s ease-out
@@ -4044,11 +4265,13 @@ a.thumbnail:hover
     content: ""
     line-height: 0
     clear: both
-  .btn .btn
+  .btn + .btn
     margin-left: 5px
     margin-bottom: 0
-  .btn-group .btn
+  .btn-group .btn + .btn
     margin-left: -1px
+  .btn-block + .btn-block
+    margin-left: 0
 
 .dropup, .dropdown
   position: relative
@@ -4111,7 +4334,7 @@ a.thumbnail:hover
     overflow: hidden
     background-color: #e5e5e5
     border-bottom: 1px solid #ffffff
-  a
+  li > a
     display: block
     padding: 3px 20px
     clear: both
@@ -4119,66 +4342,62 @@ a.thumbnail:hover
     line-height: 20px
     color: #333333
     white-space: nowrap
-  li a
     &:hover, &:focus
       text-decoration: none
       color: #ffffff
-      //background-color: #0088cc
-      //background-color: #0081c2
-      //background-image: -moz-linear-gradient(top, #0088cc, #0077b3)
-      //background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3))
-      //background-image: -webkit-linear-gradient(top, #0088cc, #0077b3)
-      //background-image: -o-linear-gradient(top, #0088cc, #0077b3)
-      //background-image: linear-gradient(to bottom, #0088cc, #0077b3)
-      //background-repeat: repeat-x
-      //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+      background-color: #0081c2
+      background-image: -moz-linear-gradient(top, #0088cc, #0077b3)
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3))
+      background-image: -webkit-linear-gradient(top, #0088cc, #0077b3)
+      background-image: -o-linear-gradient(top, #0088cc, #0077b3)
+      background-image: linear-gradient(to bottom, #0088cc, #0077b3)
+      background-repeat: repeat-x
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
 
-.dropdown-submenu:hover a
+.dropdown-submenu:hover > a
   text-decoration: none
   color: #ffffff
-  //background-color: #0088cc
-  //background-color: #0081c2
-  //background-image: -moz-linear-gradient(top, #0088cc, #0077b3)
-  //background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3))
-  //background-image: -webkit-linear-gradient(top, #0088cc, #0077b3)
-  //background-image: -o-linear-gradient(top, #0088cc, #0077b3)
-  //background-image: linear-gradient(to bottom, #0088cc, #0077b3)
-  //background-repeat: repeat-x
-  //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+  background-color: #0081c2
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3)
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3))
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3)
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3)
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3)
+  background-repeat: repeat-x
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
 
 .dropdown-menu
-  .active a
-    color: #ffffff
+  .active > a
+    color: #333333
     text-decoration: none
     outline: 0
-    //background-color: #0088cc
-    //background-color: #0081c2
-    //background-image: -moz-linear-gradient(top, #0088cc, #0077b3)
-    //background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3))
-    //background-image: -webkit-linear-gradient(top, #0088cc, #0077b3)
-    //background-image: -o-linear-gradient(top, #0088cc, #0077b3)
-    //background-image: linear-gradient(to bottom, #0088cc, #0077b3)
-    //background-repeat: repeat-x
-    //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+    background-color: #0081c2
+    background-image: -moz-linear-gradient(top, #0088cc, #0077b3)
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3))
+    background-image: -webkit-linear-gradient(top, #0088cc, #0077b3)
+    background-image: -o-linear-gradient(top, #0088cc, #0077b3)
+    background-image: linear-gradient(to bottom, #0088cc, #0077b3)
+    background-repeat: repeat-x
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
     &:hover
-      color: #ffffff
+      color: #333333
       text-decoration: none
       outline: 0
-      //background-color: #0088cc
-      //background-color: #0081c2
-      //background-image: -moz-linear-gradient(top, #0088cc, #0077b3)
-      //background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3))
-      //background-image: -webkit-linear-gradient(top, #0088cc, #0077b3)
-      //background-image: -o-linear-gradient(top, #0088cc, #0077b3)
-      //background-image: linear-gradient(to bottom, #0088cc, #0077b3)
-      //background-repeat: repeat-x
-      //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
-  .disabled a
+      background-color: #0081c2
+      background-image: -moz-linear-gradient(top, #0088cc, #0077b3)
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3))
+      background-image: -webkit-linear-gradient(top, #0088cc, #0077b3)
+      background-image: -o-linear-gradient(top, #0088cc, #0077b3)
+      background-image: linear-gradient(to bottom, #0088cc, #0077b3)
+      background-repeat: repeat-x
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+  .disabled > a
     color: #999999
     &:hover
       color: #999999
       text-decoration: none
       background-color: transparent
+      background-image: none
       cursor: default
 
 .open
@@ -4186,16 +4405,16 @@ a.thumbnail:hover
   > .dropdown-menu
     display: block
 
-.pull-right .dropdown-menu
+.pull-right > .dropdown-menu
   right: 0
   left: auto
 
-.dropup .caret, .navbar-fixed-bottom .caret
+.dropup .caret, .navbar-fixed-bottom .dropdown .caret
   border-top: 0
   border-bottom: 4px solid #000000
   content: ""
 
-.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown-menu
+.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu
   top: auto
   bottom: 100%
   margin-bottom: 1px
@@ -4210,11 +4429,19 @@ a.thumbnail:hover
     -webkit-border-radius: 0 6px 6px 6px
     -moz-border-radius: 0 6px 6px 6px
     border-radius: 0 6px 6px 6px
-  &:hover
-    > .dropdown-menu
-      display: block
-    > a:after
-      border-left-color: #ffffff
+  &:hover > .dropdown-menu
+    display: block
+
+.dropup .dropdown-submenu > .dropdown-menu
+  top: auto
+  bottom: 0
+  margin-top: 0
+  margin-bottom: -2px
+  -webkit-border-radius: 5px 5px 5px 0
+  -moz-border-radius: 5px 5px 5px 0
+  border-radius: 5px 5px 5px 0
+
+.dropdown-submenu
   > a:after
     display: block
     content: " "
@@ -4227,8 +4454,18 @@ a.thumbnail:hover
     border-left-color: #cccccc
     margin-top: 5px
     margin-right: -10px
+  &:hover > a:after
+    border-left-color: #ffffff
+  &.pull-left
+    float: none
+    > .dropdown-menu
+      left: -100%
+      margin-left: 10px
+      -webkit-border-radius: 6px 0 6px 6px
+      -moz-border-radius: 6px 0 6px 6px
+      border-radius: 6px 0 6px 6px
 
-.dropdown .nav-header
+.dropdown .dropdown-menu .nav-header
   padding-left: 20px
   padding-right: 20px
 
@@ -4345,6 +4582,34 @@ a.thumbnail:hover
     margin: 0 0 5px
   p
     margin-bottom: 0
+
+.media, .media-body
+  overflow: hidden
+  *overflow: visible
+  zoom: 1
+
+.media
+  margin-top: 15px
+  .media
+    margin-top: 15px
+  &:first-child
+    margin-top: 0
+
+.media-object
+  display: block
+
+.media-heading
+  margin: 0 0 5px
+
+.media
+  .pull-left
+    margin-right: 10px
+  .pull-right
+    margin-left: 10px
+
+.media-list
+  margin-left: 0
+  list-style: none
 
 .well
   min-height: 20px
@@ -4465,6 +4730,119 @@ button.close
   .hidden-phone
     display: none !important
 
+@media (max-width: 767px)
+  body
+    padding-left: 20px
+    padding-right: 20px
+  .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top
+    margin-left: -20px
+    margin-right: -20px
+  .container-fluid
+    padding: 0
+  .dl-horizontal
+    dt
+      float: none
+      clear: none
+      width: auto
+      text-align: left
+    dd
+      margin-left: 0
+  .container
+    width: auto
+  .row-fluid
+    width: 100%
+  .row
+    margin-left: 0
+  .thumbnails
+    margin-left: 0
+    > li
+      float: none
+      margin-left: 0
+  [class*="span"], .uneditable-input[class*="span"], .row-fluid [class*="span"]
+    float: none
+    display: block
+    width: 100%
+    margin-left: 0
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+  .span12
+    width: 100%
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+  .row-fluid
+    .span12
+      width: 100%
+      -webkit-box-sizing: border-box
+      -moz-box-sizing: border-box
+      box-sizing: border-box
+    [class*="offset"]:first-child
+      margin-left: 0
+  .input-large, .input-xlarge, .input-xxlarge, input[class*="span"], select[class*="span"], textarea[class*="span"], .uneditable-input
+    display: block
+    width: 100%
+    min-height: 30px
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+  .input-prepend input, .input-append input, .input-prepend input[class*="span"], .input-append input[class*="span"]
+    display: inline-block
+    width: auto
+  .controls-row [class*="span"] + [class*="span"]
+    margin-left: 0
+  .modal
+    position: fixed
+    top: 20px
+    left: 20px
+    right: 20px
+    width: auto
+    margin: 0
+    &.fade
+      top: -100px
+      &.in
+        top: 20px
+
+@media (max-width: 480px)
+  .nav-collapse
+    -webkit-transform: translate3d(0, 0, 0)
+  .page-header h1 small
+    display: block
+    line-height: 20px
+  input
+    &[type="checkbox"], &[type="radio"]
+      border: 1px solid #ccc
+  .form-horizontal
+    .control-label
+      float: none
+      width: auto
+      padding-top: 0
+      text-align: left
+    .controls
+      margin-left: 0
+    .control-list
+      padding-top: 0
+    .form-actions
+      padding-left: 10px
+      padding-right: 10px
+  .media
+    .pull-left, .pull-right
+      float: none
+      display: block
+      margin-bottom: 10px
+  .media-object
+    margin-right: 0
+    margin-left: 0
+  .modal
+    top: 10px
+    left: 10px
+    right: 10px
+  .modal-header .close
+    padding: 10px
+    margin: -10px
+  .carousel-caption
+    position: static
+
 @media (min-width: 768px) and (max-width: 979px)
   .row
     margin-left: -20px
@@ -4482,70 +4860,102 @@ button.close
     float: left
     min-height: 1px
     margin-left: 20px
-  .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .span16
-    width: 972px
+  .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .span24
+    width: 712px
+  .span23
+    width: 681.5px
+  .span22
+    width: 651px
+  .span21
+    width: 620.5px
+  .span20
+    width: 590px
+  .span19
+    width: 559.5px
+  .span18
+    width: 529px
+  .span17
+    width: 498.5px
+  .span16
+    width: 468px
   .span15
-    width: 910px
+    width: 437.5px
   .span14
-    width: 848px
+    width: 407px
   .span13
-    width: 786px
+    width: 376.5px
   .span12
-    width: 724px
+    width: 346px
   .span11
-    width: 662px
+    width: 315.5px
   .span10
-    width: 600px
+    width: 285px
   .span9
-    width: 538px
+    width: 254.5px
   .span8
-    width: 476px
+    width: 224px
   .span7
-    width: 414px
+    width: 193.5px
   .span6
-    width: 352px
+    width: 163px
   .span5
-    width: 290px
+    width: 132.5px
   .span4
-    width: 228px
+    width: 102px
   .span3
-    width: 166px
+    width: 71.5px
   .span2
-    width: 104px
+    width: 41px
   .span1
-    width: 42px
+    width: 10.5px
+  .offset24
+    margin-left: 752px
+  .offset23
+    margin-left: 721.5px
+  .offset22
+    margin-left: 691px
+  .offset21
+    margin-left: 660.5px
+  .offset20
+    margin-left: 630px
+  .offset19
+    margin-left: 599.5px
+  .offset18
+    margin-left: 569px
+  .offset17
+    margin-left: 538.5px
   .offset16
-    margin-left: 1012px
+    margin-left: 508px
   .offset15
-    margin-left: 950px
+    margin-left: 477.5px
   .offset14
-    margin-left: 888px
+    margin-left: 447px
   .offset13
-    margin-left: 826px
+    margin-left: 416.5px
   .offset12
-    margin-left: 764px
+    margin-left: 386px
   .offset11
-    margin-left: 702px
+    margin-left: 355.5px
   .offset10
-    margin-left: 640px
+    margin-left: 325px
   .offset9
-    margin-left: 578px
+    margin-left: 294.5px
   .offset8
-    margin-left: 516px
+    margin-left: 264px
   .offset7
-    margin-left: 454px
+    margin-left: 233.5px
   .offset6
-    margin-left: 392px
+    margin-left: 203px
   .offset5
-    margin-left: 330px
+    margin-left: 172.5px
   .offset4
-    margin-left: 268px
+    margin-left: 142px
   .offset3
-    margin-left: 206px
+    margin-left: 111.5px
   .offset2
-    margin-left: 144px
+    margin-left: 81px
   .offset1
-    margin-left: 82px
+    margin-left: 50.5px
   .row-fluid
     width: 100%
     *zoom: 1
@@ -4566,190 +4976,694 @@ button.close
       -moz-box-sizing: border-box
       box-sizing: border-box
       float: left
-      margin-left: 2.05761316872428%
-      *margin-left: 2.0044216793625775%
+      margin-left: 2.8089887640449436%
+      *margin-left: 2.748013154288846%
       &:first-child
         margin-left: 0
-    .span16
+    .controls-row [class*="span"] + [class*="span"]
+      margin-left: 2.8089887640449436%
+    .span24
       width: 100%
-      *width: 99.94680851063829%
+      *width: 99.9390243902439%
+    .span23
+      width: 95.71629213483146%
+      *width: 95.65531652507536%
+    .span22
+      width: 91.43258426966291%
+      *width: 91.37160865990681%
+    .span21
+      width: 87.14887640449437%
+      *width: 87.08790079473827%
+    .span20
+      width: 82.86516853932584%
+      *width: 82.80419292956974%
+    .span19
+      width: 78.5814606741573%
+      *width: 78.5204850644012%
+    .span18
+      width: 74.29775280898875%
+      *width: 74.23677719923265%
+    .span17
+      width: 70.01404494382022%
+      *width: 69.95306933406412%
+    .span16
+      width: 65.73033707865169%
+      *width: 65.66936146889559%
     .span15
-      width: 93.62139917695472%
-      *width: 93.56820768759302%
+      width: 61.446629213483135%
+      *width: 61.385653603727036%
     .span14
-      width: 87.24279835390946%
-      *width: 87.18960686454776%
+      width: 57.162921348314605%
+      *width: 57.101945738558506%
     .span13
-      width: 80.86419753086419%
-      *width: 80.81100604150248%
+      width: 52.87921348314606%
+      *width: 52.81823787338996%
     .span12
-      width: 74.48559670781893%
-      *width: 74.43240521845722%
+      width: 48.59550561797752%
+      *width: 48.534530008221424%
     .span11
-      width: 68.10699588477365%
-      *width: 68.05380439541194%
+      width: 44.311797752808985%
+      *width: 44.250822143052886%
     .span10
-      width: 61.72839506172839%
-      *width: 61.67520357236669%
+      width: 40.02808988764045%
+      *width: 39.96711427788435%
     .span9
-      width: 55.349794238683124%
-      *width: 55.29660274932142%
+      width: 35.74438202247191%
+      *width: 35.68340641271581%
     .span8
-      width: 48.971193415637856%
-      *width: 48.918001926276155%
+      width: 31.460674157303366%
+      *width: 31.399698547547267%
     .span7
-      width: 42.59259259259259%
-      *width: 42.53940110323089%
+      width: 27.17696629213483%
+      *width: 27.11599068237873%
     .span6
-      width: 36.21399176954732%
-      *width: 36.16080028018562%
+      width: 22.89325842696629%
+      *width: 22.832282817210192%
     .span5
-      width: 29.835390946502056%
-      *width: 29.782199457140354%
+      width: 18.60955056179775%
+      *width: 18.54857495204165%
     .span4
-      width: 23.456790123456788%
-      *width: 23.403598634095086%
+      width: 14.325842696629213%
+      *width: 14.264867086873116%
     .span3
-      width: 17.078189300411523%
-      *width: 17.024997811049822%
+      width: 10.042134831460674%
+      *width: 9.981159221704576%
     .span2
-      width: 10.699588477366255%
-      *width: 10.646396988004554%
+      width: 5.758426966292134%
+      *width: 5.697451356536037%
     .span1
-      width: 4.320987654320987%
-      *width: 4.267796164959285%
+      width: 1.4747191011235954%
+      *width: 1.4137434913674978%
+    .offset24
+      margin-left: 105.61797752808988%
+      *margin-left: 105.49602630857768%
+      &:first-child
+        margin-left: 102.80898876404494%
+        *margin-left: 102.68703754453274%
+    .offset23
+      margin-left: 101.33426966292134%
+      *margin-left: 101.21231844340915%
+      &:first-child
+        margin-left: 98.5252808988764%
+        *margin-left: 98.4033296793642%
+    .offset22
+      margin-left: 97.05056179775279%
+      *margin-left: 96.9286105782406%
+      &:first-child
+        margin-left: 94.24157303370785%
+        *margin-left: 94.11962181419565%
+    .offset21
+      margin-left: 92.76685393258425%
+      *margin-left: 92.64490271307206%
+      &:first-child
+        margin-left: 89.95786516853931%
+        *margin-left: 89.83591394902712%
+    .offset20
+      margin-left: 88.48314606741572%
+      *margin-left: 88.36119484790352%
+      &:first-child
+        margin-left: 85.67415730337078%
+        *margin-left: 85.55220608385858%
+    .offset19
+      margin-left: 84.19943820224718%
+      *margin-left: 84.07748698273498%
+      &:first-child
+        margin-left: 81.39044943820224%
+        *margin-left: 81.26849821869004%
+    .offset18
+      margin-left: 79.91573033707863%
+      *margin-left: 79.79377911756643%
+      &:first-child
+        margin-left: 77.10674157303369%
+        *margin-left: 76.98479035352149%
+    .offset17
+      margin-left: 75.6320224719101%
+      *margin-left: 75.5100712523979%
+      &:first-child
+        margin-left: 72.82303370786516%
+        *margin-left: 72.70108248835297%
     .offset16
-      margin-left: 104.11522633744856%
-      *margin-left: 104.00884335872514%
+      margin-left: 71.34831460674157%
+      *margin-left: 71.22636338722937%
       &:first-child
-        margin-left: 102.05761316872427%
-        *margin-left: 101.95123019000086%
+        margin-left: 68.53932584269663%
+        *margin-left: 68.41737462318443%
     .offset15
-      margin-left: 97.73662551440329%
-      *margin-left: 97.63024253567987%
+      margin-left: 67.06460674157302%
+      *margin-left: 66.94265552206082%
       &:first-child
-        margin-left: 95.679012345679%
-        *margin-left: 95.57262936695558%
+        margin-left: 64.25561797752808%
+        *margin-left: 64.13366675801588%
     .offset14
-      margin-left: 91.35802469135803%
-      *margin-left: 91.25164171263461%
+      margin-left: 62.78089887640449%
+      *margin-left: 62.658947656892295%
       &:first-child
-        margin-left: 89.30041152263374%
-        *margin-left: 89.19402854391032%
+        margin-left: 59.971910112359545%
+        *margin-left: 59.84995889284735%
     .offset13
-      margin-left: 84.97942386831275%
-      *margin-left: 84.87304088958933%
+      margin-left: 58.49719101123595%
+      *margin-left: 58.37523979172375%
       &:first-child
-        margin-left: 82.92181069958846%
-        *margin-left: 82.81542772086505%
+        margin-left: 55.688202247191%
+        *margin-left: 55.5662510276788%
     .offset12
-      margin-left: 78.60082304526749%
-      *margin-left: 78.49444006654407%
+      margin-left: 54.21348314606741%
+      *margin-left: 54.09153192655521%
       &:first-child
-        margin-left: 76.5432098765432%
-        *margin-left: 76.43682689781978%
+        margin-left: 51.40449438202246%
+        *margin-left: 51.282543162510265%
     .offset11
-      margin-left: 72.22222222222221%
-      *margin-left: 72.1158392434988%
+      margin-left: 49.92977528089887%
+      *margin-left: 49.807824061386675%
       &:first-child
-        margin-left: 70.16460905349793%
-        *margin-left: 70.05822607477451%
+        margin-left: 47.120786516853926%
+        *margin-left: 46.99883529734173%
     .offset10
-      margin-left: 65.84362139917695%
-      *margin-left: 65.73723842045354%
+      margin-left: 45.646067415730336%
+      *margin-left: 45.52411619621814%
       &:first-child
-        margin-left: 63.78600823045267%
-        *margin-left: 63.67962525172927%
+        margin-left: 42.83707865168539%
+        *margin-left: 42.71512743217319%
     .offset9
-      margin-left: 59.465020576131685%
-      *margin-left: 59.35863759740828%
+      margin-left: 41.3623595505618%
+      *margin-left: 41.2404083310496%
       &:first-child
-        margin-left: 57.407407407407405%
-        *margin-left: 57.301024428684%
+        margin-left: 38.55337078651685%
+        *margin-left: 38.43141956700465%
     .offset8
-      margin-left: 53.08641975308642%
-      *margin-left: 52.980036774363015%
+      margin-left: 37.078651685393254%
+      *margin-left: 36.956700465881056%
       &:first-child
-        margin-left: 51.02880658436214%
-        *margin-left: 50.922423605638734%
+        margin-left: 34.269662921348306%
+        *margin-left: 34.14771170183611%
     .offset7
-      margin-left: 46.70781893004115%
-      *margin-left: 46.60143595131775%
+      margin-left: 32.79494382022472%
+      *margin-left: 32.67299260071252%
       &:first-child
-        margin-left: 44.65020576131687%
-        *margin-left: 44.543822782593466%
+        margin-left: 29.985955056179773%
+        *margin-left: 29.864003836667575%
     .offset6
-      margin-left: 40.32921810699588%
-      *margin-left: 40.22283512827248%
+      margin-left: 28.51123595505618%
+      *margin-left: 28.38928473554398%
       &:first-child
-        margin-left: 38.2716049382716%
-        *margin-left: 38.1652219595482%
+        margin-left: 25.702247191011235%
+        *margin-left: 25.580295971499037%
     .offset5
-      margin-left: 33.95061728395061%
-      *margin-left: 33.84423430522721%
+      margin-left: 24.227528089887638%
+      *margin-left: 24.10557687037544%
       &:first-child
-        margin-left: 31.893004115226336%
-        *margin-left: 31.786621136502934%
+        margin-left: 21.418539325842694%
+        *margin-left: 21.296588106330496%
     .offset4
-      margin-left: 27.572016460905346%
-      *margin-left: 27.465633482181943%
+      margin-left: 19.9438202247191%
+      *margin-left: 19.821869005206903%
       &:first-child
-        margin-left: 25.51440329218107%
-        *margin-left: 25.408020313457666%
+        margin-left: 17.134831460674157%
+        *margin-left: 17.01288024116196%
     .offset3
-      margin-left: 21.193415637860085%
-      *margin-left: 21.087032659136682%
+      margin-left: 15.66011235955056%
+      *margin-left: 15.538161140038367%
       &:first-child
-        margin-left: 19.135802469135804%
-        *margin-left: 19.0294194904124%
+        margin-left: 12.851123595505618%
+        *margin-left: 12.729172375993423%
     .offset2
-      margin-left: 14.814814814814815%
-      *margin-left: 14.708431836091412%
+      margin-left: 11.376404494382022%
+      *margin-left: 11.254453274869826%
       &:first-child
-        margin-left: 12.757201646090536%
-        *margin-left: 12.650818667367133%
+        margin-left: 8.567415730337078%
+        *margin-left: 8.445464510824884%
     .offset1
-      margin-left: 8.436213991769547%
-      *margin-left: 8.329831013046142%
+      margin-left: 7.092696629213482%
+      *margin-left: 6.970745409701288%
       &:first-child
-        margin-left: 6.378600823045267%
-        *margin-left: 6.272217844321863%
+        margin-left: 4.283707865168539%
+        *margin-left: 4.161756645656344%
   input, textarea, .uneditable-input
     margin-left: 0
-  .controls-row [class*="span"]
+  .controls-row [class*="span"] + [class*="span"]
     margin-left: 20px
+  input.span24, textarea.span24, .uneditable-input.span24
+    width: 698px
+  input.span23, textarea.span23, .uneditable-input.span23
+    width: 667.5px
+  input.span22, textarea.span22, .uneditable-input.span22
+    width: 637px
+  input.span21, textarea.span21, .uneditable-input.span21
+    width: 606.5px
+  input.span20, textarea.span20, .uneditable-input.span20
+    width: 576px
+  input.span19, textarea.span19, .uneditable-input.span19
+    width: 545.5px
+  input.span18, textarea.span18, .uneditable-input.span18
+    width: 515px
+  input.span17, textarea.span17, .uneditable-input.span17
+    width: 484.5px
   input.span16, textarea.span16, .uneditable-input.span16
-    width: 958px
+    width: 454px
   input.span15, textarea.span15, .uneditable-input.span15
-    width: 896px
+    width: 423.5px
   input.span14, textarea.span14, .uneditable-input.span14
-    width: 834px
+    width: 393px
   input.span13, textarea.span13, .uneditable-input.span13
-    width: 772px
+    width: 362.5px
   input.span12, textarea.span12, .uneditable-input.span12
-    width: 710px
+    width: 332px
   input.span11, textarea.span11, .uneditable-input.span11
-    width: 648px
+    width: 301.5px
   input.span10, textarea.span10, .uneditable-input.span10
-    width: 586px
+    width: 271px
   input.span9, textarea.span9, .uneditable-input.span9
-    width: 524px
+    width: 240.5px
   input.span8, textarea.span8, .uneditable-input.span8
-    width: 462px
+    width: 210px
   input.span7, textarea.span7, .uneditable-input.span7
-    width: 400px
+    width: 179.5px
   input.span6, textarea.span6, .uneditable-input.span6
-    width: 338px
+    width: 149px
   input.span5, textarea.span5, .uneditable-input.span5
-    width: 276px
+    width: 118.5px
   input.span4, textarea.span4, .uneditable-input.span4
-    width: 214px
+    width: 88px
   input.span3, textarea.span3, .uneditable-input.span3
-    width: 152px
+    width: 57.5px
   input.span2, textarea.span2, .uneditable-input.span2
-    width: 90px
+    width: 27px
   input.span1, textarea.span1, .uneditable-input.span1
-    width: 28px
+    width: -3.5px
+
+@media (min-width: 1200px)
+  .row
+    margin-left: -30px
+    *zoom: 1
+    &:before
+      display: table
+      content: ""
+      line-height: 0
+    &:after
+      display: table
+      content: ""
+      line-height: 0
+      clear: both
+  [class*="span"]
+    float: left
+    min-height: 1px
+    margin-left: 30px
+  .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .span24
+    width: 1110px
+  .span23
+    width: 1062.5px
+  .span22
+    width: 1015px
+  .span21
+    width: 967.5px
+  .span20
+    width: 920px
+  .span19
+    width: 872.5px
+  .span18
+    width: 825px
+  .span17
+    width: 777.5px
+  .span16
+    width: 730px
+  .span15
+    width: 682.5px
+  .span14
+    width: 635px
+  .span13
+    width: 587.5px
+  .span12
+    width: 540px
+  .span11
+    width: 492.5px
+  .span10
+    width: 445px
+  .span9
+    width: 397.5px
+  .span8
+    width: 350px
+  .span7
+    width: 302.5px
+  .span6
+    width: 255px
+  .span5
+    width: 207.5px
+  .span4
+    width: 160px
+  .span3
+    width: 112.5px
+  .span2
+    width: 65px
+  .span1
+    width: 17.5px
+  .offset24
+    margin-left: 1170px
+  .offset23
+    margin-left: 1122.5px
+  .offset22
+    margin-left: 1075px
+  .offset21
+    margin-left: 1027.5px
+  .offset20
+    margin-left: 980px
+  .offset19
+    margin-left: 932.5px
+  .offset18
+    margin-left: 885px
+  .offset17
+    margin-left: 837.5px
+  .offset16
+    margin-left: 790px
+  .offset15
+    margin-left: 742.5px
+  .offset14
+    margin-left: 695px
+  .offset13
+    margin-left: 647.5px
+  .offset12
+    margin-left: 600px
+  .offset11
+    margin-left: 552.5px
+  .offset10
+    margin-left: 505px
+  .offset9
+    margin-left: 457.5px
+  .offset8
+    margin-left: 410px
+  .offset7
+    margin-left: 362.5px
+  .offset6
+    margin-left: 315px
+  .offset5
+    margin-left: 267.5px
+  .offset4
+    margin-left: 220px
+  .offset3
+    margin-left: 172.5px
+  .offset2
+    margin-left: 125px
+  .offset1
+    margin-left: 77.5px
+  .row-fluid
+    width: 100%
+    *zoom: 1
+    &:before
+      display: table
+      content: ""
+      line-height: 0
+    &:after
+      display: table
+      content: ""
+      line-height: 0
+      clear: both
+    [class*="span"]
+      display: block
+      width: 100%
+      min-height: 30px
+      -webkit-box-sizing: border-box
+      -moz-box-sizing: border-box
+      box-sizing: border-box
+      float: left
+      margin-left: 2.7027027027027026%
+      *margin-left: 2.641727092946605%
+      &:first-child
+        margin-left: 0
+    .controls-row [class*="span"] + [class*="span"]
+      margin-left: 2.7027027027027026%
+    .span24
+      width: 100%
+      *width: 99.9390243902439%
+    .span23
+      width: 95.72072072072072%
+      *width: 95.65974511096462%
+    .span22
+      width: 91.44144144144144%
+      *width: 91.38046583168534%
+    .span21
+      width: 87.16216216216216%
+      *width: 87.10118655240606%
+    .span20
+      width: 82.88288288288288%
+      *width: 82.82190727312678%
+    .span19
+      width: 78.6036036036036%
+      *width: 78.5426279938475%
+    .span18
+      width: 74.32432432432432%
+      *width: 74.26334871456822%
+    .span17
+      width: 70.04504504504504%
+      *width: 69.98406943528894%
+    .span16
+      width: 65.76576576576576%
+      *width: 65.70479015600966%
+    .span15
+      width: 61.486486486486484%
+      *width: 61.425510876730385%
+    .span14
+      width: 57.207207207207205%
+      *width: 57.146231597451106%
+    .span13
+      width: 52.927927927927925%
+      *width: 52.866952318171826%
+    .span12
+      width: 48.648648648648646%
+      *width: 48.58767303889255%
+    .span11
+      width: 44.369369369369366%
+      *width: 44.30839375961327%
+    .span10
+      width: 40.09009009009009%
+      *width: 40.02911448033399%
+    .span9
+      width: 35.81081081081081%
+      *width: 35.74983520105471%
+    .span8
+      width: 31.53153153153153%
+      *width: 31.470555921775432%
+    .span7
+      width: 27.252252252252255%
+      *width: 27.191276642496156%
+    .span6
+      width: 22.972972972972972%
+      *width: 22.911997363216873%
+    .span5
+      width: 18.693693693693692%
+      *width: 18.632718083937593%
+    .span4
+      width: 14.414414414414415%
+      *width: 14.353438804658317%
+    .span3
+      width: 10.135135135135135%
+      *width: 10.074159525379038%
+    .span2
+      width: 5.8558558558558556%
+      *width: 5.794880246099758%
+    .span1
+      width: 1.5765765765765765%
+      *width: 1.5156009668204788%
+    .offset24
+      margin-left: 105.4054054054054%
+      *margin-left: 105.2834541858932%
+      &:first-child
+        margin-left: 102.70270270270271%
+        *margin-left: 102.58075148319051%
+    .offset23
+      margin-left: 101.12612612612612%
+      *margin-left: 101.00417490661393%
+      &:first-child
+        margin-left: 98.42342342342343%
+        *margin-left: 98.30147220391123%
+    .offset22
+      margin-left: 96.84684684684684%
+      *margin-left: 96.72489562733465%
+      &:first-child
+        margin-left: 94.14414414414415%
+        *margin-left: 94.02219292463195%
+    .offset21
+      margin-left: 92.56756756756756%
+      *margin-left: 92.44561634805537%
+      &:first-child
+        margin-left: 89.86486486486487%
+        *margin-left: 89.74291364535267%
+    .offset20
+      margin-left: 88.28828828828829%
+      *margin-left: 88.16633706877609%
+      &:first-child
+        margin-left: 85.58558558558559%
+        *margin-left: 85.46363436607339%
+    .offset19
+      margin-left: 84.009009009009%
+      *margin-left: 83.88705778949681%
+      &:first-child
+        margin-left: 81.30630630630631%
+        *margin-left: 81.18435508679411%
+    .offset18
+      margin-left: 79.72972972972973%
+      *margin-left: 79.60777851021753%
+      &:first-child
+        margin-left: 77.02702702702703%
+        *margin-left: 76.90507580751483%
+    .offset17
+      margin-left: 75.45045045045045%
+      *margin-left: 75.32849923093825%
+      &:first-child
+        margin-left: 72.74774774774775%
+        *margin-left: 72.62579652823555%
+    .offset16
+      margin-left: 71.17117117117117%
+      *margin-left: 71.04921995165897%
+      &:first-child
+        margin-left: 68.46846846846847%
+        *margin-left: 68.34651724895627%
+    .offset15
+      margin-left: 66.89189189189189%
+      *margin-left: 66.76994067237969%
+      &:first-child
+        margin-left: 64.1891891891892%
+        *margin-left: 64.067237969677%
+    .offset14
+      margin-left: 62.61261261261261%
+      *margin-left: 62.49066139310041%
+      &:first-child
+        margin-left: 59.909909909909906%
+        *margin-left: 59.78795869039771%
+    .offset13
+      margin-left: 58.33333333333333%
+      *margin-left: 58.21138211382113%
+      &:first-child
+        margin-left: 55.63063063063063%
+        *margin-left: 55.50867941111843%
+    .offset12
+      margin-left: 54.05405405405405%
+      *margin-left: 53.93210283454185%
+      &:first-child
+        margin-left: 51.35135135135135%
+        *margin-left: 51.22940013183915%
+    .offset11
+      margin-left: 49.77477477477477%
+      *margin-left: 49.65282355526257%
+      &:first-child
+        margin-left: 47.07207207207207%
+        *margin-left: 46.95012085255987%
+    .offset10
+      margin-left: 45.49549549549549%
+      *margin-left: 45.37354427598329%
+      &:first-child
+        margin-left: 42.79279279279279%
+        *margin-left: 42.67084157328059%
+    .offset9
+      margin-left: 41.21621621621621%
+      *margin-left: 41.09426499670401%
+      &:first-child
+        margin-left: 38.51351351351351%
+        *margin-left: 38.39156229400131%
+    .offset8
+      margin-left: 36.93693693693694%
+      *margin-left: 36.81498571742474%
+      &:first-child
+        margin-left: 34.234234234234236%
+        *margin-left: 34.11228301472204%
+    .offset7
+      margin-left: 32.65765765765766%
+      *margin-left: 32.53570643814546%
+      &:first-child
+        margin-left: 29.954954954954957%
+        *margin-left: 29.83300373544276%
+    .offset6
+      margin-left: 28.37837837837838%
+      *margin-left: 28.25642715886618%
+      &:first-child
+        margin-left: 25.675675675675674%
+        *margin-left: 25.553724456163476%
+    .offset5
+      margin-left: 24.0990990990991%
+      *margin-left: 23.9771478795869%
+      &:first-child
+        margin-left: 21.396396396396394%
+        *margin-left: 21.274445176884196%
+    .offset4
+      margin-left: 19.81981981981982%
+      *margin-left: 19.697868600307622%
+      &:first-child
+        margin-left: 17.117117117117118%
+        *margin-left: 16.99516589760492%
+    .offset3
+      margin-left: 15.54054054054054%
+      *margin-left: 15.418589321028346%
+      &:first-child
+        margin-left: 12.837837837837839%
+        *margin-left: 12.715886618325642%
+    .offset2
+      margin-left: 11.26126126126126%
+      *margin-left: 11.139310041749066%
+      &:first-child
+        margin-left: 8.558558558558559%
+        *margin-left: 8.436607339046363%
+    .offset1
+      margin-left: 6.981981981981981%
+      *margin-left: 6.860030762469787%
+      &:first-child
+        margin-left: 4.2792792792792795%
+        *margin-left: 4.157328059767084%
+  input, textarea, .uneditable-input
+    margin-left: 0
+  .controls-row [class*="span"] + [class*="span"]
+    margin-left: 30px
+  input.span24, textarea.span24, .uneditable-input.span24
+    width: 1096px
+  input.span23, textarea.span23, .uneditable-input.span23
+    width: 1048.5px
+  input.span22, textarea.span22, .uneditable-input.span22
+    width: 1001px
+  input.span21, textarea.span21, .uneditable-input.span21
+    width: 953.5px
+  input.span20, textarea.span20, .uneditable-input.span20
+    width: 906px
+  input.span19, textarea.span19, .uneditable-input.span19
+    width: 858.5px
+  input.span18, textarea.span18, .uneditable-input.span18
+    width: 811px
+  input.span17, textarea.span17, .uneditable-input.span17
+    width: 763.5px
+  input.span16, textarea.span16, .uneditable-input.span16
+    width: 716px
+  input.span15, textarea.span15, .uneditable-input.span15
+    width: 668.5px
+  input.span14, textarea.span14, .uneditable-input.span14
+    width: 621px
+  input.span13, textarea.span13, .uneditable-input.span13
+    width: 573.5px
+  input.span12, textarea.span12, .uneditable-input.span12
+    width: 526px
+  input.span11, textarea.span11, .uneditable-input.span11
+    width: 478.5px
+  input.span10, textarea.span10, .uneditable-input.span10
+    width: 431px
+  input.span9, textarea.span9, .uneditable-input.span9
+    width: 383.5px
+  input.span8, textarea.span8, .uneditable-input.span8
+    width: 336px
+  input.span7, textarea.span7, .uneditable-input.span7
+    width: 288.5px
+  input.span6, textarea.span6, .uneditable-input.span6
+    width: 241px
+  input.span5, textarea.span5, .uneditable-input.span5
+    width: 193.5px
+  input.span4, textarea.span4, .uneditable-input.span4
+    width: 146px
+  input.span3, textarea.span3, .uneditable-input.span3
+    width: 98.5px
+  input.span2, textarea.span2, .uneditable-input.span2
+    width: 51px
+  input.span1, textarea.span1, .uneditable-input.span1
+    width: 3.5px
+  .thumbnails
+    margin-left: -30px
+    > li
+      margin-left: 30px
+  .row-fluid .thumbnails
+    margin-left: 0
 
 @media (max-width: 979px)
   body
@@ -4785,7 +5699,7 @@ button.close
       .nav-header
         color: #777777
         text-shadow: none
-      > a
+      > li > a
         padding: 9px 15px
         font-weight: bold
         color: #777777
@@ -4805,12 +5719,14 @@ button.close
       -webkit-border-radius: 4px
       -moz-border-radius: 4px
       border-radius: 4px
-    .dropdown-menu a
+    .dropdown-menu li + li a
       margin-bottom: 2px
-    .nav a:hover, .dropdown-menu a:hover
+    .nav > li > a:hover, .dropdown-menu a:hover
       background-color: #f2f2f2
   .navbar-inverse .nav-collapse
-    .nav a:hover, .dropdown-menu a:hover
+    .nav > li > a, .dropdown-menu a
+      color: #999999
+    .nav > li > a:hover, .dropdown-menu a:hover
       background-color: #111111
   .nav-collapse
     &.in .btn-group
@@ -4821,7 +5737,7 @@ button.close
       top: auto
       left: auto
       float: none
-      display: block
+      display: none
       max-width: none
       margin: 0 15px
       padding: 0
@@ -4833,9 +5749,12 @@ button.close
       -webkit-box-shadow: none
       -moz-box-shadow: none
       box-shadow: none
+    .open > .dropdown-menu
+      display: block
+    .dropdown-menu
       &:before, &:after, .divider
         display: none
-    .nav .dropdown-menu
+    .nav > li > .dropdown-menu
       &:before, &:after
         display: none
     .navbar-form, .navbar-search
@@ -4851,7 +5770,7 @@ button.close
     .navbar-form, .navbar-search
       border-top-color: #111111
       border-bottom-color: #111111
-  .navbar .nav.pull-right
+  .navbar .nav-collapse .nav.pull-right
     float: none
     margin-left: 0
   .nav-collapse
