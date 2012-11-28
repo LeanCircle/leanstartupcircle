@@ -39,9 +39,10 @@ Leanstartupcircle::Application.routes.draw do
   match "/thanks_for_your_message" => "contact_messages#thanks", :as => :contact_thanks
 
   namespace :admin do
-    match "/" => "Base#dashboard", :as => :admin_dashboard
+    match "/" => "base#dashboard", :as => :admin_dashboard
     resources :meetups
     resources :users
+    resources :authentications, :only => [:index, :destroy]
   end
 
   root :to => "landing_pages#home"
