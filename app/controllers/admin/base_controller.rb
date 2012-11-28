@@ -11,7 +11,7 @@ class Admin::BaseController < ApplicationController
   end
 
   def verify_admin
-    raise CanCan::AccessDenied unless current_user.try(:role) == "admin"
+    #raise CanCan::AccessDenied unless current_user.try(:role) == "admin"
   end
 
 end

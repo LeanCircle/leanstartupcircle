@@ -21,4 +21,5 @@
         %td= user.zipcode
         %td= link_to 'Show', admin_user_path(user)
         %td= link_to 'Edit', edit_admin_user_path(user)
+        %td= link_to 'Imitate', admin_user_imitate_path(user), :confirm => 'Are you sure?'
         %td= link_to 'Destroy', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete

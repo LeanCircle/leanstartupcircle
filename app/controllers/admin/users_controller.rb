@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   def index
     @users = User.all
@@ -42,6 +42,13 @@ class Admin::UsersController < Admin::BaseController
     @user.destroy
     flash[:alert] = 'The user was destroyed! Yeargh!!! Don\'t you feel mighty?'
     redirect_to :action => 'index'
+  end
+
+  def imitate
+    flash[:alert] = "Imitate not working!!"
+    #session[:user_id] = User.find(params[:user_id])
+    #flash[:alert] = "You're now logged in as " + current_user.name + "! BE CAREFUL!"
+    redirect_to root_path
   end
 
 end

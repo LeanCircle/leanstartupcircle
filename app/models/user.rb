@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  # default devise modules are:
 
   has_many :authentications
 
@@ -17,22 +16,23 @@ class User < ActiveRecord::Base
          :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :uid,
-                  :provider,
-                  :first_name,
-                  :last_name,
-                  :public_profile_url,
-                  :email,
-                  :zipcode,
-                  :user_type,
-                  :company_name,
-                  :phone,
-                  :password,
-                  :password_confirmation
-
+  #attr_accessible :uid,
+  #                :provider,
+  #                :first_name,
+  #                :last_name,
+  #                :email,
+  #                :zipcode,
+  #                :company_name,
+  #                :phone,
+  #                :password,
+  #                :password_confirmation
 
   def name
-    #self.first_name + " " + self.last_name
+    if self.first_name && self.last_name
+      self.first_name + " " + self.last_name
+    else
+      self.id
+    end
   end
 
   # Omniauth + Devise methods
