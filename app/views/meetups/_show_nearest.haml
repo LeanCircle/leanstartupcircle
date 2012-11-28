@@ -1,10 +1,11 @@
 - location = request.location
 - meetup = Meetup.near(location, 50).first
 
-Nearest meetup?
-- if meetup.blank?
-  None,
-  = link_to "start a new meetup!", "http://leanstartup.pbworks.com/w/page/55605569/Organizer's%20Guide"
-- else
-  = link_to meetup.link do
-    #{ meetup.name } - #{ meetup.city}, #{ meetup.state + ", " if !meetup.state.blank? } #{ meetup.country }
+.nearest_meetup
+  Nearest meetup?
+  - if meetup.blank?
+    None,
+    = link_to "start a new meetup!", "http://leanstartup.pbworks.com/w/page/55605569/Organizer's%20Guide"
+  - else
+    = link_to meetup.link do
+      #{ meetup.name } - #{ meetup.city}, #{ meetup.state + ", " if !meetup.state.blank? } #{ meetup.country }

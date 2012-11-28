@@ -12,6 +12,7 @@
             = link_to "Sign out", :sign_out, :method => :delete
           - else
             = link_to "Sign in", :sign_in
+          = render 'meetups/show_nearest'
     .row
       .span24
         = render '/layouts/nav'
