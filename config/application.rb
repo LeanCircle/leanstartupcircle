@@ -58,5 +58,8 @@ module Leanstartupcircle
 
     # Using devise on Heroku with Ruby on Rails 3.1 requires:
     config.assets.initialize_on_precompile = false
+
+    # Set default url for mailer.
+    config.action_mailer.default_url_options = { :host => 'leanstartupcircle.com' }
   end
 end
