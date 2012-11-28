@@ -1,17 +1,11 @@
 Leanstartupcircle::Application.routes.draw do
 
-  resources :authentications
-
-  # Sitemaps
-  match 'sitemap.xml' => 'sitemaps#sitemap'
-
   # Devise routes
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   devise_scope :user do
     get "sign_in", :to => "devise/sessions#new", :as => :sign_in
     delete "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
   end
-
 
   # Jobs routes
   constraints :subdomain => "jobs" do
@@ -42,6 +36,10 @@ Leanstartupcircle::Application.routes.draw do
   match "/contact" => "contact_messages#new", :as => :contact
   match "/thanks_for_your_message" => "contact_messages#thanks", :as => :contact_thanks
 
+  # Sitemaps
+  match 'sitemap.xml' => 'sitemaps#sitemap'
+
+  # Admin
   namespace :admin do
     match "/" => "base#dashboard", :as => :admin_dashboard
     resources :meetups
