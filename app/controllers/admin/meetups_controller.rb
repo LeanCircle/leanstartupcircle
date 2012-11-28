@@ -1,4 +1,5 @@
 class Admin::MeetupsController < Admin::BaseController
+  load_and_authorize_resource
 
   def index
     @meetups = Meetup.all
