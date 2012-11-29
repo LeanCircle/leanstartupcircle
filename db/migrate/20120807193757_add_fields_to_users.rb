@@ -4,7 +4,7 @@ class AddFieldsToUsers < ActiveRecord::Migration
     add_column :users, :zipcode, :string
     add_column :users, :phone, :string
 
-    add_column :users, :role, :string # For RBAC
+    add_column :users, :role, :string, :default => "member" # For RBAC
 
     add_column :users, :slug, :string # For friendly_id
     add_index :users, :slug, unique: true
