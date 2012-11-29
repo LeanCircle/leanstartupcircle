@@ -73,10 +73,8 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
     t.datetime "locked_at"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "name"
     t.string   "zipcode"
-    t.string   "company_name"
     t.string   "phone"
     t.string   "role"
     t.string   "slug"

@@ -18,8 +18,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   #attr_accessible :uid,
   #                :provider,
-  #                :first_name,
-  #                :last_name,
   #                :email,
   #                :zipcode,
   #                :company_name,
@@ -27,12 +25,20 @@ class User < ActiveRecord::Base
   #                :password,
   #                :password_confirmation
 
-  def name
-    if self.first_name && self.last_name
-      self.first_name + " " + self.last_name
-    else
-      self.id
-    end
+  def first_name
+    full_name.sub(/ .*/, '') rescue ''
+  end
+
+  def identifier
+    full_name.blank? ? email : full_name
+  end
+
+  def email_header
+    "\"#{name}\" <#{email}>"
+  end
+
+  def admin?
+    role == 'admin' ? true : false
   end
 
   # Omniauth + Devise methods
