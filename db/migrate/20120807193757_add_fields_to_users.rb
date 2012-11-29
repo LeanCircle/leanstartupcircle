@@ -6,9 +6,9 @@ class AddFieldsToUsers < ActiveRecord::Migration
 
     # For geolocation
     add_column :users, :zipcode, :string
-    t.float :latitude
-    t.float :longitude
-    t.boolean :gmaps
+    add_column :users, :latitude, :float
+    add_column :users, :longitude, :float
+    add_column :users, :gmaps, :boolean
 
     # For RBAC
     add_column :users, :role, :string, :default => "member"

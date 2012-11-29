@@ -17,15 +17,19 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
+    t.string   "token"
+    t.string   "secret"
+    t.string   "image"
+    t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "meetups", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
     t.integer  "meetup_id"
     t.integer  "organizer_id"
+    t.string   "name"
+    t.text     "description"
     t.string   "facebook_link"
     t.string   "twitter_link"
     t.string   "linkedin_link"
@@ -54,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
   create_table "users", :force => true do |t|
     t.string   "uid"
     t.string   "provider"
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",       :null => false
+    t.string   "encrypted_password",     :default => "",       :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -71,12 +75,15 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
     t.integer  "failed_attempts",        :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.string   "name"
-    t.string   "zipcode"
     t.string   "phone"
-    t.string   "role"
+    t.string   "zipcode"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
+    t.string   "role",                   :default => "member"
     t.string   "slug"
   end
 
