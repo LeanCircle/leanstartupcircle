@@ -23,7 +23,7 @@
           %li= link_to 'Team', team_url(:subdomain => false)
           %li= link_to 'Blog', 'http://blog.leanstartupcircle.com'
           %li= link_to 'Contact', contact_url(:subdomain => false)
-      - if current_user.admin?
+      - if can? :manage, :all
         %li.divider-vertical
         %li.dropdown
           = link_to 'Admin', admin_admin_dashboard_url(:subdomain => false)
