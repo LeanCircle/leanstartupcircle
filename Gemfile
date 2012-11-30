@@ -12,7 +12,7 @@ gem 'redis'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-linkedin'
-gem 'omniauth-meetup'
+gem 'omniauth-meetup', :git => 'git://github.com/TriKro/omniauth-meetup.git'
 gem 'cancan'
 
 gem 'recaptcha', :require => 'recaptcha/rails'

@@ -9,14 +9,13 @@ class Authentication < ActiveRecord::Base
 
   # Creates an authentication given a user and an omniauth hash.
   def self.create_with_omniauth!(hash, user)
-
     auth = Authentication.create(:user_id => user.id,
                                  :uid => hash.uid,
                                  :provider => hash.provider,
                                  :token => hash.credentials.token,
                                  :secret => hash.credentials.secret,
                                  :image => hash.info.try(:image),
-                                 :url => hash.info.try(:urls))
+                                 :url => hash.info.try(:urls).try(:public_profile))
     auth
   end
 
