@@ -31,11 +31,11 @@ class User < ActiveRecord::Base
   #                :password_confirmation
 
   def first_name
-    full_name.sub(/ .*/, '') rescue ''
+    name.sub(/ .*/, '') rescue ''
   end
 
   def identifier
-    full_name.blank? ? email : full_name
+    name.blank? ? email : full_name
   end
 
   def email_header
