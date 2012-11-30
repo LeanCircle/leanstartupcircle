@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/TriKro/omniauth-meetup.git
-  revision: 7409d93457ac29aa6ad6b6b8402b81f03cc5aa4e
+  revision: dfe7cdfd8783a7e25877c2c6118e30c2b59ea90c
   specs:
-    omniauth-meetup (0.0.5)
+    omniauth-meetup (0.0.6)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
 
