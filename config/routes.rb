@@ -18,6 +18,13 @@ Leanstartupcircle::Application.routes.draw do
   # Main domain routes
   constraints :subdomain => false do
 
+    # Devise routes
+    devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+    devise_scope :user do
+      get "sign_in", :to => "devise/sessions#new", :as => :sign_in
+      delete "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
+    end
+
     # User routes
     resources :users, :only => [:show]
 
@@ -37,13 +44,6 @@ Leanstartupcircle::Application.routes.draw do
 
     # Sitemaps
     match 'sitemap.xml' => 'sitemaps#sitemap'
-
-    # Devise routes
-    devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-    devise_scope :user do
-      get "sign_in", :to => "devise/sessions#new", :as => :sign_in
-      delete "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
-    end
 
     # Admin
     namespace :admin do
