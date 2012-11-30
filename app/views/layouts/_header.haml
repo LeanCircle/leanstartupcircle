@@ -8,9 +8,9 @@
         .pull-right
           - if user_signed_in?
             = current_user.identifier
-            = link_to "Sign out", :sign_out, :method => :delete
+            = link_to "Sign out", sign_out_url(:subdomain => false), :method => :delete
           - else
-            = link_to "Sign in", :sign_in
+            = link_to "Sign in", sign_in_url(:subdomain => false)
           = render 'meetups/show_nearest'
     .row
       .span24
