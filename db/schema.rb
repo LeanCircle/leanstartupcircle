@@ -56,8 +56,6 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
   add_index "meetups", ["slug"], :name => "index_meetups_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "uid"
-    t.string   "provider"
     t.string   "email",                  :default => "",       :null => false
     t.string   "encrypted_password",     :default => "",       :null => false
     t.string   "reset_password_token"

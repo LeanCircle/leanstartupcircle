@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def identifier
-    name.blank? ? email : full_name
+    name.blank? ? email : name
   end
 
   def email_header
@@ -48,47 +48,22 @@ class User < ActiveRecord::Base
 
   # Omniauth + Devise methods
 
-  # TODO: Move this stuff to authentications use jokeoff code:
-  ## Authentication methods
-  #
-  #  # Given an omniauth hash, returns the user if there is one or creates one.
-  #  def self.authenticate_or_create_with_omniauth!(hash)
-  #    user = Authentication.find_by_provider_and_uid(hash['provider'], hash['uid']).try(:user)
-  #    return user if user
-  #    user = User.create_with_omniauth!(hash)
-  #    EmailAddress.create_with_omniauth!(hash, user)
-  #    Authentication.create_with_omniauth!(hash, user)
-  #    user
-  #  end
-  #
-  #  # Given an omniauth hash, creates a user and returns it.
-  #  def self.create_with_omniauth!(hash)
-  #    info = hash['user_info']
-  #    users_name = info['name']
-  #    image = info['image'] unless info['image'].blank?
-  #    user = new( :full_name => users_name, :image => image )
-  #    user.save(:validate => false )
-  #    user
-  #  end
-  #
-  #  # Authenticates a user given an email and password.
-  #  def self.authenticate_with_password(email, password)
-  #    if @user = EmailAddress.find_by_address(email).try(:user)
-  #      if authentication = @user.authentications.find_by_provider('password')
-  #        return @user if authentication.secret == BCrypt::Engine.hash_secret(password, authentication.token)
-  #      end
-  #    end
-  #  end
+  # Given an omniauth hash, returns the user if there is one or creates one.
+  def self.authenticate_or_create_with_omniauth!(hash)
+    user = Authentication.find_by_provider_and_uid(hash['provider'], hash['uid']).try(:user)
+    return user if user
+    user = User.create_with_omniauth!(hash)
+    Authentication.create_with_omniauth!(hash, user)
+    user
+  end
 
-
-  def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email if auth.info.email
-      user.encrypted_password = Devise.friendly_token[0,20]
-      #user.name = auth.info.nickname
-    end
+  # Given an omniauth hash, creates a user and returns it.
+  def self.create_with_omniauth!(hash)
+    info = hash.info
+    user = new( :name => info.try(:name),
+                :phone => info.try(:phone))
+    user.save(:validate => false )
+    user
   end
 
   def self.new_with_session(params, session)
