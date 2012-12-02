@@ -3,12 +3,12 @@
     .span12
       %h1
         Posting Guidelines
-      %p{ :style => "font-size: 1.3em;" }
-        %span{ :style => "color: red;" }
+      %p.lead
+        %span.text-error
           *
         This guide is meant to be
         = succeed '.' do
-          %span{ :style => "color: red;" }continually improved
+          %span.text-error continually improved
         Please provide feedback
         = link_to "here.", contact_path
 
@@ -18,120 +18,124 @@
         We love to learn from real life examples.
       %p
         Before you post, please ask yourself:
-      %p{ :style => "font-size: 1.3em; margin-left: 60px;"}
-        %i "What will the reader learn?"
+      %blockquote
+        %p
+          %i "What will the reader learn?"
       %p
         If there is nothing to learn, please do
-        %span{ :style => 'text-decoration: underline' } not
+        %u not
         post.
 
-      %h2
-        The Rules
-      %p
-        Job postings are an
-        %span{ :style => "color: red;" }
-          immediate ban,
-        others violations are at the discretion of the moderator.
-
-      %table
-        %tr
-          %th{ :style => 'color: #008000' }
-            Good
-          %th{ :style => 'color: red' }
-            Bad
-          %th
-            Rule
-        %tr
-          %td{ :style => 'background: #C8F0C8'}
-            Will this MVP
-            %b help me validate
-            my
-            %b hypothesis?
-          %td{ :style => 'background: #FFD5D5'}
-            %b Sign up
-            for my MVP.
-          %td{ :rowspan => "3", :style => 'font-style: italic;' }
-            No solicitations.
-            %br
-            Do not promote your blog, product, or survey.
-        %tr
-          %td{ :style => 'background: #C8F0C8'}
-            Will this survey
-            %b help me learn
-            about my customers?
-          %td{ :style => 'background: #FFD5D5'}
-            Take
-            %b my
-            survey.
-        %tr
-          %td{ :style => 'background: #C8F0C8'}
-            I read this lean startup book / blog and was confused.
-            %br
-            Can someone
-            %b explain?
-          %td{ :style => 'background: #FFD5D5'}
-            Read
-            %b my
-            blog.
-        %tr
-          %td{ :style => 'background: #C8F0C8'}
-            I have a question about
-            %b lean startups...
-          %td{ :style => 'background: #FFD5D5'}
-            I have a legal question about
-            %b random stuff...
-          %td{ :style => 'font-style: italic;' }
-            Do not ask general questions unrelated to lean startups.
-
-        %tr
-          %td{ :style => 'background: #C8F0C8'}
-            I agree
-            %b because...
-          %td{ :style => 'background: #FFD5D5'}
-            +1!
-          %td{ :style => 'font-style: italic;' }
-            Do not post one line messages with no content.
-        %tr
-          %td{ :style => 'background: #C8F0C8'}
-            I respectfully disagree
-            %b because...
-          %td{ :style => 'background: #FFD5D5'}
-            You suck.
-          %td{ :style => 'font-style: italic;' }
-            Do not take offense at honest feedback.
-            Do not insult other members directly
-            %i or indirectly,
-            even if you feel justified.
-            %div{ :style => 'margin-top:10px;'}
-            If you have a problem, be a better person and resolve your issues
-            %b offline.
-        %tr
-          %td{ :style => 'background: #C8F0C8'}
-            There is a
-            %b lean startup event
-            going on that will be
-            %b available for viewing online...
-          %td{ :style => 'background: #FFD5D5'}
-            %b
-              Reminder,
-            Come to
-            %b
+      %table.table.table-bordered
+        %caption
+          %h2
+            The Rules
+          %p.lead
+            Job postings are an
+            %span.text-error
+              immediate ban,
+            others violations are at the discretion of the moderator.
+        %thead
+          %tr
+            %th.text-success
+              Good
+            %th.text-error
+              Bad
+            %th
+              Rule
+        %tbody
+          %tr
+            %td{ :style => 'background: #C8F0C8'}
+              Will this MVP
+              %b help me validate
               my
-            event.
-          %td{ :style => 'font-style: italic;' }
-            Do not post events unless they are directly related to Lean Startups and are available for viewing online. Only post once.
-        %tr
-          %td
-          %td{ :style => 'background: #FFD5D5'}
-            I am
-            %b
-              looking for
-            a co-founder or consultant.
-          %td{ :style => 'font-style: italic;' }
-            Do not post jobs. This will result in an
-            %span{ :style => "color: red;" }immediate ban.
-            Post jobs on the
-            = link_to 'Lean Startup Jobs Group', 'https://groups.google.com/group/lean-startup-jobs'
+              %b hypothesis?
+            %td{ :style => 'background: #FFD5D5'}
+              %b Sign up
+              for my MVP.
+            %td{ :rowspan => "3" }
+              %i
+                No solicitations.
+                %br
+                Do not promote your blog, product, or survey.
+          %tr
+            %td{ :style => 'background: #C8F0C8'}
+              Will this survey
+              %b help me learn
+              about my customers?
+            %td{ :style => 'background: #FFD5D5'}
+              Take
+              %b my
+              survey.
+          %tr
+            %td{ :style => 'background: #C8F0C8'}
+              I read this lean startup book / blog and was confused.
+              %br
+              Can someone
+              %b explain?
+            %td{ :style => 'background: #FFD5D5'}
+              Read
+              %b my
+              blog.
+          %tr
+            %td{ :style => 'background: #C8F0C8'}
+              I have a question about
+              %b lean startups...
+            %td{ :style => 'background: #FFD5D5'}
+              I have a legal question about
+              %b random stuff...
+            %td
+              %i Do not ask general questions unrelated to lean startups.
+
+          %tr
+            %td{ :style => 'background: #C8F0C8'}
+              I agree
+              %b because...
+            %td{ :style => 'background: #FFD5D5'}
+              +1!
+            %td
+              %i Do not post one line messages with no content.
+          %tr
+            %td{ :style => 'background: #C8F0C8'}
+              I respectfully disagree
+              %b because...
+            %td{ :style => 'background: #FFD5D5'}
+              You suck.
+            %td
+              %i
+                Do not take offense at honest feedback.
+                Do not insult other members directly or indirectly,
+                even if you feel justified.
+              %div{ :style => 'margin-top:10px;'}
+              If you have a problem, be a better person and resolve your issues
+              %b offline.
+          %tr
+            %td{ :style => 'background: #C8F0C8'}
+              There is a
+              %b lean startup event
+              going on that will be
+              %b available for viewing online...
+            %td{ :style => 'background: #FFD5D5'}
+              %b
+                Reminder,
+              Come to
+              %b
+                my
+              event.
+            %td
+              %i Do not post events unless they are directly related to Lean Startups and are available for viewing online. Only post once.
+          %tr
+            %td
+            %td{ :style => 'background: #FFD5D5'}
+              I am
+              %b
+                looking for
+              a co-founder or consultant.
+            %td{ :style => 'font-style: italic;' }
+              Do not post jobs. This will result in an
+              %span.text-error immediate ban.
+              Post jobs on the
+              = link_to 'Lean Startup Jobs Group', 'https://groups.google.com/group/lean-startup-jobs'
 
       %h2 Getting Feedback
       %p

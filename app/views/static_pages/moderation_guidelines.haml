@@ -3,12 +3,12 @@
     .span12
       %h1
         Moderation Guidelines
-      %p{ :style => "font-size: 1.3em;" }
-        %span{ :style => "color: red;" }
+      %p.lead
+        %span.text-error
           *
         This guide is meant to be
         = succeed '.' do
-          %span{ :style => "color: red;" }continually improved
+          %span.text-error continually improved
         Please provide feedback
         = link_to "here.", contact_path
 
@@ -32,23 +32,23 @@
 
       %ol
         %li Reply to message (privately if in the moderation queue.) The reply should:
-        %ul{ :style => 'margin-left: 40px' }
+        %ul
           %li thank the person for posting;
           %li state the rule;
           %li explain the rationale behind the rule;
           %li provide a link to the guidelines;
           %li (optional) include any tips to make the post acceptable for posting.
-        %p{ :style => 'margin-left: 0' }
-          At the moderator's discretion and if the thread bypassed the moderation queue, additional steps can be taken:
+      %p At the moderator's discretion and if the thread bypassed the moderation queue, additional steps can be taken:
+      %ol{ :start => 2 }
         %li Delete the message and other messages in the thread;
         %li Lock the thread to avoid additional responses;
         %li Ban the user if a repeat offender.
 
       %h2
         Banning
-      %p
+      %p.lead
         Users may be
-        %span{ :style => "color: red;" }
+        %span.text-error
           permanently banned
         at the discretion of the moderator.
       %p
