@@ -1,5 +1,7 @@
 class Meetup < ActiveRecord::Base
 
+  attr_accessor :meetup_identifier
+
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
   acts_as_gmappable :address => "address"
@@ -16,7 +18,9 @@ class Meetup < ActiveRecord::Base
     elsif !linkedin_link.blank?
       return linkein_link
     elsif !googleplus_link.blank?
-      return googleplug_link
+      return googleplus_link
+    elsif !other_link.blank?
+      return other_link
     end
   end
 
@@ -42,7 +46,7 @@ class Meetup < ActiveRecord::Base
     end
 
     unless result.blank?
-      meetup.name = result.name
+      meetup.name = result.name unless !meetup.name.blank?
       meetup.description = result.description
       meetup.meetup_id = result.id
       meetup.organizer_id = result.organizer["member_id"]

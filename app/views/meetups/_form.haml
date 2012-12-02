@@ -1,11 +1,11 @@
 = form_for(@meetup, :html => { :class => "form-horizontal" } ) do |f|
   %legend
-  .control-group{ :class => if !@meetup.errors[:meetup_id].blank? then "error" end }
+  .control-group{ :class => if !@meetup.errors[:meetup_identifier].blank? then "error" end }
     = f.label 'Meetup Group', :class => "control-label"
     .controls
-      = f.text_field :meetup_id, :placeholder => 'URL or Meetup Group ID', :class => "span3", :autofocus => true
-      - if !@meetup.errors[:meetup_id].blank?
-        .help-inline= @meetup.errors.full_message(:meetup_id, "is dubious")
+      = f.text_field :meetup_identifier, :placeholder => 'URL or Meetup Group ID', :class => "span3", :autofocus => true
+      - if !@meetup.errors[:meetup_identifier].blank?
+        .help-inline= @meetup.errors.full_message(:meetup_identifier, "is dubious")
       - else
         .help-inline We'll import the rest of these fields if you have a meetup.com group.
 
