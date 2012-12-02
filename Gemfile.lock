@@ -152,7 +152,6 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     recaptcha (0.3.4)
-    redis (3.0.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     sass (3.2.3)
@@ -210,7 +209,6 @@ DEPENDENCIES
   pg
   rails (= 3.2.2)
   recaptcha
-  redis
   rmeetup!
   sass-rails
   sqlite3

@@ -7,7 +7,7 @@ gem 'haml-rails'
 gem 'pg'
 
 gem 'json', '1.7.3'
-gem 'redis'
+#gem 'redis' # Use Redis for caching geocode info
 
 gem 'devise'
 gem 'omniauth'
