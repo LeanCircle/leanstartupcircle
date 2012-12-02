@@ -1,8 +1,8 @@
-#flash_messages
-  - unless flash.blank?
-    - flash.each do |name, msg|
-      %div{:class => name, :style => "display: none;"}
-        = msg
-        .close
-        .clear
-
+#flash_messages.row
+  .span12
+    - unless flash.blank?
+      - flash.each do |name, msg|
+        %div{:class => name, :style => "display: none;"}
+          = msg
+          .close
+          .clear

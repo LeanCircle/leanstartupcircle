@@ -15,12 +15,8 @@
       %content.container
         = render '/layouts/header'
         .container.main
-          .row
-            .span24
-              = render :partial => '/layouts/flash', :locals => { :flash => flash }
-          .row
-            .span22.offset2
-              = yield
+          = render :partial => '/layouts/flash', :locals => { :flash => flash }
+          = yield
       #push
     = render '/layouts/footer'
     = yield :scripts

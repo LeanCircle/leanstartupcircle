@@ -1,130 +1,133 @@
 #team
-  %h1
-    Who's Who?
+  .row
+    .span12
+      %h1
+        Who's Who?
 
-  %h2
-    Getting Things Done
+      %h2
+        Getting Things Done
 
-  .person
-    .profile_pic
-      = image_tag 'about/edith_harbaugh.jpg'
-    .name_bio
-      .name
-        Edith Harbaugh
-      .bio
-        Moderates the google discussion group.
-      .links
-        = link_to "http://www.linkedin.com/in/edithharbaugh", :target => "_blank" do
-          = image_tag "links/link_linkedin.png"
+      .person.row
+        .profile_pic.span2
+          = image_tag 'about/edith_harbaugh.jpg', :class => "img-rounded"
+        .name_bio.span10
+          .name
+            Edith Harbaugh
+          .bio
+            Moderates the discussion group.
+          .links
+            = link_to "http://www.linkedin.com/in/edithharbaugh", :target => "_blank" do
+              = image_tag "links/link_linkedin.png"
 
-  .person
-    .profile_pic
-      = image_tag 'about/tristan_kromer.jpg'
-    .name_bio
-      .name
-        Tristan Kromer
-      .bio
-        Boots on the ground. Blogs about
-        = link_to 'lean startups and customer development', 'http://grasshopperherder.com'
-      .links
-        = link_to "http://TristanKromer.com/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "This is my home page where I keep a list of my projects." do
-          = image_tag 'link_home_black.png', :alt => "Tristan Kromer's Homepage"
-        = link_to "http://TristanKromer.com/twitter/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I occasionally tweet." do
-          = image_tag "links/link_twitter.png", :alt => "http://twitter.com/tristankromer/"
-        = link_to "http://TristanKromer.com/linkedin/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I use my LinkedIn profile to track connections." do
-          = image_tag "links/link_linkedin.png", :alt => "http://LinkedIn.com/in/tristankrome/"
-        = link_to "http://TristanKromer.com/quora/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I ask and answer a lot of questions on Quora." do
-          = image_tag "links/link_quora.png", :alt => "http://www.quora.com/Tristan-Kromer"
-        = link_to "http://TristanKromer.com/angellist/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I share awesome companies on AngelList." do
-          = image_tag "links/link_angellist.png", :alt => "http://angel.co/trikro"
-        = link_to "http://TristanKromer.com/googleplus/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "Apparenlt some people use Google+" do
-          = image_tag "links/link_googleplus.png", :alt => "https://plus.google.com/115754677320235199417"
-        = link_to "http://TristanKromer.com/slideshare/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "When I create a good deck, I put it on Slideshare." do
-          = image_tag "links/link_slideshare.png", :alt => "http://www.slideshare.net/Deridian"
-        = link_to "skype:Tristan.Kromer", :target => "_blank", :title => "You can Skype me if Im on-line, but the phone is really better." do
-          = image_tag "links/link_skype.png", :alt => "Tristan.Kromer"
-        = link_to "http://TristanKromer.com/facebook/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I try and stay off Facebook, but some people insist." do
-          = image_tag "links/link_facebook.png", :alt => "http://www.facebook.com/kromer"
-        = link_to "http://TristanKromer.com/pinterest/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I pin random things on Pinterest." do
-          = image_tag "links/link_pinterest.png", :alt => "http://www.pinterest.com/TriKro"
-        = link_to "http://TristanKromer.com/chess/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I love chess." do
-          = image_tag "links/link_chess.png", :alt => "http://www.chess.com/members/view/TriKro"
-  .person
-    .profile_pic
-      = image_tag 'about/sean_murphy.png'
-    .name_bio
-      .name
-        Sean Murphy
-      .bio
-        Early Customer and Early Revenue for Technology Firms
-      .links
-        = link_to "http://www.skmurphy.com/", :target => "_blank" do
-          = image_tag "links/link_home_black.png"
-        = link_to "http://twitter.com/skmurphy", :target => "_blank" do
-          = image_tag "links/link_twitter.png"
-        = link_to "http://www.linkedin.com/in/skmurphy", :target => "_blank" do
-          = image_tag "links/link_linkedin.png"
+      .person.row
+        .profile_pic.span2
+          = image_tag 'about/tristan_kromer.jpg', :class => "img-rounded"
+        .name_bio.span10
+          .name
+            Tristan Kromer
+          .bio
+            Boots on the ground. Moderates the discussion group. Builds the website. Blogs about
+            = link_to 'lean startups and customer development', 'http://grasshopperherder.com'
+          .links
+            = link_to "http://TristanKromer.com/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "This is my home page where I keep a list of my projects." do
+              = image_tag 'links/link_home_black.png', :alt => "Tristan Kromer's Homepage"
+            = link_to "http://TristanKromer.com/twitter/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I occasionally tweet." do
+              = image_tag "links/link_twitter.png", :alt => "http://twitter.com/tristankromer/"
+            = link_to "http://TristanKromer.com/linkedin/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I use my LinkedIn profile to track connections." do
+              = image_tag "links/link_linkedin.png", :alt => "http://LinkedIn.com/in/tristankrome/"
+            = link_to "http://TristanKromer.com/quora/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I ask and answer a lot of questions on Quora." do
+              = image_tag "links/link_quora.png", :alt => "http://www.quora.com/Tristan-Kromer"
+            = link_to "http://TristanKromer.com/angellist/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I share awesome companies on AngelList." do
+              = image_tag "links/link_angellist.png", :alt => "http://angel.co/trikro"
+            = link_to "http://TristanKromer.com/googleplus/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "Apparenlt some people use Google+" do
+              = image_tag "links/link_googleplus.png", :alt => "https://plus.google.com/115754677320235199417"
+            = link_to "http://TristanKromer.com/slideshare/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "When I create a good deck, I put it on Slideshare." do
+              = image_tag "links/link_slideshare.png", :alt => "http://www.slideshare.net/Deridian"
+            = link_to "skype:Tristan.Kromer", :target => "_blank", :title => "You can Skype me if Im on-line, but the phone is really better." do
+              = image_tag "links/link_skype.png", :alt => "Tristan.Kromer"
+            = link_to "http://TristanKromer.com/facebook/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I try and stay off Facebook, but some people insist." do
+              = image_tag "links/link_facebook.png", :alt => "http://www.facebook.com/kromer"
+            = link_to "http://TristanKromer.com/pinterest/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I pin random things on Pinterest." do
+              = image_tag "links/link_pinterest.png", :alt => "http://www.pinterest.com/TriKro"
+            = link_to "http://TristanKromer.com/chess/?utm_source=LeanStartupCircle&utm_medium=web&utm_campaign=Team%2Bpage", :target => "_blank", :title => "I love chess." do
+              = image_tag "links/link_chess.png", :alt => "http://www.chess.com/members/view/TriKro"
+      .person.row
+        .profile_pic.span2
+          = image_tag 'about/sean_murphy.png', :class => "img-rounded"
+        .name_bio.span10
+          .name
+            Sean Murphy
+          .bio
+            Early Customer and Early Revenue for Technology Firms. Maintains the
+            = link_to 'wiki.', "http://wiki.leanstartupcircle.com", :target => '_blank'
+          .links
+            = link_to "http://www.skmurphy.com/", :target => "_blank" do
+              = image_tag "links/link_home_black.png"
+            = link_to "http://twitter.com/skmurphy", :target => "_blank" do
+              = image_tag "links/link_twitter.png"
+            = link_to "http://www.linkedin.com/in/skmurphy", :target => "_blank" do
+              = image_tag "links/link_linkedin.png"
 
-  %h2.clear
-    Advisory Board
+      %h2.clear
+        Advisory Board
 
-  .person
-    .profile_pic
-      = image_tag 'about/rich_collins.jpg'
-    .name_bio
-      .name
-        Rich Collins
-      .bio
-        Founded the Lean Startup Circle.
-      .links
-        = link_to "http://twitter.com/richcollins", :target => "_blank" do
-          = image_tag "links/link_twitter.png"
-        = link_to "http://www.linkedin.com/in/richwcollins", :target => "_blank" do
-          = image_tag "links/link_linkedin.png"
+      .person.row
+        .profile_pic.span2
+          = image_tag 'about/rich_collins.jpg', :class => "img-rounded"
+        .name_bio.span10
+          .name
+            Rich Collins
+          .bio
+            Founded the Lean Startup Circle.
+          .links
+            = link_to "http://twitter.com/richcollins", :target => "_blank" do
+              = image_tag "links/link_twitter.png"
+            = link_to "http://www.linkedin.com/in/richwcollins", :target => "_blank" do
+              = image_tag "links/link_linkedin.png"
 
-  .person
-    .profile_pic
-      = image_tag 'about/hiten_shah.jpg'
-    .name_bio
-      .name
-        Hiten Shah
-      .bio
-        Makes us ask the right questions.
-      .links
-        = link_to "http://twitter.com/hnshah", :target => "_blank" do
-          = image_tag "links/link_twitter.png"
+      .person.row
+        .profile_pic.span2
+          = image_tag 'about/hiten_shah.jpg', :class => "img-rounded"
+        .name_bio.span10
+          .name
+            Hiten Shah
+          .bio
+            Makes us ask the right questions.
+          .links
+            = link_to "http://twitter.com/hnshah", :target => "_blank" do
+              = image_tag "links/link_twitter.png"
 
-  %h2.clear
-    Volunteers
+      %h2.clear
+        Volunteers
 
-  .person
-    .profile_pic
-      = image_tag 'about/spike_morelli.jpg'
-    .name_bio
-      .name
-        Spike Morelli
-      .bio
-        Engineer and bootstrapper. Seeking to help people from good to great and freedom through product development.
-      .links
-        = link_to "https://www.spikelab.org/", :target => "_blank" do
-          = image_tag "links/link_home_black.png"
-        = link_to "http://twitter.com/spikelab", :target => "_blank" do
-          = image_tag "links/link_twitter.png"
-        = link_to "http://www.linkedin.com/in/spikemorelli", :target => "_blank" do
-          = image_tag "links/link_linkedin.png"
+      .person.row
+        .profile_pic.span2
+          = image_tag 'about/spike_morelli.jpg', :class => "img-rounded"
+        .name_bio.span10
+          .name
+            Spike Morelli
+          .bio
+            Engineer and bootstrapper. Seeking to help people from good to great and freedom through product development.
+          .links
+            = link_to "https://www.spikelab.org/", :target => "_blank" do
+              = image_tag "links/link_home_black.png"
+            = link_to "http://twitter.com/spikelab", :target => "_blank" do
+              = image_tag "links/link_twitter.png"
+            = link_to "http://www.linkedin.com/in/spikemorelli", :target => "_blank" do
+              = image_tag "links/link_linkedin.png"
 
-  .person
-    .profile_pic
-      = image_tag 'about/keith_ratner.jpg'
-    .name_bio
-      .name
-        Keith Ratner
-      .bio
-        Designer, builder, co-founder hunter.
-      .links
-        = link_to "http://www.keithratner.com", :target => "_blank" do
-          = image_tag "links/link_home_black.png"
-        = link_to "http://twitter.com/KeithRatner", :target => "_blank" do
-          = image_tag "links/link_twitter.png"
-        = link_to "http://www.linkedin.com/in/keithratner", :target => "_blank" do
-          = image_tag "links/link_linkedin.png"
+      .person.row
+        .profile_pic.span2
+          = image_tag 'about/keith_ratner.jpg', :class => "img-rounded"
+        .name_bio.span10
+          .name
+            Keith Ratner
+          .bio
+            Designer, builder, co-founder hunter.
+          .links
+            = link_to "http://www.keithratner.com", :target => "_blank" do
+              = image_tag "links/link_home_black.png"
+            = link_to "http://twitter.com/KeithRatner", :target => "_blank" do
+              = image_tag "links/link_twitter.png"
+            = link_to "http://www.linkedin.com/in/keithratner", :target => "_blank" do
+              = image_tag "links/link_linkedin.png"
