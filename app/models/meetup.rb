@@ -8,6 +8,18 @@ class Meetup < ActiveRecord::Base
 
   scope :approved, where(:approval => true)
 
+  def link
+    if !meetup_link.blank?
+      return meetup_link
+    elsif !facebook_link.blank?
+      return facebook_link
+    elsif !linkedin_link.blank?
+      return linkein_link
+    elsif !googleplus_link.blank?
+      return googleplug_link
+    end
+  end
+
   def address
     [city, state, country].compact.join(', ')
   end
