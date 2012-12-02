@@ -3,7 +3,7 @@ user = User.find_or_create_by_name_and_role(:name => "Tristan Kromer",
                                             :role => "admin",
                                             :confirmed_at => Time.now,
                                             :confirmation_sent_at => Time.now,
-                                            :zip_code => "94100")
+                                            :zip_code => "94110")
 user.authentications << Authentication.find_or_create_by_uid_and_provider(:provider => "meetup",
                                                                           :uid => "10786373",
                                                                           :token => "de7f8e88aa93e092f5d68701213ac02e",
