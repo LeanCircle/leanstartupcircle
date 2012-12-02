@@ -10,6 +10,7 @@ class Admin::MeetupsController < Admin::BaseController
   end
 
   def new
+    authorize! :create, Meetup
     @meetup = Meetup.new
   end
 
@@ -18,6 +19,7 @@ class Admin::MeetupsController < Admin::BaseController
   end
 
   def create
+    authorize! :create, @meetup
     @meetup = Meetup.fetch_from_meetup(Meetup.new, params[:meetup][:meetup_id])
     if @meetup.save
       flash[:success] = 'Awesome! You\'ve added a new meetup for everyone.'
