@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
     t.string   "twitter_link"
     t.string   "linkedin_link"
     t.string   "googleplus_link"
-    t.string   "home_link"
+    t.string   "other_link"
     t.string   "meetup_link"
     t.string   "city"
     t.string   "country"
