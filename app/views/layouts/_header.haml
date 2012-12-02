@@ -12,7 +12,7 @@
               = link_to "Sign out", sign_out_url(:subdomain => false), :method => :delete
             - else
               = link_to "Sign in", sign_in_url(:subdomain => false)
-          - else
+          - elsif can? :manager, :all
             = render 'meetups/show_nearest'
     .row
       .span12
