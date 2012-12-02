@@ -6,12 +6,14 @@
           = image_tag "icons/leanstartupcircle_logo.png"
       .span2
         .pull-right
-          - if user_signed_in?
-            = current_user.identifier
-            = link_to "Sign out", sign_out_url(:subdomain => false), :method => :delete
+          - if request.subdomain == "meetups"
+            - if user_signed_in?
+              = current_user.identifier
+              = link_to "Sign out", sign_out_url(:subdomain => false), :method => :delete
+            - else
+              = link_to "Sign in", sign_in_url(:subdomain => false)
           - else
-            = link_to "Sign in", sign_in_url(:subdomain => false)
-          = render 'meetups/show_nearest'
+            = render 'meetups/show_nearest'
     .row
       .span12
         = render '/layouts/nav'
