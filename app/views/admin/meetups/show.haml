@@ -9,7 +9,7 @@
   %p= link_to_if !@meetup.facebook_link.blank?, @meetup.facebook_link
   %p= link_to_if !@meetup.twitter_link.blank?, @meetup.twitter_link
   %p= link_to_if !@meetup.linkedin_link.blank?, @meetup.linkedin_link
-  %p= link_to_if !@meetup.home_link.blank?, @meetup.home_link
+  %p= link_to_if !@meetup.other_link.blank?, @meetup.other_link
   %p= link_to_if !@meetup.googleplus_link.blank?, @meetup.googleplus_link
   %p
     Approval:

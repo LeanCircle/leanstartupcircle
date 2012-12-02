@@ -70,12 +70,12 @@
       - if !@meetup.errors[:twitter_link].blank?
         .help-inline= @meetup.errors.full_message(:twitter_link, "is dubious")
 
-  .control-group{ :class => if !@meetup.errors[:home_link].blank? then "error" end }
+  .control-group{ :class => if !@meetup.errors[:other_link].blank? then "error" end }
     = f.label "Other URL", :class => "control-label"
     .controls
       = f.text_field :twitter_link, :placeholder => 'http://superfancyurl.com', :class => "span5"
-      - if !@meetup.errors[:home_link].blank?
-        .help-inline= @meetup.errors.full_message(:home_link, "is dubious")
+      - if !@meetup.errors[:other_link].blank?
+        .help-inline= @meetup.errors.full_message(:other_link, "is dubious")
 
   .control-group
     .controls
