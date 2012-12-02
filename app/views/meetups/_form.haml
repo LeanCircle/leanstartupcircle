@@ -1,14 +1,83 @@
-= form_for @meetup do |f|
-  -if @meetup.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@meetup.errors.count, "error")} prohibited this meetup from being saved:"
-      %ul
-        - @meetup.errors.full_messages.each do |msg|
-          %li= msg
+= form_for(@meetup, :html => { :class => "form-horizontal" } ) do |f|
+  %legend
+  .control-group{ :class => if !@meetup.errors[:meetup_id].blank? then "error" end }
+    = f.label 'Meetup Group', :class => "control-label"
+    .controls
+      = f.text_field :meetup_id, :placeholder => 'URL or Meetup Group ID', :class => "span3", :autofocus => true
+      - if !@meetup.errors[:meetup_id].blank?
+        .help-inline= @meetup.errors.full_message(:meetup_id, "is dubious")
+      - else
+        .help-inline We'll import the rest of these fields if you have a meetup.com group.
 
-  %br
-  = f.label :meetup_id, 'Query'
-  = f.text_field :meetup_id
+  .control-group
+    .controls
+      %p.lead
+        OR
 
-  .actions
-    = f.submit 'Add'
+  .control-group{ :class => if !@meetup.errors[:name].blank? then "error" end }
+    = f.label "Name", :class => "control-label"
+    .controls
+      = f.text_field :name, :placeholder => 'Lean Startup Circle Moonbase Alpha', :class => "span5"
+      - if !@meetup.errors[:name].blank?
+        .help-inline= @meetup.errors.full_message(:name, "is dubious")
+
+  .control-group{ :class => if !@meetup.errors[:city].blank? then "error" end }
+    = f.label "City", :class => "control-label"
+    .controls
+      = f.text_field :name, :placeholder => 'e.g. San Francisco', :class => "span5"
+      - if !@meetup.errors[:city].blank?
+        .help-inline= @meetup.errors.full_message(:city, "is dubious")
+
+  .control-group{ :class => if !@meetup.errors[:state].blank? then "error" end }
+    = f.label "State", :class => "control-label"
+    .controls
+      = f.text_field :state, :placeholder => 'e.g. California', :class => "span5"
+      - if !@meetup.errors[:state].blank?
+        .help-inline= @meetup.errors.full_message(:state, "is dubious")
+
+  .control-group{ :class => if !@meetup.errors[:country].blank? then "error" end }
+    = f.label "Country", :class => "control-label"
+    .controls
+      = f.text_field :country, :placeholder => 'e.g. United States of America', :class => "span5"
+      - if !@meetup.errors[:country].blank?
+        .help-inline= @meetup.errors.full_message(:country, "is dubious")
+
+  .control-group{ :class => if !@meetup.errors[:facebook_link].blank? then "error" end }
+    = f.label "Facebook URL", :class => "control-label"
+    .controls
+      = f.text_field :facebook_link, :placeholder => 'http://facebook.com/LeanStartupCircleMoon', :class => "span5"
+      - if !@meetup.errors[:facebook_link].blank?
+        .help-inline= @meetup.errors.full_message(:facebook_link, "is dubious")
+
+  .control-group{ :class => if !@meetup.errors[:linkedin_link].blank? then "error" end }
+    = f.label "LinkedIn URL", :class => "control-label"
+    .controls
+      = f.text_field :linkedin_link, :placeholder => 'http://linkedin.com/groups?gid=LONGNUMBER', :class => "span5"
+      - if !@meetup.errors[:linkedin_link].blank?
+        .help-inline= @meetup.errors.full_message(:linkedin_link, "is dubious")
+
+  .control-group{ :class => if !@meetup.errors[:googleplus_link].blank? then "error" end }
+    = f.label "Google+ URL", :class => "control-label"
+    .controls
+      = f.text_field :googleplus_link, :placeholder => 'http://plus.google.com/LONGNUMBER', :class => "span5"
+      - if !@meetup.errors[:googleplus_link].blank?
+        .help-inline= @meetup.errors.full_message(:googleplus_link, "is dubious")
+
+  .control-group{ :class => if !@meetup.errors[:twitter_link].blank? then "error" end }
+    = f.label "Twitter URL", :class => "control-label"
+    .controls
+      = f.text_field :twitter_link, :placeholder => 'http://twitter.com/LeanCircleMoon', :class => "span5"
+      - if !@meetup.errors[:twitter_link].blank?
+        .help-inline= @meetup.errors.full_message(:twitter_link, "is dubious")
+
+  .control-group{ :class => if !@meetup.errors[:home_link].blank? then "error" end }
+    = f.label "Other URL", :class => "control-label"
+    .controls
+      = f.text_field :twitter_link, :placeholder => 'http://superfancyurl.com', :class => "span5"
+      - if !@meetup.errors[:home_link].blank?
+        .help-inline= @meetup.errors.full_message(:home_link, "is dubious")
+
+  .control-group
+    .controls
+      = f.submit "Submit", :class => 'btn btn-primary'
+      = f.submit "Cancel", :class => 'btn'

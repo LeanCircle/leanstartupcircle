@@ -14,12 +14,16 @@ class MeetupsController < ApplicationController
   end
 
   def create
-    @meetup = Meetup.fetch_from_meetup(Meetup.new, params[:meetup][:meetup_id])
-    if @meetup.save
-      flash[:success] = 'Awesome! You\'ve added a new meetup for everyone.'
-      redirect_to meetups_path
+    if params[:commit].eql?('Cancel')
+      redirect_to root_url
     else
-      render :action => "new"
+      @meetup = Meetup.fetch_from_meetup(Meetup.new, params[:meetup][:meetup_id])
+      if @meetup.save
+        flash[:success] = "Awesome...hang tight! We have to make sure it's a lean startup group."
+        redirect_to meetups_path
+      else
+        render :action => "new"
+      end
     end
   end
 
