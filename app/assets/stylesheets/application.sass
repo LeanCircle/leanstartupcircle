@@ -8,6 +8,9 @@
 
 // Bootstrap overides
 
+.field_with_errors
+  display: inline
+
 .navbar
   margin-bottom: 0
 
@@ -15,15 +18,13 @@
 
 .main, footer
   h1
-    font-size: 3em
-    //margin: 20px 0 0 0
+    //font-size: 3em
     font-family: courier
   h2
-    font-size: 2em
+    //font-size: 2em
     font-family: courier
-    //margin: 20px 0 0 0
   p
-    font-size: 1.2em
+    //font-size: 1.2em
     margin: 20px
     line-height: 1.7em
 
@@ -78,6 +79,11 @@ header
       img
         height: 25px
 
+  .nearest_meetup
+    margin-top: 10px
+    padding:  5px
+    border: 1px #999 solid
+
 footer
   @include box-shadow(0, -2px, 2px, 0, #666)
   .container
@@ -86,7 +92,7 @@ footer
     text-align: right
     float: right
 
-.nearest_meetup
-  margin-top: 10px
-  padding:  5px
-  border: 1px #999 solid
+
+// Custom pages
+#guidelines, #moderation_guidelines, #team
+  margin-bottom: 30px

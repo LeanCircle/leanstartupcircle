@@ -1,0 +1,41 @@
+= title "- Contact"
+
+#contact_new
+  .row
+    .span12
+
+      = form_for(@contact_message, :html => { :class => "form-horizontal" } ) do |f|
+        %legend
+          %h1 Contact Us
+          %p We'd love to hear from you!
+
+        .control-group{ :class => if !@contact_message.errors[:sender_name].blank? then "error" end }
+          = f.label "Name", :class => "control-label"
+          .controls
+            = f.text_field :sender_name, :placeholder => 'John "The Butcher" Smith', :class => "span3", :autofocus => true
+            - if !@contact_message.errors[:sender_name].blank?
+              .help-inline= @contact_message.errors.full_message(:sender_name, "is wonky")
+
+        .control-group{ :class => if !@contact_message.errors[:sender_email].blank? then "error" end }
+          = f.label "Email", :class => "control-label"
+          .controls
+            = f.text_field :sender_email, :placeholder => 'John@AnythingButAOL.com', :class => "span3"
+            - if !@contact_message.errors[:sender_email].blank?
+              .help-inline= @contact_message.errors.full_message(:sender_email, "is dubious")
+
+        .control-group{ :class => if !@contact_message.errors[:content].blank? then "error" end }
+          = f.label "Message", :class => "control-label"
+          .controls
+            = f.text_area :content, :placeholder => 'I love/hate Lean Startup Circle because...', :rows => "8", :class => "span6"
+            - if !@contact_message.errors[:content].blank?
+              .help-inline= @contact_message.errors.full_message(:content, "is a tad iffy")
+
+        .control-group{ :class => if !@contact_message.errors[:recaptcha].blank? then "error" end }
+          .controls
+            = recaptcha_tags
+            - if !@contact_message.errors[:recaptcha].blank?
+              .help-inline= @contact_message.errors.full_message(:recaptcha, "is hard...damn you!")
+        .control-group
+          .controls
+            = f.submit "Send Message", :class => 'btn btn-primary'
+            = f.submit "Cancel", :class => 'btn'
