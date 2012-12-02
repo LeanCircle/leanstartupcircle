@@ -40,6 +40,9 @@ class Meetup < ActiveRecord::Base
   end
 
   def self.fetch_from_meetup(meetup, query)
+    if query.blank?
+      return
+    end
     RMeetup::Client.api_key = AppConfig['meetup_api_key']
     query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'') # Remove http:// and trailing slashes
     if !!(query =~ /^[-+]?[0-9]+$/) # If the query is a number, it's probably a group_id
