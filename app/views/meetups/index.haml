@@ -3,11 +3,13 @@
 #index_meetups
   .row
     .span12
-      %h1 Listing Meetups
       = gmaps4rails(@meetups_map)
-      = link_to_if((can? :create, Meetup), 'Add a Meetup', new_meetup_path, :class => "btn btn-primary"){}
-
       %table.table.table-condensed.table-striped.meetups
+        %caption
+          %h1{ :style => "display: inline"}
+            Lean Startup Meetups Worldwide
+          %span.pull-right
+            = link_to_if((can? :create, Meetup), 'Add a Meetup', new_meetup_path, :class => "btn btn-primary"){}
         %thead
           %tr
             %th Name

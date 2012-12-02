@@ -4,7 +4,7 @@
 @import 'variables', 'helper'
 @import 'layouts/buttons', 'layouts/flash'
 @import 'static_pages/team'
-@import 'landing_pages/home', 'landing_pages/jobs'
+@import 'landing_pages/jobs'
 
 // Bootstrap overides
 
@@ -17,28 +17,24 @@
 blockquote
   border-left: none
 
+table caption
+  text-align: left
+  margin-bottom: 20px
+
 // Basics
 
 .main, footer
   h1
-    //font-size: 3em
     font-family: courier
   h2
-    //font-size: 2em
     font-family: courier
   p
-    //font-size: 1.2em
-    //margin: 20px
     line-height: 1.7em
 
   ol, ul
-    //margin-left: 20px
     li
-      //font-size: 1.2em
       line-height: 1.2em
       margin: 10px 0 0 40px
-    //p
-    //  margin-left: 60px
   ul
     li
       list-style-type: square
@@ -95,11 +91,55 @@ footer
     text-align: right
     float: right
 
-
 // Custom pages
 #guidelines, #moderation_guidelines, #team
   margin-bottom: 30px
 
-#guidelines table caption
-  text-align: left
-  margin-bottom: 20px
+.gmaps4rails_map, .map_container
+  width: 925px
+.map_container
+  margin-bottom: 30px
+  img
+    max-width: none
+
+// Responsive mods
+
+@media (max-width: 320px)
+  .gmaps4rails_map, .map_container
+    width: 300px
+
+@media (min-width: 320px) and (max-width: 479px)
+  .gmaps4rails_map, .map_container
+    width: 420px
+
+@media (min-width: 480px) and (max-width: 767px)
+  .gmaps4rails_map, .map_container
+    width: 715px
+
+@media (min-width: 768px) and (max-width: 979px)
+  .gmaps4rails_map, .map_container
+    width: 710px
+
+@media (min-width: 1200px)
+  .gmaps4rails_map, .map_container
+    width: 1155px
+
+@media (max-width: 320px)
+  #forum_embed
+    width: 300px
+
+@media (min-width: 320px) and (max-width: 480px)
+  #forum_embed
+    width: 360px
+
+@media (min-width: 480px) and (max-width: 767px)
+  #forum_embed
+    width: 715px
+
+@media (min-width: 768px) and (max-width: 979px)
+  #forum_embed
+    width: 724px
+
+@media (min-width: 1200px)
+  #forum_embed
+    width: 1170px
