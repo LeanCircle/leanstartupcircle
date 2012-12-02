@@ -66,6 +66,6 @@ Leanstartupcircle::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Config for subdomains when developing locally with http://lvh.me
-  config.session_store :cookie_store, key: '_leanstartupcircle_session', :domain => :all
+  config.session_store :cookie_store, key: '_dcelerator_session', :domain => "dcelerator.com"
 
 end
