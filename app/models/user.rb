@@ -5,10 +5,9 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  # TODO: Make Geomappable
-  #geocoded_by :zip_code
-  #reverse_geocoded_by :latitude, :longitude
-  #acts_as_gmappable :zip_code => "zip_code"
+  geocoded_by :zip_code
+  reverse_geocoded_by :latitude, :longitude
+  acts_as_gmappable :zip_code => "address"
 
   devise :database_authenticatable,
          :registerable,
@@ -46,6 +45,16 @@ class User < ActiveRecord::Base
     role == 'admin' ? true : false
   end
 
+  # Geocoding methods
+
+  def address
+    [city, state, country].compact.join(', ')
+  end
+
+  def gmaps4rails_address
+    self.zip_code
+  end
+
   # Omniauth + Devise methods
 
   # Given an omniauth hash, returns the user if there is one or creates one.
@@ -60,8 +69,8 @@ class User < ActiveRecord::Base
   # Given an omniauth hash, creates a user and returns it.
   def self.create_with_omniauth!(hash)
     info = hash.info
-    user = new( :name => info.try(:name),
-                :phone => info.try(:phone))
+    user = new(:name => info.try(:name),
+               :phone => info.try(:phone))
     user.save(:validate => false )
     user
   end
@@ -78,7 +87,7 @@ class User < ActiveRecord::Base
   end
 
   def password_required?
-    super && provider.blank?
+    super && authentications.nil?
   end
 
   def update_with_password(params, *options)
