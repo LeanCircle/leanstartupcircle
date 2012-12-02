@@ -77,6 +77,9 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
     t.datetime "updated_at",                                   :null => false
     t.string   "name"
     t.string   "phone"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
     t.string   "zip_code"
     t.float    "latitude"
     t.float    "longitude"

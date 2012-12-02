@@ -5,6 +5,9 @@ class AddFieldsToUsers < ActiveRecord::Migration
     add_column :users, :phone, :string
 
     # For geolocation
+    add_column :users, :city, :string
+    add_column :users, :state, :string
+    add_column :users, :country, :string
     add_column :users, :zip_code, :string
     add_column :users, :latitude, :float
     add_column :users, :longitude, :float

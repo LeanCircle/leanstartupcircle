@@ -7,7 +7,16 @@ class User < ActiveRecord::Base
 
   geocoded_by :zip_code
   after_validation :geocode
-  reverse_geocoded_by :latitude, :longitude
+  reverse_geocoded_by :latitude, :longitude do |user,results|
+    if geo = results.first
+      user.city    = geo.city
+      user.state    = geo.state_code
+      user.country = geo.country
+      user.zip_code = geo.postal_code
+    end
+  end
+  after_validation :geocode, :reverse_geocode
+
   acts_as_gmappable :zip_code => "address"
 
   devise :database_authenticatable,
