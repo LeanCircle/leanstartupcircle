@@ -6,17 +6,22 @@
 @import 'static_pages/team'
 @import 'landing_pages/home', 'landing_pages/jobs'
 
+// Bootstrap overides
+
+.navbar
+  margin-bottom: 0
+
 // Basics
 
 .main, footer
   h1
     font-size: 3em
-    margin: 20px 0 0 0
+    //margin: 20px 0 0 0
     font-family: courier
   h2
     font-size: 2em
     font-family: courier
-    margin: 20px 0 0 0
+    //margin: 20px 0 0 0
   p
     font-size: 1.2em
     margin: 20px
@@ -33,31 +38,6 @@
   ul
     li
       list-style-type: square
-
-  a
-    color: $link-color
-    text-decoration: none
-    border-bottom: 1px dotted $link-color
-    &:hover
-      color: $link-color
-      text-decoration: none
-      border-bottom: 1px solid $link-color
-
-  table
-    font-size: 1.2em
-    margin: 20px
-    line-height: 1.2em
-    tr
-      text-align: left
-      th
-        font-family: courier
-        font-size: 1.2em
-        padding: 10px 10px
-      td
-        padding: 10px
-        border: 1px solid #999
-    &.blank tr td
-      border: none
 
 // Layout
 

@@ -1,25 +1,30 @@
 - title "Meetups Index | Lean Startup Circle"
 
 #index_meetups
-  %h1 Listing Meetups
-  = gmaps4rails(@meetups_map)
-  = link_to_if((can? :create, Meetup), 'New meetup', new_meetup_path){}
+  .row
+    .span12
+      %h1 Listing Meetups
+      = gmaps4rails(@meetups_map)
+      = link_to_if((can? :create, Meetup), 'Add a Meetup', new_meetup_path, :class => "btn btn-primary"){}
 
-  %table.meetups
-    %tr
-      %th Name
-      %th City
-      %th State
-      %th Country
-
-    - @meetups.each do |meetup|
-      %tr.meetup
-        %td= link_to meetup.name, meetup.link
-        %td= meetup.city
-        %td= meetup.state
-        %td= meetup.country
-        %td= link_to_if(!meetup.meetup_link.blank?, "#{image_tag 'links/link_meetup.png'}".html_safe, meetup.meetup_link){}
-        %td= link_to_if(!meetup.facebook_link.blank?, "#{image_tag 'links/link_facebook.png'}".html_safe, meetup.facebook_link){}
-        %td= link_to_if(!meetup.linkedin_link.blank?, "#{image_tag 'links/link_linkedin.png'}".html_safe, meetup.linkedin_link){}
-        %td= link_to_if(!meetup.twitter_link.blank?, "#{image_tag 'links/link_twitter.png'}".html_safe, meetup.twitter_link){}
-        %td= link_to_if(!meetup.googleplus_link.blank?, "#{image_tag 'links/link_googleplus.png'}".html_safe, meetup.googleplus_link){}
+      %table.table.table-condensed.table-striped.meetups
+        %thead
+          %tr
+            %th Name
+            %th City
+            %th State
+            %th Country
+            %th Links
+        %tbody
+          - @meetups.each do |meetup|
+            %tr.meetup
+              %td= link_to meetup.name, meetup.link
+              %td= meetup.city
+              %td= meetup.state
+              %td= meetup.country
+              %td
+                = link_to_if(!meetup.meetup_link.blank?, "#{image_tag 'links/link_meetup.png', :width => '50px'}".html_safe, meetup.meetup_link){}
+                = link_to_if(!meetup.facebook_link.blank?, "#{image_tag 'links/link_facebook.png'}".html_safe, meetup.facebook_link){}
+                = link_to_if(!meetup.linkedin_link.blank?, "#{image_tag 'links/link_linkedin.png', :width => '50px'}".html_safe, meetup.linkedin_link){}
+                = link_to_if(!meetup.twitter_link.blank?, "#{image_tag 'links/link_twitter.png'}".html_safe, meetup.twitter_link){}
+                = link_to_if(!meetup.googleplus_link.blank?, "#{image_tag 'links/link_googleplus.png'}".html_safe, meetup.googleplus_link){}
