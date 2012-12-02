@@ -1,12 +1,19 @@
 - title "Authentications"
-%table
-  %tr
-    %th User
-    %th Provider
-    %th Uid
-  - for authentication in @authentications
+%table.table.table-striped.table-condensed.table-bordered
+  %caption
+    %h1 Listing Authentications
+  %thead
     %tr
-      %td= authentication.user_id
-      %td= authentication.provider
-      %td= authentication.uid
-      %td= link_to "Destroy", authentication, :confirm => 'Are you sure?', :method => :delete
+      %th User
+      %th Provider
+      %th Uid
+      %th
+      %th
+  %tbody
+    - for authentication in @authentications
+      %tr
+        %td= link_to authentication.user.name, admin_user_url(authentication.user)
+        %td= authentication.provider
+        %td= authentication.uid
+        %td= link_to_if(!authentication.url.blank?, "#{image_tag 'links/link_' + authentication.provider + '.png', :width => '25px'}".html_safe, authentication.url){}
+        %td= link_to "Destroy", admin_authentication_url(authentication), :confirm => 'Are you sure?', :method => :delete

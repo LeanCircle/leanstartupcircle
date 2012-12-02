@@ -1,25 +1,30 @@
 - title "Users Index | Lean Startup Circle"
 
 #index_admin_users
-  %h1 Listing Users
-  = link_to 'New user', new_admin_user_path
-
-  %table.users
-    %tr
-      %th Name
-      %th Email
-      %th Zip
-      %th Role
-      %th
-      %th
-
-    - @users.each do |user|
-      %tr.user
-        %td= link_to user.name, admin_user_path(user)
-        %td= user.email
-        %td= user.zip_code
-        %td= user.role
-        %td= link_to 'Show', admin_user_path(user)
-        %td= link_to 'Edit', edit_admin_user_path(user)
-        %td= link_to 'Imitate', admin_user_imitate_path(user), :confirm => 'Are you sure?'
-        %td= link_to 'Destroy', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete
+  %table.table.table-striped.table-condensed.table-bordered
+    %caption
+      %h1 Listing Users
+      = link_to 'New user', new_admin_user_path, :class => "btn btn-primary"
+    %thead
+      %tr
+        %th Name
+        %th Links
+        %th Email
+        %th Zip
+        %th Role
+        %th
+    %tbody
+      - @users.each do |user|
+        %tr.user
+          %td= link_to user.name, admin_user_path(user)
+          %td
+            - user.authentications.each do |authentication|
+              = link_to_if(!authentication.url.blank?, "#{image_tag 'links/link_' + authentication.provider + '.png', :width => '25px'}".html_safe, authentication.url){}
+          %td= user.email
+          %td= user.zip_code
+          %td= user.role
+          %td
+            = link_to '', admin_user_path(user), :class => "icon-eye-open"
+            = link_to '', edit_admin_user_path(user), :class => "icon-edit"
+            = link_to '', admin_user_imitate_path(user), :class => "icon-user", :confirm => 'Are you sure?'
+            = link_to '', admin_user_path(user), :class => "icon-trash", :confirm => 'Are you sure?', :method => :delete

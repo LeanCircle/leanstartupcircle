@@ -1,26 +1,31 @@
 - title "Meetups Index | Lean Startup Circle"
 
 #index_admin_meetups
-  %h1 Listing Meetups
-  = link_to 'New meetup', new_admin_meetup_path
-
-  %table.meetups
-    %tr
-      %th Name
-      %th City
-      %th State
-      %th Country
-      %th Approval
-      %th
-      %th
-
-    - @meetups.each do |meetup|
-      %tr.meetup
-        %td= link_to meetup.name, admin_meetup_path(meetup)
-        %td= meetup.city
-        %td= meetup.state
-        %td= meetup.country
-        %td= meetup.approval
-        %td= link_to 'Show', admin_meetup_path(meetup)
-        %td= link_to 'Edit', edit_admin_meetup_path(meetup)
-        %td= link_to 'Destroy', admin_meetup_path(meetup), :confirm => 'Are you sure?', :method => :delete
+  %table.table.table-striped.table-condensed.table-bordered
+    %caption
+      %h1 Listing Meetups
+      = link_to 'Add a Meetup', new_admin_meetup_path, :class => "btn btn-primary"
+    %thead
+      %tr
+        %th Name
+        %th City
+        %th State
+        %th Country
+        %th Approval
+        %th
+    %tbody
+      - @meetups.each do |meetup|
+        %tr.meetup
+          %td= link_to meetup.name, admin_meetup_path(meetup)
+          %td= meetup.city
+          %td= meetup.state
+          %td= meetup.country
+          %td
+            - if meetup.approval == true
+              .icon-ok
+            - else
+              .icon-remove
+          %td
+            = link_to '', admin_meetup_path(meetup), :class => "icon-eye-open"
+            = link_to '', edit_admin_meetup_path(meetup), :class => "icon-edit"
+            = link_to '', admin_meetup_path(meetup), :class => "icon-trash", :confirm => 'Are you sure?', :method => :delete
