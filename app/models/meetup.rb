@@ -1,5 +1,7 @@
 class Meetup < ActiveRecord::Base
 
+  belongs_to :authentication, :primary_key => "uid", :foreign_key => "organizer_id"
+
   attr_accessor :meetup_identifier
 
   geocoded_by :address
@@ -9,6 +11,10 @@ class Meetup < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   scope :approved, where(:approval => true)
+
+  def user
+    authentication.user
+  end
 
   def link
     if !meetup_link.blank?

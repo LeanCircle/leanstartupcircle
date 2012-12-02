@@ -1,6 +1,7 @@
 class Authentication < ActiveRecord::Base
 
   belongs_to :user
+  has_many :meetups, :primary_key => "uid", :foreign_key => "organizer_id"
 
   validates_presence_of :user_id, :uid, :provider
   validates_uniqueness_of :uid, :scope => :provider
