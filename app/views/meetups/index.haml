@@ -3,7 +3,7 @@
 #index_meetups
   %h1 Listing Meetups
   = gmaps4rails(@meetups_map)
-  = link_to_if((can? :create, :meetup), 'New meetup', new_meetup_path){}
+  = link_to_if((can? :create, Meetup), 'New meetup', new_meetup_path){}
 
   %table.meetups
     %tr

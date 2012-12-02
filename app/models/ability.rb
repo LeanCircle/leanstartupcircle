@@ -5,10 +5,12 @@ class Ability
    user ||= User.new # guest user (not logged in)
    if user.role == 'admin'
      can :manage, :all
-   else
-     can :read, :meetups
-     can :read, :users
+   elsif user.role == 'member'
+      can :create, Meetup
+      can :update, Meetup, :organizer_id => user.authentications.find_by_provider('meetup').try(:uid)
    end
+   can :read, :meetups
+   can :read, :users
   end
 
 end
