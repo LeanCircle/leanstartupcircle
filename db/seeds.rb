@@ -1,4 +1,4 @@
-user = User.find_or_create_by_full_name_and_role(:name => "Tristan Kromer",
+user = User.find_or_create_by_name_and_role(:name => "Tristan Kromer",
                                                  :role => "admin",
                                                  :confirmed_at => Time.now,
                                                  :confirmation_sent_at => Time.now)
