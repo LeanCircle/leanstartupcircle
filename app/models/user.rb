@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   geocoded_by :zip_code
+  after_validation :geocode
   reverse_geocoded_by :latitude, :longitude
   acts_as_gmappable :zip_code => "address"
 
@@ -23,7 +24,7 @@ class User < ActiveRecord::Base
   #attr_accessible :uid,
   #                :provider,
   #                :email,
-  #                :zipcode,
+  #                :zip_code,
   #                :company_name,
   #                :phone,
   #                :password,

@@ -26,7 +26,7 @@ Leanstartupcircle::Application.routes.draw do
     end
 
     # User routes
-    resources :users, :only => [:show]
+    resources :users, :only => [:index, :show]
 
     # Static page routes
     [ :guidelines,
