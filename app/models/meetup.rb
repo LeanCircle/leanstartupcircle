@@ -5,7 +5,16 @@ class Meetup < ActiveRecord::Base
   attr_accessor :meetup_identifier
 
   geocoded_by :address
-  reverse_geocoded_by :latitude, :longitude
+  reverse_geocoded_by :latitude, :longitude do |meetup,results|
+    if geo = results.first
+      meetup.city = geo.city
+      meetup.state = geo.state_code
+      meetup.country = geo.country
+    end
+  end
+  after_validation :geocode, :reverse_geocode
+
+
   acts_as_gmappable :address => "address"
   extend FriendlyId
   friendly_id :name, use: :slugged

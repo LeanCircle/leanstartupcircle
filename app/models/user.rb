@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
   geocoded_by :zip_code
-  after_validation :geocode
   reverse_geocoded_by :latitude, :longitude do |user,results|
     if geo = results.first
       user.city    = geo.city
