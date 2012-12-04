@@ -14,7 +14,6 @@ class Meetup < ActiveRecord::Base
   end
   after_validation :geocode, :reverse_geocode
 
-
   acts_as_gmappable :address => "address"
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -22,7 +21,7 @@ class Meetup < ActiveRecord::Base
   scope :approved, where(:approval => true)
 
   validates_presence_of :name
-  validates_uniqueness_of :name, :meetup_id, :meetup_link
+  validates_uniqueness_of :name, :meetup_id, :meetup_link, :allow_blank => true
 
   def user
     authentication.user

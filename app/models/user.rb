@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   validates_presence_of :name
+  validates :email, :uniqueness => { :case_sensitive => false }, :allow_blank => true
 
   geocoded_by :zip_code
   reverse_geocoded_by :latitude, :longitude do |user,results|

@@ -18,7 +18,7 @@ class MeetupsController < ApplicationController
       redirect_to root_url
     else
       @meetup = Meetup.new(params[:meetup])
-      @meetup = Meetup.fetch_from_meetup(params[:meetup][:meetup_identifier], @meetup)
+      @meetup = Meetup.fetch_from_meetup(params[:meetup][:meetup_identifier], @meetup) if !params[:meetup][:meetup_identifier].blank?
       if @meetup.save
         flash[:success] = "Awesome...hang tight! We have to make sure it's a lean startup group."
         redirect_to meetups_path

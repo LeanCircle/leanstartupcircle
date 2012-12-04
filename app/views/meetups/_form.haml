@@ -31,7 +31,7 @@
   .control-group{ :class => if !@meetup.errors[:city].blank? then "error" end }
     = f.label "City", :class => "control-label"
     .controls
-      = f.text_field :name, :placeholder => 'e.g. San Francisco', :class => "span5"
+      = f.text_field :city, :placeholder => 'e.g. San Francisco', :class => "span5"
       - if !@meetup.errors[:city].blank?
         .help-inline= @meetup.errors.full_message(:city, "is dubious")
 
