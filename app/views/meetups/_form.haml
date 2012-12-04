@@ -1,7 +1,11 @@
 = form_for(@meetup, :html => { :class => "form-horizontal" } ) do |f|
   %legend
 
-  = link_to "Sign in with Meetup", user_omniauth_authorize_url(:meetup, :subdomain => false)
+  .control-group
+    .controls
+      = link_to user_omniauth_authorize_url(:meetup, :subdomain => false) do
+        Import your groups from
+        = image_tag 'links/link_meetup.png', :width => '50px'
 
   .control-group
     .controls
