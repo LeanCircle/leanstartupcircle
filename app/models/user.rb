@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  validates_presence_of :name
+
   geocoded_by :zip_code
   after_validation :geocode
   reverse_geocoded_by :latitude, :longitude do |user,results|
@@ -31,11 +33,8 @@ class User < ActiveRecord::Base
          :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  #attr_accessible :uid,
-  #                :provider,
-  #                :email,
+  #attr_accessible :email,
   #                :zip_code,
-  #                :company_name,
   #                :phone,
   #                :password,
   #                :password_confirmation
