@@ -8,7 +8,7 @@ class Admin::AuthenticationsController < Admin::BaseController
   def destroy
     @authentication = Authentication.find(params[:id])
     @authentication.destroy
-    redirect_to authentications_url, :notice => "Successfully destroyed authentication."
+    redirect_to admin_authentications_url, :notice => "Successfully destroyed authentication."
   end
 
 end
