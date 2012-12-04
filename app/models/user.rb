@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   def self.authenticate_or_create_with_omniauth!(hash, user = nil)
     if user
       Authentication.create_with_omniauth!(hash, user)
-    elsif user = Authentication.find_by_provider_and_uid(hash['provider'], hash['uid']).try(:user)
+    elsif user = Authentication.find_by_provider_and_uid(hash['provider'], hash['uid'].to_s).try(:user)
       return user
     else
       user = User.create_with_omniauth!(hash)
