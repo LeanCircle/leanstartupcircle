@@ -12,6 +12,9 @@ class Meetup < ActiveRecord::Base
 
   scope :approved, where(:approval => true)
 
+  validates_presence_of :name
+  validates_uniqueness_of :name, :meetup_id, :meetup_link
+
   def user
     authentication.user
   end
