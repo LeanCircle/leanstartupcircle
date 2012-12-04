@@ -17,6 +17,7 @@ class Authentication < ActiveRecord::Base
                                  :secret => hash.credentials.secret,
                                  :image => hash.info.try(:image),
                                  :url => hash.info.try(:urls).try(:public_profile))
+    Meetup.fetch_meetups_with_authentication(auth) if auth.provider == 'meetup'
     auth
   end
 

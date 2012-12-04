@@ -1,5 +1,13 @@
 = form_for(@meetup, :html => { :class => "form-horizontal" } ) do |f|
   %legend
+
+  = link_to "Sign in with Meetup", user_omniauth_authorize_url(:meetup, :subdomain => false)
+
+  .control-group
+    .controls
+      %p.lead
+        OR
+
   .control-group{ :class => if !@meetup.errors[:meetup_identifier].blank? then "error" end }
     = f.label 'Meetup Group', :class => "control-label"
     .controls
@@ -8,11 +16,6 @@
         .help-inline= @meetup.errors.full_message(:meetup_identifier, "is dubious")
       - else
         .help-inline We'll import the rest of these fields if you have a meetup.com group.
-
-  .control-group
-    .controls
-      %p.lead
-        OR
 
   .control-group{ :class => if !@meetup.errors[:name].blank? then "error" end }
     = f.label "Name", :class => "control-label"

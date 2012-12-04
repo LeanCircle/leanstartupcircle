@@ -20,7 +20,7 @@ class Admin::MeetupsController < Admin::BaseController
 
   def create
     authorize! :create, @meetup
-    @meetup = Meetup.fetch_from_meetup(Meetup.new, params[:meetup][:meetup_id])
+    @meetup = Meetup.fetch_from_meetup(params[:meetup][:meetup_id])
     if @meetup.save
       flash[:success] = 'Awesome! You\'ve added a new meetup for everyone.'
       redirect_to admin_meetups_path

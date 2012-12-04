@@ -69,11 +69,15 @@ class User < ActiveRecord::Base
   # Omniauth + Devise methods
 
   # Given an omniauth hash, returns the user if there is one or creates one.
-  def self.authenticate_or_create_with_omniauth!(hash)
-    user = Authentication.find_by_provider_and_uid(hash['provider'], hash['uid']).try(:user)
-    return user if user
-    user = User.create_with_omniauth!(hash)
-    Authentication.create_with_omniauth!(hash, user)
+  def self.authenticate_or_create_with_omniauth!(hash, user = nil)
+    if user
+      Authentication.create_with_omniauth!(hash, user)
+    elsif user = Authentication.find_by_provider_and_uid(hash['provider'], hash['uid']).try(:user)
+      return user
+    else
+      user = User.create_with_omniauth!(hash)
+      Authentication.create_with_omniauth!(hash, user)
+    end
     user
   end
 
@@ -82,7 +86,7 @@ class User < ActiveRecord::Base
     info = hash.info
     user = new(:name => info.try(:name),
                :phone => info.try(:phone))
-    user.save(:validate => false )
+    user.save(:validate => false)
     user
   end
 

@@ -39,41 +39,54 @@ class Meetup < ActiveRecord::Base
     "#{self.city}, #{self.state}, #{self.country}"
   end
 
-  def self.fetch_from_meetup(meetup, query)
-    if query.blank?
-      return
-    end
-    RMeetup::Client.api_key = AppConfig['meetup_api_key']
+  def self.fetch_from_meetup(query, meetup = nil )
+    return if query.blank?
+    init_rmeetup
     query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'') # Remove http:// and trailing slashes
-    if !!(query =~ /^[-+]?[0-9]+$/) # If the query is a number, it's probably a group_id
-      result = RMeetup::Client.fetch( :groups,{ :group_id => query }).first
+    if !!(query =~ /^[-+]?[0-9]+$/) # If the query is a number, assume it's a group_id
+      response = RMeetup::Client.fetch( :groups,{ :group_id => query }).first
     elsif query.include?("meetup.com")
       uri = URI::parse("http://" + query).path.sub(/\/*/,"").sub(/\/+$/,'') # Setup string for use as group_urlname
-      result = RMeetup::Client.fetch( :groups,{ :group_urlname => uri }).first
+      response = RMeetup::Client.fetch( :groups,{ :group_urlname => uri }).first
     else
-      result = RMeetup::Client.fetch( :groups,{ :domain => query }).first
+      response = RMeetup::Client.fetch( :groups,{ :domain => query }).first
     end
+    save_meetup_api_response(response, meetup)
+  end
 
-    unless result.blank?
-      meetup.name = result.name unless !meetup.name.blank?
-      meetup.description = result.description
-      meetup.meetup_id = result.id
-      meetup.organizer_id = result.organizer["member_id"]
-      meetup.meetup_link = result.link
-      meetup.city = result.city
-      meetup.country = result.country
-      meetup.state = result.state
-      meetup.latitude = result.lat
-      meetup.longitude = result.lon
-      unless result.group_photo.blank?
-        meetup.highres_photo_url = result.group_photo["highres_link"]
-        meetup.photo_url = result.group_photo["photo_link"]
-        meetup.thumbnail_url = result.group_photo["thumb_link"]
-      end
-      meetup.join_mode = result.join_mode
-      meetup.visibility = result.visibility
+  def self.fetch_meetups_with_authentication(auth)
+    init_rmeetup
+    responses = RMeetup::Client.fetch( :groups,{ :organizer_id => auth.uid })
+    responses.each do |response|
+      save_meetup_api_response(response).save
+    end
+  end
+
+  def self.save_meetup_api_response(response, meetup = Meetup.new)
+    unless response.blank?
+      meetup.name = response.try(:name)
+      meetup.description = response.try(:description)
+      meetup.meetup_id = response.try(:id)
+      meetup.organizer_id = response.try(:organizer).try(:[], 'member_id')
+      meetup.meetup_link = response.try(:link)
+      meetup.city = response.try(:city)
+      meetup.country = response.try(:country)
+      meetup.state = response.try(:state)
+      meetup.latitude = response.try(:lat)
+      meetup.longitude = response.try(:lon)
+      meetup.highres_photo_url = response.try(:group_photo).try(:[], 'highres_link')
+      meetup.photo_url = response.try(:group_photo).try(:[], 'photo_link')
+      meetup.thumbnail_url = response.try(:group_photo).try(:[], 'thumb_link')
+      meetup.join_mode = response.try(:join_mode)
+      meetup.visibility = response.try(:visibility)
     end
     return meetup
+  end
+
+  private
+
+  def self.init_rmeetup
+    RMeetup::Client.api_key = AppConfig['meetup_api_key']
   end
 
 end
