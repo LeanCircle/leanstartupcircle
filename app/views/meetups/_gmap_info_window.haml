@@ -1,0 +1,15 @@
+.meetup_gmap_window
+  = link_to meetup.link, :target => '_blank' do
+    .name
+      %h4= meetup.name
+    .location
+      = meetup.address
+  .links
+    = link_to_if(!meetup.meetup_link.blank?, "#{image_tag 'links/link_meetup.png', :width => '50px'}".html_safe, meetup.meetup_link, :target => '_blank' ){}
+    = link_to_if(!meetup.facebook_link.blank?, "#{image_tag 'links/link_facebook.png'}".html_safe, meetup.facebook_link, :target => '_blank' ){}
+    = link_to_if(!meetup.linkedin_link.blank?, "#{image_tag 'links/link_linkedin.png', :width => '50px'}".html_safe, meetup.linkedin_link, :target => '_blank' ){}
+    = link_to_if(!meetup.twitter_link.blank?, "#{image_tag 'links/link_twitter.png'}".html_safe, meetup.twitter_link, :target => '_blank' ){}
+    = link_to_if(!meetup.googleplus_link.blank?, "#{image_tag 'links/link_googleplus.png'}".html_safe, meetup.googleplus_link, :target => '_blank' ){}
+  = link_to meetup.link, :target => '_blank' do
+    .description
+      = meetup.description.html_safe unless meetup.description.blank?

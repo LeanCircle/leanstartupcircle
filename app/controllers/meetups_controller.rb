@@ -1,8 +1,10 @@
 class MeetupsController < ApplicationController
 
   def index
-    @meetups = Meetup.approved
-    @meetups_map = Meetup.approved.to_gmaps4rails
+    @meetups = Meetup.approved.to_gmaps4rails do |meetup, marker|
+      marker.infowindow render_to_string(:partial => "/meetups/gmap_info_window", :locals => { :meetup => meetup})
+      marker.sidebar render_to_string(:partial => "/meetups/meetup_list_item", :locals => { :meetup => meetup})
+    end
   end
 
   def show

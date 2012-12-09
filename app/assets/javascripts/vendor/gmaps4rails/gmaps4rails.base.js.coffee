@@ -326,14 +326,14 @@ class @Gmaps4Rails
   createSidebar : (marker_container) ->
     if (@markers_conf.list_container)
       ul = document.getElementById(@markers_conf.list_container)
-      li = document.createElement('li')
+      li = document.createElement('tr')
       aSel = document.createElement('a')
       aSel.href = 'javascript:void(0);'
       html = if marker_container.sidebar? then marker_container.sidebar else "Marker"
-      aSel.innerHTML = html
+      li.innerHTML = html
       currentMap = this
-      aSel.onclick = @sidebar_element_handler(currentMap, marker_container.serviceObject, 'click')
-      li.appendChild(aSel)
+      li.onclick = @sidebar_element_handler(currentMap, marker_container.serviceObject, 'click')
+#      li.appendChild(aSel)
       ul.appendChild(li)
 
   #moves map to marker clicked + open infowindow
