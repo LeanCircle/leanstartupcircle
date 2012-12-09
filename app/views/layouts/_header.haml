@@ -1,10 +1,9 @@
 %header.page_header
   .container
     .row
-      .span6
+      .span12.relative
         = link_to root_url(:subdomain => false), :id => 'logo', :class => 'nodec' do
           = image_tag "icons/leanstartupcircle_logo.png"
-      .span6
         - if !request.subdomain.blank?
           .utility_nav.pull-right
             - if user_signed_in?
