@@ -1,19 +1,21 @@
 %header.page_header
   .container
     .row
-      .span10
+      .span6
         = link_to root_url(:subdomain => false), :id => 'logo', :class => 'nodec' do
           = image_tag "icons/leanstartupcircle_logo.png"
-      .span2
-        .pull-right
-          - if request.subdomain == "meetups"
+      .span6
+        - if !request.subdomain.blank?
+          .utility_nav.pull-right
             - if user_signed_in?
+              Welcome
               = current_user.identifier
+              &#8226;
               = link_to "Sign out", sign_out_url(:subdomain => false), :method => :delete
             - else
               = link_to "Sign in", sign_in_url(:subdomain => false)
-          - elsif can? :manager, :all
-            = render 'meetups/show_nearest'
+        .clear
+        = render 'meetups/show_nearest'
     .row
       .span12
         = render '/layouts/nav'
