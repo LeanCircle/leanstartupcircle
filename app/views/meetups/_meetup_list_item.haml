@@ -1,7 +1,5 @@
 %td= link_to meetup.name, meetup.link, :target => '_blank'
-%td= meetup.city
-%td= meetup.state
-%td= meetup.country
+%td= meetup.address
 %td
   = link_to_if(!meetup.meetup_link.blank?, "#{image_tag 'links/link_meetup.png', :width => '50px'}".html_safe, meetup.meetup_link, :target => '_blank' ){}
   = link_to_if(!meetup.facebook_link.blank?, "#{image_tag 'links/link_facebook.png'}".html_safe, meetup.facebook_link, :target => '_blank' ){}

@@ -3,7 +3,7 @@
 #show_meetups
   %h1= @meetup.name
   = image_tag @meetup.thumbnail_url
-  %p #{ @meetup.city}, #{ @meetup.state + ", " if !@meetup.state.blank? } #{ @meetup.country } (#{ @meetup.latitude }, #{ @meetup.longitude })
+  %p #{ @meetup.address } (#{ @meetup.latitude }, #{ @meetup.longitude })
   %p= @meetup.description.html_safe unless @meetup.description.blank?
   %p= link_to_if !@meetup.meetup_link.blank?, @meetup.meetup_link
   %p= link_to_if !@meetup.facebook_link.blank?, @meetup.facebook_link

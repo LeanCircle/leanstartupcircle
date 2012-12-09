@@ -5,10 +5,11 @@ class Meetup < ActiveRecord::Base
   attr_accessor :meetup_identifier
 
   geocoded_by :address
-  reverse_geocoded_by :latitude, :longitude do |meetup,results|
+  reverse_geocoded_by :latitude, :longitude do |meetup, results|
     if geo = results.first
       meetup.city = geo.city
-      meetup.state = geo.state_code
+      meetup.province = geo.state_code
+      meetup.country_code = geo.country_code
       meetup.country = geo.country
     end
   end
@@ -42,12 +43,12 @@ class Meetup < ActiveRecord::Base
   end
 
   def address
-    [city, state, country].compact.join(', ')
+    [city, province, country].compact.join(', ')
   end
 
   def gmaps4rails_address
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-    "#{self.city}, #{self.state}, #{self.country}"
+    "#{self.city}, #{self.province}, #{self.country}"
   end
 
   def self.fetch_from_meetup(query, meetup = nil )
@@ -81,8 +82,8 @@ class Meetup < ActiveRecord::Base
       meetup.organizer_id = response.try(:organizer).try(:[], 'member_id')
       meetup.meetup_link = response.try(:link)
       meetup.city = response.try(:city)
-      meetup.country = response.try(:country)
-      meetup.state = response.try(:state)
+      meetup.country_code = response.try(:country)
+      meetup.province = response.try(:state)
       meetup.latitude = response.try(:lat)
       meetup.longitude = response.try(:lon)
       meetup.highres_photo_url = response.try(:group_photo).try(:[], 'highres_link')

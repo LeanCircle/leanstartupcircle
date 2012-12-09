@@ -9,7 +9,7 @@
       %tr
         %th Name
         %th City
-        %th State
+        %th State / Province
         %th Country
         %th Approval
         %th
@@ -18,7 +18,7 @@
         %tr.meetup
           %td= link_to meetup.name, admin_meetup_path(meetup)
           %td= meetup.city
-          %td= meetup.state
+          %td= meetup.province
           %td= meetup.country
           %td
             - if meetup.approval == true

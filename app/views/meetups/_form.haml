@@ -35,12 +35,12 @@
       - if !@meetup.errors[:city].blank?
         .help-inline= @meetup.errors.full_message(:city, "is dubious")
 
-  .control-group{ :class => if !@meetup.errors[:state].blank? then "error" end }
-    = f.label "State", :class => "control-label"
+  .control-group{ :class => if !@meetup.errors[:province].blank? then "error" end }
+    = f.label "Province / State", :class => "control-label"
     .controls
-      = f.text_field :state, :placeholder => 'e.g. California', :class => "span5"
-      - if !@meetup.errors[:state].blank?
-        .help-inline= @meetup.errors.full_message(:state, "is dubious")
+      = f.text_field :province, :placeholder => 'e.g. California', :class => "span5"
+      - if !@meetup.errors[:province].blank?
+        .help-inline= @meetup.errors.full_message(:province, "is dubious")
 
   .control-group{ :class => if !@meetup.errors[:country].blank? then "error" end }
     = f.label "Country", :class => "control-label"

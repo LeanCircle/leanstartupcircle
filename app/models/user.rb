@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude do |user,results|
     if geo = results.first
       user.city    = geo.city
-      user.state    = geo.state_code
+      user.province    = geo.state_code
       user.country = geo.country
       user.zip_code = geo.postal_code
     end
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   # Geocoding methods
 
   def address
-    [city, state, country].compact.join(', ')
+    [city, province, country].compact.join(', ')
   end
 
   def gmaps4rails_address

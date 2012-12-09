@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128122341) do
+ActiveRecord::Schema.define(:version => 20121209081601) do
 
   create_table "authentications", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
-    t.string   "secret"
-    t.string   "image"
-    t.string   "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.string    "provider"
+    t.string    "uid"
+    t.string    "token"
+    t.string    "secret"
+    t.string    "image"
+    t.string    "url"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "meetups", :force => true do |t|
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
     t.string   "meetup_link"
     t.string   "city"
     t.string   "country"
-    t.string   "state"
+    t.string   "province"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
     t.string   "slug"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.string   "country_code"
   end
 
   add_index "meetups", ["slug"], :name => "index_meetups_on_slug", :unique => true
@@ -78,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20121128122341) do
     t.string   "name"
     t.string   "phone"
     t.string   "city"
-    t.string   "state"
+    t.string   "province"
     t.string   "country"
     t.string   "zip_code"
     t.float    "latitude"
