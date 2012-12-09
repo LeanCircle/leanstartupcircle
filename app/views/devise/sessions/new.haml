@@ -1,16 +1,45 @@
-%h2 Sign in
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password
-  - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %div= f.submit "Sign in"
-= render "devise/shared/links"
+= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal" }) do |f|
+  = devise_error_messages!
+  %legend
+    %h2
+      Sign in
+      %small
+        (or #{ link_to "sign up", new_registration_path(resource_name) })
+
+  - if devise_mapping.omniauthable?
+    .control-group
+      .controls
+        - resource_class.omniauth_providers.each do |provider|
+          = link_to omniauth_authorize_path(resource_name, provider) do
+            = image_tag 'icons/sign_up_' + provider.to_s + '.png'
+
+  .control-group
+    .controls
+      %p.lead
+        OR
+
+  .control-group{ :class => if !resource.errors[:email].blank? then "error" end }
+    = f.label :email, :class => "control-label"
+    .controls
+      = f.email_field :email, :placeholder => 'clever@emailaddress.com', :class => "span3", :required => true
+      - if !resource.errors[:email].blank?
+        .help-inline= resource.errors.full_message(:email, "is dubious")
+      - else
+        .help-inline
+
+  .control-group{ :class => if !resource.errors[:password].blank? then "error" end }
+    = f.label :password, :class => "control-label"
+    .controls
+      = f.password_field :password, :placeholder => 'c0mp3x p@$$w0rd', :class => "span3", :required => true
+      - if !resource.errors[:password].blank?
+        .help-inline= resource.errors.full_message(:password, "is dubious")
+      - else
+        .help-inline= link_to "Forgot your password?", new_password_path(resource_name)
+
+  .control-group
+    .controls
+      = f.submit "Sign in", :class => 'btn btn-primary'
+    .controls
+      %label{ :class => "checkbox", :style => "margin-top: 10px;" }
+        Remember me
+        = f.check_box :remember_me
