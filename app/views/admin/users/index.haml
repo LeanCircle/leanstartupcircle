@@ -3,14 +3,15 @@
 #index_admin_users
   %table.table.table-striped.table-condensed.table-bordered
     %caption
-      %h1 Listing Users
-      = link_to 'New user', new_admin_user_path, :class => "btn btn-primary"
+      %h1
+        Listing Users
+        = link_to 'New user', new_admin_user_path, :class => "btn btn-primary"
     %thead
       %tr
         %th Name
         %th Links
         %th Email
-        %th Zip
+        %th Location
         %th Role
         %th
     %tbody
@@ -20,8 +21,8 @@
           %td
             - user.authentications.each do |authentication|
               = link_to_if(!authentication.url.blank?, "#{image_tag 'links/link_' + authentication.provider + '.png', :width => '25px'}".html_safe, authentication.url){}
-          %td= user.email
-          %td= user.zip_code
+          %td= link_to_if(user.email, user.email, "mailto:" + user.email){}
+          %td= user.address
           %td= user.role
           %td
             = link_to '', admin_user_path(user), :class => "icon-eye-open"

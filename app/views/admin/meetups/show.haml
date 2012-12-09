@@ -18,10 +18,15 @@
     Circle?
     = @meetup.lsc
 
-  = link_to 'Edit', edit_admin_meetup_path(@meetup)
-  \|
-  = link_to 'Destroy', admin_meetup_path(@meetup), :confirm => 'Are you sure?', :method => :delete
-  \|
-  = link_to 'Index', admin_meetups_path
-  \|
-  = link_to 'New meetup', new_admin_meetup_path
+  = link_to edit_admin_meetup_path(@meetup), :class => 'btn' do
+    %i.icon-pencil
+    Edit
+  = link_to admin_meetup_path(@meetup), :class => 'btn', :confirm => 'Are you sure?', :method => :delete do
+    %i.icon-trash
+    Destroy
+  = link_to new_admin_meetup_path, :class => 'btn' do
+    %i.icon-plus
+    New
+  = link_to admin_meetups_path, :class => 'btn-primary btn' do
+    %i.icon-list.icon-white
+    Index
