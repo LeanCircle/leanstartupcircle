@@ -8,6 +8,10 @@
 
 // Bootstrap overides
 
+content.container // Fixes gmaps error
+  margin-right: 0
+  margin-left: 0
+
 .field_with_errors
   display: inline
 
@@ -125,14 +129,10 @@ footer
 #guidelines, #moderation_guidelines, #team
   margin-bottom: 30px
 
+// Responsive mods for google embeds
+
 .gmaps4rails_map, .map_container
   width: 925px
-.map_container
-  margin-bottom: 30px
-  img
-    max-width: none
-
-// Responsive mods
 
 @media (max-width: 320px)
   .gmaps4rails_map, .map_container
