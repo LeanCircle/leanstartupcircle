@@ -12,7 +12,18 @@
         %span#footermenu
           = link_to "Team", :team
           &#8226;
-          = link_to "Blog", root_url(:subdomain => "blog"), :target => "_blank"
-          &#8226;
           = link_to 'Contact', contact_url(:subdomain => false)
+          &#8226;
+          = link_to 'http://twitter.com/leancircle', :target => "_blank", :title => "Lean Startup Circle on Twitter", :class => "nodec" do
+            %span.pics
+              = image_tag 'links/link_twitter.png'
+          = link_to 'http://facebook.com/leanstartupcircle', :target => "_blank", :title => "Lean Startup Circle on Facebook", :class => "nodec" do
+            %span.pics
+              = image_tag 'links/link_facebook.png'
+          = link_to 'http://linkedin.com/groups?home=&gid=2789385', :target => "_blank", :title => "Lean Startup Circle on LinkedIn", :class => "nodec" do
+            %span.pics
+              = image_tag 'links/link_linkedin.png'
+          = link_to 'http://blog.leanstartupcircle.com', :target => "_blank", :title => "Lean Startup Circle's blog", :class => "nodec" do
+            %span.pics
+              = image_tag 'links/link_blog.png'
 
