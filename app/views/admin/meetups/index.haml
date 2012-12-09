@@ -8,18 +8,20 @@
     %thead
       %tr
         %th Name
-        %th City
-        %th State / Province
-        %th Country
+        %th Location
+        %th Circle?
         %th Approval
         %th
     %tbody
       - @meetups.each do |meetup|
         %tr.meetup
           %td= link_to meetup.name, admin_meetup_path(meetup)
-          %td= meetup.city
-          %td= meetup.province
-          %td= meetup.country
+          %td= meetup.address
+          %td
+            - if meetup.lsc == true
+              .icon-ok
+            - else
+              .icon-remove
           %td
             - if meetup.approval == true
               .icon-ok

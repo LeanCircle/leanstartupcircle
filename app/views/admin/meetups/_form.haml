@@ -68,6 +68,12 @@
     = f.label :visibility, 'Visibility'
     = f.text_field :visibility
   .field
+    = f.label :lsc, 'Circle?'
+    = f.label :lsc, 'False'
+    = f.radio_button :lsc, false
+    = f.label :lsc, 'True'
+    = f.radio_button :lsc, true
+  .field
     = f.label :approval, 'Approval'
     = f.label :approval, 'False'
     = f.radio_button :approval, false

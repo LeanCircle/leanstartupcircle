@@ -4,8 +4,14 @@ class MeetupsController < ApplicationController
     @meetups = Meetup.near(@location.coordinates, 20000).approved.to_gmaps4rails do |meetup, marker|
       marker.infowindow render_to_string(:partial => "/meetups/gmap_info_window", :locals => { :meetup => meetup})
       marker.sidebar render_to_string(:partial => "/meetups/meetup_list_item", :locals => { :meetup => meetup})
-      if @nearest_meetups.include?(meetup)
-        marker.picture({ :picture => "http://maps.google.com/mapfiles/marker_purple.png" })
+      if @nearest_meetups.include?(meetup) && meetup.lsc
+        marker.picture({ :picture => "http://maps.google.com/mapfiles/marker.png" })
+      elsif @nearest_meetups.include?(meetup)
+        marker.picture({ :picture => "http://labs.google.com/ridefinder/images/mm_20_red.png" })
+      elsif meetup.lsc
+        marker.picture({ :picture => "http://maps.google.com/mapfiles/marker_orange.png" })
+      else
+        marker.picture({ :picture => "http://labs.google.com/ridefinder/images/mm_20_orange.png" })
       end
     end
   end
