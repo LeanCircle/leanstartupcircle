@@ -23,7 +23,7 @@ class Admin::MeetupsController < Admin::BaseController
     @meetup = Meetup.fetch_from_meetup(params[:meetup][:meetup_id])
     if @meetup.save
       flash[:success] = 'Awesome! You\'ve added a new meetup for everyone.'
-      session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to admin_meetups_path
+      session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to(admin_meetups_path)
     else
       render :action => "new"
     end
