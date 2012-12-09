@@ -18,16 +18,34 @@
       %p.lead
         OR
 
-  .control-group{ :class => if resource.errors[:email].blank? then "error" end }
+  .control-group{ :class => if !resource.errors[:name].blank? then "error" end }
+    = f.label :name, :class => "control-label"
+    .controls
+      = f.text_field :name, :placeholder => 'Firstname Lastname', :class => "span3", :autofocus => true, :required => true
+      - if !resource.errors[:name].blank?
+        .help-inline= resource.errors.full_message(:name, "is dubious")
+      - else
+        .help-inline So we don't have to call you "Hey you!"
+
+  .control-group{ :class => if !resource.errors[:zip_code].blank? then "error" end }
+    = f.label :zip_code, :class => "control-label"
+    .controls
+      = f.text_field :zip_code, :placeholder => '94110', :class => "span3", :required => true
+      - if !resource.errors[:zip_code].blank?
+        .help-inline= resource.errors.full_message(:zip_code, "is dubious")
+      - else
+        .help-inline To introduce you to lean startup people near you.
+
+  .control-group{ :class => if !resource.errors[:email].blank? then "error" end }
     = f.label :email, :class => "control-label"
     .controls
-      = f.email_field :email, :placeholder => 'clever@emailaddress.com', :class => "span3", :autofocus => true, :required => true
+      = f.email_field :email, :placeholder => 'clever@emailaddress.com', :class => "span3", :required => true
       - if !resource.errors[:email].blank?
         .help-inline= resource.errors.full_message(:email, "is dubious")
       - else
-        .help-inline We need your email in case you forget your password.
+        .help-inline In case you forget your password.
 
-  .control-group{ :class => if resource.errors[:password].blank? then "error" end }
+  .control-group{ :class => if !resource.errors[:password].blank? then "error" end }
     = f.label :password, :class => "control-label"
     .controls
       = f.password_field :password, :placeholder => 'c0mp3x p@$$w0rd', :class => "span3", :required => true

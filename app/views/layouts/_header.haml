@@ -4,7 +4,7 @@
       .span12.relative
         = link_to root_url(:subdomain => false), :id => 'logo', :class => 'nodec' do
           = image_tag "icons/leanstartupcircle_logo.png"
-        - if !request.subdomain.blank?
+        - if !(request.subdomain.blank? && request.path == root_path ) || user_signed_in?
           .utility_nav.pull-right
             - if user_signed_in?
               Welcome
@@ -13,6 +13,8 @@
               = link_to "Sign out", sign_out_url(:subdomain => false), :method => :delete
             - else
               = link_to "Sign in", sign_in_url(:subdomain => false)
+              &#8226;
+              = link_to "Sign up", new_user_registration_url(:subdomain => false)
         .clear
         = render 'meetups/show_nearest'
     .row
