@@ -1,13 +1,14 @@
-- location = request.location
-- meetup = Meetup.near(location.coordinates, 100).first
-
 .nearest_meetup
   You are in
-  = location.address
+  = @location.address
   Nearest meetup?
-  - if meetup.blank?
+  - if @nearest_meetups.blank?
     None,
-    = link_to "start a new meetup!", "http://leanstartup.pbworks.com/w/page/55605569/Organizer's%20Guide"
-  - else
+    = link_to "start a new meetup!", "http://leanstartup.pbworks.com/w/page/55605569/Organizer's%20Guide", :target => '_blank'
+  - elsif @nearest_meetups.count == 1
     = link_to meetup.link do
       #{ meetup.name } - #{ meetup.address }
+  - else
+    There are
+    = link_to @nearest_meetups.count.to_s + " near you!", meetups_url(:subdomain => 'meetups')
+
