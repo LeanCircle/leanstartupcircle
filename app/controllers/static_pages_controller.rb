@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
 
-  def guidelines
-  end
+  after_filter :stash_last_url
 
 end

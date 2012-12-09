@@ -19,14 +19,22 @@
           %td= meetup.address
           %td
             - if meetup.lsc == true
-              .icon-ok
+              = form_for [:admin, meetup] do |f|
+                = f.hidden_field :lsc, :value => false
+                = f.submit '', :class => "icon-ok btn btn-link"
             - else
-              .icon-remove
+              = form_for [:admin, meetup] do |f|
+                = f.hidden_field :lsc, :value => true
+                = f.submit '', :class => "icon-remove btn btn-link"
           %td
             - if meetup.approval == true
-              .icon-ok
+              = form_for [:admin, meetup] do |f|
+                = f.hidden_field :approval, :value => false
+                = f.submit '', :class => "icon-ok btn btn-link"
             - else
-              .icon-remove
+              = form_for [:admin, meetup] do |f|
+                = f.hidden_field :approval, :value => true
+                = f.submit '', :class => "icon-remove btn btn-link"
           %td
             = link_to '', admin_meetup_path(meetup), :class => "icon-eye-open"
             = link_to '', edit_admin_meetup_path(meetup), :class => "icon-edit"

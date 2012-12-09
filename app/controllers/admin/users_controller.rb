@@ -21,7 +21,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = 'Awesome! You\'ve added a new user for everyone.'
-      redirect_to admin_users_path
+      session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to admin_users_path
     else
       render :action => "new"
     end
@@ -31,7 +31,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = 'Cool... You\'ve updated the user.'
-      redirect_to admin_user_path(@user)
+      session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to admin_user_path(@user)
     else
       render :action => "edit"
     end
