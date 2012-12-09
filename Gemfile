@@ -13,6 +13,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'omniauth-meetup'
+gem 'omniauth-twitter'
 gem 'cancan'
 
 gem 'recaptcha', :require => 'recaptcha/rails'
