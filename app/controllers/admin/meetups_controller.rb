@@ -2,7 +2,7 @@ class Admin::MeetupsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @meetups = Meetup.all
+    @meetups = Meetup.order("lsc DESC", "approval DESC", "country ASC")
   end
 
   def show
