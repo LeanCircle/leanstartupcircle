@@ -1,7 +1,9 @@
 - location = request.location
-- meetup = Meetup.near(location, 100).first
+- meetup = Meetup.near(location.coordinates, 100).first
 
 .nearest_meetup
+  You are in
+  = location.address
   Nearest meetup?
   - if meetup.blank?
     None,
