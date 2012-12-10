@@ -6,6 +6,14 @@ GIT
       omniauth-oauth (~> 1.0)
 
 GIT
+  remote: git://github.com/TriKro/omniauth-meetup.git
+  revision: 4692c7654a9823dc15c4e2f91eacf6ef43e77eb7
+  specs:
+    omniauth-meetup (0.0.6)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
+
+GIT
   remote: git://github.com/pbajaria/rmeetup.git
   revision: 334c18dfdf68cc00abf5866f4d3ff82bfccdd868
   specs:
@@ -119,9 +127,6 @@ GEM
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
-    omniauth-meetup (0.0.6)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -213,7 +218,7 @@ DEPENDENCIES
   nifty-generators
   omniauth
   omniauth-linkedin!
-  omniauth-meetup
+  omniauth-meetup!
   omniauth-twitter
   pg
   rails (= 3.2.2)
