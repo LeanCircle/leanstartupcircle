@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209104737) do
+ActiveRecord::Schema.define(:version => 20121210012116) do
 
   create_table "authentications", :force => true do |t|
     t.integer   "user_id"
@@ -21,8 +21,11 @@ ActiveRecord::Schema.define(:version => 20121209104737) do
     t.string    "secret"
     t.string    "image"
     t.string    "url"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
+    t.string    "name"
+    t.string    "location"
+    t.string    "description"
   end
 
   create_table "meetups", :force => true do |t|

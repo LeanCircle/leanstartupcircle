@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/TriKro/omniauth-linkedin.git
+  revision: 7aa2cb122fec9add42d101b75e4e2503511f12c8
+  specs:
+    omniauth-linkedin (0.0.8)
+      omniauth-oauth (~> 1.0)
+
+GIT
   remote: git://github.com/pbajaria/rmeetup.git
   revision: 334c18dfdf68cc00abf5866f4d3ff82bfccdd868
   specs:
@@ -112,8 +119,6 @@ GEM
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
-    omniauth-linkedin (0.0.8)
-      omniauth-oauth (~> 1.0)
     omniauth-meetup (0.0.6)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
@@ -207,7 +212,7 @@ DEPENDENCIES
   mocha
   nifty-generators
   omniauth
-  omniauth-linkedin
+  omniauth-linkedin!
   omniauth-meetup
   omniauth-twitter
   pg

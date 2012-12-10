@@ -11,7 +11,7 @@ gem 'json', '1.7.3'
 
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-linkedin'
+gem 'omniauth-linkedin', :git => 'git://github.com/TriKro/omniauth-linkedin.git'
 gem 'omniauth-meetup'
 gem 'omniauth-twitter'
 gem 'cancan'
