@@ -24,6 +24,7 @@
           %li= link_to 'Team', team_url(:subdomain => false)
           %li= link_to 'Blog', 'http://blog.leanstartupcircle.com', :target => '_blank'
           %li= link_to 'Contact', contact_url(:subdomain => false)
+      %li.divider-vertical
       - if can? :manage, :all
         %li.divider-vertical
         %li.dropdown
@@ -32,6 +33,7 @@
             %li= link_to 'Meetups', admin_meetups_url(:subdomain => false)
             %li= link_to 'Users', admin_users_url(:subdomain => false)
             %li= link_to 'Authentications', admin_authentications_url(:subdomain => false)
+        %li.divider-vertical
 
     .follow_us
       Follow us!
