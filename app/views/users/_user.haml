@@ -1,0 +1,12 @@
+.person.row
+  .profile_pic.span2
+    = image_tag current_user.image, :class => "img-rounded"
+  .name_bio.span10
+    .name
+      %h1= user.name
+      -#%p= link_to_if(user.email, user.email, "mailto:" + user.email){}
+    .bio
+      = user.description
+    .links
+      - user.authentications.each do |authentication|
+        = link_to_if(!authentication.url.blank?, "#{image_tag 'links/link_' + authentication.provider + '.png', :width => '25px'}".html_safe, authentication.url){}

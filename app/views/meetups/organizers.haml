@@ -1,0 +1,6 @@
+- title "Lean Startup Organizers"
+
+#index_users
+  %h1 Lean Startup Organizers
+  - @users.each do |user|
+    = render :partial => 'users/user', :locals => { :user => user }

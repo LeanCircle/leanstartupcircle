@@ -16,6 +16,10 @@ class MeetupsController < ApplicationController
     end
   end
 
+  def organizers
+    @users = User.joins(:meetups).uniq
+  end
+
   def show
     @meetup = Meetup.find(params[:id])
   end

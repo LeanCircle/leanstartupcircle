@@ -12,7 +12,9 @@ Leanstartupcircle::Application.routes.draw do
 
   # Meetup subdomain routes
   constraints :subdomain => "meetups" do
-    resources :meetups, :except => [:edit, :update, :destroy], :path => "/"
+    resources :meetups, :except => [:edit, :update, :destroy], :path => "/" do
+      get :organizers, :on => :collection
+    end
   end
 
   # Main domain routes
