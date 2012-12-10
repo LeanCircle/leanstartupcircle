@@ -8,7 +8,9 @@
           .utility_nav.pull-right
             - if user_signed_in?
               Welcome
-              = current_user.identifier
+              = link_to current_user.first_name, current_user
+              = link_to current_user, :class => "nodec" do
+                = image_tag current_user.image, :width => 25
               &#8226;
               = link_to "Sign out", sign_out_url(:subdomain => false), :method => :delete
             - else

@@ -3,7 +3,6 @@
 @import 'vendor/normalize', 'vendor/main', 'vendor/bootstrap', 'vendor/gmaps4rails', 'compass'
 @import 'variables', 'helper'
 @import 'layouts/buttons', 'layouts/flash'
-@import 'static_pages/team'
 @import 'landing_pages/jobs'
 
 // Bootstrap overides
@@ -142,6 +141,25 @@ footer
 // Custom pages
 #guidelines, #moderation_guidelines, #team
   margin-bottom: 30px
+
+.person
+  padding-bottom: 20px
+  .profile_pic
+    img
+      width: 170px
+  .name_bio
+    .name
+      font-size: 1.5em
+    .bio
+      padding-top: 10px
+    .links
+      margin-top: 10px
+      a
+        border-bottom: none
+      img
+        height: 20px
+        width: 20px
+        padding: 2px 1px 0 0
 
 // Meetups
 

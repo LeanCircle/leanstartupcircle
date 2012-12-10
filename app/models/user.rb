@@ -39,8 +39,16 @@ class User < ActiveRecord::Base
   #                :password,
   #                :password_confirmation
 
+  def image
+    authentications.where("image IS NOT NULL").first.try(:image)
+  end
+
+  def description
+    authentications.where("description IS NOT NULL").first.try(:description)
+  end
+
   def first_name
-    name.sub(/ .*/, '') rescue ''
+    name.blank? ? "Anonymous" : name.sub(/ .*/, '')
   end
 
   def identifier
