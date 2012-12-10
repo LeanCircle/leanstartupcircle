@@ -1,5 +1,9 @@
 %head
-  %title Lean Startup Circle - Building Lean Leaders
+  %title
+    - if !yield(:title).blank?
+      = yield :title
+      &#8226;
+    Lean Startup Circle &#8226; Building Lean Leaders
 
   %meta{:charset => "utf-8"}
   %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
