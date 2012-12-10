@@ -4,7 +4,7 @@
       .span12.relative
         = link_to root_url(:subdomain => false), :id => 'logo', :class => 'nodec' do
           = image_tag "icons/leanstartupcircle_logo.png"
-        - if !(request.subdomain.blank? && request.path == root_path ) || user_signed_in?
+        - if !((request.subdomain.blank? || request.subdomain == "www") && request.path == root_path ) || user_signed_in?
           .utility_nav.pull-right
             - if user_signed_in?
               Welcome
