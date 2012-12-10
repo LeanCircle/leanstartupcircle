@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/TriKro/omniauth-linkedin.git
-  revision: 7aa2cb122fec9add42d101b75e4e2503511f12c8
+  revision: 8fe6ea1894d6cc27558d45713a08d1e55c4991c7
   specs:
     omniauth-linkedin (0.0.8)
       omniauth-oauth (~> 1.0)
@@ -104,9 +104,9 @@ GEM
       treetop (~> 1.4.8)
     metaclass (0.0.1)
     mime-types (1.19)
-    mocha (0.13.0)
+    mocha (0.13.1)
       metaclass (~> 0.0.1)
-    multi_json (1.3.7)
+    multi_json (1.4.0)
     multipart-post (1.1.5)
     nifty-generators (0.4.6)
     oauth (0.4.7)
