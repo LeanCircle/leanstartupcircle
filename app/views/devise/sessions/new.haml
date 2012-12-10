@@ -11,7 +11,7 @@
       .controls
         - resource_class.omniauth_providers.each do |provider|
           = link_to omniauth_authorize_path(resource_name, provider) do
-            = image_tag 'icons/sign_up_' + provider.to_s + '.png'
+            = image_tag 'icons/sign_in_' + provider.to_s + '.png'
 
   .control-group
     .controls
