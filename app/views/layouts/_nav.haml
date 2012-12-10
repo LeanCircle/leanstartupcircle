@@ -7,8 +7,8 @@
           %li= link_to 'Forum', root_url(:subdomain => false)
           %li= link_to 'Posting Guide', guidelines_url(:subdomain => false)
           %li= link_to 'Moderation Guide', moderation_guidelines_url(:subdomain => false)
-
       %li.divider-vertical
+
       %li.dropdown
         = link_to 'Meetups', meetups_url(:subdomain => 'meetups')
         %ul.dropdown-menu
@@ -16,8 +16,10 @@
           %li= link_to 'Add a Meetup', new_meetup_url(:subdomain => 'meetups')
           %li= link_to 'Start your own', "http://leanstartup.pbworks.com/w/page/55605569/Organizer's%20Guide", :target => "_blank"
       %li.divider-vertical
+
       %li= link_to 'Wiki', 'http://wiki.leanstartupcircle.com', :target => '_blank'
       %li.divider-vertical
+
       %li.dropdown
         = link_to 'About', team_url(:subdomain => false)
         %ul.dropdown-menu
@@ -25,6 +27,7 @@
           %li= link_to 'Blog', 'http://blog.leanstartupcircle.com', :target => '_blank'
           %li= link_to 'Contact', contact_url(:subdomain => false)
       %li.divider-vertical
+
       - if can? :manage, :all
         %li.divider-vertical
         %li.dropdown
