@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212060835) do
+ActiveRecord::Schema.define(:version => 20121212062856) do
 
   create_table "authentications", :force => true do |t|
     t.integer   "user_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20121212060835) do
     t.string    "description"
   end
 
-  create_table "meetups", :force => true do |t|
+  create_table "groups", :force => true do |t|
     t.integer   "meetup_id"
     t.integer   "organizer_id"
     t.string    "name"
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(:version => 20121212060835) do
     t.integer   "user_id"
   end
 
-  add_index "meetups", ["latitude", "longitude"], :name => "index_meetups_on_latitude_and_longitude"
-  add_index "meetups", ["slug"], :name => "index_meetups_on_slug", :unique => true
+  add_index "groups", ["latitude", "longitude"], :name => "index_meetups_on_latitude_and_longitude"
+  add_index "groups", ["slug"], :name => "index_meetups_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string    "email",                  :default => "",       :null => false

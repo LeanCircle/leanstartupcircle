@@ -10,9 +10,9 @@ Leanstartupcircle::Application.routes.draw do
     match "/thanks_for_applying" => "landing_pages#thanks_for_applying"
   end
 
-  # Meetup subdomain routes
+  # Group subdomain routes
   constraints :subdomain => "meetups" do
-    resources :meetups, :except => [:edit, :update, :destroy], :path => "/" do
+    resources :groups, :except => [:edit, :update, :destroy], :path => "/" do
       get :organizers, :on => :collection
     end
   end
@@ -50,7 +50,7 @@ Leanstartupcircle::Application.routes.draw do
     # Admin
     namespace :admin do
       match "/" => "base#dashboard", :as => :admin_dashboard
-      resources :meetups
+      resources :groups
       resources :users do
         get :imitate
       end

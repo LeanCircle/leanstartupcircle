@@ -1,4 +1,4 @@
-class Meetup < ActiveRecord::Base
+class Group < ActiveRecord::Base
 
   belongs_to :authentication, :primary_key => "uid", :foreign_key => "organizer_id" # TODO: scope this to :provider => "meetup"
   belongs_to :user
@@ -6,15 +6,17 @@ class Meetup < ActiveRecord::Base
   attr_accessor :meetup_identifier
 
   validates_presence_of :name
-  validates_uniqueness_of :name, :meetup_id, :meetup_link, :allow_blank => true
+  validates_uniqueness_of :name,
+                          :meetup_id,
+                          :meetup_link, :allow_blank => true
 
   geocoded_by :address
-  reverse_geocoded_by :latitude, :longitude do |meetup, results|
+  reverse_geocoded_by :latitude, :longitude do |group, results|
     if geo = results.first
-      meetup.city = geo.city
-      meetup.province = geo.state_code
-      meetup.country_code = geo.country_code
-      meetup.country = geo.country
+      group.city = geo.city
+      group.province = geo.state_code
+      group.country_code = geo.country_code
+      group.country = geo.country
     end
   end
   after_validation :geocode, :reverse_geocode
@@ -52,7 +54,7 @@ class Meetup < ActiveRecord::Base
     "#{self.city}, #{self.province}, #{self.country}"
   end
 
-  def self.fetch_from_meetup(query, meetup = nil )
+  def self.fetch_from_meetup(query, group = nil )
     return if query.blank?
     init_rmeetup
     query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'') # Remove http:// and trailing slashes
@@ -64,7 +66,7 @@ class Meetup < ActiveRecord::Base
     else
       response = RMeetup::Client.fetch( :groups,{ :domain => query }).first
     end
-    save_meetup_api_response(response, meetup)
+    save_meetup_api_response(response, group)
   end
 
   def self.fetch_meetups_with_authentication(auth)
@@ -75,26 +77,26 @@ class Meetup < ActiveRecord::Base
     end
   end
 
-  def self.save_meetup_api_response(response, meetup = Meetup.new)
+  def self.save_meetup_api_response(response, group = Group.new)
     unless response.blank?
-      meetup.name = response.try(:name)
-      meetup.description = response.try(:description)
-      meetup.meetup_id = response.try(:id)
-      meetup.organizer_id = response.try(:organizer).try(:[], 'member_id')
-      meetup.meetup_link = response.try(:link)
-      meetup.city = response.try(:city)
-      meetup.country_code = response.try(:country)
-      meetup.province = response.try(:state)
-      meetup.latitude = response.try(:lat)
-      meetup.longitude = response.try(:lon)
-      meetup.highres_photo_url = response.try(:group_photo).try(:[], 'highres_link')
-      meetup.photo_url = response.try(:group_photo).try(:[], 'photo_link')
-      meetup.thumbnail_url = response.try(:group_photo).try(:[], 'thumb_link')
-      meetup.join_mode = response.try(:join_mode)
-      meetup.visibility = response.try(:visibility)
+      group.name = response.try(:name)
+      group.description = response.try(:description)
+      group.meetup_id = response.try(:id)
+      group.organizer_id = response.try(:organizer).try(:[], 'member_id')
+      group.meetup_link = response.try(:link)
+      group.city = response.try(:city)
+      group.country_code = response.try(:country)
+      group.province = response.try(:state)
+      group.latitude = response.try(:lat)
+      group.longitude = response.try(:lon)
+      group.highres_photo_url = response.try(:group_photo).try(:[], 'highres_link')
+      group.photo_url = response.try(:group_photo).try(:[], 'photo_link')
+      group.thumbnail_url = response.try(:group_photo).try(:[], 'thumb_link')
+      group.join_mode = response.try(:join_mode)
+      group.visibility = response.try(:visibility)
     end
-    meetup.authentication.user.meetups << meetup if meetup.organizer_id && meetup.authentication.try(:user)
-    return meetup
+    group.authentication.user.groups << group if group.organizer_id && group.authentication.try(:user)
+    return group
   end
 
   private

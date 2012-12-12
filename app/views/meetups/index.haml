@@ -1,18 +1,18 @@
 - title "Find a Lean Startup Meetup"
 
-#index_meetups
+#index_groups
   .row
     .span12
-      = gmaps("markers" => { "data" => @meetups, :options => { :randomize => true, :max_random_distance => 1000, :list_container => "meetups" } })
-      %table.table.table-condensed.table-striped.meetups
+      = gmaps("markers" => { "data" => @groups, :options => { :randomize => true, :max_random_distance => 1000, :list_container => "groups" } })
+      %table.table.table-condensed.table-striped.groups
         %caption
           %h1{ :style => "display: inline"}
             Lean Startup Meetups Worldwide
           %span.pull-right
-            = link_to "Add a Meetup", new_meetup_path, :class => "btn btn-primary"
+            = link_to "Add a Meetup", new_group_path, :class => "btn btn-primary"
         %thead
           %tr
             %th Name
             %th Location
             %th Links
-        %tbody#meetups
+        %tbody#groups

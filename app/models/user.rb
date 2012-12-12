@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :authentications
-  has_many :meetups
+  has_many :groups
 
   extend FriendlyId
   friendly_id :name, use: :slugged

@@ -1,9 +1,9 @@
-= form_for [:admin, @meetup] do |f|
-  -if @meetup.errors.any?
+= form_for [:admin, @group] do |f|
+  -if @group.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@meetup.errors.count, "error")} prohibited this meetup from being saved:"
+      %h2= "#{pluralize(@group.errors.count, "error")} prohibited this group from being saved:"
       %ul
-        - @meetup.errors.full_messages.each do |msg|
+        - @group.errors.full_messages.each do |msg|
           %li= msg
 
   %br
@@ -11,8 +11,8 @@
     = f.label :name, 'Name'
     = f.text_field :name, :required => true
   .field
-    = f.label :meetup_id, 'Group ID'
-    = f.number_field :meetup_id
+    = f.label :group_id, 'Group ID'
+    = f.number_field :group_id
   .field
     = f.label :description, 'Description'
     = f.text_area :description

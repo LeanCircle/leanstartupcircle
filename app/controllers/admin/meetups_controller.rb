@@ -1,48 +1,48 @@
-class Admin::MeetupsController < Admin::BaseController
+class Admin::GroupsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @meetups = Meetup.order("lsc DESC", "approval DESC", "country ASC")
+    @groups = Group.order("lsc DESC", "approval DESC", "country ASC")
   end
 
   def show
-    @meetup = Meetup.find(params[:id])
+    @group = Group.find(params[:id])
   end
 
   def new
-    authorize! :create, Meetup
-    @meetup = Meetup.new
+    authorize! :create, Group
+    @group = Group.new
   end
 
   def edit
-    @meetup = Meetup.find(params[:id])
+    @group = Group.find(params[:id])
   end
 
   def create
-    authorize! :create, @meetup
-    @meetup = Meetup.fetch_from_meetup(params[:meetup][:meetup_id])
-    if @meetup.save
-      flash[:success] = 'Awesome! You\'ve added a new meetup for everyone.'
-      session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to(admin_meetups_path)
+    authorize! :create, @group
+    @group = Group.fetch_from_group(params[:group][:group_id])
+    if @group.save
+      flash[:success] = 'Awesome! You\'ve added a new group for everyone.'
+      session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to(admin_groups_path)
     else
       render :action => "new"
     end
   end
 
   def update
-    @meetup = Meetup.find(params[:id])
-    if @meetup.update_attributes(params[:meetup])
-      flash[:success] = 'Cool... You\'ve updated the meetup.'
-      session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to(admin_meetup_path(@meetup))
+    @group = Group.find(params[:id])
+    if @group.update_attributes(params[:group])
+      flash[:success] = 'Cool... You\'ve updated the group.'
+      session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to(admin_group_path(@group))
     else
       render :action => "edit"
     end
   end
 
   def destroy
-    @meetup = Meetup.find(params[:id])
-    @meetup.destroy
-    flash[:alert] = 'The meetup was destroyed! Yeargh!!! Don\'t you feel mighty?'
+    @group = Group.find(params[:id])
+    @group.destroy
+    flash[:alert] = 'The group was destroyed! Yeargh!!! Don\'t you feel mighty?'
     redirect_to :action => 'index'
   end
 

@@ -1,11 +1,11 @@
-- title "Meetups"
+- title "Groups"
 
-#index_admin_meetups
+#index_admin_groups
   %table.table.table-striped.table-condensed.table-bordered
     %caption
       %h1
-        Listing Meetups
-        = link_to 'Add a Meetup', new_admin_meetup_path, :class => "btn btn-primary"
+        Listing Groups
+        = link_to 'Add a Group', new_admin_group_path, :class => "btn btn-primary"
     %thead
       %tr
         %th Name
@@ -14,29 +14,29 @@
         %th Approval
         %th
     %tbody
-      - @meetups.each do |meetup|
-        %tr.meetup
-          %td= link_to meetup.name, admin_meetup_path(meetup)
-          %td= meetup.address
+      - @groups.each do |group|
+        %tr.group
+          %td= link_to group.name, admin_group_path(group)
+          %td= group.address
           %td
-            - if meetup.lsc == true
-              = form_for [:admin, meetup] do |f|
+            - if group.lsc == true
+              = form_for [:admin, group] do |f|
                 = f.hidden_field :lsc, :value => false
                 = f.submit '', :class => "icon-ok btn btn-link"
             - else
-              = form_for [:admin, meetup] do |f|
+              = form_for [:admin, group] do |f|
                 = f.hidden_field :lsc, :value => true
                 = f.submit '', :class => "icon-remove btn btn-link"
           %td
-            - if meetup.approval == true
-              = form_for [:admin, meetup] do |f|
+            - if group.approval == true
+              = form_for [:admin, group] do |f|
                 = f.hidden_field :approval, :value => false
                 = f.submit '', :class => "icon-ok btn btn-link"
             - else
-              = form_for [:admin, meetup] do |f|
+              = form_for [:admin, group] do |f|
                 = f.hidden_field :approval, :value => true
                 = f.submit '', :class => "icon-remove btn btn-link"
           %td
-            = link_to '', admin_meetup_path(meetup), :class => "icon-eye-open"
-            = link_to '', edit_admin_meetup_path(meetup), :class => "icon-edit"
-            = link_to '', admin_meetup_path(meetup), :class => "icon-trash", :confirm => 'Are you sure?', :method => :delete
+            = link_to '', admin_group_path(group), :class => "icon-eye-open"
+            = link_to '', edit_admin_group_path(group), :class => "icon-edit"
+            = link_to '', admin_group_path(group), :class => "icon-trash", :confirm => 'Are you sure?', :method => :delete

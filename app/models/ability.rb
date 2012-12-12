@@ -6,10 +6,10 @@ class Ability
     if user.role == 'admin'
       can :manage, :all
     elsif user.role == 'member'
-      can :update, Meetup, :organizer_id => user.authentications.find_by_provider('meetup').try(:uid)
+      can :update, Group, :user_id => user.id
     else
-      can :create, Meetup
-      can :read, Meetup
+      can :create, Group
+      can :read, Group
       can :read, User
     end
   end

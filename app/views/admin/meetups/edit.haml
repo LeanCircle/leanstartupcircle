@@ -1,10 +1,10 @@
-- title "Edit " + @meetup.name
+- title "Edit " + @group.name
 
-#edit_admin_meetups
-  %h1 Editing Meetup
+#edit_admin_groups
+  %h1 Editing Group
 
   = render 'form'
 
-  = link_to 'Show', admin_meetup_path(@meetup)
+  = link_to 'Show', admin_group_path(@group)
   \|
-  = link_to 'Index', admin_meetups_path
+  = link_to 'Index', admin_groups_path

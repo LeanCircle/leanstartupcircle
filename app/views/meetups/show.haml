@@ -1,11 +1,11 @@
-- title @meetup.name
+- title @group.name
 
-#show_meetups
-  %h1= @meetup.name
-  %p= @meetup.address
-  %p= @meetup.description.html_safe unless @meetup.description.blank?
-  %p= link_to @meetup.meetup_link
+#show_groups
+  %h1= @group.name
+  %p= @group.address
+  %p= @group.description.html_safe unless @group.description.blank?
+  %p= link_to @group.meetup_link
 
-  = link_to 'Index', meetups_path
+  = link_to 'Index', groups_path
   \|
-  = link_to 'New meetup', new_meetup_path
+  = link_to 'New meetup', new_group_path

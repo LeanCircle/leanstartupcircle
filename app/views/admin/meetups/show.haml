@@ -1,32 +1,32 @@
-- title @meetup.name
+- title @group.name
 
-#show_meetups
-  %h1= @meetup.name
-  = image_tag @meetup.thumbnail_url
-  %p #{ @meetup.address } (#{ @meetup.latitude }, #{ @meetup.longitude })
-  %p= @meetup.description.html_safe unless @meetup.description.blank?
-  %p= link_to_if !@meetup.meetup_link.blank?, @meetup.meetup_link
-  %p= link_to_if !@meetup.facebook_link.blank?, @meetup.facebook_link
-  %p= link_to_if !@meetup.twitter_link.blank?, @meetup.twitter_link
-  %p= link_to_if !@meetup.linkedin_link.blank?, @meetup.linkedin_link
-  %p= link_to_if !@meetup.other_link.blank?, @meetup.other_link
-  %p= link_to_if !@meetup.googleplus_link.blank?, @meetup.googleplus_link
+#show_groups
+  %h1= @group.name
+  = image_tag @group.thumbnail_url
+  %p #{ @group.address } (#{ @group.latitude }, #{ @group.longitude })
+  %p= @group.description.html_safe unless @group.description.blank?
+  %p= link_to_if !@group.meetup_link.blank?, @group.meetup_link
+  %p= link_to_if !@group.facebook_link.blank?, @group.facebook_link
+  %p= link_to_if !@group.twitter_link.blank?, @group.twitter_link
+  %p= link_to_if !@group.linkedin_link.blank?, @group.linkedin_link
+  %p= link_to_if !@group.other_link.blank?, @group.other_link
+  %p= link_to_if !@group.googleplus_link.blank?, @group.googleplus_link
   %p
     Approval:
-    = @meetup.approval
+    = @group.approval
   %p
     Circle?
-    = @meetup.lsc
+    = @group.lsc
 
-  = link_to edit_admin_meetup_path(@meetup), :class => 'btn' do
+  = link_to edit_admin_group_path(@group), :class => 'btn' do
     %i.icon-pencil
     Edit
-  = link_to admin_meetup_path(@meetup), :class => 'btn', :confirm => 'Are you sure?', :method => :delete do
+  = link_to admin_group_path(@group), :class => 'btn', :confirm => 'Are you sure?', :method => :delete do
     %i.icon-trash
     Destroy
-  = link_to new_admin_meetup_path, :class => 'btn' do
+  = link_to new_admin_group_path, :class => 'btn' do
     %i.icon-plus
     New
-  = link_to admin_meetups_path, :class => 'btn-primary btn' do
+  = link_to admin_groups_path, :class => 'btn-primary btn' do
     %i.icon-list.icon-white
     Index
