@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210012116) do
+ActiveRecord::Schema.define(:version => 20121212060835) do
 
   create_table "authentications", :force => true do |t|
     t.integer   "user_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20121210012116) do
     t.timestamp "updated_at",                           :null => false
     t.string    "country_code"
     t.boolean   "lsc",               :default => false
+    t.integer   "user_id"
   end
 
   add_index "meetups", ["latitude", "longitude"], :name => "index_meetups_on_latitude_and_longitude"

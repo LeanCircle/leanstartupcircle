@@ -1,8 +1,12 @@
 class Meetup < ActiveRecord::Base
 
-  belongs_to :authentication, :primary_key => "uid", :foreign_key => "organizer_id"
+  belongs_to :authentication, :primary_key => "uid", :foreign_key => "organizer_id" # TODO: scope this to :provider => "meetup"
+  belongs_to :user
 
   attr_accessor :meetup_identifier
+
+  validates_presence_of :name
+  validates_uniqueness_of :name, :meetup_id, :meetup_link, :allow_blank => true
 
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude do |meetup, results|
@@ -20,9 +24,6 @@ class Meetup < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   scope :approved, where(:approval => true)
-
-  validates_presence_of :name
-  validates_uniqueness_of :name, :meetup_id, :meetup_link, :allow_blank => true
 
   def user
     authentication.user
