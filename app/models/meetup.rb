@@ -25,10 +25,6 @@ class Meetup < ActiveRecord::Base
 
   scope :approved, where(:approval => true)
 
-  def user
-    authentication.user
-  end
-
   def link
     if !meetup_link.blank?
       return meetup_link
@@ -97,6 +93,7 @@ class Meetup < ActiveRecord::Base
       meetup.join_mode = response.try(:join_mode)
       meetup.visibility = response.try(:visibility)
     end
+    meetup.authentication.try(:user).try(:meetups) << meetup if meetup.organizer_id && meetup.authentication.try(:user)
     return meetup
   end
 
