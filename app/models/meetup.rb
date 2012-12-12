@@ -93,7 +93,7 @@ class Meetup < ActiveRecord::Base
       meetup.join_mode = response.try(:join_mode)
       meetup.visibility = response.try(:visibility)
     end
-    meetup.authentication.try(:user).try(:meetups) << meetup if meetup.organizer_id && meetup.authentication.try(:user)
+    meetup.authentication.user.meetups << meetup if meetup.organizer_id && meetup.authentication.try(:user)
     return meetup
   end
 
