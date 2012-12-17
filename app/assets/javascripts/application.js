@@ -52,7 +52,7 @@ function trackLinks() {
             category = linkTracking.toLowerCase()
             action = getDomain(link);
             label = link;
-            $(this).attr('target', '_blank').attr('onClick', '_gaq.push(["_link", "' + link + '"]);' +
+            $(this).attr('target', '_blank').attr('onClick', '_gaq.push(["_link", "' + link + '"]); return false; ' +
                                                              'recordOutboundLink(this, "' + category + '", "' + action + '", "' + label + '"); return false;');
         };
     });
