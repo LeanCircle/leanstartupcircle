@@ -20,6 +20,6 @@
       try {
         var myTracker=_gat._getTrackerByName();
         _gaq.push(['myTracker._trackEvent', category , action ]);
-        setTimeout('document.location = "' + link.href + '"', 100)
+        setTimeout(function(){window.open(link.href, '_blank'), 100)
       }catch(err){}
     }
