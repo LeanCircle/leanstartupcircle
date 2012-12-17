@@ -1,4 +1,4 @@
-%td= link_to group.name, group.link, :target => '_blank'
+%td= link_to group.name, group.link, :linkTracking => 'LSC Group Referral'
 %td= group.address
 %td
   = link_to_if(!group.meetup_link.blank?, "#{image_tag 'links/link_meetup.png', :width => '50px'}".html_safe, group.meetup_link, :linkTracking => 'LSC Group Referral' ){}
