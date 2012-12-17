@@ -17,9 +17,9 @@
 
     // Delay outbound page load in order to record outbound links
     function recordOutboundLink(link, category, action) {
-    try {
-    var myTracker=_gat._getTrackerByName();
-    _gaq.push(['myTracker._trackEvent', category , action ]);
-    setTimeout('document.location = "' + link.href + '"', 100)
-    }catch(err){}
+      try {
+        var myTracker=_gat._getTrackerByName();
+        _gaq.push(['myTracker._trackEvent', category , action ]);
+        setTimeout('document.location = "' + link.href + '"', 100)
+      }catch(err){}
     }
