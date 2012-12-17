@@ -24,9 +24,43 @@ Notifications = {
         $(this).parent().slideUp(300)
     });
   }
-}
+};
+
+function parseUrl( url ) {
+    var a = document.createElement('a');
+    a.href = url;
+    return a;
+};
+
+function getDomain( url ) {
+    hostname = parseUrl(link).hostname
+    splitHostname = hostname.split('.');
+    if (splitHostname.length > 2) {
+        domain = splitHostname[1] // Most likely the domain
+    } else {
+        domain = splitHostname[0]
+    };
+    return domain;
+};
+
+function trackLinks() {
+    // Setup outbound link tracking and push events to GA based on link attribute linkTracking
+    $('a').each(function () {
+        link = $(this).attr('href');
+        linkTracking = $(this).attr('linkTracking');
+        if (linkTracking) {
+            category = linkTracking.toLowerCase()
+            action = getDomain(link);
+            label = link;
+            $(this).attr('target', '_blank').attr('onClick', '_gaq.push(["_link", "' + link + '"]);' +
+                                                             'recordOutboundLink(this, "' + category + '", "' + action + '", "' + label + '"); return false;');
+        };
+    });
+};
 
 $(document).ready(function() {
+
+    // Show any notifications
     $(function () {
         Notifications.show_any();
     });
@@ -34,7 +68,7 @@ $(document).ready(function() {
         Notifications.handle_close();
     });
 
-    // Will only work if string in href matches with location
+    // Set menu items to active when you're on that page.
     var url = window.location;
     $('ul.nav a[href="'+ url +'"]').parents('.dropdown').addClass('active');
 
@@ -42,5 +76,12 @@ $(document).ready(function() {
     $('ul.nav a').filter(function() {
         return this.href == url;
     }).parents('.dropdown').addClass('active');
+
+    trackLinks();
+    // Make sure to trigger trackLinks again if a gmap just loaded.
+    Gmaps.map.callback = function() {
+        trackLinks();
+   };
+
 });
 

@@ -1,6 +1,9 @@
 - if Rails.env.production? && !session[:admin]
-  %script{:type => "text/javascript"}
+  :javascript
     var _gaq = _gaq || [];
+    var pluginUrl =
+     '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]); // Enhanced Link Attribution
     _gaq.push(['_setAccount', 'UA-30468280-1']);
     _gaq.push(['_setDomainName', 'leanstartupcircle.com']);
     _gaq.push(['_setAllowLinker', true]);
@@ -11,3 +14,12 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
+
+    // Delay outbound page load in order to record outbound links
+    function recordOutboundLink(link, category, action) {
+    try {
+    var myTracker=_gat._getTrackerByName();
+    _gaq.push(['myTracker._trackEvent', category , action ]);
+    setTimeout('document.location = "' + link.href + '"', 100)
+    }catch(err){}
+    }

@@ -1,7 +1,7 @@
 .nearest_group.pull-right.label.label-warning
   - if @nearest_groups.blank?
     There are no meetups near you.
-    = link_to "Start a group now!", "http://leanstartup.pbworks.com/w/page/55605569/Organizer's%20Guide", :target => '_blank'
+    = link_to "Start a group now!", "http://leanstartup.pbworks.com/w/page/55605569/Organizer's%20Guide", :linkTracking => 'LSC Wiki Referral'
   - else
     Join
     = link_to  @nearest_groups.first.name + " - " +@nearest_groups.first.address_no_country, @nearest_groups.first.link, :target => '_blank'
