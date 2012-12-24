@@ -45,11 +45,6 @@ class Group < ActiveRecord::Base
     [city, province].compact.join(', ')
   end
 
-  def gmaps4rails_address
-  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-    "#{self.city}, #{self.province}, #{self.country}"
-  end
-
   def self.fetch_from_meetup(query, group = nil )
     return if query.blank?
     init_rmeetup
