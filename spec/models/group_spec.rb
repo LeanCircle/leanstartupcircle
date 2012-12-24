@@ -149,5 +149,11 @@ describe Group do
       it { @group = build :group, :city => nil, :province => nil, :country => nil
            @group.address_no_country.should eql("") }
     end
+
+    describe "self.init_rmeetup" do
+      it { Group.should respond_to :init_rmeetup }
+      it { Group.init_rmeetup.should_not be_false }
+    end
+
   end
 end
