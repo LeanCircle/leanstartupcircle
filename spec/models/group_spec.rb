@@ -64,4 +64,31 @@ describe Group do
     it { @group.approval.should be_false }
     it { @group.lsc.should be_false }
   end
+
+  describe "scopes" do
+    before do
+      @approved_group = create :group, :approval => true
+      @unapproved_group = create :group, :approval => false
+    end
+
+    context "approved" do
+      it { Group.approved == [@approved_group] }
+    end
+  end
+
+  #describe "methods" do
+  #  describe "mark_as_read" do
+  #    it { should respond_to :mark_as_read }
+  #    it { @notification = Factory :notification, :read => false
+  #         @notification.mark_as_read
+  #         @notification.read.should be_true }
+  #  end
+  #
+  #  describe "as_json" do
+  #    it { should respond_to :as_json }
+  #    it { @notification.as_json.should have(10).items }
+  #    it { @notification.as_json.has_key?(:content).should be_true }
+  #  end
+  #end
+
 end
