@@ -80,74 +80,74 @@ describe Group do
     describe "link" do
       it { should respond_to :link }
       it { @group = create :group
-           @group.link.should eql(@group.meetup_link) }
+           @group.link.should == @group.meetup_link }
       it { @group = create :group, :meetup_link => nil
-           @group.link.should eql(@group.facebook_link) }
+           @group.link.should == @group.facebook_link }
       it { @group = create :group, :meetup_link => nil,
                                    :facebook_link => nil
-           @group.link.should eql(@group.linkedin_link) }
+           @group.link.should == @group.linkedin_link }
       it { @group = create :group, :meetup_link => nil,
                                    :facebook_link => nil,
                                    :linkedin_link => nil
-           @group.link.should eql(@group.googleplus_link) }
+           @group.link.should == @group.googleplus_link }
       it { @group = create :group, :meetup_link => nil,
                                    :facebook_link => nil,
                                    :linkedin_link => nil,
                                    :googleplus_link => nil
-           @group.link.should eql(@group.other_link) }
+           @group.link.should == @group.other_link }
       it { @group = create :group, :meetup_link => nil,
                                    :facebook_link => nil,
                                    :linkedin_link => nil,
                                    :googleplus_link => nil,
                                    :other_link => nil
-           @group.link.should eql(@group.twitter_link) }
+           @group.link.should == @group.twitter_link }
     end
 
     describe "address" do
       it { should respond_to :address }
       it { @group = build :group, :province => nil, :country => nil
-           @group.address.should eql(@group.city) }
+           @group.address.should == @group.city }
       it { @group = build :group, :city => nil, :country => nil
-           @group.address.should eql(@group.province) }
+           @group.address.should == @group.province }
       it { @group = build :group, :city => nil, :province => nil
-           @group.address.should eql(@group.country) }
+           @group.address.should == @group.country }
       it { @group = build :group, :country => nil
-           @group.address.should eql(@group.city + ", " +
-                                     @group.province) }
+           @group.address.should == @group.city + ", " +
+                                    @group.province }
       it { @group = build :group, :province => nil
-           @group.address.should eql(@group.city + ", " +
-                                     @group.country) }
+           @group.address.should == @group.city + ", " +
+                                    @group.country }
       it { @group = build :group, :city => nil
-           @group.address.should eql(@group.province + ", " +
-                                     @group.country) }
+           @group.address.should == @group.province + ", " +
+                                    @group.country }
       it { @group = build :group
-           @group.address.should eql(@group.city + ", " +
-                                     @group.province + ", " +
-                                     @group.country) }
+           @group.address.should == @group.city + ", " +
+                                    @group.province + ", " +
+                                    @group.country }
       it { @group = build :group, :city => nil, :province => nil, :country => nil
-           @group.address.should eql("") }
+           @group.address.should == "" }
     end
 
     describe "address_no_country" do
       it { should respond_to :address_no_country }
       it { @group = build :group, :province => nil, :country => nil
-           @group.address_no_country.should eql(@group.city) }
+           @group.address_no_country.should == @group.city }
       it { @group = build :group, :city => nil, :country => nil
-           @group.address_no_country.should eql(@group.province) }
+           @group.address_no_country.should == @group.province }
       it { @group = build :group, :city => nil, :province => nil
-           @group.address_no_country.should eql("") }
+           @group.address_no_country.should == "" }
       it { @group = build :group, :country => nil
-           @group.address_no_country.should eql(@group.city + ", " +
-                                                @group.province) }
+           @group.address_no_country.should == @group.city + ", " +
+                                               @group.province }
       it { @group = build :group, :province => nil
-           @group.address_no_country.should eql(@group.city) }
+           @group.address_no_country.should == @group.city }
       it { @group = build :group, :city => nil
-           @group.address_no_country.should eql(@group.province) }
+           @group.address_no_country.should == @group.province }
       it { @group = build :group
-           @group.address_no_country.should eql(@group.city + ", " +
-                                                @group.province) }
+           @group.address_no_country.should == @group.city + ", " +
+                                               @group.province }
       it { @group = build :group, :city => nil, :province => nil, :country => nil
-           @group.address_no_country.should eql("") }
+           @group.address_no_country.should == "" }
     end
 
     describe "self.init_rmeetup" do
