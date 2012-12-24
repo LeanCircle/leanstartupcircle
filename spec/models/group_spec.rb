@@ -2,14 +2,11 @@ require 'spec_helper'
 
 describe Group do
 
-  #let(:group)  { Factory.create(:group) }
+  let(:group)  { Factory.create(:group) }
 
   describe "associations" do
-    it "can be instantiated" do
-        Group.new.should be_an_instance_of(Group)
-      end
-    #it { should belong_to :authentication }
-    #it { should helong_to :user }
+    it { should belong_to :authentication }
+    it { should belong_to :user }
   end
 
   describe "validations" do

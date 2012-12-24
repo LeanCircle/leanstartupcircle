@@ -47,4 +47,5 @@ group :test, :development do
   gem 'spork'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'shoulda'
 end

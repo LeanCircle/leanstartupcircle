@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :group do
     city = Faker::Address.city
-    name              "Lean Startup Circle " + city
+    name              "Lean Startup Meetup " + city
     description        Faker::Lorem.sentence
     meetup_id          rand(10000)
     organizer_id       rand(100000)
