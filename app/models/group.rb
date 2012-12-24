@@ -29,17 +29,12 @@ class Group < ActiveRecord::Base
   scope :approved, where(:approval => true)
 
   def link
-    if !meetup_link.blank?
-      return meetup_link
-    elsif !facebook_link.blank?
-      return facebook_link
-    elsif !linkedin_link.blank?
-      return linkein_link
-    elsif !googleplus_link.blank?
-      return googleplus_link
-    elsif !other_link.blank?
-      return other_link
-    end
+    [meetup_link,
+     facebook_link,
+     linkedin_link,
+     googleplus_link,
+     other_link,
+     twitter_link].compact.first
   end
 
   def address

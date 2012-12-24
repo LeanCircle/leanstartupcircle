@@ -76,19 +76,31 @@ describe Group do
     end
   end
 
-  #describe "methods" do
-  #  describe "mark_as_read" do
-  #    it { should respond_to :mark_as_read }
-  #    it { @notification = Factory :notification, :read => false
-  #         @notification.mark_as_read
-  #         @notification.read.should be_true }
-  #  end
-  #
-  #  describe "as_json" do
-  #    it { should respond_to :as_json }
-  #    it { @notification.as_json.should have(10).items }
-  #    it { @notification.as_json.has_key?(:content).should be_true }
-  #  end
-  #end
-
+  describe "methods" do
+    describe "link" do
+      it { should respond_to :link }
+      it { @group = create :group
+           @group.link.should eql(@group.meetup_link) }
+      it { @group = create :group, :meetup_link => nil
+           @group.link.should eql(@group.facebook_link) }
+      it { @group = create :group, :meetup_link => nil,
+                                   :facebook_link => nil
+           @group.link.should eql(@group.linkedin_link) }
+      it { @group = create :group, :meetup_link => nil,
+                                   :facebook_link => nil,
+                                   :linkedin_link => nil
+           @group.link.should eql(@group.googleplus_link) }
+      it { @group = create :group, :meetup_link => nil,
+                                   :facebook_link => nil,
+                                   :linkedin_link => nil,
+                                   :googleplus_link => nil
+           @group.link.should eql(@group.other_link) }
+      it { @group = create :group, :meetup_link => nil,
+                                   :facebook_link => nil,
+                                   :linkedin_link => nil,
+                                   :googleplus_link => nil,
+                                   :other_link => nil
+           @group.link.should eql(@group.twitter_link) }
+    end
+  end
 end
