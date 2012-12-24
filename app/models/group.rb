@@ -1,14 +1,14 @@
 class Group < ActiveRecord::Base
+  attr_accessor :meetup_identifier
 
   belongs_to :authentication, :primary_key => "uid", :foreign_key => "organizer_id" # TODO: scope this to :provider => "meetup"
   belongs_to :user
-
-  attr_accessor :meetup_identifier
 
   validates_presence_of :name
   validates_uniqueness_of :name,
                           :meetup_id,
                           :meetup_link, :allow_blank => true
+  after_validation :geocode, :reverse_geocode
 
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude do |group, results|
@@ -19,9 +19,10 @@ class Group < ActiveRecord::Base
       group.country = geo.country
     end
   end
-  after_validation :geocode, :reverse_geocode
+  acts_as_gmappable :validation => false,
+                    :process_geocoding => false,
+                    :address => "address"
 
-  acts_as_gmappable :address => "address"
   extend FriendlyId
   friendly_id :name, use: :slugged
 
