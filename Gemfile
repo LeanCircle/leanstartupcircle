@@ -45,4 +45,5 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'watchr'
   gem 'spork'
+  gem 'factory_girl_rails'
 end

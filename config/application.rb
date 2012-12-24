@@ -61,5 +61,9 @@ module Leanstartupcircle
 
     # Set default url for mailer.
     config.action_mailer.default_url_options = { :host => 'leanstartupcircle.com' }
+
+    config.generators do |g|
+      g.fixture_replacement :factory_girl
+    end
   end
 end
