@@ -8,19 +8,20 @@ class User < ActiveRecord::Base
 
   #validates_presence_of :name
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_blank => true
+  after_validation :geocode, :reverse_geocode
 
   geocoded_by :zip_code
   reverse_geocoded_by :latitude, :longitude do |user,results|
     if geo = results.first
-      user.city    = geo.city
-      user.province    = geo.state_code
+      user.city = geo.city
+      user.province = geo.state_code
       user.country = geo.country
       user.zip_code = geo.postal_code
     end
   end
-  after_validation :geocode, :reverse_geocode
 
-  acts_as_gmappable :zip_code => "address"
+  acts_as_gmappable :validation => false,
+                    :process_geocoding => false
 
   devise :database_authenticatable,
          :registerable,
