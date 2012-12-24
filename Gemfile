@@ -46,4 +46,5 @@ group :test, :development do
   gem 'watchr'
   gem 'spork'
   gem 'factory_girl_rails'
+  gem 'ffaker'
 end
