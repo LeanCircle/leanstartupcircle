@@ -102,5 +102,30 @@ describe Group do
                                    :other_link => nil
            @group.link.should eql(@group.twitter_link) }
     end
+
+    describe "address" do
+      it { should respond_to :address }
+      it { @group = build :group, :province => nil, :country => nil
+           @group.address.should eql(@group.city) }
+      it { @group = build :group, :city => nil, :country => nil
+           @group.address.should eql(@group.province) }
+      it { @group = build :group, :city => nil, :province => nil
+           @group.address.should eql(@group.country) }
+      it { @group = build :group, :country => nil
+           @group.address.should eql(@group.city + ", " +
+                                     @group.province) }
+      it { @group = build :group, :province => nil
+           @group.address.should eql(@group.city + ", " +
+                                     @group.country) }
+      it { @group = build :group, :city => nil
+           @group.address.should eql(@group.province + ", " +
+                                     @group.country) }
+      it { @group = build :group
+           @group.address.should eql(@group.city + ", " +
+                                     @group.province + ", " +
+                                     @group.country) }
+      it { @group = build :group, :city => nil, :province => nil, :country => nil
+           @group.address.should eql("") }
+    end
   end
 end
