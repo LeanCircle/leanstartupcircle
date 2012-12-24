@@ -44,4 +44,5 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'watchr'
+  gem 'spork'
 end
