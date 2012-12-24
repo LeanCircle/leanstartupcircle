@@ -127,5 +127,27 @@ describe Group do
       it { @group = build :group, :city => nil, :province => nil, :country => nil
            @group.address.should eql("") }
     end
+
+    describe "address_no_country" do
+      it { should respond_to :address_no_country }
+      it { @group = build :group, :province => nil, :country => nil
+           @group.address_no_country.should eql(@group.city) }
+      it { @group = build :group, :city => nil, :country => nil
+           @group.address_no_country.should eql(@group.province) }
+      it { @group = build :group, :city => nil, :province => nil
+           @group.address_no_country.should eql("") }
+      it { @group = build :group, :country => nil
+           @group.address_no_country.should eql(@group.city + ", " +
+                                                @group.province) }
+      it { @group = build :group, :province => nil
+           @group.address_no_country.should eql(@group.city) }
+      it { @group = build :group, :city => nil
+           @group.address_no_country.should eql(@group.province) }
+      it { @group = build :group
+           @group.address_no_country.should eql(@group.city + ", " +
+                                                @group.province) }
+      it { @group = build :group, :city => nil, :province => nil, :country => nil
+           @group.address_no_country.should eql("") }
+    end
   end
 end
