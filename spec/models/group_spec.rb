@@ -66,7 +66,7 @@ describe Group do
   end
 
   describe "scopes" do
-    before do
+    before(:each) do
       @approved_group = create :group, :approval => true
       @unapproved_group = create :group, :approval => false
     end
@@ -149,11 +149,24 @@ describe Group do
       it { @group = build :group, :city => nil, :province => nil, :country => nil
            @group.address_no_country.should == "" }
     end
+  end
+
+  describe "meetup api methods" do
+    describe "self.fetch_from_meetup" do
+      # TODO: Add some tests here.
+    end
+
+    describe "self.fetch_meetups_with_authentication" do
+      # TODO: Add some tests here.
+    end
+
+    describe "self.save_meeup_api_response" do
+      # TODO: Add some tests here.
+    end
 
     describe "self.init_rmeetup" do
       it { Group.should respond_to :init_rmeetup }
       it { Group.init_rmeetup.should_not be_false }
     end
-
   end
 end
