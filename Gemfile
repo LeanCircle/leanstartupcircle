@@ -49,3 +49,7 @@ group :test, :development do
   gem 'ffaker'
   gem 'shoulda'
 end
+
+group :test do
+  gem 'fakeweb'
+end

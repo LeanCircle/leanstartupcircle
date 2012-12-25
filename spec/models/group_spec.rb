@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe Group do
-  before(:each) do
-    Group.any_instance.stubs(:geocode).returns([1,1])
-  end
 
   describe "associations" do
     it { should belong_to :authentication }

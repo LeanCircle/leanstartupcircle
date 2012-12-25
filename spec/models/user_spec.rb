@@ -1,9 +1,6 @@
 require "spec_helper"
 
 describe User do
-  before(:each) do
-    User.any_instance.stubs(:geocode).returns([1,1])
-  end
 
   describe "associations" do
     it { should have_many :authentications }
