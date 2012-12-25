@@ -8,10 +8,8 @@ Leanstartupcircle::Application.routes.draw do
   match "jobs/thanks_for_signing_up" => "landing_pages#thanks_for_signing_up"
   match "jobs/thanks_for_applying" => "landing_pages#thanks_for_applying"
 
-  # Group subdomain routes
-  resources :groups, :except => [:edit, :update, :destroy] do
-    get :organizers, :on => :collection
-  end
+  # User routes
+  resources :users, :only => [:index, :show]
 
   # Devise routes
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
@@ -20,8 +18,10 @@ Leanstartupcircle::Application.routes.draw do
     delete "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
   end
 
-  # User routes
-  resources :users, :only => [:index, :show]
+  # Group routes
+  resources :groups, :except => [:edit, :update, :destroy] do
+    get :organizers, :on => :collection
+  end
 
   # Static page routes
   [ :guidelines,
