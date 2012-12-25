@@ -57,35 +57,40 @@ class Group < ActiveRecord::Base
     else
       response = RMeetup::Client.fetch( :groups,{ :domain => query }).first
     end
-    group.nil? ? save_meetup_api_response(response) : save_meetup_api_response(response, group)
+    update_or_create_from_meetup_api_response(response, group)
   end
 
   def self.fetch_meetups_with_authentication(auth)
     init_rmeetup
     responses = RMeetup::Client.fetch( :groups,{ :organizer_id => auth.uid })
     responses.each do |response|
-      save_meetup_api_response(response).save
+      update_or_create_from_meetup_api_response(response).save
     end
   end
 
-  def self.save_meetup_api_response(response, group = Group.new)
-    unless response.blank?
-      group.name = response.try(:name)
-      group.description = response.try(:description)
-      group.meetup_id = response.try(:id)
-      group.organizer_id = response.try(:organizer).try(:[], 'member_id')
-      group.meetup_link = response.try(:link)
-      group.city = response.try(:city)
-      group.country_code = response.try(:country)
-      group.province = response.try(:state)
-      group.latitude = response.try(:lat)
-      group.longitude = response.try(:lon)
-      group.highres_photo_url = response.try(:group_photo).try(:[], 'highres_link')
-      group.photo_url = response.try(:group_photo).try(:[], 'photo_link')
-      group.thumbnail_url = response.try(:group_photo).try(:[], 'thumb_link')
-      group.join_mode = response.try(:join_mode)
-      group.visibility = response.try(:visibility)
-    end
+  def self.update_or_create_from_meetup_api_response(response, group = Group.new)
+    return false if response.blank?
+    group = Group.new if group.blank?
+
+    # Assign attributes from response
+    group.name = response.try(:name) if response.try(:name) && group.name.blank?
+    group.description = response.try(:description)
+    group.meetup_id = response.try(:id)
+    group.organizer_id = response.try(:organizer).try(:[], 'member_id')
+    group.meetup_link = response.try(:link)
+    group.city = response.try(:city)
+    group.country_code = response.try(:country)
+    group.province = response.try(:state)
+    group.latitude = response.try(:lat)
+    group.longitude = response.try(:lon)
+    group.highres_photo_url = response.try(:group_photo).try(:[], 'highres_link')
+    group.photo_url = response.try(:group_photo).try(:[], 'photo_link')
+    group.thumbnail_url = response.try(:group_photo).try(:[], 'thumb_link')
+    group.join_mode = response.try(:join_mode)
+    group.visibility = response.try(:visibility)
+
+    # Save and try to assign to a user.
+    return false if !group.try(:save)
     group.authentication.user.groups << group if group.organizer_id && group.authentication.try(:user)
     return group
   end
