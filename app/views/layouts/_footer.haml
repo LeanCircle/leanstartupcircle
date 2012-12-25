@@ -5,13 +5,13 @@
         %span#copyright
           &copy;
           = Time.now.year
-          = link_to "LeanStartupCircle", root_url(:subdomain => false), :style => "text-decoration: none;"
+          = link_to "LeanStartupCircle", root_url, :style => "text-decoration: none;"
 
       .span4
         %span#footermenu
           = link_to "Team", :team
           &#8226;
-          = link_to 'Contact', contact_url(:subdomain => false)
+          = link_to 'Contact', contact_url
           &#8226;
           = link_to 'http://twitter.com/leancircle', :title => "Lean Startup Circle on Twitter", :class => "nodec" do
             %span.pics

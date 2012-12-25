@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
-    redirect_to root_url(:subdomain => false), :alert => exception.message
+    redirect_to root_url, :alert => exception.message
   end
 
   def find_location

@@ -7,4 +7,4 @@
     = link_to  @nearest_groups.first.name + " - " +@nearest_groups.first.address_no_country, @nearest_groups.first.link, :linkTracking => 'LSC Group Referral'
     - if @nearest_groups.count != 1
       or
-      = link_to (@nearest_groups.count - 1).to_s + " other groups near you!", groups_url(:subdomain => 'meetups')
+      = link_to (@nearest_groups.count - 1).to_s + " other groups near you!", groups_url

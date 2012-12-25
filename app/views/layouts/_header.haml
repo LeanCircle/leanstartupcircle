@@ -2,7 +2,7 @@
   .container
     .row
       .span12.relative
-        = link_to root_url(:subdomain => false), :id => 'logo', :class => 'nodec' do
+        = link_to root_url, :id => 'logo', :class => 'nodec' do
           = image_tag "icons/leanstartupcircle_logo.png"
         - if !((request.subdomain.blank? || request.subdomain == "www") && request.path == root_path ) || user_signed_in?
           .utility_nav.pull-right
@@ -12,11 +12,11 @@
               = link_to current_user, :class => "nodec" do
                 = image_tag current_user.image, :width => 25
               &#8226;
-              = link_to "Sign out", sign_out_url(:subdomain => false), :method => :delete
+              = link_to "Sign out", sign_out_url, :method => :delete
             - else
-              = link_to "Sign in", sign_in_url(:subdomain => false)
+              = link_to "Sign in", sign_in_url
               &#8226;
-              = link_to "Sign up", new_user_registration_url(:subdomain => false)
+              = link_to "Sign up", new_user_registration_url
         .clear
         = render 'groups/show_nearest'
     .row
