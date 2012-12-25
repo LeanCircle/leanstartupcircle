@@ -30,4 +30,8 @@ describe "routes for groups:" do
     delete("/groups/:id").should raise_error()
   end
 
+  it "organizers" do
+    get("/groups/organizers").should route_to("groups#organizers")
+  end
+
 end
