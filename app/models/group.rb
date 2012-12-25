@@ -57,7 +57,7 @@ class Group < ActiveRecord::Base
     else
       response = RMeetup::Client.fetch( :groups,{ :domain => query }).first
     end
-    save_meetup_api_response(response, group)
+    group.nil? ? save_meetup_api_response(response) : save_meetup_api_response(response, group)
   end
 
   def self.fetch_meetups_with_authentication(auth)

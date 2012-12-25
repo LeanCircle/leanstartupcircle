@@ -152,8 +152,15 @@ describe Group do
   end
 
   describe "meetup api methods" do
+
+    before(:all) do
+      RMeetup::Client.api_key = AppConfig['meetup_api_key']
+      meetup_response = RMeetup::Client.fetch( :groups,{ :domain => "sanfrancisco.leanstartupcircle.com" })
+      RMeetup::Client.stub(:fetch) { meetup_response }
+    end
+
     describe "self.fetch_from_meetup" do
-      # TODO: Add some tests here.
+      it { Group.fetch_from_meetup("5555").should == 5 }
     end
 
     describe "self.fetch_meetups_with_authentication" do
