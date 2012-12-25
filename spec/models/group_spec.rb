@@ -166,6 +166,8 @@ describe Group do
       RMeetup::Client.api_key = AppConfig['meetup_api_key']
       @single_response = RMeetup::Client.fetch( :groups,{ :domain => "sanfrancisco.leanstartupcircle.com" })
       @multiple_responses = RMeetup::Client.fetch( :groups,{ :organizer_id => "10786373" })
+      #@bad_response = RMeetup::Client.fetch( :groups,{ :organizer_id => "1FFFDDDF" })
+      @no_response = RMeetup::Client.fetch( :groups,{ :organizer_id => "1" })
     end
 
     describe "self.fetch_from_meetup" do
@@ -173,15 +175,43 @@ describe Group do
     end
 
     describe "self.fetch_meetups_with_authentication" do
-      before(:each) do
-        #FakeWeb.register_uri(:any, %r|http://maps\.googleapis\.com/maps/api/geocode|, :body => SF_LSC_GEOCODE_JSON)
-        RMeetup::Client.stub(:fetch).and_return(@multiple_responses)
-      end
-
       describe "with multiple responses" do
+        before(:each) do
+          RMeetup::Client.stub(:fetch).and_return(@multiple_responses)
+        end
+
         it { Group.fetch_meetups_with_authentication(create :authentication).count.should == @multiple_responses.count}
         it { Group.fetch_meetups_with_authentication(create :authentication).first.class.should == Group.new.class }
+        it { Group.fetch_meetups_with_authentication(create :authentication)
+             Group.find_by_name(@multiple_responses.first.name).should be_true }
       end
+
+      describe "with one response" do
+        before(:each) do
+          RMeetup::Client.stub(:fetch).and_return(@single_response)
+        end
+
+        it { Group.fetch_meetups_with_authentication(create :authentication).count.should == 1 }
+        it { Group.fetch_meetups_with_authentication(create :authentication).first.class.should == Group.new.class }
+        it { Group.fetch_meetups_with_authentication(create :authentication)
+             Group.find_by_name(@single_response.first.name).should be_true }
+      end
+
+      describe "with no response" do
+        before(:each) do
+          RMeetup::Client.stub(:fetch).and_return(@no_response)
+        end
+
+        it { Group.fetch_meetups_with_authentication(create :authentication).count.should == 0 }
+      end
+
+      #describe "with bad response" do
+      #  before(:each) do
+      #    RMeetup::Client.stub(:fetch).and_return(@bad_response)
+      #  end
+      #
+      #  it { Group.fetch_meetups_with_authentication(create :authentication).count.should == 0 }
+      #end
 
     end
 
