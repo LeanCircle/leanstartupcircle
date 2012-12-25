@@ -165,20 +165,29 @@ describe Group do
     before(:all) do
       RMeetup::Client.api_key = AppConfig['meetup_api_key']
       @single_response = RMeetup::Client.fetch( :groups,{ :domain => "sanfrancisco.leanstartupcircle.com" })
-      @multiple_responses = RMeetup::Client.fetch( :groups,{ :domain => "sanfrancisco.leanstartupcircle.com" })
+      @multiple_responses = RMeetup::Client.fetch( :groups,{ :organizer_id => "10786373" })
     end
 
     describe "self.fetch_from_meetup" do
-      # TODO: Add some tests here.
+
     end
 
     describe "self.fetch_meetups_with_authentication" do
-      # TODO: Add some tests here.
+      before(:each) do
+        #FakeWeb.register_uri(:any, %r|http://maps\.googleapis\.com/maps/api/geocode|, :body => SF_LSC_GEOCODE_JSON)
+        RMeetup::Client.stub(:fetch).and_return(@multiple_responses)
+      end
+
+      describe "with multiple responses" do
+        it { Group.fetch_meetups_with_authentication(create :authentication).count.should == @multiple_responses.count}
+        it { Group.fetch_meetups_with_authentication(create :authentication).first.class.should == Group.new.class }
+      end
+
     end
 
     describe "self.update_or_create_from_meetup_api_response" do
       before(:all) do
-        @response = @multiple_responses.first
+        @response = @single_response.first
         FakeWeb.register_uri(:any, %r|http://maps\.googleapis\.com/maps/api/geocode|, :body => SF_LSC_GEOCODE_JSON)
       end
 

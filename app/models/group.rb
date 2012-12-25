@@ -63,9 +63,11 @@ class Group < ActiveRecord::Base
   def self.fetch_meetups_with_authentication(auth)
     init_rmeetup
     responses = RMeetup::Client.fetch( :groups,{ :organizer_id => auth.uid })
+    meetups_added ||= []
     responses.each do |response|
-      update_or_create_from_meetup_api_response(response).save
+      meetups_added << update_or_create_from_meetup_api_response(response)
     end
+    return meetups_added
   end
 
   def self.update_or_create_from_meetup_api_response(response, group = Group.new)
