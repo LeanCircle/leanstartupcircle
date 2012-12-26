@@ -166,7 +166,6 @@ describe Group do
       RMeetup::Client.api_key = AppConfig['meetup_api_key']
       @single_response = RMeetup::Client.fetch( :groups,{ :domain => "sanfrancisco.leanstartupcircle.com" })
       @multiple_responses = RMeetup::Client.fetch( :groups,{ :organizer_id => "10786373" })
-      #@bad_response = RMeetup::Client.fetch( :groups,{ :organizer_id => "1FFFDDDF" })
       @no_response = RMeetup::Client.fetch( :groups,{ :organizer_id => "1" })
     end
 
@@ -205,13 +204,14 @@ describe Group do
         it { Group.fetch_meetups_with_authentication(create :authentication).count.should == 0 }
       end
 
-      #describe "with bad response" do
-      #  before(:each) do
-      #    RMeetup::Client.stub(:fetch).and_return(@bad_response)
-      #  end
-      #
-      #  it { Group.fetch_meetups_with_authentication(create :authentication).count.should == 0 }
-      #end
+      describe "with bad response" do
+        before(:each) do
+          bad_response = `curl -is https://api.meetup.com/2/groups?key=4404a5c4f33d2771b2d67175c2772&sign=true&category_id=1AAAAAA&page=20`
+          FakeWeb.register_uri(:any, %r|http://api\.meetup\.com/|, :page => bad_response)
+        end
+
+        it { Group.fetch_meetups_with_authentication(create :authentication).count.should == 0 }
+      end
 
     end
 

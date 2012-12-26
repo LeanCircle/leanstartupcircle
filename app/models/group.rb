@@ -68,6 +68,8 @@ class Group < ActiveRecord::Base
       meetups_added << update_or_create_from_meetup_api_response(response)
     end
     return meetups_added
+  rescue
+    return meetups_added ||= []
   end
 
   def self.update_or_create_from_meetup_api_response(response, group = Group.new)
