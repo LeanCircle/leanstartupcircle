@@ -170,7 +170,7 @@ describe Group do
     end
 
     describe "self.fetch_from_meetup" do
-
+      # TODO: Not able to figure out how to really use fake web to stub out responses. Not sure how to test.
     end
 
     describe "self.fetch_meetups_with_authentication" do

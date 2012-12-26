@@ -33,9 +33,9 @@ class GroupsController < ApplicationController
       redirect_to root_url
     else
       @group = Group.new(params[:group])
-      @group = Group.fetch_from_meetup(params[:group][:group_identifier], @group) if !params[:group][:meetup_identifier].blank?
+      @group = Group.fetch_from_meetup(params[:group][:group_identifier], @group) unless params[:group][:meetup_identifier].blank?
       if @group.save
-        flash[:success] = "Awesome...hang tight! We have to make sure it's a lean startup group."
+        flash[:success] = "Awesome...hang tight! A human will have to make sure it's a lean startup group."
         redirect_to groups_path
       else
         render :action => "new"
