@@ -49,11 +49,14 @@ class User < ActiveRecord::Base
   end
 
   def first_name
-    name.blank? ? "Anonymous" : name.sub(/ .*/, '')
+    n = name || authentications.where("name IS NOT NULL").first.try(:name)
+    n = "Anonymous" if n.blank?
+    n.sub(/ .*/, '')
   end
 
   def identifier
-    name.blank? ? email : name
+    n = name || authentications.where("name IS NOT NULL").first.try(:name)
+    n.blank? ? email : n
   end
 
   def email_header
