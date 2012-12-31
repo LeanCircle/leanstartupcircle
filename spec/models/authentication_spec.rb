@@ -19,7 +19,7 @@ describe Authentication do
     end
   end
 
-  describe "validations" do
+  describe "validations:" do
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :uid }
     it { should validate_presence_of :provider }
@@ -27,7 +27,7 @@ describe Authentication do
     describe "uniqueness of uid" do
       it { should validate_uniqueness_of :uid }
       it { should validate_uniqueness_of(:uid).scoped_to(:provider) }
-      describe "uniqueness of uid scoped to provider" do
+      describe "scoped to provider" do
         it { @authentication1 = create :authentication, :provider => "twitter", :uid => "12345"
              @authentication2 = build :authentication, :provider => "twitter", :uid => "12345"
              @authentication2.should_not be_valid }
@@ -77,18 +77,7 @@ describe Authentication do
                               'provider' => 'twitter',
                               'credentials' => {'token' => 'token', 'secret' => 'secret'},
                               'extra' => { 'user_hash' => {} } }
-        @omniauth_meetup = { 'info' => { 'name' => 'Fred Flintstone',
-                                         'image' => 'http://image.com/image.jpg',
-                                         'urls' => { 'public_profile' => 'http://homeurl.com/username' },
-                                         'email' => 'dpsk@email.ru',
-                                         'description' => 'This is who I am.',
-                                         'location' => 'New York, NY' },
-                             'uid' => '12345',
-                             'provider' => 'meetup',
-                             'credentials' => {'token' => 'token', 'secret' => 'secret'},
-                             'extra' => { 'user_hash' => {} } }
         @twitter_hash = OmniAuth::AuthHash.new(@omniauth_twitter)
-        @meetup_hash = OmniAuth::AuthHash.new(@omniauth_meetup)
         @user = create(:user)
       end
 
@@ -114,8 +103,27 @@ describe Authentication do
       end
 
       describe "with valid meetup hash" do
+        before(:each) do
+          @omniauth_meetup = { 'info' => { 'name' => 'Fred Flintstone',
+                                           'image' => 'http://image.com/image.jpg',
+                                           'urls' => { 'public_profile' => 'http://homeurl.com/username' },
+                                           'email' => 'dpsk@email.ru',
+                                           'description' => 'This is who I am.',
+                                           'location' => 'New York, NY' },
+                               'uid' => '12345',
+                               'provider' => 'meetup',
+                               'credentials' => {'token' => 'token', 'secret' => 'secret'},
+                               'extra' => { 'user_hash' => {} } }
+          @meetup_hash = OmniAuth::AuthHash.new(@omniauth_meetup)
+          Group.stub(:fetch_meetups_with_authentication) do
+            @group = create :group, :name => "Meetup Group"
+          end
+        end
         it { Authentication.create_with_omniauth!(@meetup_hash, @user).provider.should == "meetup" }
-        # TODO: Add a test to make sure fetching groups when meetup.
+        it { Authentication.create_with_omniauth!(@meetup_hash, @user)
+             Group.find_by_name("Meetup Group").should be_true }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user)
+             Group.find_by_name("Meetup Group").should be_false }
       end
     end
   end
