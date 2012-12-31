@@ -67,44 +67,54 @@ describe Authentication do
   describe "methods:" do
     describe "self.create_with_omniauth!:" do
       before(:each) do
-        @omni = { 'info' => { 'name' => 'Fred Flintstone',
-                                   'image' => 'http://image.com/image.jpg',
-                                   'urls' => { 'public_profile' => 'http://homeurl.com/username' },
-                                   'email' => 'dpsk@email.ru',
-                                   'description' => 'This is who I am.',
-                                   'location' => 'New York, NY' },
-                       'uid' => '12345',
-                       'provider' => 'twitter',
-                       'credentials' => {'token' => 'token', 'secret' => 'secret'},
-                       'extra' => { 'user_hash' => {} } }
-        OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(@omni)
+        @omniauth_twitter = { 'info' => { 'name' => 'Fred Flintstone',
+                                          'image' => 'http://image.com/image.jpg',
+                                          'urls' => { 'public_profile' => 'http://homeurl.com/username' },
+                                          'email' => 'dpsk@email.ru',
+                                          'description' => 'This is who I am.',
+                                          'location' => 'New York, NY' },
+                              'uid' => '12345',
+                              'provider' => 'twitter',
+                              'credentials' => {'token' => 'token', 'secret' => 'secret'},
+                              'extra' => { 'user_hash' => {} } }
+        @omniauth_meetup = { 'info' => { 'name' => 'Fred Flintstone',
+                                         'image' => 'http://image.com/image.jpg',
+                                         'urls' => { 'public_profile' => 'http://homeurl.com/username' },
+                                         'email' => 'dpsk@email.ru',
+                                         'description' => 'This is who I am.',
+                                         'location' => 'New York, NY' },
+                             'uid' => '12345',
+                             'provider' => 'meetup',
+                             'credentials' => {'token' => 'token', 'secret' => 'secret'},
+                             'extra' => { 'user_hash' => {} } }
+        @twitter_hash = OmniAuth::AuthHash.new(@omniauth_twitter)
+        @meetup_hash = OmniAuth::AuthHash.new(@omniauth_meetup)
         @user = create(:user)
-        @hash = OmniAuth.config.mock_auth[:twitter]
       end
 
       describe "with bad input" do
         it { expect { Authentication.create_with_omniauth!(nil, nil) }.to raise_error(ArgumentError) }
         it { expect { Authentication.create_with_omniauth!("Hello", nil) }.to raise_error(ArgumentError) }
-        it { expect { Authentication.create_with_omniauth!(nil, create(:user)) }.to raise_error(ArgumentError) }
-        it { expect { Authentication.create_with_omniauth!(@hash, nil) }.to raise_error(ArgumentError) }
+        it { expect { Authentication.create_with_omniauth!(nil, @user) }.to raise_error(ArgumentError) }
+        it { expect { Authentication.create_with_omniauth!(@twitter_hash, nil) }.to raise_error(ArgumentError) }
       end
 
-
       describe "with valid twitter hash" do
-        it { Authentication.create_with_omniauth!(@hash, @user).should be_valid }
-        it { Authentication.create_with_omniauth!(@hash, @user).user_id.should == @user.id }
-        it { Authentication.create_with_omniauth!(@hash, @user).name.should == "Fred Flintstone" }
-        it { Authentication.create_with_omniauth!(@hash, @user).uid.should == "12345" }
-        it { Authentication.create_with_omniauth!(@hash, @user).provider.should == "twitter" }
-        it { Authentication.create_with_omniauth!(@hash, @user).token.should == "token" }
-        it { Authentication.create_with_omniauth!(@hash, @user).secret.should == "secret" }
-        it { Authentication.create_with_omniauth!(@hash, @user).image.should == "http://image.com/image.jpg" }
-        it { Authentication.create_with_omniauth!(@hash, @user).url.should == "http://homeurl.com/username" }
-        it { Authentication.create_with_omniauth!(@hash, @user).description.should == "This is who I am." }
-        it { Authentication.create_with_omniauth!(@hash, @user).location.should == "New York, NY" }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).should be_valid }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).user_id.should == @user.id }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).name.should == "Fred Flintstone" }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).uid.should == "12345" }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).provider.should == "twitter" }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).token.should == "token" }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).secret.should == "secret" }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).image.should == "http://image.com/image.jpg" }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).url.should == "http://homeurl.com/username" }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).description.should == "This is who I am." }
+        it { Authentication.create_with_omniauth!(@twitter_hash, @user).location.should == "New York, NY" }
       end
 
       describe "with valid meetup hash" do
+        it { Authentication.create_with_omniauth!(@meetup_hash, @user).provider.should == "meetup" }
         # TODO: Add a test to make sure fetching groups when meetup.
       end
     end
