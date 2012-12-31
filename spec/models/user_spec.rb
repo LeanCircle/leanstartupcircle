@@ -125,7 +125,7 @@ describe User do
     end
 
     describe "description" do
-      context "with main_image" do
+      context "with main_description" do
         it { @auth = create :authentication, :description => nil
              @auth.user.description.should == @auth.user.main_description }
         it { create(:user, :main_description => nil).description.should == nil }
@@ -142,6 +142,27 @@ describe User do
 
         it { should respond_to :description }
         it { @user.description.should == @auth2.description }
+      end
+    end
+
+    describe "url" do
+      context "with main_url" do
+        it { @auth = create :authentication, :url => nil
+             @auth.user.url.should == @auth.user.main_url }
+        it { create(:user, :main_url => nil).url.should == nil }
+      end
+
+      context "without main_url" do
+        before(:each) do
+          @auth1 = create :authentication, :url => nil
+          @auth2 = create :authentication, :user_id => @auth1.user_id
+          @auth3 = create :authentication, :user_id => @auth1.user_id
+          @user = @auth1.user
+          @user.update_attributes(:main_url => nil)
+        end
+
+        it { should respond_to :url }
+        it { @user.url.should == @auth2.url }
       end
     end
 

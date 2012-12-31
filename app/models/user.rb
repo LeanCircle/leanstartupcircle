@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
     !main_description.blank? ? main_description : authentications.where("description IS NOT NULL").first.try(:description)
   end
 
+  def url
+    !main_url.blank? ? main_url : authentications.where("url IS NOT NULL").first.try(:url)
+  end
+
   def first_name
     n = name || authentications.where("name IS NOT NULL").first.try(:name)
     n = "Anonymous" if n.blank?
