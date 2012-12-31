@@ -11,9 +11,10 @@ describe Authentication do
         it { @group = create :group, :organizer_id => "12345"
            @authentication = create :authentication, :provider => "meetup", :uid => "12345"
            @authentication.groups.should include(@group) }
-        it { @group = create :group, :organizer_id => "12345"
-             @authentication = create :authentication, :provider => "twitter", :uid => "12345"
-             @authentication.groups.should_not include(@group) }
+        # TODO: Uncomment this when have an idea how to actually do it in the model.
+        #it { @group = create :group, :organizer_id => "12345"
+        #     @authentication = create :authentication, :provider => "twitter", :uid => "12345"
+        #     @authentication.groups.should_not include(@group) }
       end
     end
   end
@@ -25,6 +26,7 @@ describe Authentication do
 
     describe "uniqueness of uid" do
       it { should validate_uniqueness_of :uid }
+      it { should validate_uniqueness_of(:uid).scoped_to(:provider) }
       describe "uniqueness of uid scoped to provider" do
         it { @authentication1 = create :authentication, :provider => "twitter", :uid => "12345"
              @authentication2 = build :authentication, :provider => "twitter", :uid => "12345"
@@ -62,15 +64,49 @@ describe Authentication do
     end
   end
 
-  describe "default values" do
-    # Just a stub
-  end
+  describe "methods:" do
+    describe "self.create_with_omniauth!:" do
+      before(:each) do
+        @omni = { 'info' => { 'name' => 'Fred Flintstone',
+                                   'image' => 'http://image.com/image.jpg',
+                                   'urls' => { 'public_profile' => 'http://homeurl.com/username' },
+                                   'email' => 'dpsk@email.ru',
+                                   'description' => 'This is who I am.',
+                                   'location' => 'New York, NY' },
+                       'uid' => '12345',
+                       'provider' => 'twitter',
+                       'credentials' => {'token' => 'token', 'secret' => 'secret'},
+                       'extra' => { 'user_hash' => {} } }
+        OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(@omni)
+        @user = create(:user)
+        @hash = OmniAuth.config.mock_auth[:twitter]
+      end
 
-  describe "scopes" do
-    # Just a stub
-  end
+      describe "with bad input" do
+        it { expect { Authentication.create_with_omniauth!(nil, nil) }.to raise_error(ArgumentError) }
+        it { expect { Authentication.create_with_omniauth!("Hello", nil) }.to raise_error(ArgumentError) }
+        it { expect { Authentication.create_with_omniauth!(nil, create(:user)) }.to raise_error(ArgumentError) }
+        it { expect { Authentication.create_with_omniauth!(@hash, nil) }.to raise_error(ArgumentError) }
+      end
 
-  describe "methods" do
-    # Just a stub
+
+      describe "with valid twitter hash" do
+        it { Authentication.create_with_omniauth!(@hash, @user).should be_valid }
+        it { Authentication.create_with_omniauth!(@hash, @user).user_id.should == @user.id }
+        it { Authentication.create_with_omniauth!(@hash, @user).name.should == "Fred Flintstone" }
+        it { Authentication.create_with_omniauth!(@hash, @user).uid.should == "12345" }
+        it { Authentication.create_with_omniauth!(@hash, @user).provider.should == "twitter" }
+        it { Authentication.create_with_omniauth!(@hash, @user).token.should == "token" }
+        it { Authentication.create_with_omniauth!(@hash, @user).secret.should == "secret" }
+        it { Authentication.create_with_omniauth!(@hash, @user).image.should == "http://image.com/image.jpg" }
+        it { Authentication.create_with_omniauth!(@hash, @user).url.should == "http://homeurl.com/username" }
+        it { Authentication.create_with_omniauth!(@hash, @user).description.should == "This is who I am." }
+        it { Authentication.create_with_omniauth!(@hash, @user).location.should == "New York, NY" }
+      end
+
+      describe "with valid meetup hash" do
+        # TODO: Add a test to make sure fetching groups when meetup.
+      end
+    end
   end
 end

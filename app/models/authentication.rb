@@ -10,6 +10,7 @@ class Authentication < ActiveRecord::Base
 
   # Creates an authentication given a user and an omniauth hash.
   def self.create_with_omniauth!(hash, user)
+    raise ArgumentError, "Hash or user is missing." if hash.blank? || user.blank?
     auth = Authentication.create(:user_id => user.id,
                                  :name => hash.info.name,
                                  :uid => hash.uid,
@@ -21,7 +22,11 @@ class Authentication < ActiveRecord::Base
                                  :description => hash.info.try(:description),
                                  :location => hash.info.try(:location))
     Group.fetch_meetups_with_authentication(auth) if auth.provider == 'meetup'
-    auth
+    if auth.valid?
+      return auth
+    else
+      raise raise StandardError, "The resulting authentication was invalid."
+    end
   end
 
 end
