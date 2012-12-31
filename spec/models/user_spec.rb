@@ -98,128 +98,136 @@ describe User do
       it { @group = build :group, :city => nil, :province => nil, :country => nil
            @group.address.should == "" }
     end
-  end
 
-  describe "image" do
-    before(:each) do
-      @auth1 = create :authentication, :image => nil
-      @auth2 = create :authentication, :user_id => @auth1.user_id
-      @auth3 = create :authentication, :user_id => @auth1.user_id
-      @user = @auth1.user
+    describe "image" do
+      before(:each) do
+        @auth1 = create :authentication, :image => nil
+        @auth2 = create :authentication, :user_id => @auth1.user_id
+        @auth3 = create :authentication, :user_id => @auth1.user_id
+        @user = @auth1.user
+      end
+
+      it { should respond_to :image }
+      it { @user.image.should == @auth2.image }
+      it { create(:user).image.should == nil }
     end
 
-    it { should respond_to :image }
-    it { @user.image.should == @auth2.image }
-    it { create(:user).image.should == nil }
-  end
+    describe "description" do
+      before(:each) do
+        @auth1 = create :authentication, :description => nil
+        @auth2 = create :authentication, :user_id => @auth1.user_id
+        @auth3 = create :authentication, :user_id => @auth1.user_id
+        @user = @auth1.user
+      end
 
-  describe "description" do
-    before(:each) do
-      @auth1 = create :authentication, :description => nil
-      @auth2 = create :authentication, :user_id => @auth1.user_id
-      @auth3 = create :authentication, :user_id => @auth1.user_id
-      @user = @auth1.user
+      it { should respond_to :description }
+      it { @user.description.should == @auth2.description }
+      it { create(:user).description.should == nil }
     end
 
-    it { should respond_to :description }
-    it { @user.description.should == @auth2.description }
-    it { create(:user).description.should == nil }
-  end
+    describe "first_name" do
+      before(:each) do
+        @user = create :user, :name => 'Bob the Builder'
+      end
 
-  describe "first_name" do
-    before(:each) do
-      @user = create :user, :name => 'Bob the Builder'
+      it { should respond_to :first_name }
+      it { @user.first_name.should == "Bob" }
+      it { @user.name = nil
+           @user.first_name.should == "Anonymous" }
+      it { @user.name = nil
+           @auth1 = create :authentication, :user_id => @user.id, :name => nil
+           @auth2 = create :authentication, :user_id => @user.id, :name => "Charlie Checkers"
+           @auth3 = create :authentication, :user_id => @user.id
+           @user.first_name.should == "Charlie" }
     end
 
-    it { should respond_to :first_name }
-    it { @user.first_name.should == "Bob" }
-    it { @user.name = nil
-         @user.first_name.should == "Anonymous" }
-    it { @user.name = nil
-         @auth1 = create :authentication, :user_id => @user.id, :name => nil
-         @auth2 = create :authentication, :user_id => @user.id, :name => "Charlie Checkers"
-         @auth3 = create :authentication, :user_id => @user.id
-         @user.first_name.should == "Charlie" }
-  end
+    describe "identifier" do
+      before(:each) do
+        @user = create :user
+      end
 
-  describe "identifier" do
-    before(:each) do
-      @user = create :user
+      it { should respond_to :identifier }
+      it { @user.identifier.should == @user.name }
+      it { @user.name = nil
+           @user.identifier.should == @user.email }
+      it { @user.name = nil
+           @auth1 = create :authentication, :user_id => @user.id, :name => nil
+           @auth2 = create :authentication, :user_id => @user.id, :name => "Charlie Checkers"
+           @auth3 = create :authentication, :user_id => @user.id
+           @user.identifier.should == "Charlie Checkers" }
     end
 
-    it { should respond_to :identifier }
-    it { @user.identifier.should == @user.name }
-    it { @user.name = nil
-         @user.identifier.should == @user.email }
-    it { @user.name = nil
-         @auth1 = create :authentication, :user_id => @user.id, :name => nil
-         @auth2 = create :authentication, :user_id => @user.id, :name => "Charlie Checkers"
-         @auth3 = create :authentication, :user_id => @user.id
-         @user.identifier.should == "Charlie Checkers" }
-  end
+    describe "email_header" do
+      it { should respond_to :email_header }
+      it { @user = create :user, :name => "Bob", :email => "bob@bob.com"
+           @user.email_header.should == '"Bob" <bob@bob.com>' }
+    end
 
-  describe "email_header" do
-    it { should respond_to :email_header }
-    it { @user = create :user, :name => "Bob", :email => "bob@bob.com"
-         @user.email_header.should == '"Bob" <bob@bob.com>' }
-  end
+    describe "admin?" do
+      it { should respond_to :admin? }
+      it { @user = create :user, :role => "member"
+           @user.admin?.should be_false }
+      it { @user = create :user, :role => "admin"
+           @user.admin?.should be_true }
+    end
 
-  describe "admin?" do
-    it { should respond_to :admin? }
-    it { @user = create :user, :role => "member"
-         @user.admin?.should be_false }
-    it { @user = create :user, :role => "admin"
-         @user.admin?.should be_true }
-  end
+    describe "address" do
+      it { should respond_to :address }
+      it { @user = build :user, :province => nil, :country => nil
+           @user.address.should == @user.city }
+      it { @user = build :user, :city => nil, :country => nil
+           @user.address.should == @user.province }
+      it { @user = build :user, :city => nil, :province => nil
+           @user.address.should == @user.country }
+      it { @user = build :user, :country => nil
+           @user.address.should == @user.city + ", " +
+                                   @user.province }
+      it { @user = build :user, :province => nil
+           @user.address.should == @user.city + ", " +
+                                   @user.country }
+      it { @user = build :user, :city => nil
+           @user.address.should == @user.province + ", " +
+                                   @user.country }
+      it { @user = build :user
+           @user.address.should == @user.city + ", " +
+                                   @user.province + ", " +
+                                   @user.country }
+      it { @user = build :user, :city => nil, :province => nil, :country => nil
+           @user.address.should == "" }
+    end
 
-  describe "address" do
-    it { should respond_to :address }
-    it { @user = build :user, :province => nil, :country => nil
-         @user.address.should == @user.city }
-    it { @user = build :user, :city => nil, :country => nil
-         @user.address.should == @user.province }
-    it { @user = build :user, :city => nil, :province => nil
-         @user.address.should == @user.country }
-    it { @user = build :user, :country => nil
-         @user.address.should == @user.city + ", " +
-                                 @user.province }
-    it { @user = build :user, :province => nil
-         @user.address.should == @user.city + ", " +
-                                 @user.country }
-    it { @user = build :user, :city => nil
-         @user.address.should == @user.province + ", " +
-                                 @user.country }
-    it { @user = build :user
-         @user.address.should == @user.city + ", " +
-                                 @user.province + ", " +
-                                 @user.country }
-    it { @user = build :user, :city => nil, :province => nil, :country => nil
-         @user.address.should == "" }
-  end
+    describe "gmaps4rails_address" do
+      it { should respond_to :gmaps4rails_address }
+      it { @user = create :user
+           @user.gmaps4rails_address.should == @user.zip_code }
+    end
 
-  describe "gmaps4rails_address" do
-    it { should respond_to :gmaps4rails_address }
-    it { @user = create :user
-         @user.gmaps4rails_address.should == @user.zip_code }
-  end
+    describe "authenticate_or_create_with_omniauth!" do
+      it { User.should respond_to :authenticate_or_create_with_omniauth! }
+      # TODO: Add specs
+    end
 
-  describe "authenticate_or_create_with_omniauth!" do
-    it { User.should respond_to :authenticate_or_create_with_omniauth! }
-  end
+    describe "create_with_omniauth!" do
+      it { User.should respond_to :create_with_omniauth! }
+      # TODO: Add specs
+    end
 
-  describe "create_with_omniauth!" do
-    it { User.should respond_to :create_with_omniauth! }
-  end
+    describe "new_with_session" do
+      it { User.should respond_to :new_with_session }
+      # TODO: Add specs
+    end
 
-  describe "new_with_session" do
-    it { User.should respond_to :new_with_session }
-  end
+    describe "password_required?" do
+      it { should respond_to :password_required? }
+      it { @user = create :user
+           @user.password_required?.should be_false }
+      it { @authentication = create :authentication
+           @authentication.user.password_required?.should be_false }
+    end
 
-  describe "password_required?" do
-    it { should respond_to :password_required? }
-  end
-
-  describe "update_with_password" do
-    it { should respond_to :update_with_password }
+    describe "update_with_password" do
+      it { should respond_to :update_with_password }
+      # TODO: Add specs
+    end
   end
 end
