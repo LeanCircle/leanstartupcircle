@@ -81,6 +81,7 @@ class User < ActiveRecord::Base
 
   # Given an omniauth hash, returns the user if there is one or creates one.
   def self.authenticate_or_create_with_omniauth!(hash, user = nil)
+    raise ArgumentError, "Hash is missing." if hash.blank?
     if user
       Authentication.create_with_omniauth!(hash, user)
     elsif user = Authentication.find_by_provider_and_uid(hash['provider'], hash['uid'].to_s).try(:user)
@@ -94,12 +95,14 @@ class User < ActiveRecord::Base
 
   # Given an omniauth hash, creates a user and returns it.
   def self.create_with_omniauth!(hash)
-    info = hash.info
-    user = new(:name => info.try(:name),
-               :phone => info.try(:phone))
+    raise ArgumentError, "Hash is missing." if hash.blank?
+    user = new(:name => hash.info.try(:name),
+               :phone => hash.info.try(:phone),
+               :email => hash.info.try(:email))
     user.save(:validate => false)
     user
   end
+
 
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]

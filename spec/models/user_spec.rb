@@ -202,14 +202,44 @@ describe User do
            @user.gmaps4rails_address.should == @user.zip_code }
     end
 
-    describe "authenticate_or_create_with_omniauth!" do
-      it { User.should respond_to :authenticate_or_create_with_omniauth! }
-      # TODO: Add specs
-    end
+    describe "omniauth methods:" do
+      before(:each) do
+        @omniauth_twitter = { 'info' => { 'name' => 'Fred Flintstone',
+                                        'image' => 'http://image.com/image.jpg',
+                                        'urls' => { 'public_profile' => 'http://homeurl.com/username' },
+                                        'email' => 'dpsk@email.ru',
+                                        'description' => 'This is who I am.',
+                                        'location' => 'New York, NY' },
+                            'uid' => '12345',
+                            'provider' => 'twitter',
+                            'credentials' => {'token' => 'token', 'secret' => 'secret'},
+                            'extra' => { 'user_hash' => {} } }
+        @twitter_hash = OmniAuth::AuthHash.new(@omniauth_twitter)
+      end
 
-    describe "create_with_omniauth!" do
-      it { User.should respond_to :create_with_omniauth! }
-      # TODO: Add specs
+      describe "authenticate_or_create_with_omniauth!" do
+        it { User.should respond_to :authenticate_or_create_with_omniauth! }
+        # TODO: Add specs
+      end
+
+      describe "create_with_omniauth!" do
+        it { User.should respond_to :create_with_omniauth! }
+
+        describe "with bad input" do
+          it { expect { User.create_with_omniauth!(nil) }.to raise_error(ArgumentError) }
+          it { expect { User.create_with_omniauth!("") }.to raise_error(ArgumentError) }
+        end
+
+        describe "with valid hash" do
+          it { User.create_with_omniauth!(@twitter_hash).should be_valid }
+          it { User.create_with_omniauth!(@twitter_hash).name.should == "Fred Flintstone" }
+          #it { User.create_with_omniauth!(@twitter_hash).image.should == "http://image.com/image.jpg" }
+          #it { User.create_with_omniauth!(@twitter_hash).url.should == "http://homeurl.com/username" }
+          #it { User.create_with_omniauth!(@twitter_hash).description.should == "This is who I am." }
+          #it { User.create_with_omniauth!(@twitter_hash).location.should == "New York, NY" }
+          it { User.create_with_omniauth!(@twitter_hash).email.should == "dpsk@email.ru" }
+        end
+      end
     end
 
     describe "new_with_session" do
