@@ -26,6 +26,10 @@ describe User do
       it { should respond_to :name }
       it { should respond_to :email }
       it { should respond_to :phone }
+      it { should respond_to :main_image }
+      it { should respond_to :main_description }
+      it { should respond_to :main_url }
+
     end
 
     describe "devise" do
@@ -100,29 +104,45 @@ describe User do
     end
 
     describe "image" do
-      before(:each) do
-        @auth1 = create :authentication, :image => nil
-        @auth2 = create :authentication, :user_id => @auth1.user_id
-        @auth3 = create :authentication, :user_id => @auth1.user_id
-        @user = @auth1.user
+      context "with main_image" do
+        it { @auth = create :authentication, :image => nil
+             @auth.user.image.should == @auth.user.main_image }
+        it { create(:user, :main_image => nil).image.should == nil }
       end
 
-      it { should respond_to :image }
-      it { @user.image.should == @auth2.image }
-      it { create(:user).image.should == nil }
+      context "without main_image" do
+        before(:each) do
+          @auth1 = create :authentication, :image => nil
+          @auth2 = create :authentication, :user_id => @auth1.user_id
+          @auth3 = create :authentication, :user_id => @auth1.user_id
+          @user = @auth1.user
+          @user.update_attributes(:main_image => nil)
+        end
+
+        it { should respond_to :image }
+        it { @user.image.should == @auth2.image }
+      end
     end
 
     describe "description" do
-      before(:each) do
-        @auth1 = create :authentication, :description => nil
-        @auth2 = create :authentication, :user_id => @auth1.user_id
-        @auth3 = create :authentication, :user_id => @auth1.user_id
-        @user = @auth1.user
+      context "with main_image" do
+        it { @auth = create :authentication, :description => nil
+             @auth.user.description.should == @auth.user.main_description }
+        it { create(:user, :main_description => nil).description.should == nil }
       end
 
-      it { should respond_to :description }
-      it { @user.description.should == @auth2.description }
-      it { create(:user).description.should == nil }
+      context "without main_description" do
+        before(:each) do
+          @auth1 = create :authentication, :description => nil
+          @auth2 = create :authentication, :user_id => @auth1.user_id
+          @auth3 = create :authentication, :user_id => @auth1.user_id
+          @user = @auth1.user
+          @user.update_attributes(:main_description => nil)
+        end
+
+        it { should respond_to :description }
+        it { @user.description.should == @auth2.description }
+      end
     end
 
     describe "first_name" do
@@ -233,9 +253,9 @@ describe User do
         describe "with valid hash" do
           it { User.create_with_omniauth!(@twitter_hash).should be_valid }
           it { User.create_with_omniauth!(@twitter_hash).name.should == "Fred Flintstone" }
-          #it { User.create_with_omniauth!(@twitter_hash).image.should == "http://image.com/image.jpg" }
-          #it { User.create_with_omniauth!(@twitter_hash).url.should == "http://homeurl.com/username" }
-          #it { User.create_with_omniauth!(@twitter_hash).description.should == "This is who I am." }
+          it { User.create_with_omniauth!(@twitter_hash).main_image.should == "http://image.com/image.jpg" }
+          it { User.create_with_omniauth!(@twitter_hash).main_url.should == "http://homeurl.com/username" }
+          it { User.create_with_omniauth!(@twitter_hash).main_description.should == "This is who I am." }
           #it { User.create_with_omniauth!(@twitter_hash).location.should == "New York, NY" }
           it { User.create_with_omniauth!(@twitter_hash).email.should == "dpsk@email.ru" }
         end

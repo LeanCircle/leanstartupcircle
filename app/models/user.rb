@@ -41,11 +41,11 @@ class User < ActiveRecord::Base
   #                :password_confirmation
 
   def image
-    authentications.where("image IS NOT NULL").first.try(:image)
+    !main_image.blank? ? main_image : authentications.where("image IS NOT NULL").first.try(:image)
   end
 
   def description
-    authentications.where("description IS NOT NULL").first.try(:description)
+    !main_description.blank? ? main_description : authentications.where("description IS NOT NULL").first.try(:description)
   end
 
   def first_name
@@ -95,10 +95,13 @@ class User < ActiveRecord::Base
 
   # Given an omniauth hash, creates a user and returns it.
   def self.create_with_omniauth!(hash)
-    raise ArgumentError, "Hash is missing." if hash.blank?
+    raise ArgumentError, "Hash is missing or malformed." if hash.blank? || hash.try(:info).blank?
     user = new(:name => hash.info.try(:name),
                :phone => hash.info.try(:phone),
-               :email => hash.info.try(:email))
+               :email => hash.info.try(:email),
+               :main_image => hash.info.try(:image),
+               :main_url => (hash.info.try(:urls).try(:public_profile) || hash.info.try(:urls).try(:twitter)),
+               :main_description => hash.info.try(:description))
     user.save(:validate => false)
     user
   end

@@ -8,5 +8,8 @@ FactoryGirl.define do
     zip_code           { Faker::AddressUS.zip_code }
     phone              { Faker::PhoneNumber.phone_number }
     encrypted_password { SecureRandom.hex(16) }
+    main_image         { "http://" + Faker::ArrayUtils.rand(["meetup", "linkedin", "facebook", "twitter"]) + ".com/" + SecureRandom.hex(13) + ".png" }
+    main_url           { "http://" + Faker::ArrayUtils.rand(["meetup", "linkedin", "facebook", "twitter"]) + ".com/" + Faker::Internet.user_name }
+    main_description   { Faker::Lorem.sentence }
   end
 end
