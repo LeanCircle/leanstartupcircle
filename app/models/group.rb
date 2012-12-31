@@ -73,7 +73,7 @@ class Group < ActiveRecord::Base
   end
 
   def self.update_or_create_from_meetup_api_response(response, group = Group.new)
-    return false if response.blank?
+    return raise ArgumentError, "Response is missing." if response.blank?
     group = Group.new if group.blank?
 
     # Assign attributes from response

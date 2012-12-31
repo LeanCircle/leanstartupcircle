@@ -278,8 +278,8 @@ describe Group do
       end
 
       describe "if response is blank" do
-        it { Group.update_or_create_from_meetup_api_response(nil).should == false }
-        it { Group.update_or_create_from_meetup_api_response("").should == false }
+        it { expect { Group.update_or_create_from_meetup_api_response(nil)}.to raise_error(ArgumentError) }
+        it { expect { Group.update_or_create_from_meetup_api_response("")}.to raise_error(ArgumentError) }
       end
 
       describe "if response is valid and no group passed in" do
