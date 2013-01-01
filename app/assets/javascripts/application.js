@@ -14,18 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-
-Notifications = {
-  show_any : function() {
-    $('.notice, .alert, .success, .info').delay(400).slideDown(300);
-  },
-  handle_close : function() {
-    $('.close').live('click', function() {
-        $(this).parent().slideUp(300)
-    });
-  }
-};
-
 function parseUrl( url ) {
     var a = document.createElement('a');
     a.href = url;
@@ -61,11 +49,9 @@ function trackLinks() {
 $(document).ready(function() {
 
     // Show any notifications
-    $(function () {
-        Notifications.show_any();
-    });
-    $(function () {
-        Notifications.handle_close();
+    $('.notice, .alert, .success, .info').delay(400).slideDown(300);
+    $('.close').live('click', function() {
+        $(this).parent().slideUp(300)
     });
 
     // Set menu items to active when you're on that page.
@@ -82,6 +68,5 @@ $(document).ready(function() {
     Gmaps.map.callback = function() {
         trackLinks();
    };
-
 });
 
