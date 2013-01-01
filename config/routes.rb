@@ -12,10 +12,12 @@ Leanstartupcircle::Application.routes.draw do
   resources :users, :only => [:index, :show]
 
   # Devise routes
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  devise_scope :user do
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}, :skip => [:sessions]
+  as :user do
     get "sign_in", :to => "devise/sessions#new", :as => :sign_in
+    get "sign_in_again", :to => "devise/sessions#new", :as => :user_session
     get "sign_up", :to => "devise/registrations#new", :as => :sign_up
+    post "sign_in", :to => "devise/sessions#create", :as => :new_user_session
     delete "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
   end
 

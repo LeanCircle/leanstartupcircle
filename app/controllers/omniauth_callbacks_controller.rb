@@ -8,7 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to stored_location_for(:user) || root_path
     else
       session["devise.user_attributes"] = user.attributes
-      redirect_to new_user_registration_url
+      redirect_to :sign_up
     end
   end
 
