@@ -29,7 +29,6 @@ describe User do
       it { should respond_to :main_image }
       it { should respond_to :main_description }
       it { should respond_to :main_url }
-
     end
 
     describe "devise" do
