@@ -12,11 +12,11 @@
               = link_to current_user, :class => "nodec" do
                 = image_tag current_user.image, :width => 25
               &#8226;
-              = link_to "Sign out", sign_out_url, :method => :delete
+              = link_to "Sign out", :sign_out, :method => :delete
             - else
-              = link_to "Sign in", sign_in_url
+              = link_to "Sign in", :sign_in
               &#8226;
-              = link_to "Sign up", new_user_registration_url
+              = link_to "Sign up", :sign_up
         .clear
         = render 'groups/show_nearest'
     .row

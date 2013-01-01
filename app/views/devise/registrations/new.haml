@@ -6,7 +6,7 @@
     %h2
       Sign up
       %small
-        (or #{ link_to "sign in", new_session_path(resource_name) })
+        (or #{ link_to "sign in", :sign_in })
 
   - if devise_mapping.omniauthable?
     .control-group

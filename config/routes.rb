@@ -15,6 +15,7 @@ Leanstartupcircle::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   devise_scope :user do
     get "sign_in", :to => "devise/sessions#new", :as => :sign_in
+    get "sign_up", :to => "devise/registrations#new", :as => :sign_up
     delete "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
   end
 
