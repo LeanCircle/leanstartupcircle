@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
 
   # Given an omniauth hash, creates a user and returns it.
   def self.create_with_omniauth!(hash)
-    raise ArgumentError, "Hash is missing or malformed." if hash.blank? || hash.try(:info).blank?
+    raise ArgumentError, "Hash is missing or malformed." if hash.blank? || hash.try(:info).try(:blank?)
     user = new(:name => hash.info.try(:name),
                :phone => hash.info.try(:phone),
                :email => hash.info.try(:email),

@@ -48,6 +48,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'shoulda'
+  gem 'capybara'
 end
 
 group :test do
