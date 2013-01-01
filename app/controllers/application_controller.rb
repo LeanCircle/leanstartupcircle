@@ -5,8 +5,12 @@ class ApplicationController < ActionController::Base
   after_filter :stash_last_url, :only => [:index, :show]
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied."
-    redirect_to root_url, :alert => exception.message
+    if current_user
+      redirect_to session[:user_return_to], :alert => "Oops... " + exception.message
+    else
+      redirect_to :sign_in, :alert => "Oops... you need to sign in first!"
+    end
+
   end
 
   def find_location

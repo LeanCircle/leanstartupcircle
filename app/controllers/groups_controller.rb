@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  load_and_authorize_resource
 
   def index
     @groups = Group.near(@location.coordinates, 20000).approved.to_gmaps4rails do |group, marker|

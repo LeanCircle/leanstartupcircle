@@ -2,8 +2,6 @@ class Admin::BaseController < ApplicationController
 
   before_filter :do_not_track, :verify_admin
 
-  # TODO: Cancan not able to authorize "Base" because not a resource. Error "uninitialized constant Base"
-
   private
 
   def do_not_track
@@ -11,7 +9,7 @@ class Admin::BaseController < ApplicationController
   end
 
   def verify_admin
-    raise CanCan::AccessDenied unless can? :manage, :all
+    stash_last_url
+    raise CanCan::AccessDenied.new("Not authorized!", :dashboard, "") unless can? :manage, :all
   end
-
 end

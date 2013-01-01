@@ -12,6 +12,7 @@ describe User do
     it { should_not be_able_to(:manage, :admin) }
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:update, self_group) }
+    it { should_not be_able_to(:create, group) }
   end
 
   describe "member" do
@@ -20,6 +21,7 @@ describe User do
     it { should_not be_able_to(:manage, :admin) }
     it { should_not be_able_to(:update, group) }
     it { should be_able_to(:update, self_group) }
+    it { should be_able_to(:create, group) }
   end
 
   describe "admin" do

@@ -7,8 +7,8 @@ class Ability
       can :manage, :all
     elsif user.role == 'member'
       can :update, Group, :user_id => user.id
-    else
       can :create, Group
+    else
       can :read, Group
       can :read, User
     end
