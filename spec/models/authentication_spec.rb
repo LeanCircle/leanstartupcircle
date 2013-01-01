@@ -1,11 +1,10 @@
 require "spec_helper"
 
 describe Authentication do
-
-  describe "associations:" do
+  describe "has associations" do
     it { should belong_to :user }
 
-    describe "should have_many groups" do
+    describe "have_many groups" do
       it { should have_many :groups }
       describe "scoped to meetup" do
         it { @group = create :group, :organizer_id => "12345"
@@ -19,7 +18,7 @@ describe Authentication do
     end
   end
 
-  describe "validations:" do
+  describe "validates" do
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :uid }
     it { should validate_presence_of :provider }
@@ -38,7 +37,7 @@ describe Authentication do
     end
   end
 
-  describe "attributes:" do
+  describe "has attributes" do
     describe "necessary for login" do
       it { should respond_to :user_id }
       it { should respond_to :uid }
@@ -64,20 +63,10 @@ describe Authentication do
     end
   end
 
-  describe "methods:" do
+  describe "has method" do
     describe "self.create_with_omniauth!:" do
       before(:each) do
-        @omniauth_twitter = { 'info' => { 'name' => 'Fred Flintstone',
-                                          'image' => 'http://image.com/image.jpg',
-                                          'urls' => { 'public_profile' => 'http://homeurl.com/username' },
-                                          'email' => 'dpsk@email.ru',
-                                          'description' => 'This is who I am.',
-                                          'location' => 'New York, NY' },
-                              'uid' => '12345',
-                              'provider' => 'twitter',
-                              'credentials' => {'token' => 'token', 'secret' => 'secret'},
-                              'extra' => { 'user_hash' => {} } }
-        @twitter_hash = OmniAuth::AuthHash.new(@omniauth_twitter)
+        @twitter_hash = OmniAuth::AuthHash.new(build :omniauth_hash)
         @user = create(:user)
       end
 
@@ -104,17 +93,7 @@ describe Authentication do
 
       describe "with valid meetup hash" do
         before(:each) do
-          @omniauth_meetup = { 'info' => { 'name' => 'Fred Flintstone',
-                                           'image' => 'http://image.com/image.jpg',
-                                           'urls' => { 'public_profile' => 'http://homeurl.com/username' },
-                                           'email' => 'dpsk@email.ru',
-                                           'description' => 'This is who I am.',
-                                           'location' => 'New York, NY' },
-                               'uid' => '12345',
-                               'provider' => 'meetup',
-                               'credentials' => {'token' => 'token', 'secret' => 'secret'},
-                               'extra' => { 'user_hash' => {} } }
-          @meetup_hash = OmniAuth::AuthHash.new(@omniauth_meetup)
+          @meetup_hash = OmniAuth::AuthHash.new(build :omniauth_hash, :provider => 'meetup')
           Group.stub(:fetch_meetups_with_authentication) do
             @group = create :group, :name => "Meetup Group"
           end
