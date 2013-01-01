@@ -15,5 +15,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   alias_method :linkedin, :all
   alias_method :meetup, :all
   alias_method :twitter, :all
-
 end

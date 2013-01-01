@@ -19,6 +19,14 @@ GIT
   specs:
     rmeetup (1.0.0)
 
+GIT
+  remote: https://github.com/thoughtbot/capybara-webkit.git
+  revision: 5dab9f72bef7c90c03eaa1eeb31576c0d1b402c5
+  specs:
+    capybara-webkit (0.13.0)
+      capybara (>= 2.0.1)
+      json
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -258,6 +266,7 @@ DEPENDENCIES
   awesome_print
   cancan
   capybara
+  capybara-webkit!
   coffee-rails
   compass-rails
   devise

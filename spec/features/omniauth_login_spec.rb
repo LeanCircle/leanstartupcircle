@@ -20,7 +20,7 @@ describe "authenticate with twitter" do
     end
   end
 
-  context "using invalid credentials" do
+  context "using invalid credentials", :js => true do
     before do
       OmniAuth.config.mock_auth[:twitter] = :invalid_credentials
     end
@@ -28,7 +28,9 @@ describe "authenticate with twitter" do
     it "should not be able to log in" do
       login_with_oauth
       page.should_not have_content("Sign out")
-      page.should have_content "Oops"
+      page.should have_content("Sign in")
+      page.should have_content("Could not authenticate you from")
+      page.should have_content("Invalid credentials")
     end
   end
 end

@@ -49,6 +49,7 @@ group :test, :development do
   gem 'ffaker'
   gem 'shoulda'
   gem 'capybara'
+  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit.git'
 end
 
 group :test do
