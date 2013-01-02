@@ -20,7 +20,6 @@ describe Authentication do
   end
 
   describe "validates" do
-    it { should validate_presence_of :user_id }
     it { should validate_presence_of :uid }
     it { should validate_presence_of :provider }
 
@@ -74,23 +73,28 @@ describe Authentication do
 
       describe "with bad input" do
         it { expect { Authentication.create_with_omniauth!(nil, nil) }.to raise_error(ArgumentError) }
-        it { expect { Authentication.create_with_omniauth!("Hello", nil) }.to raise_error(ArgumentError) }
         it { expect { Authentication.create_with_omniauth!(nil, user) }.to raise_error(ArgumentError) }
-        it { expect { Authentication.create_with_omniauth!(twitter_hash, nil) }.to raise_error(ArgumentError) }
       end
 
       describe "with valid twitter hash" do
-        it { Authentication.create_with_omniauth!(twitter_hash, user).should be_valid }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).user_id.should == user.id }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).name.should == twitter_hash.info.name }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).uid.should == twitter_hash.uid }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).provider.should == twitter_hash.provider }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).token.should == twitter_hash.credentials.token }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).secret.should == twitter_hash.credentials.secret }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).image.should == twitter_hash.info.image }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).url.should == twitter_hash.info.urls.public_profile }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).description.should == twitter_hash.info.description }
-        it { Authentication.create_with_omniauth!(twitter_hash, user).location.should == twitter_hash.info.location }
+        context "and user" do
+          it { Authentication.create_with_omniauth!(twitter_hash, user).should be_valid }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).user_id.should == user.id }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).name.should == twitter_hash.info.name }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).uid.should == twitter_hash.uid }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).provider.should == twitter_hash.provider }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).token.should == twitter_hash.credentials.token }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).secret.should == twitter_hash.credentials.secret }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).image.should == twitter_hash.info.image }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).url.should == twitter_hash.info.urls.public_profile }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).description.should == twitter_hash.info.description }
+          it { Authentication.create_with_omniauth!(twitter_hash, user).location.should == twitter_hash.info.location }
+        end
+
+        context "and no user" do
+          it { Authentication.create_with_omniauth!(twitter_hash).should be_valid }
+          it { Authentication.create_with_omniauth!(twitter_hash).user_id.should == nil }
+        end
       end
 
       describe "with valid meetup hash" do
