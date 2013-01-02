@@ -37,4 +37,5 @@ Leanstartupcircle::Application.configure do
 
   # Make sure omniauth is in test mode.
   OmniAuth.config.test_mode = true
+
 end

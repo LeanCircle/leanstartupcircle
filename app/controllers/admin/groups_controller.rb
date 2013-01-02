@@ -10,7 +10,6 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def new
-    authorize! :create, Group
     @group = Group.new
   end
 
@@ -19,8 +18,7 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def create
-    authorize! :create, @group
-    @group = Group.fetch_from_group(params[:group][:group_id])
+    @group = Group.fetch_from_meetup(params[:group][:meetup_id])
     if @group.save
       flash[:success] = 'Awesome! You\'ve added a new group for everyone.'
       session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to(admin_groups_path)
