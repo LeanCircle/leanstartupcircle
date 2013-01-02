@@ -68,7 +68,9 @@ describe Authentication do
   describe "has method" do
     describe "self.create_with_omniauth!" do
       let(:user) { create :user }
-      let(:twitter_hash) { OmniAuth::AuthHash.new(build :omniauth_hash) }
+      let(:twitter_hash) { OmniAuth::AuthHash.new(build :twitter_hash) }
+      let(:meetup_hash) { OmniAuth::AuthHash.new(build :meetup_hash) }
+      let(:linkedin_hash) { OmniAuth::AuthHash.new(build :linkedin_hash) }
 
       describe "with bad input" do
         it { expect { Authentication.create_with_omniauth!(nil, nil) }.to raise_error(ArgumentError) }
@@ -92,7 +94,6 @@ describe Authentication do
       end
 
       describe "with valid meetup hash" do
-        let(:meetup_hash) { OmniAuth::AuthHash.new(build :omniauth_hash, :provider => 'meetup') }
         before(:each) do
           Group.stub(:fetch_meetups_with_authentication) do
             @group = create :group, :name => "Meetup Group"
@@ -104,6 +105,12 @@ describe Authentication do
              Group.find_by_name("Meetup Group").should be_true }
         it { Authentication.create_with_omniauth!(twitter_hash, user)
              Group.find_by_name("Meetup Group").should be_false }
+        it { Authentication.create_with_omniauth!(linkedin_hash, user)
+             Group.find_by_name("Meetup Group").should be_false }
+      end
+
+      describe "with valid linkedin hash" do
+        it { Authentication.create_with_omniauth!(linkedin_hash, user).provider.should == "linkedin" }
       end
     end
   end
