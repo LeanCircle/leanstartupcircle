@@ -7,6 +7,10 @@ module NavigationHelpers
         '/'
       when /the list of groups/
         groups_path
+      when /the new group form/
+        new_group_path
+      when /the sign in form/
+        sign_in_path
 
     else
       begin

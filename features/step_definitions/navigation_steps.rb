@@ -12,8 +12,20 @@ When /^I press "([^\"]*)"$/ do |button|
   click_button(button)
 end
 
+When /^I press "([^\"]*)" within "([^\"]*)"$/ do |button, scope|
+  within(scope) do
+    click_button(button)
+  end
+end
+
 When /^I click "([^\"]*)"$/ do |link|
   click_link(link)
+end
+
+When /^I click "([^\"]*)" within "([^\"]*)"$/ do |link, scope|
+  within(scope) do
+    click_link(link)
+  end
 end
 
 When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|

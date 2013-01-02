@@ -25,7 +25,7 @@ class Authentication < ActiveRecord::Base
     if auth.valid?
       return auth
     else
-      raise raise StandardError, "The resulting authentication was invalid."
+      raise StandardError, "The resulting authentication was invalid."
     end
   end
 
