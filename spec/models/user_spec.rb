@@ -9,8 +9,7 @@ describe User do
 
   describe "validations" do
     it { should validate_uniqueness_of :email }
-    #it { @user = build :user, :email => nil
-    #     @user.should be_valid }
+    it { should validate_presence_of :email }
     it { @user1 = create :user, :email => "test@test.com"
          @user2 = build :user, :email => "test@test.com"
          @user2.should_not be_valid }
@@ -243,19 +242,10 @@ describe User do
     end
 
     describe "omniauth methods:" do
-      before(:each) do
-        @omniauth_twitter = { 'info' => { 'name' => 'Fred Flintstone',
-                                        'image' => 'http://image.com/image.jpg',
-                                        'urls' => { 'public_profile' => 'http://homeurl.com/username' },
-                                        'email' => 'dpsk@email.ru',
-                                        'description' => 'This is who I am.',
-                                        'location' => 'New York, NY' },
-                            'uid' => '12345',
-                            'provider' => 'twitter',
-                            'credentials' => {'token' => 'token', 'secret' => 'secret'},
-                            'extra' => { 'user_hash' => {} } }
-        @twitter_hash = OmniAuth::AuthHash.new(@omniauth_twitter)
-      end
+
+      let(:twitter_hash) { OmniAuth::AuthHash.new(build :twitter_hash) }
+      let(:meetup_hash) { OmniAuth::AuthHash.new(build :meetup_hash) }
+      let(:linkedin_hash) { OmniAuth::AuthHash.new(build :linkedin_hash) }
 
       describe "authenticate_or_create_with_omniauth!" do
         it { User.should respond_to :authenticate_or_create_with_omniauth! }
@@ -270,14 +260,23 @@ describe User do
           it { expect { User.create_with_omniauth!("") }.to raise_error(ArgumentError) }
         end
 
-        describe "with valid hash" do
-          it { User.create_with_omniauth!(@twitter_hash).should be_valid }
-          it { User.create_with_omniauth!(@twitter_hash).name.should == "Fred Flintstone" }
-          it { User.create_with_omniauth!(@twitter_hash).main_image.should == "http://image.com/image.jpg" }
-          it { User.create_with_omniauth!(@twitter_hash).main_url.should == "http://homeurl.com/username" }
-          it { User.create_with_omniauth!(@twitter_hash).main_description.should == "This is who I am." }
-          #it { User.create_with_omniauth!(@twitter_hash).location.should == "New York, NY" }
-          it { User.create_with_omniauth!(@twitter_hash).email.should == "dpsk@email.ru" }
+        describe "with valid twitter hash" do
+          it { User.create_with_omniauth!(twitter_hash).should_not be_valid }
+          it { User.create_with_omniauth!(twitter_hash).name.should == twitter_hash.info.name }
+          it { User.create_with_omniauth!(twitter_hash).main_image.should == twitter_hash.info.image }
+          it { User.create_with_omniauth!(twitter_hash).main_url.should == twitter_hash.info.urls.public_profile }
+          it { User.create_with_omniauth!(twitter_hash).main_description.should == twitter_hash.info.description }
+          #it { User.create_with_omniauth!(twitter_hash).location.should == "New York, NY" }
+          it { User.create_with_omniauth!(twitter_hash).email.blank?.should be_true }
+        end
+
+        describe "with valid linkedin hash" do
+          it { User.create_with_omniauth!(linkedin_hash).should be_valid }
+          it { User.create_with_omniauth!(linkedin_hash).email.should == linkedin_hash.info.email }
+        end
+
+        describe "with valid twitter hash" do
+          it { User.create_with_omniauth!(meetup_hash).should_not be_valid }
         end
       end
     end

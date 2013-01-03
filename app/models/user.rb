@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   #validates_presence_of :name
-  validates :email, :uniqueness => { :case_sensitive => false }, :allow_blank => true
+  validates_presence_of :email
+  validates :email, :uniqueness => { :case_sensitive => false }
   after_validation :geocode, :reverse_geocode
 
   geocoded_by :zip_code
@@ -83,30 +84,26 @@ class User < ActiveRecord::Base
 
   # Omniauth + Devise methods
 
-  # Given an omniauth hash, returns the user if there is one or creates one.
-  def self.authenticate_or_create_with_omniauth!(hash, user = nil)
+  # Given an omniauth hash, returns the user and the auth if there is one or creates one.
+  def self.find_or_create_with_omniauth!(hash, user = nil)
     raise ArgumentError, "Hash is missing." if hash.blank?
-    if user
-      Authentication.create_with_omniauth!(hash, user)
-    elsif user = Authentication.find_by_provider_and_uid(hash['provider'], hash['uid'].to_s).try(:user)
-      return user
-    else
-      user = User.create_with_omniauth!(hash)
-      Authentication.create_with_omniauth!(hash, user)
-    end
-    user
+    auth = Authentication.find_or_create_with_omniauth!(hash, user)
+    user ||= auth.try(:user)
+    user ||= User.create_with_omniauth!(hash)
+    user.authentications << auth if user.id
+    return user, auth
   end
 
   # Given an omniauth hash, creates a user and returns it.
   def self.create_with_omniauth!(hash)
     raise ArgumentError, "Hash is missing or malformed." if hash.blank? || hash.try(:info).try(:blank?)
-    user = User.new(:name => hash.info.try(:name),
+    user = new(:name => hash.info.try(:name),
                :phone => hash.info.try(:phone),
-               :email => hash.info.try(:email) || "",
+               :email => hash.info.try(:email),
                :main_image => hash.info.try(:image),
                :main_url => (hash.info.try(:urls).try(:public_profile) || hash.info.try(:urls).try(:twitter)),
                :main_description => hash.info.try(:description))
-    user.save!(:validate => false)
+    user.save
     user
   end
 

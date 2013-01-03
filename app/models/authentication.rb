@@ -9,17 +9,18 @@ class Authentication < ActiveRecord::Base
   # TODO: Add more validations.
 
   # Creates an authentication given a user and an omniauth hash.
-  def self.create_with_omniauth!(hash, user=nil)
+  def self.find_or_create_with_omniauth!(hash, user=nil)
     raise ArgumentError, "Hash is missing." if hash.blank?
-    auth = new(:name => hash.info.name,
-               :uid => hash.uid,
-               :provider => hash.provider,
-               :token => hash.credentials.token,
-               :secret => hash.credentials.secret,
-               :image => hash.info.try(:image),
-               :url => (hash.info.try(:urls).try(:public_profile) || hash.info.try(:urls).try(:twitter)),
-               :description => hash.info.try(:description),
-               :location => hash.info.try(:location))
+    auth = Authentication.find_by_provider_and_uid(hash['provider'], hash['uid'].to_s)
+    auth ||= new(:name => hash.info.name,
+                 :uid => hash.uid,
+                 :provider => hash.provider,
+                 :token => hash.credentials.token,
+                 :secret => hash.credentials.secret,
+                 :image => hash.info.try(:image),
+                 :url => (hash.info.try(:urls).try(:public_profile) || hash.info.try(:urls).try(:twitter)),
+                 :description => hash.info.try(:description),
+                 :location => hash.info.try(:location))
     auth.user_id = user.id if user
     Group.fetch_meetups_with_authentication(auth) if auth.provider == 'meetup'
     if auth.save
