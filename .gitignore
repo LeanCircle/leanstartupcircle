@@ -18,3 +18,5 @@ public/system/
 public/system/*
 public/system/**/*
 .sass-cache/
+coverage
+rails_best_practices_output.html
