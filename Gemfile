@@ -28,6 +28,7 @@ gem 'dynamic_sitemaps'
 
 # Error notification
 gem "airbrake"
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails'
