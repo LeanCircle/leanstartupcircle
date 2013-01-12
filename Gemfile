@@ -43,19 +43,19 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
   gem 'watchr'
   gem 'spork'
   gem 'factory_girl_rails'
-  gem 'ffaker'
   gem 'shoulda'
-  gem 'capybara'
-  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test do
+  gem 'rspec-rails'
   gem 'fakeweb'
+  gem 'ffaker'
+  gem 'capybara'
+  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
 end
