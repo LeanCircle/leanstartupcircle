@@ -52,6 +52,8 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'shoulda'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'capybara'
+  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit.git'
 end
 
 group :test do
@@ -59,8 +61,6 @@ group :test do
   gem 'rspec-rails'
   gem 'fakeweb'
   gem 'ffaker'
-  gem 'capybara'
-  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
 end
