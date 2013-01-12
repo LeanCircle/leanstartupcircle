@@ -26,6 +26,9 @@ gem 'gmaps4rails'
 gem 'friendly_id'
 gem 'dynamic_sitemaps'
 
+# Error notification
+gem "airbrake"
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
