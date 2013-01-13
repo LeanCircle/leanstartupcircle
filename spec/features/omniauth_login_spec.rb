@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# TODO: Move this to cucumber
 describe "authenticate via twitter" do
   context "using valid credentials" do
     before do
@@ -27,7 +28,7 @@ describe "authenticate via twitter" do
     end
 
     it "log out" do
-      login_with_oauth(:twitter)
+      login_with_oauth(:linkedin)
       click_link 'Sign out'
       visit "/team"
       page.should have_content("Sign in")
