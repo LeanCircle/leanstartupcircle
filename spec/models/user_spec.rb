@@ -247,8 +247,8 @@ describe User do
       let(:meetup_hash) { OmniAuth::AuthHash.new(build :meetup_hash) }
       let(:linkedin_hash) { OmniAuth::AuthHash.new(build :linkedin_hash) }
 
-      describe "authenticate_or_create_with_omniauth!" do
-        it { User.should respond_to :authenticate_or_create_with_omniauth! }
+      describe "find_or_create_with_omniauth!" do
+        it { User.should respond_to :find_or_create_with_omniauth! }
         # TODO: Add specs
       end
 

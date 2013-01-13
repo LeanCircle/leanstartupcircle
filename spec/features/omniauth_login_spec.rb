@@ -34,7 +34,6 @@ describe "authenticate via twitter" do
       # TODO: Fix the following line. It sees the notice, but not the text???
       #page.should have_selector ".notice", :text => "Signed out"
     end
-
   end
 
   context "using invalid credentials", :js => true do
