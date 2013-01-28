@@ -128,6 +128,8 @@ GEM
       multipart-post (~> 1.1)
     ffaker (1.15.0)
     ffi (1.3.0)
+    figaro (0.5.3)
+      rails (~> 3.0)
     friendly_id (4.0.9)
     fssm (0.2.9)
     geocoder (1.1.6)
@@ -332,6 +334,7 @@ DEPENDENCIES
   factory_girl_rails
   fakeweb
   ffaker
+  figaro
   friendly_id
   geocoder
   gmaps4rails

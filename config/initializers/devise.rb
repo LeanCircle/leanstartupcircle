@@ -82,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  config.pepper = AppConfig['devise_pepper']
+  config.pepper = ENV['DEVISE_PEPPER']
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -206,9 +206,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :linkedin, AppConfig['linkedin_api_key'], AppConfig['linkedin_secret_key'], :scope => 'r_basicprofile r_emailaddress'
-  config.omniauth :meetup, AppConfig['meetup_consumer_key'], AppConfig['meetup_secret_key']
-  config.omniauth :twitter, AppConfig['twitter_consumer_key'], AppConfig['twitter_consumer_secret']
+  config.omniauth :linkedin, ENV['LINKEDIN_API_KEY'], ENV['LINKEDIN_SECRET_KEY'], :scope => 'r_basicprofile r_emailaddress'
+  config.omniauth :meetup, ENV['MEETUP_CONSUMER_KEY'], ENV['MEETUP_SECRET_KEY']
+  config.omniauth :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

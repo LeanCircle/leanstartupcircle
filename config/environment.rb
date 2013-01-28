@@ -8,6 +8,6 @@ Leanstartupcircle::Application.configure do
   config.action_controller.session = {
     :session_domain => 'leanstartupcircle.com',
     :session_key => '_leanstartupcircle',
-    :secret      => AppConfig['secret_token']
+    :secret      => ENV['SECRET_TOKEN']
   }
 end

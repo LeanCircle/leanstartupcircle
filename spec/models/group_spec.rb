@@ -163,7 +163,7 @@ describe Group do
   describe "meetup api methods:" do
 
     before(:all) do
-      RMeetup::Client.api_key = AppConfig['meetup_api_key']
+      RMeetup::Client.api_key = ENV['MEETUP_API_KEY']
       @single_response = RMeetup::Client.fetch( :groups,{ :domain => "sanfrancisco.leanstartupcircle.com" })
       @multiple_responses = RMeetup::Client.fetch( :groups,{ :organizer_id => "10786373" })
       @no_response = RMeetup::Client.fetch( :groups,{ :organizer_id => "1" })
@@ -316,7 +316,7 @@ describe Group do
     describe "self.init_rmeetup" do
       it { Group.should respond_to :init_rmeetup }
       it { Group.init_rmeetup.should_not be_false }
-      it { Group.init_rmeetup.should == AppConfig['meetup_api_key'] }
+      it { Group.init_rmeetup.should == ENV['MEETUP_API_KEY'] }
     end
   end
 end

@@ -1,3 +1,4 @@
+.env
 .bundle
 config/database.yml
 config/config.yml
@@ -19,5 +20,8 @@ public/system/
 public/system/*
 public/system/**/*
 .sass-cache/
-coverage
+coverage/**/*
+coverage/*
 rails_best_practices_output.html
+# Ignore application configuration
+/config/application.yml

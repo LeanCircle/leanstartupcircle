@@ -25,6 +25,7 @@ gem 'gmaps4rails'
 # Miscellaneous
 gem 'friendly_id'
 gem 'dynamic_sitemaps'
+gem 'figaro'
 
 # Error notification
 gem "airbrake"

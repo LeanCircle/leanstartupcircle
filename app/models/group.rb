@@ -102,7 +102,7 @@ class Group < ActiveRecord::Base
   private
 
   def self.init_rmeetup
-    RMeetup::Client.api_key = AppConfig['meetup_api_key']
+    RMeetup::Client.api_key = ENV['MEETUP_API_KEY']
   end
 
 end

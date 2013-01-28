@@ -4,7 +4,7 @@
     var pluginUrl =
      '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
     _gaq.push(['_require', 'inpage_linkid', pluginUrl]); // Enhanced Link Attribution
-    _gaq.push(['_setAccount', '#{AppConfig["google_analytics_code"]}']);
+    _gaq.push(['_setAccount', '#{ENV["GOOGLE_ANALYTICS_CODE"]}']);
     _gaq.push(['_setDomainName', 'leanstartupcircle.com']);
     _gaq.push(['_setAllowLinker', true]);
     _gaq.push(['_trackPageview']);
