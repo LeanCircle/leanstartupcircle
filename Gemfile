@@ -51,7 +51,6 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-jasmine'
-  gem 'guard-webrick'
   gem 'guard-livereload'
   gem 'guard-haml'
   gem 'guard-coffeescript'
