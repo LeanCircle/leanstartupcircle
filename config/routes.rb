@@ -1,13 +1,5 @@
 Leanstartupcircle::Application.routes.draw do
 
-  # Jobs routes
-  match "jobs" => "landing_pages#jobs", :as => :jobs
-  match "jobs/users/employer_sign_up" => "users#employer_sign_up"
-  match "jobs/users/jobseeker_sign_up" => "users#jobseeker_sign_up"
-  match "jobs/users/register" => "users#register"
-  match "jobs/thanks_for_signing_up" => "landing_pages#thanks_for_signing_up"
-  match "jobs/thanks_for_applying" => "landing_pages#thanks_for_applying"
-
   # User routes
   resources :users, :only => [:index, :show]
 
