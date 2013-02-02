@@ -12,7 +12,7 @@
     .control-group
       .controls
         - resource_class.omniauth_providers.each do |provider|
-          = link_to omniauth_authorize_path(resource_name, provider), :class => "nodec" do
+          = link_to omniauth_authorize_path(resource_name, provider), :class => "nodec", :id => "sign_up_with_" + provider.to_s do
             = image_tag 'icons/sign_up_' + provider.to_s + '.png'
 
   .control-group

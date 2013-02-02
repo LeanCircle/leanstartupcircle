@@ -6,7 +6,7 @@ describe "authenticate via twitter" do
     before do
       OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new(build :linkedin_hash)
       OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(build :twitter_hash)
-      OmniAuth.config.mock_auth[:meetup] = OmniAuth::AuthHash.new(build :linkedin_hash)
+      OmniAuth.config.mock_auth[:meetup] = OmniAuth::AuthHash.new(build :meetup_hash)
     end
 
     context "should be able to log in" do
