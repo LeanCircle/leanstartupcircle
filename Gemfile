@@ -46,6 +46,17 @@ group :development do
   gem 'sqlite3'
   gem 'rails_best_practices'
   gem 'guard'
+  gem 'guard-rails'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'guard-jasmine'
+  gem 'guard-webrick'
+  gem 'guard-livereload'
+  gem 'guard-haml'
+  gem 'guard-coffeescript'
+  gem 'guard-bundler'
+  gem 'guard-sass'
 
   # Non-required files to use operating system notifications to trigger guard
   gem 'rb-inotify', :require => false
