@@ -45,11 +45,11 @@ group :development do
   gem 'taps' # Allows pushing and pulling from heroku db.
   gem 'sqlite3'
   gem 'rails_best_practices'
+  gem 'guard'
+  gem 'spork'
 end
 
 group :test, :development do
-  gem 'watchr'
-  gem 'spork'
   gem 'factory_girl_rails'
   gem 'shoulda'
   gem 'ruby-debug19', :require => 'ruby-debug'
