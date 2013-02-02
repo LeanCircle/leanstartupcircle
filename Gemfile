@@ -53,6 +53,7 @@ group :development do
   gem 'rb-fchange', :require => false
 
   gem 'spork'
+  gem 'growl' # Use growl for notifications
 end
 
 group :test, :development do
