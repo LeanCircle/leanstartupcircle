@@ -45,5 +45,6 @@ Feature: Sign in
     When I am on the sign in page
     And I fill in "Email" with "Test@test.com"
     And I fill in "Password" with "1234567890"
+    And I press "Sign In"
     Then I should see "Sign out"
     And I should see "Welcome Fred"

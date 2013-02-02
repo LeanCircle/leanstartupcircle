@@ -36,6 +36,7 @@ Feature: Sign up
     When I login with meetup
     Then I should be on the sign_up_page
     And I fill in "Email" with "Test@test.com"
+    And I press "Sign Up"
     Then I should see "Sign out"
 
   Scenario: Sign up with username and password
@@ -46,4 +47,5 @@ Feature: Sign up
     And I fill in "Email" with "Test@test.com"
     And I fill in "Zip code" with "94110"
     And I fill in "Password" with "1234567890"
+    And I press "Sign Up"
     Then I should see "Sign out"
