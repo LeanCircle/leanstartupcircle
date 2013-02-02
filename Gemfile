@@ -46,6 +46,12 @@ group :development do
   gem 'sqlite3'
   gem 'rails_best_practices'
   gem 'guard'
+
+  # Non-required files to use operating system notifications to trigger guard
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+
   gem 'spork'
 end
 
