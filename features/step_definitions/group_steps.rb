@@ -1,6 +1,6 @@
-Given /^there (?:is |are )(?:a )?groups? named (.*?)$/ do |names|
+Given /^there (?:is |are )(?:a |an )?(approved )?(lsc )?groups? named (.*?)$/ do |approve, lsc, names|
   names.split(', ').each do |name|
-    FactoryGirl.create :group, :name => name, :approval => true, :city => "New York"
+    FactoryGirl.create :group, :name => name, :approval => approve, :lsc => lsc, :city => "New York"
   end
 end
 
