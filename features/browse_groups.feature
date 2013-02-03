@@ -8,6 +8,15 @@ Feature: View Groups
     Then I should see "Lean Startup Circle San Francisco"
     And I should see "Lean Startup New York"
 
+  @javascript
+  Scenario: Only approved groups show
+    Given there is a group with attributes:
+        | name           | approval |
+        | Lean San Fran  | true     |
+        | Lean NY        | false    |
+    When I go to the list of groups
+    Then I should see "Lean San Fran"
+    And I should not see "Lean NY"
 
   @javascript
   Scenario: Display name with link
