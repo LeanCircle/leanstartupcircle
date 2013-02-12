@@ -3,5 +3,5 @@ When /^I login with ([^\"]*)$/ do |provider|
 end
 
 Given /^I am not signed in$/ do
-  visit('/users/sign_out')
+  visit('/sign_out')
 end

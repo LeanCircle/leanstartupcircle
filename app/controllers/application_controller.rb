@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
 
   def find_location
     @location = request.location
-    @location = Geocoder.search("San Francisco").first if Rails.env.development? || @location.blank?
-    @nearest_groups = Group.near(@location.coordinates, 50)
+    @location = Geocoder.search("San Francisco").first if !Rails.env.production? || @location.blank?
+    @nearest_groups = Group.near(@location.coordinates, 50).approved
   end
 
   def stash_last_url

@@ -7,10 +7,10 @@ Leanstartupcircle::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "my_devise/omniauth_callbacks", :registrations => "my_devise/registrations" }, :skip => [:sessions]
   as :user do
     get "sign_in", :to => "devise/sessions#new", :as => :sign_in
-    get "sign_in_again", :to => "devise/sessions#new", :as => :user_session
+    post "sign_in", :to => "devise/sessions#create", :as => :user_session
     get "sign_up", :to => "my_devise/registrations#new", :as => :sign_up
-    post "sign_in", :to => "devise/sessions#create", :as => :new_user_session
-    delete "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
+    post "sign_up", :to => "my_devise/registrations#create", :as => :user_registration
+    match "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
   end
 
   # Group routes

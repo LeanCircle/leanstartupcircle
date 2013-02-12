@@ -4,6 +4,12 @@ Given /^There (?:is|are) (?:a) users? named (.*?)$/ do |names|
   end
 end
 
+Given /^I have an account as folowing:$/ do |table|
+  table.hashes.each do |attributes|
+    FactoryGirl.create(:user, attributes)
+  end
+end
+
 Given /^There are no users$/ do
   User.delete_all
 end

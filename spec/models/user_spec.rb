@@ -275,7 +275,7 @@ describe User do
           it { User.create_with_omniauth!(linkedin_hash).email.should == linkedin_hash.info.email }
         end
 
-        describe "with valid twitter hash" do
+        describe "with valid meetup hash" do
           it { User.create_with_omniauth!(meetup_hash).should_not be_valid }
         end
       end

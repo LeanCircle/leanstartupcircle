@@ -8,28 +8,30 @@ When /^I go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^I press "([^\"]*)"$/ do |button|
-  click_button(button)
-end
-
-When /^I press "([^\"]*)" within "([^\"]*)"$/ do |button, scope|
+When /^I press "([^\"]*)"(?: within "([^\"]*)")?$/ do |button, scope|
+  scope = scope ? scope : "body"
   within(scope) do
     click_button(button)
   end
 end
 
-When /^I click "([^\"]*)"$/ do |link|
-  click_link(link)
-end
-
-When /^I click "([^\"]*)" within "([^\"]*)"$/ do |link, scope|
+When /^I click "([^\"]*)"(?: within "([^\"]*)")?$/ do |link, scope|
+  scope = scope ? scope : "body"
   within(scope) do
     click_link(link)
   end
 end
 
-When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|
-  fill_in(field.gsub(' ', '_'), :with => value)
+When /^I click the image "([^\"]*)"(?: within "([^\"]*)")?$/ do |img, scope|
+  scope = scope ? scope : "body"
+  within(scope) do
+    find(:xpath, ".//img[contains(@src, '#{img}.png')]/parent::a").click()
+  end
+end
+
+When /^I fill in "([^\"]*)" with "([^\"]*)"(?: within (.*))?$/ do |field, value, scope|
+  scope = scope ? scope + "_" : ""
+  fill_in(scope + field.downcase.gsub(' ', '_'), :with => value)
 end
 
 When /^I fill in "([^\"]*)" for "([^\"]*)"$/ do |value, field|
@@ -46,34 +48,20 @@ When /^I select "([^\"]*)" from "([^\"]*)"$/ do |value, field|
   select(value, :from => field)
 end
 
-When /^I check "([^\"]*)"$/ do |field|
-  check(field)
+When /^I (?:(check|uncheck|choose))? "([^\"]*)"$/ do |action, field|
+  eval("#{action}(field)")
 end
 
-When /^I uncheck "([^\"]*)"$/ do |field|
-  uncheck(field)
+Then /^I should( not)? see "([^\"]*)"(?: within "([^\"]*)")?$/ do |negate, text, scope|
+  scope = scope ? scope : "body"
+  within(scope) do
+    negate ? page.should_not(have_content(text)) : page.should(have_content(text))
+  end
 end
 
-When /^I choose "([^\"]*)"$/ do |field|
-  choose(field)
-end
-
-Then /^I should see "([^\"]*)"$/ do |text|
-  page.should have_content(text)
-end
-
-Then /^I should see \/([^\/]*)\/$/ do |regexp|
+Then /^I should( not)? see \/([^\/]*)\/$/ do |negate, regexp|
   regexp = Regexp.new(regexp)
-  page.should have_content(regexp)
-end
-
-Then /^I should not see "([^\"]*)"$/ do |text|
-  page.should_not have_content(text)
-end
-
-Then /^I should not see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
-  page.should_not have_content(regexp)
+  negate ? page.should_not(have_content(regexp)) : page.should(have_content(regexp))
 end
 
 Then /^the "([^\"]*)" field should contain "([^\"]*)"$/ do |field, value|
@@ -94,6 +82,10 @@ end
 
 Then /^I should be on (.+)$/ do |page_name|
   current_path.should == path_to(page_name)
+end
+
+Then /^I should be redirected to "([^\"]*)"$/ do |url|
+  current_url.should include(url)
 end
 
 Then /^page should have (.+) message "([^\"]*)"$/ do |type, text|

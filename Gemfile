@@ -55,7 +55,7 @@ group :development do
   gem 'guard-haml'
   gem 'guard-coffeescript'
   gem 'guard-bundler'
-  gem 'guard-sass'
+  gem 'guard-sass', :require => false
 
   # Non-required files to use operating system notifications to trigger guard
   gem 'rb-inotify', :require => false

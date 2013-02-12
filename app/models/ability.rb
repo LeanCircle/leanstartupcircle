@@ -6,6 +6,7 @@ class Ability
     if user.role == 'admin'
       can :manage, :all
     elsif user.role == 'member'
+      can :read, Group
       can :update, Group, :user_id => user.id
       can :create, Group
     else
