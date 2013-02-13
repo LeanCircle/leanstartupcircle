@@ -58,7 +58,7 @@ group :development do
   gem 'guard-sass', :require => false
 
   # Non-required files to use operating system notifications to trigger guard
-  gem 'rb-inotify', :require => false
+  gem 'rb-inotify', '~> 0.8.8', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
 
@@ -76,7 +76,7 @@ end
 
 group :test do
   gem 'simplecov', :require => false
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.0'
   gem 'fakeweb'
   gem 'ffaker'
   gem 'cucumber-rails', :require => false

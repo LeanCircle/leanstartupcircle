@@ -36,5 +36,5 @@ Leanstartupcircle::Application.configure do
   config.assets.debug = true
 
   # Config for subdomains when developing locally with http://lvh.me
-  config.session_store :cookie_store, key: '_leanstartupcircle_session', :domain => "lvh.me"
+  config.session_store :cookie_store, key: '_leanstartupcircle_session'#, :domain => "lvh.me"
 end
