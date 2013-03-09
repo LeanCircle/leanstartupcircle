@@ -29,7 +29,7 @@ gem 'figaro'
 
 # Error notification
 gem "airbrake"
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', '>=3.5.8.72'
 
 group :assets do
   gem 'sass-rails'
