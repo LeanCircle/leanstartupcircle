@@ -45,8 +45,7 @@ class Group < ActiveRecord::Base
     [city, province].compact.join(', ')
   end
 
-  def self.fetch_from_meetup(query, group = nil )
-    return if query.blank?
+  def self.fetch_from_meetup(query)
     init_rmeetup
     query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'') # Remove http:// and trailing slashes
     if !!(query =~ /^[-+]?[0-9]+$/) # If the query is a number, assume it's a group_id
@@ -57,7 +56,7 @@ class Group < ActiveRecord::Base
     else
       response = RMeetup::Client.fetch( :groups,{ :domain => query }).first
     end
-    update_or_create_from_meetup_api_response(response, group)
+    update_or_create_from_meetup_api_response(response)
   end
 
   def self.fetch_meetups_with_authentication(auth)
@@ -72,9 +71,8 @@ class Group < ActiveRecord::Base
     return meetups_added ||= []
   end
 
-  def self.update_or_create_from_meetup_api_response(response, group = Group.new)
-    return raise ArgumentError, "Response is missing." if response.blank?
-    group = Group.new if group.blank?
+  def self.update_or_create_from_meetup_api_response(response)
+    group = Group.new
 
     # Assign attributes from response
     group.name = response.try(:name) if response.try(:name) && group.name.blank?
@@ -93,8 +91,8 @@ class Group < ActiveRecord::Base
     group.join_mode = response.try(:join_mode)
     group.visibility = response.try(:visibility)
 
-    # Save and try to assign to a user.
-    return false if !group.try(:save)
+    # Try to assign to a user and save.
+    group.save
     group.authentication.user.groups << group if group.organizer_id && group.authentication.try(:user)
     return group
   end
