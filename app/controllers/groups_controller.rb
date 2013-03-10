@@ -30,20 +30,19 @@ class GroupsController < ApplicationController
   end
 
   def create
-    if params[:commit].eql?('Cancel')
-      redirect_to root_url
+    redirect_to groups_path if params[:commit].eql?('Cancel')
+
+    if params[:group][:meetup_identifier].blank?
+      @group = Group.new(params[:group])
     else
-      if params[:group][:meetup_identifier].blank?
-        @group = Group.new(params[:group])
-      else
-        @group = Group.fetch_from_meetup(params[:group][:group_identifier], @group)
-      end
-      if @group.save
-        flash[:success] = "Awesome...hang tight! A human will have to make sure it's a lean startup group."
-        redirect_to groups_path
-      else
-        render :action => "new"
-      end
+      @group = Group.fetch_from_meetup(params[:group][:group_identifier], Group.new)
+    end
+
+    if @group.save
+      flash[:success] = "Awesome...hang tight! A human will have to make sure it's a lean startup group."
+      redirect_to groups_path
+    else
+      render :action => "new"
     end
   end
 
