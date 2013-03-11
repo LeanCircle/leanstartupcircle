@@ -215,7 +215,7 @@ describe Group do
 
     end
 
-    describe "self.update_or_create_from_meetup_api_response" do
+    describe "self.create_from_meetup_api_response" do
       before(:all) do
         @response = @single_response.first
         FakeWeb.register_uri(:any, %r|http://maps\.googleapis\.com/maps/api/geocode|, :body => SF_LSC_GEOCODE_JSON)
@@ -223,100 +223,77 @@ describe Group do
 
       shared_examples_for "testing group should have values of meetup response" do |group|
         describe "group should have values from meetup response" do
-          it { Group.update_or_create_from_meetup_api_response(@response, group).description.should == @response.description }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).meetup_id.should == @response.id }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).organizer_id.should == @response.organizer["member_id"] }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).meetup_link.should == @response.link }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).city.should == @response.city }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).province.should == @response.state }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).country_code.should == @response.country }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).latitude.should == @response.lat }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).longitude.should == @response.lon }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).photo_url.should == @response.group_photo["photo_link"] }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).highres_photo_url.should == @response.group_photo["highres_link"] }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).thumbnail_url.should == @response.group_photo["thumb_link"] }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).join_mode.should == @response.join_mode }
-          it { Group.update_or_create_from_meetup_api_response(@response, group).visibility.should == @response.visibility }
+          it { Group.create_from_meetup_api_response(@response).description.should == @response.description }
+          it { Group.create_from_meetup_api_response(@response).meetup_id.should == @response.id }
+          it { Group.create_from_meetup_api_response(@response).organizer_id.should == @response.organizer["member_id"] }
+          it { Group.create_from_meetup_api_response(@response).meetup_link.should == @response.link }
+          it { Group.create_from_meetup_api_response(@response).city.should == @response.city }
+          it { Group.create_from_meetup_api_response(@response).province.should == @response.state }
+          it { Group.create_from_meetup_api_response(@response).country_code.should == @response.country }
+          it { Group.create_from_meetup_api_response(@response).latitude.should == @response.lat }
+          it { Group.create_from_meetup_api_response(@response).longitude.should == @response.lon }
+          it { Group.create_from_meetup_api_response(@response).photo_url.should == @response.group_photo["photo_link"] }
+          it { Group.create_from_meetup_api_response(@response).highres_photo_url.should == @response.group_photo["highres_link"] }
+          it { Group.create_from_meetup_api_response(@response).thumbnail_url.should == @response.group_photo["thumb_link"] }
+          it { Group.create_from_meetup_api_response(@response).join_mode.should == @response.join_mode }
+          it { Group.create_from_meetup_api_response(@response).visibility.should == @response.visibility }
         end
       end
 
       shared_examples_for "testing for missing data in meetup response" do |group|
         describe "if missing data in meetup response" do
           it { @response.stub(:description) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:id) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:link) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:organizer) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.organizer.stub(:[], "member_id") { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:city) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:state) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:country) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:lat) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:lon) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:group_photo) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.group_photo.stub(:[], "highres_link") { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.group_photo.stub(:[], "photo_link") { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.group_photo.stub(:[], "thumb_link") { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:join_mode) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
           it { @response.stub(:visibility) { nil }
-               Group.update_or_create_from_meetup_api_response(@response, group).should be_valid }
+               Group.create_from_meetup_api_response(@response).should be_valid }
         end
-      end
-
-      describe "if response is blank" do
-        it { expect { Group.update_or_create_from_meetup_api_response(nil)}.to raise_error(ArgumentError) }
-        it { expect { Group.update_or_create_from_meetup_api_response("")}.to raise_error(ArgumentError) }
-      end
-
-      describe "if response is valid and no group passed in" do
-        it { Group.update_or_create_from_meetup_api_response(@response).should be_valid }
-        it { Group.update_or_create_from_meetup_api_response(@response).class.should == Group.new.class }
-
-        include_examples "testing group should have values of meetup response"
-        it { Group.update_or_create_from_meetup_api_response(@response).name.should == @response.name }
-
-        include_examples "testing for missing data in meetup response"
-        it { @response.stub(:name) { nil }
-             Group.update_or_create_from_meetup_api_response(@response).should == false }
-      end
-
-      describe "if response is valid and group passed in" do
-        before(:each) do
-          @group = create :group
-        end
-
-        it { Group.update_or_create_from_meetup_api_response(@response, @group).should be_valid }
-        it { Group.update_or_create_from_meetup_api_response(@response, @group).class.should == Group.new.class }
-
-        include_examples "testing group should have values of meetup response", @group
-        it { Group.update_or_create_from_meetup_api_response(@response, @group).name.should_not == @response.name }
-        it { original_name = @group.name
-             Group.update_or_create_from_meetup_api_response(@response, @group).name.should == original_name }
-
-        include_examples "testing for missing data in meetup response", @group
-        it { @response.stub(:name) { nil }
-             Group.update_or_create_from_meetup_api_response(@response, @group).should be_valid }
       end
     end
 
     describe "self.init_rmeetup" do
-      it { Group.should respond_to :init_rmeetup }
       it { Group.init_rmeetup.should_not be_false }
       it { Group.init_rmeetup.should == ENV['MEETUP_API_KEY'] }
+    end
+
+    describe "clean_query" do
+      it { Group.clean_query("http://bob.com").should == "bob.com" }
+      it { Group.clean_query("http://bob.com/").should == "bob.com" }
+      it { Group.clean_query("http://bob.com//").should == "bob.com" }
+      it { Group.clean_query("bob.com").should == "bob.com" }
+    end
+
+    describe "query_method" do
+      it { Group.query_method("12345").should == :group_id }
+      it { Group.query_method("meetup.com/leaner").should == :group_urlname }
+      it { Group.query_method("leaner.com").should == :domain }
     end
   end
 end

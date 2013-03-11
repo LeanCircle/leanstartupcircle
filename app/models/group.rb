@@ -47,16 +47,10 @@ class Group < ActiveRecord::Base
 
   def self.fetch_from_meetup(query)
     init_rmeetup
-    query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'') # Remove http:// and trailing slashes
-    if !!(query =~ /^[-+]?[0-9]+$/) # If the query is a number, assume it's a group_id
-      response = RMeetup::Client.fetch( :groups,{ :group_id => query }).first
-    elsif query.include?("meetup.com")
-      uri = URI::parse("http://" + query).path.sub(/\/*/,"").sub(/\/+$/,'') # Setup string for use as group_urlname
-      response = RMeetup::Client.fetch( :groups,{ :group_urlname => uri }).first
-    else
-      response = RMeetup::Client.fetch( :groups,{ :domain => query }).first
-    end
-    update_or_create_from_meetup_api_response(response)
+    method = query_method(query)
+    query = clean_query(query)
+    response = RMeetup::Client.fetch( :groups,{ method => query }).first
+    create_from_meetup_api_response(response)
   end
 
   def self.fetch_meetups_with_authentication(auth)
@@ -64,14 +58,14 @@ class Group < ActiveRecord::Base
     responses = RMeetup::Client.fetch( :groups,{ :organizer_id => auth.uid })
     meetups_added ||= []
     responses.each do |response|
-      meetups_added << update_or_create_from_meetup_api_response(response)
+      meetups_added << create_from_meetup_api_response(response)
     end
     return meetups_added
   rescue
     return meetups_added ||= []
   end
 
-  def self.update_or_create_from_meetup_api_response(response)
+  def self.create_from_meetup_api_response(response)
     group = Group.new
 
     # Assign attributes from response
@@ -101,6 +95,22 @@ class Group < ActiveRecord::Base
 
   def self.init_rmeetup
     RMeetup::Client.api_key = ENV['MEETUP_API_KEY']
+  end
+
+  def self.clean_query(query)
+    query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'')
+    query = URI::parse("http://" + query).path.sub(/\/*/,"").sub(/\/+$/,'') if query.include?("meetup.com")
+    query
+  end
+
+  def self.query_method(query)
+    if !!(query =~ /^[-+]?[0-9]+$/) # If the query is a number, assume it's a group_id
+      return :group_id
+    elsif query.include?("meetup.com")
+      return :group_urlname
+    else
+      return :domain
+    end
   end
 
 end
