@@ -64,9 +64,4 @@ $(document).ready(function() {
     }).parents('.dropdown').addClass('active');
 
     trackLinks();
-    // Make sure to trigger trackLinks again if a gmap just loaded.
-    Gmaps.map.callback = function() {
-        trackLinks();
-   };
 });
-
