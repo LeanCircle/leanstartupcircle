@@ -40,8 +40,7 @@ function trackLinks() {
             category = linkTracking.toLowerCase()
             action = getDomain(link);
             label = link;
-            $(this).attr('target', '_blank').attr('onClick', '_gaq.push(["_link", "' + link + '"]);' +
-                                                             'recordOutboundLink(this, "' + category + '", "' + action + '", "' + label + '"); return false;');
+            $(this).attr('target', '_blank').attr('onClick', '_gaq.push(["_trackEvent","' + category + '" , "' + action + '", "' + label + '"]);');
         };
     });
 };
