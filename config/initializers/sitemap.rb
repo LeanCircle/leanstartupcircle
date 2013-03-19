@@ -9,9 +9,6 @@ DynamicSitemaps::Sitemap.draw do
     url group_url(group), :lastmod => group.updated_at, :changefreq => 'monthly', :priority => 0.8
   end
 
-  # Jobs routes
-  url jobs_url, :changefreq => 'monthly', :priority => 0.5
-
   #autogenerate  :groups,
   #              :last_mod => :updated_at,
   #              :change_freq => 'monthly',
