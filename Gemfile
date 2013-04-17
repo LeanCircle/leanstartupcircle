@@ -26,6 +26,7 @@ gem 'gmaps4rails'
 gem 'friendly_id'
 gem 'dynamic_sitemaps'
 gem 'figaro'
+gem 'heroku' # Deprecated but figaro needs it and insists it be in gemfile.lock
 
 # Error notification
 gem "airbrake"
