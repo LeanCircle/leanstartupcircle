@@ -98,13 +98,13 @@ class Group < ActiveRecord::Base
   end
 
   def self.clean_query(query)
-    query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'')
+    query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'').gsub(/\s+/, "")
     query = URI::parse("http://" + query).path.sub(/\/*/,"").sub(/\/+$/,'') if query.include?("meetup.com")
     query
   end
 
   def self.query_method(query)
-    if !!(query =~ /^[-+]?[0-9]+$/) # If the query is a number, assume it's a group_id
+    if query =~ /^[-+]?[0-9]+$/ # If the query is a number, assume it's a group_id
       return :group_id
     elsif query.include?("meetup.com")
       return :group_urlname
