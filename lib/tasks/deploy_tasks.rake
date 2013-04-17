@@ -18,7 +18,7 @@ if Rails.env.development?
       execute( "heroku run rake --trace db:migrate                 --app #{app}-#{target}" )
       execute( "heroku restart                                 --app #{app}-#{target}" )
       execute( "heroku run rake --trace db:seed                    --app #{app}-#{target}" )
-#      execute( "rake airbrake:deploy TO=#{target}" )
+      execute( "rake airbrake:deploy TO=#{target}" )
     end
 
     desc "Deploy to Staging from REF=<ref> TARGET=<#{TARGETS.join('|')}>"
@@ -33,7 +33,7 @@ if Rails.env.development?
       execute( "heroku run rake --trace db:migrate                           --app #{app}-#{target}" )
       execute( "heroku restart                                           --app #{app}-#{target}" )
       execute( "heroku run rake --trace db:seed                              --app #{app}-#{target}" )
-#      execute( "rake airbrake:deploy TO=#{target}" )
+      execute( "rake airbrake:deploy TO=#{target}" )
     end
 
     def push_to_remote( target, ref )
