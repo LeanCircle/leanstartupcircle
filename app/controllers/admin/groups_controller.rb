@@ -18,7 +18,12 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def create
-    @group = Group.fetch_from_meetup(params[:group][:meetup_id])
+    if params[:group][:meetup_identifier].blank?
+      @group = Group.new(params[:group])
+    else
+      @group = Group.fetch_from_meetup(params[:group][:meetup_identifier])
+    end
+
     if @group.save
       flash[:success] = 'Awesome! You\'ve added a new group for everyone.'
       session[:user_return_to] ? redirect_to(session[:user_return_to]) : redirect_to(admin_groups_path)
