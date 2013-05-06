@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121231200435) do
+ActiveRecord::Schema.define(:version => 20130424011818) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +27,21 @@ ActiveRecord::Schema.define(:version => 20121231200435) do
     t.string   "location"
     t.string   "description"
   end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "meeting_at"
+    t.string   "location_name"
+    t.string   "location_address"
+    t.integer  "group_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "event_url"
+    t.integer  "event_id"
+    t.integer  "yes_rsvp_count"
+  end
+
+  add_index "events", ["group_id"], :name => "index_events_on_group_id"
 
   create_table "groups", :force => true do |t|
     t.integer  "meetup_id"
@@ -57,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20121231200435) do
     t.string   "country_code"
     t.boolean  "lsc",               :default => false
     t.integer  "user_id"
+    t.integer  "members_count"
   end
 
   add_index "groups", ["latitude", "longitude"], :name => "index_meetups_on_latitude_and_longitude"

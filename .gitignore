@@ -27,3 +27,4 @@ rails_best_practices_output.html
 /config/application.yml
 features/test.feature
 /routes.txt
+db/wiki

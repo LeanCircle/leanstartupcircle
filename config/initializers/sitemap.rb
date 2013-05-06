@@ -24,6 +24,4 @@ DynamicSitemaps::Sitemap.draw do
   # Contact message routes
   url contact_path, :changefreq => 'yearly', :priority => 0.1
   url contact_thanks_path, :changefreq => 'yearly', :priority => 0.1
-
-  # TODO: Figure out how to do subdomains with sitemap.
 end

@@ -1,0 +1,47 @@
+%table.table.table-condensed.table-striped.metrics
+  %caption
+    %h1{ :style => "display: inline"}
+      Lean Startup Metrics
+  %thead
+    %tr
+      %th Metric
+      %th All Groups
+      %th Lean Startup Circle Groups
+  %tbody
+    %tr
+      %td Number of groups
+      %td= @groups.count
+      %td= @groups.lsc.count
+    %tr
+      %td % of groups that are lean startup circles
+      %td
+      %td= number_to_percentage(@groups.percentage_lsc, :precision => 0)
+    %tr
+      %td Number of events held over all time
+      %td= @events_count
+      %td= @events_lsc.count
+    %tr
+      %td Number of countries where there are groups
+      %td= @groups.by_country.count
+      %td= @groups.lsc.by_country.count
+    %tr
+      %td Number of members of all groups
+
+      %td= number_with_delimiter(@groups.sum(:members_count), :delimiter => ',')
+      %td= number_with_delimiter(@groups.lsc.sum(:members_count), :delimiter => ',')
+    %tr
+      %th{:colspan => 3}
+        Number of Groups in Countries
+    - @groups.by_country.each do |group|
+      %tr
+        %td= group.country
+        %td= @groups.country_count(group.country)
+        %td= @groups.lsc.country_count(group.country)
+    %tr
+      %th{:colspan => 3}
+        Number of Members
+    - @groups.each do |group|
+      %tr
+        %td= group.name
+        %td= group.members_count if group.lsc == false
+        %td= group.members_count if group.lsc == true

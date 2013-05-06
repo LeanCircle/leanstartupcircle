@@ -1,0 +1,26 @@
+- title "Lean Startup Events for the Upcoming Week"
+
+#index_groups
+  .row
+    .span12
+      %table.table.table-condensed.table-striped.events
+        %caption
+          %h1{ :style => "display: inline"}
+            Lean Startup Events for the Upcoming Week
+        %thead
+          %tr
+            %th Name
+            %th Location
+            %th Date
+            %th Group
+        %tbody
+          - @events.each do |event|
+            %tr
+              %td= link_to event.name, event.event_url, :target => "_blank"
+              %td
+                = event.location_name
+                %br= event.location_address
+              %td
+                = event.meeting_date
+                %br= event.meeting_hour
+              %td= link_to event.group_name, group_path(event.group)

@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
 
   belongs_to :authentication, :primary_key => "uid", :foreign_key => "organizer_id" # TODO: scope this to :provider => "meetup"
   belongs_to :user
+  has_many :events
 
   validates_presence_of :name
   validates_uniqueness_of :name,
@@ -27,6 +28,8 @@ class Group < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   scope :approved, where(:approval => true)
+  scope :by_country, select(:country).uniq.order("country asc")
+  scope :lsc, where(:lsc => true)
 
   def link
     [meetup_link,
@@ -37,6 +40,14 @@ class Group < ActiveRecord::Base
      twitter_link].compact.first
   end
 
+  def self.country_count(country)
+    count(:conditions => "country = '#{country}'")
+  end
+
+  def self.percentage_lsc
+    (Float(lsc.count) / Float(count)) * 100
+  end
+
   def address
     [city, province, country].compact.join(', ')
   end
@@ -45,12 +56,45 @@ class Group < ActiveRecord::Base
     [city, province].compact.join(', ')
   end
 
+  def average_attendance(events)
+    events.average(:yes_rsvp_count).round(2)
+  end
+
   def self.fetch_from_meetup(query)
     init_rmeetup
     method = query_method(query)
     query = clean_query(query)
     response = RMeetup::Client.fetch( :groups,{ method => query }).first
     create_from_meetup_api_response(response)
+  end
+
+  def self.fetch_events_from_meetup(group)
+    init_rmeetup
+    responses = RMeetup::Client.fetch(:events,{:group_id => group.meetup_id, :status => 'past'})
+    responses += RMeetup::Client.fetch(:events,{:group_id => group.meetup_id, :status => 'upcoming', :desc => true}).last(5)
+    responses.each do |response|
+      create_events_from_meetup_api_response(response,group.id)
+    end
+  end
+
+  def self.fetch_members_count_from_meetup(group)
+    init_rmeetup
+    responses = RMeetup::Client.fetch(:groups,{:group_id => group.meetup_id})
+    responses.each do |response|
+      group.update_attributes( :members_count => response.try(:members) )
+    end
+  end
+
+  def self.create_events_from_meetup_api_response(response,group_id)
+    event = Event.find_or_create_by_event_url_and_group_id(response.try(:event_url), group_id,
+                                                           :event_id => response.try(:id),
+                                                           :name => response.try(:name),
+                                                           :meeting_at => response.try(:time),
+                                                           :location_name => response.try(:venue).try(:[], 'name'),
+                                                           :location_address => [response.try(:venue).try(:[], 'address_1'), response.try(:venue).try(:[], 'city'), response.try(:venue).try(:[], 'state')].compact.join(', '),
+                                                           :event_url => response.try(:event_url)
+                                                          )
+    event.update_attributes( :yes_rsvp_count => response.try(:yes_rsvp_count) )
   end
 
   def self.fetch_meetups_with_authentication(auth)
@@ -84,6 +128,7 @@ class Group < ActiveRecord::Base
     group.thumbnail_url = response.try(:group_photo).try(:[], 'thumb_link')
     group.join_mode = response.try(:join_mode)
     group.visibility = response.try(:visibility)
+    group.members_count = response.try(:members)
 
     # Try to assign to a user and save.
     group.save

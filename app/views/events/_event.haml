@@ -1,0 +1,8 @@
+%p.event_info
+  %strong.event_name= link_to event.name, event.event_url, :target => "_blank"
+  %span.event_date
+    = event.meeting_date
+    = event.meeting_hour
+  %br
+  %strong= event.location_name
+  %span= event.location_address

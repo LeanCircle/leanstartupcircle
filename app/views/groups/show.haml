@@ -4,7 +4,18 @@
   %h1= @group.name
   %p= @group.address
   %p= @group.description.html_safe unless @group.description.blank?
-  %p= link_to @group.meetup_link
+  %p= link_to @group.meetup_link, @group.meetup_link, :target => "_blank"
+
+  %strong Average Attendance:
+  %span= @group.average_attendance(@group.events)
+
+  %h2 Upcoming Events
+  - @upcoming_events.each do |event|
+    = render event
+
+  %h2 Recent Events
+  - @past_events.each do |event|
+    = render event
 
   = link_to 'Index', groups_path
   \|

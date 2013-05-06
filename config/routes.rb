@@ -1,4 +1,6 @@
 Leanstartupcircle::Application.routes.draw do
+  get 'debug/index'
+  get 'debug/signmein'
 
   # User routes
   resources :users, :only => [:index, :show]
@@ -10,6 +12,7 @@ Leanstartupcircle::Application.routes.draw do
     post "sign_in", :to => "devise/sessions#create", :as => :user_session
     get "sign_up", :to => "my_devise/registrations#new", :as => :sign_up
     post "sign_up", :to => "my_devise/registrations#create", :as => :user_registration
+    post "sign_in_again", :to => "devise/sessions#create", :as => :new_user_session
     match "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
   end
 
@@ -17,6 +20,10 @@ Leanstartupcircle::Application.routes.draw do
   resources :groups, :except => [:edit, :update, :destroy] do
     get :organizers, :on => :collection
   end
+  match "/metrics" => "groups#metrics", :as => :metrics
+
+  # Events routes
+  resources :events, :only => [:index]
 
   # Static page routes
   [ :guidelines,
@@ -45,6 +52,8 @@ Leanstartupcircle::Application.routes.draw do
     resources :authentications, :only => [:index, :destroy]
 
   end
+
+  mount Precious::App, at: '/wiki', :as => :gollum_wiki
 
   root :to => "landing_pages#home"
 end

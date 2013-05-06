@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :metrics
 
   def index
     @groups = Group.near(@location.coordinates, 20000).approved.to_gmaps4rails do |group, marker|
@@ -22,7 +22,9 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.approved.find(params[:id])
+    @upcoming_events = @group.events.upcoming
+    @past_events = @group.events.past
   end
 
   def new
@@ -44,6 +46,12 @@ class GroupsController < ApplicationController
     else
       render :action => "new"
     end
+  end
+
+  def metrics
+    @groups = Group.approved
+    @events_count = Event.count
+    @events_lsc = Event.lsc
   end
 
 end
