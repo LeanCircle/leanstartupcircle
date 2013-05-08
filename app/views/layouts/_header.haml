@@ -10,7 +10,7 @@
             - if !current_user.first_name.blank?
               = link_to current_user.first_name, current_user
             = link_to current_user, :class => "nodec" do
-              - if current_user.image?
+              - if !current_user.image.blank?
                 = image_tag current_user.image, :width => 25
             &#8226;
             = link_to "Sign out", :sign_out, :method => :delete
