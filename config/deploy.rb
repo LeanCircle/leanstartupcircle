@@ -1,3 +1,4 @@
+require 'bundler/capistrano'
 require 'capistrano-unicorn'
 
 default_run_options[:pty] = true  # Must be set for the password prompt
@@ -9,7 +10,7 @@ set :application, "leanstartupcircle"
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :scm, "git"
 set :repository, "git@github.com:TriKro/leanstartupcircle.git"
-set :branch, "igor"
+set :branch, "master"
 
 set :user, "root"             # The server's user for deploys
 
