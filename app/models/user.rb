@@ -87,10 +87,13 @@ class User < ActiveRecord::Base
   # Given an omniauth hash, returns the user and the auth if there is one or creates one.
   def self.find_or_create_with_omniauth!(hash, user = nil)
     raise ArgumentError, "Hash is missing." if hash.blank?
-    auth = Authentication.find_or_create_with_omniauth!(hash, user)
+    auth, groups = Authentication.find_or_create_with_omniauth!(hash, user)
     user ||= auth.try(:user)
     user ||= User.create_with_omniauth!(hash)
     user.authentications << auth if user.id
+    groups.each do |g| 
+      g.update_attributes(:authentication_id => auth.id) 
+    end
     return user, auth
   end
 
@@ -106,7 +109,6 @@ class User < ActiveRecord::Base
     user.save
     user
   end
-
 
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]

@@ -6,7 +6,7 @@ Leanstartupcircle::Application.routes.draw do
   resources :users, :only => [:index, :show]
 
   # Devise routes
-  devise_for :users, :controllers => { :omniauth_callbacks => "my_devise/omniauth_callbacks", :registrations => "my_devise/registrations" }, :skip => [:sessions]
+  devise_for :users, :controllers => { :omniauth_callbacks => "my_devise/omniauth_callbacks", :registrations => "my_devise/registrations", :confirmations => "my_devise/confirmations" }, :skip => [:sessions]
   as :user do
     get "sign_in", :to => "devise/sessions#new", :as => :sign_in
     post "sign_in", :to => "devise/sessions#create", :as => :user_session
@@ -14,6 +14,8 @@ Leanstartupcircle::Application.routes.draw do
     post "sign_up", :to => "my_devise/registrations#create", :as => :user_registration
     post "sign_in_again", :to => "devise/sessions#create", :as => :new_user_session
     match "sign_out", :to => "devise/sessions#destroy", :as => :sign_out
+    match "provide_email" => "my_devise/registrations#provide_email", :as => :provide_email
+    get "user_confirmation", :to => "my_devise/confirmations#show", :as => :user_confirmation
   end
 
   # Group routes
@@ -53,7 +55,7 @@ Leanstartupcircle::Application.routes.draw do
 
   end
 
-  mount Precious::App, at: '/wiki', :as => :gollum_wiki
+  mount Precious::App, at: '/wiki-leanstartup', :as => :gollum_wiki
 
   root :to => "landing_pages#home"
 end

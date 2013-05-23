@@ -16,9 +16,9 @@
             = image_tag 'icons/sign_up_' + provider.to_s + '.png'
 
   .control-group
-    .controls
-      %p.lead
-        OR
+  .controls
+    %p.lead
+      OR
 
   .control-group{ :class => if !resource.errors[:name].blank? then "error" end }
     = f.label :name, :class => "control-label"

@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   load_and_authorize_resource :except => :metrics
-
+  after_filter :stash_last_url
   def index
     @groups = Group.near(@location.coordinates, 20000).approved.to_gmaps4rails do |group, marker|
       marker.infowindow render_to_string(:partial => "/groups/gmap_info_window", :locals => { :group => group})
@@ -39,7 +39,6 @@ class GroupsController < ApplicationController
     else
       @group = Group.fetch_from_meetup(params[:group][:meetup_identifier])
     end
-
     if @group.try(:save)
       flash[:success] = "Awesome...hang tight! A human will have to make sure it's a lean startup group."
       redirect_to groups_path

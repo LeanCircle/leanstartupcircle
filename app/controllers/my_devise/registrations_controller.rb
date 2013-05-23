@@ -2,10 +2,10 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource
-
     if resource.save
       if session["auth"] # Assign auth to user.
         resource.authentications << session["auth"]
+        resource.groups << session["auth"].groups unless session["auth"].groups.blank?
         session["auth"] = nil
       end
       if resource.active_for_authentication?
@@ -21,6 +21,18 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       respond_with resource
     end
+  end
+
+  def provide_email
+    resource = build_resource()
+    resource.name = session["auth"].name
+    set_flash_message :notice, :groups_need_approval
+    respond_with resource
+  end
+
+  def new
+    resource = build_resource({})
+    respond_with resource
   end
 
 end

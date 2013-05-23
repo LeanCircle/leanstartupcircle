@@ -1,7 +1,7 @@
 class Authentication < ActiveRecord::Base
 
   belongs_to :user
-  has_many :groups, :primary_key => "uid", :foreign_key => "organizer_id" # TODO: Scope this to :provider => "meetup"
+  has_many :groups #, :primary_key => "uid", :foreign_key => "organizer_id" # TODO: Scope this to :provider => "meetup"
 
   validates_presence_of :uid, :provider
   validates_uniqueness_of :uid, :scope => :provider
@@ -22,9 +22,10 @@ class Authentication < ActiveRecord::Base
                  :description => hash.info.try(:description),
                  :location => hash.info.try(:location))
     auth.user_id = user.id if user
-    Group.fetch_meetups_with_authentication(auth) if auth.provider == 'meetup'
+    groups = Group.fetch_meetups_with_authentication(auth) if auth.provider == 'meetup'
+    groups ||= []
     if auth.save
-      return auth
+      return auth, groups
     else
       raise StandardError, "The resulting authentication was invalid."
     end

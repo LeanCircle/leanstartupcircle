@@ -20,10 +20,27 @@ GIT
     rmeetup (1.0.0)
 
 GIT
-  remote: https://github.com/thoughtbot/capybara-webkit.git
-  revision: 7bf3c800315ebf90da1f549c028b90306c88c0f2
+  remote: https://github.com/alexagui/gollum
+  revision: c6eb7142b5f91225b317e22e5dc42a66734e2d08
+  branch: v2.4.11-lsc
   specs:
-    capybara-webkit (0.14.1)
+    gollum (2.4.11)
+      github-markdown (~> 0.5.3)
+      github-markup (>= 0.7.4, < 1.0.0)
+      grit (~> 2.5.0)
+      mustache (>= 0.99.4, < 1.0.0)
+      nokogiri (~> 1.5.5)
+      pygments.rb (~> 0.3.2)
+      sanitize (~> 2.0.3)
+      sinatra (~> 1.3.3)
+      stringex (~> 1.5.1)
+      useragent (~> 0.4.15)
+
+GIT
+  remote: https://github.com/thoughtbot/capybara-webkit.git
+  revision: 9bbf4f6b5572f7c63485f6eca915b49c581b13b2
+  specs:
+    capybara-webkit (1.0.0)
       capybara (~> 2.0, >= 2.0.2)
       json
 
@@ -57,7 +74,6 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
-    addressable (2.3.4)
     airbrake (3.1.12)
       activesupport
       builder
@@ -65,17 +81,15 @@ GEM
     arel (3.0.2)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
-    bourne (1.4.0)
-      mocha (~> 0.13.2)
     builder (3.0.4)
-    cancan (1.6.9)
+    cancan (1.6.10)
     capistrano (2.15.4)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    capistrano-unicorn (0.1.7)
+    capistrano-unicorn (0.1.8)
       capistrano
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -97,13 +111,14 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     colored (1.2)
+    columnize (0.3.6)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    cucumber (1.3.1)
+    cucumber (1.3.2)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
       gherkin (~> 2.12.0)
@@ -113,8 +128,14 @@ GEM
       cucumber (>= 1.2.0)
       nokogiri (>= 1.5.0)
       rails (~> 3.0)
-    database_cleaner (0.9.1)
-    devise (2.2.3)
+    database_cleaner (1.0.1)
+    debugger (1.6.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.1)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.2)
+    devise (2.2.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (~> 3.1)
@@ -126,7 +147,7 @@ GEM
       http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    excon (0.20.1)
+    excon (0.22.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     expression_parser (0.9.0)
@@ -152,17 +173,6 @@ GEM
     github-markdown (0.5.3)
     github-markup (0.7.5)
     gmaps4rails (1.5.6)
-    gollum (2.4.11)
-      github-markdown (~> 0.5.3)
-      github-markup (>= 0.7.4, < 1.0.0)
-      grit (~> 2.5.0)
-      mustache (>= 0.99.4, < 1.0.0)
-      nokogiri (~> 1.5.5)
-      pygments.rb (~> 0.3.2)
-      sanitize (~> 2.0.3)
-      sinatra (~> 1.3.3)
-      stringex (~> 1.5.1)
-      useragent (~> 0.4.15)
     grit (2.5.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
@@ -177,7 +187,7 @@ GEM
     guard-bundler (1.0.0)
       bundler (~> 1.0)
       guard (~> 1.1)
-    guard-coffeescript (1.3.0)
+    guard-coffeescript (1.3.1)
       coffee-script (>= 2.2.0)
       guard (>= 1.1.0)
     guard-cucumber (1.4.0)
@@ -195,35 +205,29 @@ GEM
       em-websocket (>= 0.5.0)
       guard (>= 1.8.0)
       multi_json (~> 1.7)
-    guard-rails (0.4.2)
+    guard-rails (0.4.3)
       guard (>= 0.2.2)
-    guard-rspec (2.6.0)
+    guard-rspec (3.0.0)
       guard (>= 1.8)
       rspec (~> 2.13)
     guard-spork (1.5.0)
       childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
-    haml (4.0.2)
+    haml (4.0.3)
       tilt
     haml-rails (0.4)
       actionpack (>= 3.1, < 4.1)
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
-    hashie (2.0.4)
-    heroku (2.39.2)
-      heroku-api (~> 0.3.7)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.7)
-      rest-client (~> 1.6.1)
-      rubyzip
-    heroku-api (0.3.9)
-      excon (~> 0.20.1)
+    hashie (2.0.5)
+    heroku-api (0.3.11)
+      excon (~> 0.22.1)
     heroku_san (4.2.5)
       heroku-api (>= 0.1.2)
       rake
-    highline (1.6.18)
+    highline (1.6.19)
     hike (1.2.2)
     http_parser.rb (0.5.3)
     httpauth (0.2.0)
@@ -236,34 +240,27 @@ GEM
     jwt (0.1.8)
       multi_json (>= 1.5)
     kgio (2.8.0)
-    launchy (2.3.0)
-      addressable (~> 2.3)
-    listen (1.0.3)
+    listen (1.1.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)
     lumberjack (1.0.3)
-    mail (2.5.3)
-      i18n (>= 0.4.0)
+    mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.23)
-    mocha (0.13.3)
-      metaclass (~> 0.0.1)
     multi_json (1.7.3)
     multipart-post (1.2.0)
     mustache (0.99.4)
-    net-scp (1.1.0)
+    net-scp (1.1.1)
       net-ssh (>= 2.6.5)
-    net-sftp (2.1.1)
+    net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    netrc (0.7.7)
-    newrelic_rpm (3.6.1.88)
+    newrelic_rpm (3.6.2.96)
     nifty-generators (0.4.6)
     nokogiri (1.5.9)
     oauth (0.4.7)
@@ -289,7 +286,7 @@ GEM
     pg (0.15.1)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
-    pry (0.9.12.1)
+    pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
@@ -340,8 +337,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     recaptcha (0.3.5)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -350,7 +345,7 @@ GEM
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.1)
-    rspec-rails (2.13.1)
+    rspec-rails (2.13.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -358,22 +353,20 @@ GEM
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
     ruby-progressbar (1.0.2)
-    rubyzip (0.9.9)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
-    sass (3.2.8)
+    sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
     sexp_processor (4.2.1)
-    shoulda (3.4.0)
+    shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
-      shoulda-matchers (~> 1.0, >= 1.4.1)
-    shoulda-context (1.1.1)
-    shoulda-matchers (1.5.6)
+      shoulda-matchers (>= 1.4.1, < 3.0)
+    shoulda-context (1.1.2)
+    shoulda-matchers (2.1.0)
       activesupport (>= 3.0.0)
-      bourne (~> 1.3)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -382,7 +375,7 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.3)
       tilt (~> 1.3, >= 1.3.3)
-    slop (3.4.4)
+    slop (3.4.5)
     spork (0.9.2)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -392,12 +385,12 @@ GEM
     sqlite3 (1.3.7)
     stringex (1.5.1)
     thor (0.18.1)
-    tilt (1.4.0)
+    tilt (1.4.1)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
-    uglifier (2.0.1)
+    uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.2)
@@ -428,6 +421,7 @@ DEPENDENCIES
   compass-rails
   cucumber-rails
   database_cleaner
+  debugger
   devise
   dynamic_sitemaps
   factory_girl_rails
@@ -437,7 +431,7 @@ DEPENDENCIES
   friendly_id
   geocoder
   gmaps4rails
-  gollum
+  gollum!
   growl
   guard
   guard-bundler
@@ -450,7 +444,6 @@ DEPENDENCIES
   guard-rspec
   guard-spork
   haml-rails
-  heroku
   heroku_san
   jquery-rails
   json (= 1.7.3)
