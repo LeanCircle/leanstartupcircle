@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/alexagui/gollum
-  revision: c6eb7142b5f91225b317e22e5dc42a66734e2d08
+  revision: ab17f8bcd6d0e1d8f2472ee254dde3632562d5a8
   branch: v2.4.11-lsc
   specs:
     gollum (2.4.11)
