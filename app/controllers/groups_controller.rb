@@ -40,8 +40,14 @@ class GroupsController < ApplicationController
       @group = Group.fetch_from_meetup(params[:group][:meetup_identifier])
     end
     if @group.try(:save)
-      flash[:success] = "Awesome...hang tight! A human will have to make sure it's a lean startup group."
-      redirect_to groups_path
+      if current_user.present?
+        flash[:success] = "Awesome...hang tight! A human will have to make sure it's a lean startup group." 
+        redirect_to groups_path 
+      else
+        session["group_to_assign"] = @group.id
+        flash[:success] = "Your group still needs to be approved. Please sign up so we can confirm your group is really about lean startup."
+        redirect_to :sign_up
+      end
     else
       render :action => "new"
     end

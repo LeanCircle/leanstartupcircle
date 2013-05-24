@@ -8,6 +8,11 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
         resource.groups << session["auth"].groups unless session["auth"].groups.blank?
         session["auth"] = nil
       end
+      if session['group_to_assign']
+        group = Group.find(session["group_to_assign"])
+        resource.groups << group
+        session["group_to_assign"] = nil
+      end
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)

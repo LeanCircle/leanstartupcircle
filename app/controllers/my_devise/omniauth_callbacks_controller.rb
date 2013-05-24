@@ -10,6 +10,8 @@ class MyDevise::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
       redirect_to :controller => 'my_devise/registrations', :action => 'provide_email'
     elsif user.save
       sign_in user
+      group = Group.find(session["group_to_assign"]) if session["group_to_assign"].present?
+      user.groups << group unless group.blank?
       user.groups << auth.groups unless auth.groups.blank?
       flash.notice = "You are now signed in!"
       flash.notice << " Your groups were imported" unless auth.groups.blank?
