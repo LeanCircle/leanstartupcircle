@@ -5,6 +5,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
     if resource.save
       if session["auth"] # Assign auth to user.
         resource.authentications << session["auth"]
+        assign_group_to_user(resource, session["auth"].groups) unless session["auth"].groups.blank?
         resource.groups << session["auth"].groups unless session["auth"].groups.blank?
         session["auth"] = nil
       end

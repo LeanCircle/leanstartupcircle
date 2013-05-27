@@ -41,6 +41,7 @@ class GroupsController < ApplicationController
     end
     if @group.try(:save)
       if current_user.present?
+        current_user.groups << session["auth"].groups unless session["auth"].groups.blank?
         flash[:success] = "Awesome...hang tight! A human will have to make sure it's a lean startup group." 
         redirect_to groups_path 
       else
