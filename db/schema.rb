@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424011818) do
+ActiveRecord::Schema.define(:version => 20130507194403) do
+
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -45,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20130424011818) do
 
   create_table "groups", :force => true do |t|
     t.integer  "meetup_id"
-    t.integer  "organizer_id"
+    t.string   "organizer_id"
     t.string   "name"
     t.text     "description"
     t.string   "facebook_link"
@@ -73,10 +74,21 @@ ActiveRecord::Schema.define(:version => 20130424011818) do
     t.boolean  "lsc",               :default => false
     t.integer  "user_id"
     t.integer  "members_count"
+    t.integer  "authentication_id"
   end
 
   add_index "groups", ["latitude", "longitude"], :name => "index_meetups_on_latitude_and_longitude"
   add_index "groups", ["slug"], :name => "index_meetups_on_slug", :unique => true
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",       :null => false

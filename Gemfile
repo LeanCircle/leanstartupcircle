@@ -8,7 +8,7 @@ gem 'pg'
 gem 'json', '1.7.3'
 gem 'unicorn'
 #gem 'redis' # Use Redis for caching geocode info
-
+gem 'debugger'
 
 # Authentication & Access control
 gem 'devise'
@@ -28,14 +28,14 @@ gem 'gmaps4rails'
 gem 'friendly_id'
 gem 'dynamic_sitemaps'
 gem 'figaro'
-gem 'heroku' # Deprecated but figaro needs it and insists it be in gemfile.lock
 
 # Error notification
 gem "airbrake"
 gem 'newrelic_rpm'
 
 # wiki
-gem 'gollum'
+              # custom version of gollum to enable user authentication/authorization
+gem 'gollum', :git => 'https://github.com/alexagui/gollum', :branch => 'v2.4.11-lsc' 
 gem 'wikicloth'
 
 group :assets do
@@ -91,5 +91,4 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
 end
-
 

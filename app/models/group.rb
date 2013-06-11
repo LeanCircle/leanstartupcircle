@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
   attr_accessor :meetup_identifier
 
-  belongs_to :authentication, :primary_key => "uid", :foreign_key => "organizer_id" # TODO: scope this to :provider => "meetup"
+  belongs_to :authentication #, :primary_key => "id", :foreign_key => "auth_id" # TODO: scope this to :provider => "meetup"
   belongs_to :user
   has_many :events
 
@@ -99,10 +99,12 @@ class Group < ActiveRecord::Base
 
   def self.fetch_meetups_with_authentication(auth)
     init_rmeetup
-    responses = RMeetup::Client.fetch( :groups,{ :organizer_id => auth.uid })
+    responses = RMeetup::Client.fetch( :groups,{ :fields => 'self', :member_id => auth.uid })
     meetups_added ||= []
     responses.each do |response|
-      meetups_added << create_from_meetup_api_response(response)
+      if response.try(:organizer).try(:[], 'member_id') == auth.uid || response.try(:self).try(:[], 'role').present?
+        meetups_added << create_from_meetup_api_response(response)
+      end
     end
     return meetups_added
   rescue
@@ -129,10 +131,7 @@ class Group < ActiveRecord::Base
     group.join_mode = response.try(:join_mode)
     group.visibility = response.try(:visibility)
     group.members_count = response.try(:members)
-
-    # Try to assign to a user and save.
-    group.save
-    group.authentication.user.groups << group if group.organizer_id && group.authentication.try(:user)
+    group.save!
     return group
   end
 
@@ -143,13 +142,13 @@ class Group < ActiveRecord::Base
   end
 
   def self.clean_query(query)
-    query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'').gsub(/\s+/, "")
+    query = query.sub(/^https?\:\/\//, '').sub(/\/+$/,'')
     query = URI::parse("http://" + query).path.sub(/\/*/,"").sub(/\/+$/,'') if query.include?("meetup.com")
     query
   end
 
   def self.query_method(query)
-    if query =~ /^[-+]?[0-9]+$/ # If the query is a number, assume it's a group_id
+    if !!(query =~ /^[-+]?[0-9]+$/) # If the query is a number, assume it's a group_id
       return :group_id
     elsif query.include?("meetup.com")
       return :group_urlname

@@ -12,6 +12,16 @@
       %p.lead
         OR
 
+  - if current_user.present? && current_user.admin?
+    .control-group{ :class => if !@group.errors[:meetup_identifier].blank? then "error" end }
+      = f.label :meetup_identifier, 'Meetup Group', :class => "control-label"
+      .controls
+        = f.text_field :meetup_identifier, :placeholder => 'URL or Meetup Group ID', :class => "span3", :autofocus => true
+        - if !@group.errors[:meetup_identifier].blank?
+          .help-inline= @group.errors.full_message(:meetup_identifier, "is dubious")
+        - else
+          .help-inline We'll import the rest of these fields if you have a meetup.com group.
+
   .control-group{ :class => if !@group.errors[:name].blank? then "error" end }
     = f.label :name, "Name", :class => "control-label"
     .controls
@@ -39,16 +49,6 @@
       = f.text_field :country, :placeholder => 'e.g. United States of America', :class => "span5"
       - if !@group.errors[:country].blank?
         .help-inline= @group.errors.full_message(:country, "is dubious")
-
-  .control-group
-
-  - if current_user.admin?
-    .control-group{ :class => if !@group.errors[:meetup_identifier].blank? then "error" end }
-      = f.label :meetup_identifier, 'Meetup.com URL', :class => "control-label"
-      .controls
-        = f.text_field :meetup_identifier, :placeholder => 'elysium.leanstartupcircle.com or meetup.com/elysium', :class => "span5"
-        - if !@group.errors[:meetup_identifier].blank?
-          .help-inline= @group.errors.full_message(:meetup_identifier, "is dubious")
 
   .control-group{ :class => if !@group.errors[:facebook_link].blank? then "error" end }
     = f.label :facebook_link, "Facebook URL", :class => "control-label"
