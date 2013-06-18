@@ -135,6 +135,12 @@ class Group < ActiveRecord::Base
     return group
   end
 
+  def self.assign_groups_to_user(user, session)
+    user.groups << session["auth"].groups if session["auth"] && !session["auth"].groups.blank?
+    group = Group.find(session["group_to_assign"]) if session["group_to_assign"].present?
+    user.groups << group unless group.blank?
+  end
+  
   private
 
   def self.init_rmeetup

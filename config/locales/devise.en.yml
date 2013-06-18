@@ -43,6 +43,7 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
       groups_need_approval: 'Your group has been added, but will not be displayed until approved by an administrator. To get your group approved, we need to verify your email.  Please add your email here:'
+      signed_up_groups_imported: "Welcome! You have signed up successfully. Your groups were imported."
     unlocks:
       send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
       unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
