@@ -8,7 +8,7 @@ task :import_events_meetup => [:environment] do
   meetup_groups.each do |group|
     # puts "Group id: #{group.id} \n"
     Group.fetch_events_from_meetup(group)
-    sleep 0.3 #prevent getting throttled by Meetup API
+    sleep 0.5 #prevent getting throttled by Meetup API
   end
 end
 
@@ -20,6 +20,6 @@ task :import_group_members_count => [:environment] do
   meetup_groups.each do |group|
     # puts "Group id: #{group.id} \n"
     Group.fetch_members_count_from_meetup(group)
-    sleep 0.1 #prevent getting throttled by Meetup API
+    sleep 0.3 #prevent getting throttled by Meetup API
   end
 end
