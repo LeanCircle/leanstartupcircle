@@ -5,17 +5,19 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
     if resource.save
       if session["auth"] # Assign auth to user.
         resource.authentications << session["auth"]
-        assign_group_to_user(resource, session["auth"].groups) unless session["auth"].groups.blank?
         resource.groups << session["auth"].groups unless session["auth"].groups.blank?
-        session["auth"] = nil
+        set_flash_message :notice, :groups_were_imported
       end
       if session['group_to_assign']
         group = Group.find(session["group_to_assign"])
         resource.groups << group
-        session["group_to_assign"] = nil
       end
       if resource.active_for_authentication?
-        set_flash_message :notice, :signed_up if is_navigational_format?
+        if session["auth"] || session['group_to_assign']
+          set_flash_message :notice, :signed_up_groups_imported
+        elsif is_navigational_format?
+          set_flash_message :notice, :signed_up
+        end
         sign_in(resource_name, resource)
         respond_with resource, :location => after_sign_up_path_for(resource)
       else
@@ -23,6 +25,8 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
         expire_session_data_after_sign_in!
         respond_with resource, :location => after_inactive_sign_up_path_for(resource)
       end
+      session["auth"] = nil
+      session["group_to_assign"] = nil
     else
       clean_up_passwords resource
       respond_with resource

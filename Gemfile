@@ -36,6 +36,7 @@ gem 'newrelic_rpm'
 # wiki
               # custom version of gollum to enable user authentication/authorization
 gem 'gollum', :git => 'https://github.com/alexagui/gollum', :branch => 'v2.4.11-lsc' 
+gem 'nokogiri', '1.5.5'  # lock nokogiri to 1.5.5 as our custom version of gollum requires it
 gem 'wikicloth'
 
 group :assets do
