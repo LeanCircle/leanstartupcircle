@@ -52,7 +52,7 @@ group :development do
   gem 'awesome_print' # Use 'ap' in the console to make output comprehensible
   # gem 'taps' # Allows pushing and pulling from heroku db.
   gem 'sqlite3'
-  gem 'rails_best_practices'
+  #gem 'rails_best_practices'
   gem 'guard'
   gem 'guard-rails'
   gem 'guard-spork'
