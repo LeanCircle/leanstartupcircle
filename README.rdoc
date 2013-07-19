@@ -20,7 +20,7 @@ Test before deploying!
     guard # for starting continious testing ("Press enter inside guard for running all specs")
     rspec spec/ # for running specs. Please prefer guard over rspec spec/ command
 
-### Deploying to production / staging
+### Deploying to production / staging Heroku
 
     rake deploy:staging
 
@@ -37,6 +37,21 @@ To deploy the code to staging manually: (assuming your remotes are set up correc
     git push staging master
     heroku restart
     heroku restart workers
+
+
+### Deploying to production / staging Linode
+
+##### Production
+Review config/deploy.rb and make sure :branch is set to the the branch you want to deploy (typically master).
+
+cap deploy
+
+You will be prompted for the server password.
+
+
+##### Staging
+Notes for Staging deployment - Coming Soon
+
 
 ## Database
 
