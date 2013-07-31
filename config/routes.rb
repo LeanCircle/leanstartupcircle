@@ -27,15 +27,18 @@ Leanstartupcircle::Application.routes.draw do
   # Events routes
   resources :events, :only => [:index]
 
-  # Static page routes
-  [ :guidelines,
-    :team,
-    :moderation_guidelines,
-    :guidelines_espanol].each do |static_page|
-    match "/#{static_page}" => "static_pages##{static_page}", :as => static_page
-  end
+  # Forum routes
+  match "forum" => "forums#index", :as => :forum
+  match "guidelines" => "forums#guidelines", :as => :guidelines
+  match "guidelines_espanol" => "forums#guidelines_espanol", :as => :guidelines_espanol
+  match "moderation_guidelines" => "forums#moderation_guidelines", :as => :moderation_guidelines
   match "faq.html" => "static_pages#guidelines"
   match "faq" => "static_pages#guidelines"
+
+  # Static page routes
+  [ :team].each do |static_page|
+    match "/#{static_page}" => "static_pages##{static_page}", :as => static_page
+  end
 
   # Contact message routes
   resources :contact_messages, :only => [:new, :create]

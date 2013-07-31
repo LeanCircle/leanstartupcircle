@@ -1,0 +1,7 @@
+- title "Lean Startup Forum"
+.home
+  %iframe#forum_embed{:frameborder => "0", :height => "1000", :scrolling => "no", :src => "javascript:void(0)", :width => "940"}
+
+  :javascript
+    document.getElementById("forum_embed").src = "https://groups.google.com/forum/embed/?place=forum/lean-startup-circle"
+    + "&showsearch=true&showpopout=false&hideforumtitle=true&showtabs=true&hidesubject=false&parenturl=" + encodeURIComponent(window.location.href);
