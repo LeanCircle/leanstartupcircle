@@ -1,5 +1,13 @@
 # Dev Notes
 
+## Getting started
+
+- Make sure you've installed QT (`brew install qt`) otherwise `bundle install` will fail.
+- `bundle install`
+- Copy `config/database.yml.example` to `config/database.yml` and configure it for your system
+- `bundle exec rake db:setup`
+- `bundle exec rails s`
+
 ## 3rd Party API keys
 
 All api keys collected in the config/config.yml
