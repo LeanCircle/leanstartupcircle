@@ -26,7 +26,6 @@
         %li= link_to 'Wiki', 'http://wiki.leanstartupcircle.com', :linkTracking => 'LSC Wiki Referral', :target => '_blank'
       - else
         %li= link_to 'Wiki', '/wiki/Home'
-
       %li.divider-vertical
 
       %li.dropdown
@@ -37,27 +36,8 @@
           %li= link_to 'Contact', contact_url
       %li.divider-vertical
 
-      - if can? :manage, :all
-        %li.divider-vertical
-        %li.dropdown
-          = link_to 'Admin', admin_admin_dashboard_url
-          %ul.dropdown-menu
-            %li= link_to 'Meetups', admin_groups_url
-            %li= link_to 'Users', admin_users_url
-            %li= link_to 'Authentications', admin_authentications_url
-        %li.divider-vertical
-
-    .follow_us
-      Follow us!
-      = link_to 'http://twitter.com/leancircle', :linkTracking => 'LSC Social Referral', :title => "Lean Startup Circle on Twitter", :class => "nodec" do
-        %span.pics
-          = image_tag 'links/link_twitter.png'
-      = link_to 'http://facebook.com/leanstartupcircle', :linkTracking => 'LSC Social Referral', :title => "Lean Startup Circle on Facebook", :class => "nodec" do
-        %span.pics
-          = image_tag 'links/link_facebook.png'
-      = link_to 'http://linkedin.com/groups?home=&gid=2789385', :linkTracking => 'LSC Social Referral', :title => "Lean Startup Circle on LinkedIn", :class => "nodec" do
-        %span.pics
-          = image_tag 'links/link_linkedin.png'
-      = link_to 'http://blog.leanstartupcircle.com', :target => '_blank', :title => "Lean Startup Circle's blog", :class => "nodec" do
-        %span.pics
-          = image_tag 'links/link_blog.png'
+      %li
+        - if user_signed_in?
+          = link_to "Sign out", :sign_out, :method => :delete
+        - else
+          = link_to "Sign in", :sign_in

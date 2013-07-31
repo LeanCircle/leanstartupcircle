@@ -1,25 +1,8 @@
 %header.page_header
   .container
     .row
-      .span12.relative
+      .span7
         = link_to root_url, :id => 'logo', :class => 'nodec' do
           = image_tag "icons/leanstartupcircle_logo.png"
-        .utility_nav.pull-right
-          - if user_signed_in?
-            Welcome
-            - if !current_user.first_name.blank?
-              = link_to current_user.first_name, current_user
-            = link_to current_user, :class => "nodec" do
-              - if !current_user.image.blank?
-                = image_tag current_user.image, :width => 25
-            &#8226;
-            = link_to "Sign out", :sign_out, :method => :delete
-          - else
-            = link_to "Sign in", :sign_in
-            &#8226;
-            = link_to "Sign up", :sign_up
-        .clear
-        = render 'groups/show_nearest'
-    .row
-      .span12
+      .span5
         = render '/layouts/nav'
