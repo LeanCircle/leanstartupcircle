@@ -8,6 +8,16 @@
 - `bundle exec rake db:setup`
 - `bundle exec rails s`
 
+## Converting Newsletter Links to Bitly links
+
+Get help:
+
+    ruby lib/newsletter/parser.rb -h
+
+Example line for TK:
+
+    ruby lib/newsletter/parser.rb -i ~/Desktop/test.html -u meetup_newsletter -d 8_8_2013 -o ~/Desktop/out.html
+
 ## 3rd Party API keys
 
 All api keys collected in the config/config.yml
