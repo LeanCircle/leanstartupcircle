@@ -26,7 +26,7 @@ gem 'gmaps4rails'
 
 # Miscellaneous
 gem 'friendly_id'
-gem 'dynamic_sitemaps'
+gem "dynamic_sitemaps", "1.0.8"
 gem 'figaro'
 
 # Error notification
