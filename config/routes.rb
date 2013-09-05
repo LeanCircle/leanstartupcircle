@@ -36,7 +36,8 @@ Leanstartupcircle::Application.routes.draw do
   match "faq" => "static_pages#guidelines"
 
   # Static page routes
-  [ :team].each do |static_page|
+  [ :team,
+    :thank_you_for_signing_up].each do |static_page|
     match "/#{static_page}" => "static_pages##{static_page}", :as => static_page
   end
 
