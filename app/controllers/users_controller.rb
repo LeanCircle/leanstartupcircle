@@ -10,13 +10,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if params[:weekly] == '1'
-      puts "weekly"
-    elsif params[:monthly] == '1'
-      puts "monthly"
-    else
-      puts "never"
-    end
+    puts params[:frequency]
     redirect_to user_path(params[:id])
   end
 
