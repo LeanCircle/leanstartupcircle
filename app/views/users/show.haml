@@ -2,3 +2,11 @@
 
 #show_user
   = render :partial => 'users/user', :locals => { :user => @user }
+  = form_for current_user do |f|
+    = check_box_tag :monthly
+    = label_tag :monthly, "Monthly"
+    = check_box_tag :weekly
+    = label_tag :weekly, "Weekly"
+    = check_box_tag :never
+    = label_tag :never, "Never"
+    = f.submit "Subscribe"
