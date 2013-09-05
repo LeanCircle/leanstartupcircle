@@ -5,7 +5,6 @@ gem 'rails', '~> 3.2.12'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'pg'
-gem 'json', '1.7.3'
 gem 'unicorn'
 #gem 'redis' # Use Redis for caching geocode info
 gem 'debugger'
@@ -23,6 +22,7 @@ gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'rmeetup', :git => 'git://github.com/pbajaria/rmeetup.git'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'mailchimp-api'
 
 # Miscellaneous
 gem 'friendly_id'
