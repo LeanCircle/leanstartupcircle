@@ -3,7 +3,7 @@ Leanstartupcircle::Application.routes.draw do
   get 'debug/signmein'
 
   # User routes
-  resources :users, :only => [:index, :show]
+  resources :users, :only => [:index, :show, :update]
 
   # Devise routes
   devise_for :users, :controllers => { :omniauth_callbacks => "my_devise/omniauth_callbacks", :registrations => "my_devise/registrations", :confirmations => "my_devise/confirmations" }, :skip => [:sessions]
@@ -36,8 +36,7 @@ Leanstartupcircle::Application.routes.draw do
   match "faq" => "static_pages#guidelines"
 
   # Static page routes
-  [ :team,
-    :thank_you_for_signing_up].each do |static_page|
+  [ :team ].each do |static_page|
     match "/#{static_page}" => "static_pages##{static_page}", :as => static_page
   end
 
@@ -48,6 +47,8 @@ Leanstartupcircle::Application.routes.draw do
 
   # Sitemaps
   match 'sitemap.xml' => 'sitemaps#sitemap'
+
+  match "thanks_for_signing_up" => "landing_pages#thanks"
 
   # Admin
   namespace :admin do

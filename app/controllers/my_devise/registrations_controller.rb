@@ -1,7 +1,7 @@
 class MyDevise::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
-    thank_you_for_signing_up_path
+    thanks_for_signing_up_path
   end
 
   def create
