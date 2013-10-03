@@ -1,6 +1,11 @@
-SENDGRID_DOMAIN: leanstartupcircle.com
-SENDGRID_USERNAME: leanstartupcircle
-SENDGRID_PASSWORD: hfik297h1ll1
+SMTP_ADDRESS: smtp.sendgrid.net
+SMTP_PORT: leanstartupcircle.com
+SMTP_DOMAIN: leanstartupcircle.com
+SMTP_USERNAME: leanstartupcircle
+SMTP_PASSWORD: hfik297h1ll1
+SMTP_AUTHENTICATION: plain
+SMTP_STARTTLS: true
+INTERCEPTOR_ADDRESS: accounts@tristankromer.com
 RECAPTCHA_PUBLIC_KEY: 6Lcn4b8SAAAAAIKISIfuZp6Ba-t1N_ftCxfvycrO
 RECAPTCHA_PRIVATE_KEY: 6Lcn4b8SAAAAAK4W41UE9HvWln2UlQBD-3pdJX74
 SECRET_TOKEN: iygygf89g28793fv87b23fiub2f78932727237772387fg732g78fbuifbjkbsfjdkfyi7uzgvkxubhzry83gug8fg3v72vf2ib37fv8v23vf32uibfki7ytkzy2ivbkew4bgt78gwegfs624egfxzz643346346greqrgzvzxv423x
