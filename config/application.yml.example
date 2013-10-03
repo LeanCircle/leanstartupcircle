@@ -1,5 +1,5 @@
 SMTP_ADDRESS: smtp.sendgrid.net
-SMTP_PORT: leanstartupcircle.com
+SMTP_PORT: 587
 SMTP_DOMAIN: leanstartupcircle.com
 SMTP_USERNAME: leanstartupcircle
 SMTP_PASSWORD: hfik297h1ll1
