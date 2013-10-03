@@ -2,7 +2,6 @@
 
 @import 'vendor/normalize', 'vendor/main', 'vendor/bootstrap', 'vendor/gmaps4rails', 'compass'
 @import 'variables', 'helper'
-@import 'layouts/buttons', 'layouts/flash'
 
 // Bootstrap overides
 
@@ -52,23 +51,49 @@ table caption
   [class^="icon-"], [class*=" icon-"]
     background-image: image-url("icons/glyphicons-halflings-white.png")
 
+.navbar-inner
+  background-image: none
+  background-color: white !important
+  background-repeat: none
+  border: none
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+
 // Basics
 
-.main, footer
+body
+  font-family: 'Open Sans', sans-serif
+  font-size: 16px
+  line-height: 1.5em
+  color: #6A5E51
+  a
+    color: $link-color !important
+    &:hover
+      color: $link-color-mouseover !important
   h1
-    font-family: courier
+    font-size: 2.8em
+    line-height: 3em
   h2
-    font-family: courier
-  p
-    line-height: 1.7em
+    font-size: 1.5em
 
-  ol, ul
-    li
-      line-height: 1.2em
-      margin: 10px 0 0 40px
-  ul
-    li
-      list-style-type: square
+  .main, footer
+    ol, ul
+      li
+        line-height: 1.2em
+        margin: 10px 0 0 40px
+    ul
+      li
+        list-style-type: square
+
+.button
+  color: white !important
+  background-color: $link-color
+  font-weight: 300
+  height: 16px
+  text-shadow: 0 2px 0 #1A97D5
+  box-shadow: 0 4px 0 #5C6496
+  border-radius: 3px
 
 // Layout
 
@@ -104,29 +129,8 @@ header
       li
         a
           &:hover
-            background-color: #049cdb
-
-    .follow_us
-      float: right
-      padding-top: 7px
-      vertical-align: bottom
-      img
-        height: 25px
-
-  .nearest_group
-    padding:  7px 10px
-    position: absolute
-    right: 0
-    bottom: 0
-    color: #111
-    a
-      font-weight: 600
-      color: #111
-      border-bottom: 1px dotted #111
-      &:hover
-        color: white
-        border-bottom: 1px solid white
-        text-decoration: none
+            background-color: $link-color
+            color: white !important
 
 footer
   @include box-shadow(0, -2px, 2px, 0, #666)
@@ -137,6 +141,49 @@ footer
     float: right
     img
       height: 25px
+
+// Flash messages
+#flash_messages
+  .error, .alert, .notice, .success, .info
+    padding: 0.8em
+    margin: 0 auto 10px
+    border: 2px solid #999
+    @include radius(5px)
+
+  .error, .alert
+    background: $error-background
+    border-color: $error-border
+    color: $error-color
+    a
+      color: $error-link
+
+  .notice, .success
+    background: $success-background
+    border-color: $success-border
+    color: $success-color
+    a
+      color: $success-link
+
+  .info
+    background: $info-background
+    border-color: $info-border
+    color: $info-color
+    a
+      color: $info-link
+
+  .notice, .alert, .success
+    position: relative
+    p
+      float: left
+    .close
+      position: absolute
+      right: 0
+      top: 2px
+      height: 34px
+      width: 34px
+      background: asset-url("icons/close_icon.png", image) no-repeat 0 0
+      cursor: pointer
+      opacity: .3
 
 // Custom pages
 #guidelines, #moderation_guidelines, #team

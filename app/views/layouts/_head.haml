@@ -1,5 +1,4 @@
 %head
-  = airbrake_javascript_notifier
   %title
     - if !yield(:title).blank?
       = yield :title
@@ -13,6 +12,7 @@
 
   = favicon_link_tag
   = stylesheet_link_tag 'application'
+  %link{href: "http://fonts.googleapis.com/css?family=Open+Sans", rel: "stylesheet", type: "text/css"}/
   = javascript_include_tag 'application'
   = csrf_meta_tag
   = render '/layouts/google_analytics'
